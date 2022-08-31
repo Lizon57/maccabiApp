@@ -1,0 +1,11 @@
+$font-path: "../../assets/typography";
+
+@font-face {
+  font-family: Fredoka;
+  src: url(#{$font-path}/Fredoka-Variable.ttf);
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(#{$font-path}/OpenSans-Variable.ttf);
+}
