@@ -1,0 +1,11 @@
+.app-header--option-bar__search-input {
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  color: $clr-white-regular;
+  font-size: $font-size-small-rem;
+  padding-inline-start: $space-inline-xxxSmall-rem;
+  padding-inline-end: 2rem;
+  width: 10rem;
+  transition: $transition-regular;
+}
