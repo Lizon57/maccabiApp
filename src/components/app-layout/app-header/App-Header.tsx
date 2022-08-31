@@ -1,6 +1,7 @@
 import BEMHelper from "react-bem-helper"
 
 import logo from "../../../assets/images/logo.png"
+import { BranchChipList } from "./branch-chip/cranch-chip-list"
 import { OptionBar } from "./option-bar/option-bar"
 
 
@@ -11,6 +12,7 @@ export const AppHeader = () => {
     return (
         <div {...BEM_HELPER('container')}>
             <div {...BEM_HELPER('content')}>
+                <BranchChipList />
                 <OptionBar />
                 <img src={logo} alt="עמוד ראשי" title="עמוד ראשי" {...BEM_HELPER('brand-logo')} />
             </div>
