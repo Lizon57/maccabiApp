@@ -1,5 +1,6 @@
 export const App = () => {
     return (
-        <div>מכביפדיה</div>
+        <div className="app-layout-container">
+        </div>
     )
 }

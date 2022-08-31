@@ -1,0 +1,7 @@
+@import "../variables/app-layout";
+@import "../mixins/app-layout";
+
+div.app-layout-container {
+  @include app-grid-colums;
+  grid-template-rows: $app-header-height 1fr max-content;
+}
