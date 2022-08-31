@@ -1,7 +1,7 @@
 import BEMHelper from "react-bem-helper"
 
 import logo from "../../../assets/images/logo.png"
-import { OptionBar } from "./option-bar/Option-Bar"
+import { OptionBar } from "./option-bar/option-bar"
 
 
 const BEM_HELPER = new BEMHelper('app-header')

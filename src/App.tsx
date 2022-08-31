@@ -1,4 +1,4 @@
-import { AppHeader } from "./components/app-layout/app-header/App-Header"
+import { AppHeader } from "./components/app-layout/app-header/app-header"
 
 export const App = () => {
     return (

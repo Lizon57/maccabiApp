@@ -1,6 +1,6 @@
 import BEMHelper from "react-bem-helper"
 
-import { Search } from "./search/Search"
+import { Search } from "./search/search"
 
 
 const BEM_HELPER = new BEMHelper({ prefix: 'app-header--', name: 'option-bar' })
