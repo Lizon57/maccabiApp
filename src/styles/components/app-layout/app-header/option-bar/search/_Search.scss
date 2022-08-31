@@ -1,11 +1,41 @@
-.app-header--option-bar__search-input {
-  border: 0;
-  outline: none;
-  background-color: transparent;
-  color: $clr-white-regular;
-  font-size: $font-size-small-rem;
-  padding-inline-start: $space-inline-xxxSmall-rem;
-  padding-inline-end: 2rem;
-  width: 10rem;
-  transition: $transition-regular;
+.app-header--option-bar {
+  &__search-container {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    border-block-end: 1px solid $clr-white-regular;
+
+    &:focus-within {
+      border-block-end-color: $clr-yellow-regular;
+
+      input {
+        color: $clr-yellow-regular;
+        width: 15rem;
+      }
+
+      svg {
+        color: $clr-yellow-regular;
+      }
+    }
+
+    svg {
+      position: absolute;
+      left: $space-inline-xxxSmall-rem;
+
+      color: $clr-white-regular;
+    }
+  }
+
+  &__search-input {
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    color: $clr-white-regular;
+    font-size: $font-size-small-rem;
+    padding-inline-start: $space-inline-xxxSmall-rem;
+    padding-inline-end: 2rem;
+    width: 10rem;
+    transition: $transition-regular;
+  }
 }
