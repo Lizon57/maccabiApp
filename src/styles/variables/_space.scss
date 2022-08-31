@@ -1,4 +1,4 @@
-// Inline
+// Inline - rem
 $space-inline-xxxxxLarge-rem: 2.5rem;
 $space-inline-xxxxLarge-rem: 2rem;
 $space-inline-xxxLarge-rem: 1.7rem;
@@ -11,12 +11,35 @@ $space-inline-xSmall-rem: 0.6rem;
 $space-inline-xxSmall-rem: 0.5rem;
 $space-inline-xxxSmall-rem: 0.4rem;
 
-// Block
-$space-block-regular-xxLarge: 1.5rem;
-$space-block-regular-xLarge: 1.3rem;
-$space-block-regular-large: 1.1rem;
+// Block - rem
+$space-block-xxLarge-rem: 1.5rem;
+$space-block-xLarge-rem: 1.3rem;
+$space-block-large-rem: 1.1rem;
 $space-block-regular-rem: 1rem;
 $space-block-small-rem: 0.9rem;
 $space-block-xSmall-rem: 0.7rem;
 $space-block-xxSmall-rem: 0.6rem;
 $space-block-xxxSmall-rem: 0.4rem;
+
+// Inline - em
+$space-inline-xxxxxLarge-em: 2.5em;
+$space-inline-xxxxLarge-em: 2em;
+$space-inline-xxxLarge-em: 1.7em;
+$space-inline-xxLarge-em: 1.5em;
+$space-inline-xLarge-em: 1.4em;
+$space-inline-large-em: 1.2em;
+$space-inline-regular-em: 1em;
+$space-inline-small-em: 0.8em;
+$space-inline-xSmall-em: 0.6em;
+$space-inline-xxSmall-em: 0.5em;
+$space-inline-xxxSmall-em: 0.4em;
+
+// Block - em
+$space-block-xxLarge-em: 1.5em;
+$space-block-xLarge-em: 1.3em;
+$space-block-large-em: 1.1em;
+$space-block-rem-em: 1em;
+$space-block-small-em: 0.9em;
+$space-block-xSmall-em: 0.7em;
+$space-block-xxSmall-em: 0.6em;
+$space-block-xxxSmall-em: 0.4em;

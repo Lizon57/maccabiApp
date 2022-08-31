@@ -1,7 +1,7 @@
 import BEMHelper from "react-bem-helper"
 
 import logo from "../../../assets/images/logo.png"
-import { BranchChipList } from "./branch-chip/cranch-chip-list"
+import { BranchChipList } from "./branch-chip/branch-chip-list"
 import { OptionBar } from "./option-bar/option-bar"
 
 
