@@ -1,0 +1,14 @@
+div.app-header__container {
+  @include app-grid-colums;
+  grid-template-rows: repeat(2, $app-header-bar-height);
+
+  position: fixed;
+  top: 0;
+  z-index: $app-header-z-index;
+
+  background-image: linear-gradient(
+    $clr-blue-darker 50%,
+    $clr-blue-regular 50%
+  );
+  width: 100%;
+}

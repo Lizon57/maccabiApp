@@ -1,5 +1,5 @@
-// Basic
-@import "basics/base";
-
-// Pages folder collective import
+@import "variables/import";
+@import "basics/import";
+@import "mixins/import";
 @import "pages/import";
+@import "components/import";
