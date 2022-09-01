@@ -1,6 +1,14 @@
-footer.app-footer {
+footer.app-layout--app-footer {
   grid-row: 3/4;
-  grid-column: 2/3;
+  grid-column: 1/-1;
 
+  @include app-grid-colums;
+
+  background-color: $clr-blue-darkest;
+  color: $clr-white-regular;
   line-height: 1.5rem;
+
+  div.content {
+    grid-column: 2/3;
+  }
 }

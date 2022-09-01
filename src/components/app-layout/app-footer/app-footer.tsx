@@ -1,7 +1,9 @@
 export const AppFooter = () => {
     return (
-        <footer className="app-footer">
-            פוטר
+        <footer className="app-layout--app-footer">
+            <div className="content">
+                פוטר
+            </div>
         </footer>
     )
 }

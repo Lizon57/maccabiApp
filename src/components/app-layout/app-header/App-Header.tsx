@@ -6,7 +6,7 @@ import { OptionBar } from "./option-bar/option-bar"
 
 export const AppHeader = () => {
     return (
-        <div className="app-header">
+        <div className="app-layout--app-header">
             <div className="content">
                 <BranchChipList />
                 <OptionBar />
