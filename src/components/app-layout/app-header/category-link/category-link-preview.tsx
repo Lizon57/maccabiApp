@@ -1,14 +1,8 @@
-import BEMHelper from "react-bem-helper"
-
-
-const BEM_HELPER = new BEMHelper({ prefix: 'app-header--', name: 'category-link-preview' })
-
-
 export const CategoryLinkPreview = ({ child }: propsType) => {
     return (
-        <li {...BEM_HELPER('container')}>
+        <li className="app-header--category-link__preview-container">
             {child.text}
-            {child?.childrens?.length && <div {...BEM_HELPER('drop-down-container')}>
+            {child?.childrens?.length && <div className="drop-down-container">
                 {child.childrens.map(link =>
                     <div className="link-container">
                         <img src={link.img && require(`../../../../assets/images/navbar/${link.img}`)} alt={link.title} />

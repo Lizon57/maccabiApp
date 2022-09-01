@@ -1,71 +1,69 @@
-.app-header--branch-chip {
-  &-list__container {
-    user-select: none;
-    grid-column: 1/2;
-    grid-row: 1/2;
-    align-self: center;
+section.app-header--branch-chip__list-container {
+  user-select: none;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  align-self: center;
 
-    display: flex;
-    align-items: center;
-    gap: $space-inline-regular-rem;
-    width: max-content;
+  display: flex;
+  align-items: center;
+  gap: $space-inline-regular-rem;
+  width: max-content;
 
-    &:hover {
-      span.description {
-        opacity: 1;
-      }
-    }
-
+  &:hover {
     span.description {
-      opacity: 0;
-      color: $clr-white-regular;
-      font-size: $font-size-xxSmall-rem;
-      transition: $transition-regular;
-
-      &::before {
-        content: "(";
-      }
-
-      &::after {
-        content: ")";
-      }
+      opacity: 1;
     }
   }
 
-  &-preview__container {
-    display: flex;
-    align-items: center;
-
-    position: relative;
-
-    cursor: pointer;
-    border-radius: 0.5em;
-    border: 1px solid $clr-white-darker;
-    background-color: transparent;
-    color: $clr-white-darker;
-    font-size: $font-size-xSmall-rem;
-    padding-inline: $space-inline-xxSmall-em;
-    padding-block: $space-inline-xxxSmall-em;
+  span.description {
+    opacity: 0;
+    color: $clr-white-regular;
+    font-size: $font-size-xxSmall-rem;
     transition: $transition-regular;
 
-    &--active {
-      border-color: $clr-white-darkest;
-      background-color: $clr-white-darkest;
-      color: $clr-black-regular;
+    &::before {
+      content: "(";
     }
 
-    img.symbol {
-      padding-inline-end: $space-inline-xxSmall-em;
-      width: 100%;
-      height: 0.8rem;
+    &::after {
+      content: ")";
     }
+  }
+}
 
-    button.clear-botton {
-      cursor: pointer;
-      border: 0;
-      background-color: transparent;
-      color: inherit;
-      padding: 0;
-    }
+div.app-header--branch-chip__preview-container {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  cursor: pointer;
+  border-radius: 0.5em;
+  border: 1px solid $clr-white-darker;
+  background-color: transparent;
+  color: $clr-white-darker;
+  font-size: $font-size-xSmall-rem;
+  padding-inline: $space-inline-xxSmall-em;
+  padding-block: $space-inline-xxxSmall-em;
+  transition: $transition-regular;
+
+  &.active {
+    border-color: $clr-white-darkest;
+    background-color: $clr-white-darkest;
+    color: $clr-black-regular;
+  }
+
+  img.symbol {
+    padding-inline-end: $space-inline-xxSmall-em;
+    width: 100%;
+    height: 0.8rem;
+  }
+
+  button.clear-botton {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
   }
 }

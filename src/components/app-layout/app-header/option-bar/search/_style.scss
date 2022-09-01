@@ -1,35 +1,33 @@
-.app-header--option-bar {
-  &__search-container {
-    display: flex;
-    align-items: center;
+div.app-header--option-bar__search-container {
+  display: flex;
+  align-items: center;
 
-    position: relative;
-    border-block-end: 1px solid $clr-white-regular;
-    padding-block-end: 0.1rem;
+  position: relative;
+  border-block-end: 1px solid $clr-white-regular;
+  padding-block-end: 0.1rem;
 
-    &:focus-within {
-      border-block-end-color: $clr-yellow-regular;
+  &:focus-within {
+    border-block-end-color: $clr-yellow-regular;
 
-      input {
-        color: $clr-yellow-regular;
-        width: 15rem;
-      }
-
-      svg {
-        color: $clr-yellow-regular;
-      }
+    input {
+      color: $clr-yellow-regular;
+      width: 15rem;
     }
 
     svg {
-      position: absolute;
-      left: $space-inline-xxxSmall-rem;
-      z-index: -1;
-
-      color: $clr-white-regular;
+      color: $clr-yellow-regular;
     }
   }
 
-  &__search-input {
+  svg {
+    position: absolute;
+    left: $space-inline-xxxSmall-rem;
+    z-index: -1;
+
+    color: $clr-white-regular;
+  }
+
+  input {
     border: 0;
     outline: none;
     background-color: transparent;

@@ -1,15 +1,11 @@
-import BEMHelper from "react-bem-helper"
 import { GoGear } from "react-icons/go"
 import { FiEdit2 } from "react-icons/fi"
 import { AiOutlineUser } from "react-icons/ai"
 
 
-const BEM_HELPER = new BEMHelper({ prefix: 'app-header--', name: 'option-bar' })
-
-
 export const OptionLink = () => {
     return (
-        <div {...BEM_HELPER('option-link-container')}>
+        <div className="app-header--option-bar__option-link-container">
             <span className="icon-wrapper">
                 <GoGear />
                 <ul className="links-container">

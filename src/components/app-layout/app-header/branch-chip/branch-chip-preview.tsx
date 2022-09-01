@@ -1,11 +1,8 @@
 import { useState } from "react"
-import BEMHelper from "react-bem-helper"
 import { branchProp } from "../../../../types/branch"
 
 
-const BEM_HELPER = new BEMHelper({ prefix: 'app-header--', name: 'branch-chip-preview' })
-const ACTIVE_BUTTON_BEM_HELPER = { ...BEM_HELPER('container', 'active') }
-
+const BEM_HELPER = ''
 
 export const BranchChipPreview = ({ branch }: branchProp) => {
     const [isActive, setIsActive] = useState(true)
@@ -15,11 +12,11 @@ export const BranchChipPreview = ({ branch }: branchProp) => {
 
     return (
         <div
-            {...isActive ? ACTIVE_BUTTON_BEM_HELPER : { ...BEM_HELPER('container') }}
+            className={'app-header--branch-chip__preview-container' + (isActive ? ' active' : '')}
             onClick={() => setIsActive(!isActive)}
             title={`סנן ענף (${displayName})`}>
             <img src={require(`../../../../assets/images/branch-symbol/${symbol}`)} alt={displayName} className="symbol" />
             <button className="clear-botton">{displayName}</button>
-        </div >
+        </div>
     )
 }

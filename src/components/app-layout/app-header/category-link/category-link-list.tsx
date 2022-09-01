@@ -1,15 +1,12 @@
-import BEMHelper from "react-bem-helper"
-import { CategoryLinkPreview } from "./category-link-preview"
 import { categoryLinks } from "./data"
+import { CategoryLinkPreview } from "./category-link-preview"
 
 
-const BEM_HELPER = new BEMHelper({ prefix: 'app-header--', name: 'category-link-list' })
-const LEFT_SIDED_BEM_HELPER = { ...BEM_HELPER('container', 'left-sided') }
 
 
 export const CategoryLinkList = ({ relevant, isLeftSided }: propsType) => {
     return (
-        <ul  {...isLeftSided ? LEFT_SIDED_BEM_HELPER : { ...BEM_HELPER('container') }}>
+        <ul className={'app-header--category-link__container' + (isLeftSided ? ' left-sided' : '')}>
             {categoryLinks.slice(...relevant).map(categoryLink => {
                 return <CategoryLinkPreview child={categoryLink} key={categoryLink.id} />
             })}
