@@ -3,4 +3,11 @@ div.app-layout {
   grid-template-rows: $app-header-total-height auto max-content;
 
   min-height: 100vh;
+
+  div.app-content {
+    grid-row: 2/3;
+    grid-column: 2/3;
+
+    margin-block: $space-block-regular-rem;
+  }
 }

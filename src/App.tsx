@@ -7,6 +7,14 @@ export const App = () => {
         <div className="app-layout">
             <AppHeader />
             <PageRelatedData />
+            <div className="app-content">
+                תוכן העמוד
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
             <AppFooter />
         </div>
     )

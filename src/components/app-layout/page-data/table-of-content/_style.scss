@@ -1,9 +1,8 @@
 div.app-header--page-related-data__table-of-content-container {
   position: sticky;
-  top: 0;
+  top: calc(#{$app-header-total-height} + #{$space-block-regular-rem});
 
   margin-inline: $space-inline-xxxxxLarge-rem;
-  margin-block: $space-block-regular-rem;
 
   h3.title {
     border-inline-start: 5px solid $clr-blue-regular;
