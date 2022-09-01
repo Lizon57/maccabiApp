@@ -6,5 +6,6 @@
     display: flex;
     align-items: center;
     justify-self: flex-end;
+    gap: $space-inline-regular-rem;
   }
 }
