@@ -1,2 +1,63 @@
 div.app-header--page-related-data__table-of-content-container {
+  position: sticky;
+  top: 0;
+
+  margin-inline: $space-inline-xxxxxLarge-rem;
+  margin-block: $space-block-regular-rem;
+
+  h3.title {
+    border-inline-start: 5px solid $clr-blue-regular;
+    font-size: $font-size-regular-rem;
+    font-family: $typography-emphasis;
+    font-weight: 500;
+    padding-inline-start: $space-inline-small-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    margin: 0;
+    margin-block-end: $space-block-xxxSmall-rem;
+
+    &:hover {
+      background-color: $clr-white-darker;
+    }
+  }
+
+  div.content {
+    font-size: $font-size-small-rem;
+
+    span {
+      display: block;
+      width: 100%;
+
+      &:hover {
+        color: $clr-blue-regular;
+      }
+    }
+
+    ol {
+      list-style-type: none;
+      counter-reset: item;
+      padding: 0;
+      margin: 0;
+
+      & > li {
+        display: table;
+        counter-increment: item;
+        margin-block-end: $space-block-xxSmall-rem;
+
+        &::before {
+          content: counters(item, ".") ". ";
+          display: table-cell;
+          padding-inline-end: 5px;
+        }
+      }
+    }
+
+    li ol > li {
+      margin-block-start: $space-block-xxxSmall-rem;
+      font-size: $font-size-xSmall-rem;
+
+      &::before {
+        content: counters(item, ".") " ";
+      }
+    }
+  }
 }
