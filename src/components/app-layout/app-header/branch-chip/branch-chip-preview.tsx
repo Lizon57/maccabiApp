@@ -2,8 +2,6 @@ import { useState } from "react"
 import { branchProp } from "../../../../types/branch"
 
 
-const BEM_HELPER = ''
-
 export const BranchChipPreview = ({ branch }: branchProp) => {
     const [isActive, setIsActive] = useState(true)
 

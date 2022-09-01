@@ -1,4 +1,6 @@
-div.app-layout-container {
+div.app-layout {
   @include app-grid-colums;
-  grid-template-rows: $app-header-total-height 1fr max-content;
+  grid-template-rows: $app-header-total-height auto max-content;
+
+  min-height: 100vh;
 }

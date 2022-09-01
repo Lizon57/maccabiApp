@@ -54,6 +54,7 @@ li.app-header--category-link__preview-container {
   div.drop-down-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: $space-block-xxSmall-rem;
 
     position: absolute;
     top: 100%;
@@ -103,6 +104,8 @@ li.app-header--category-link__preview-container {
         grid-row: 1/3;
         grid-column: 1/2;
 
+        aspect-ratio: 1 / 1;
+
         width: 100%;
         height: 100%;
       }
@@ -126,7 +129,7 @@ li.app-header--category-link__preview-container {
         font-size: $font-size-xSmall-rem;
         padding-inline-start: $space-inline-xxxSmall-rem;
         text-align: right;
-        max-width: 30ch;
+        max-width: 35ch;
       }
     }
   }
