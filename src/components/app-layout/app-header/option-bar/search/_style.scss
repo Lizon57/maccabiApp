@@ -5,6 +5,7 @@
 
     position: relative;
     border-block-end: 1px solid $clr-white-regular;
+    padding-block-end: 0.1rem;
 
     &:focus-within {
       border-block-end-color: $clr-yellow-regular;

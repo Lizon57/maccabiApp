@@ -1,11 +1,12 @@
 .app-header {
   &__container {
     @include app-grid-colums;
-
+    
     position: fixed;
     top: 0;
     z-index: $app-header-z-index;
-
+    
+    user-select: none;
     background-image: linear-gradient(
       $clr-blue-darker 50%,
       $clr-blue-regular 50%
