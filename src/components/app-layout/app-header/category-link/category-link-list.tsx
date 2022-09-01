@@ -4,11 +4,12 @@ import { categoryLinks } from "./data"
 
 
 const BEM_HELPER = new BEMHelper({ prefix: 'app-header--', name: 'category-link-list' })
+const LEFT_SIDED_BEM_HELPER = { ...BEM_HELPER('container', 'left-sided') }
 
 
-export const CategoryLinkList = ({ relevant }: propsType) => {
+export const CategoryLinkList = ({ relevant, isLeftSided }: propsType) => {
     return (
-        <ul {...BEM_HELPER('container')}>
+        <ul  {...isLeftSided ? LEFT_SIDED_BEM_HELPER : { ...BEM_HELPER('container') }}>
             {categoryLinks.slice(...relevant).map(categoryLink => {
                 return <CategoryLinkPreview child={categoryLink} key={categoryLink.id} />
             })}
@@ -18,5 +19,6 @@ export const CategoryLinkList = ({ relevant }: propsType) => {
 
 
 type propsType = {
-    relevant: number[]
+    relevant: number[],
+    isLeftSided?: boolean
 }

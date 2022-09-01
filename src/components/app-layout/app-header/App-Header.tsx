@@ -17,7 +17,7 @@ export const AppHeader = () => {
                 <OptionBar />
                 <img src={logo} alt="עמוד ראשי" title="עמוד ראשי" {...BEM_HELPER('brand-logo')} />
                 <CategoryLinkList relevant={[0, 3]} />
-                <CategoryLinkList relevant={[3]} />
+                <CategoryLinkList relevant={[3]} isLeftSided={true} />
             </div>
         </div>
     )

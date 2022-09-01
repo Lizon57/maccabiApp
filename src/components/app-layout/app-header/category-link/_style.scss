@@ -21,6 +21,12 @@
 
       margin-inline-start: $space-inline-xxLarge-rem;
     }
+
+    &--left-sided {
+      div.app-header--category-link-preview__drop-down-container {
+        left: 0;
+      }
+    }
   }
 
   &preview__container {
