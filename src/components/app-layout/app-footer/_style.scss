@@ -6,9 +6,80 @@ footer.app-layout--app-footer {
 
   background-color: $clr-blue-darkest;
   color: $clr-white-regular;
-  line-height: 1.5rem;
 
   div.content {
     grid-column: 2/3;
+
+    margin-block: $space-block-small-rem;
+
+    div.links-container {
+      display: flex;
+      justify-content: center;
+      gap: $space-inline-xLarge-rem;
+
+      font-size: $font-size-small-rem;
+      margin-block-end: $space-block-small-rem;
+
+      span {
+        padding-inline: $space-inline-xSmall-rem;
+        transition: $transition-regular;
+
+        &:hover {
+          color: $clr-yellow-regular;
+        }
+      }
+    }
+
+    div.social-netwroks-container {
+      display: flex;
+      justify-content: space-around;
+
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+
+        content: "";
+        border-block-end: 1px solid $clr-white-regular;
+        width: 100%;
+      }
+
+      span.title {
+        position: relative;
+        z-index: 5;
+
+        background-color: $clr-blue-darkest;
+        font-family: $typography-emphasis;
+        font-weight: 500;
+        padding-inline: $space-inline-xxLarge-rem;
+      }
+
+      span.social-networks-icons {
+        position: relative;
+        z-index: 5;
+
+        display: flex;
+        align-items: center;
+        gap: $space-inline-xSmall-rem;
+
+        background-color: $clr-blue-darkest;
+        font-size: $font-size-xxLarge-rem;
+        padding-inline: $space-inline-xxLarge-rem;
+
+        a {
+          color: $clr-white-regular;
+          transition: $transition-regular;
+
+          &:hover {
+            color: $clr-yellow-regular;
+          }
+
+          svg {
+            display: block;
+          }
+        }
+      }
+    }
   }
 }
