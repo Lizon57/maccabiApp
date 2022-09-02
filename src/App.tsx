@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 import { AppHeader } from "./components/app-layout/app-header/app-header"
 import { PageRelatedData } from "./components/app-layout/page-data/page-related-data"
 import { AppData } from "./components/app-layout/app-data/app-data"
@@ -7,8 +5,6 @@ import { AppFooter } from "./components/app-layout/app-footer/app-footer"
 
 
 export const App = () => {
-    const [footerHeight, setFooterHeight] = useState(0)
-
     return (
         <div className="app-layout">
             <AppHeader />
@@ -21,8 +17,8 @@ export const App = () => {
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             </div>
-            <AppData footerHeight={footerHeight} />
-            <AppFooter setFooterHeight={setFooterHeight} />
+            <AppData />
+            <AppFooter />
         </div>
     )
 }

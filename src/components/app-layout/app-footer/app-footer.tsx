@@ -1,17 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from "react"
 import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
 
 
-export const AppFooter = ({ setFooterHeight }: propType) => {
-    const footerRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>
-
-    useEffect(() => {
-        const FOOTER_HEIGHT = footerRef?.current?.clientHeight
-        setFooterHeight(FOOTER_HEIGHT)
-    }, [setFooterHeight, footerRef])
-
+export const AppFooter = () => {
     return (
-        <footer className="app-layout--app-footer" ref={footerRef}>
+        <footer className="app-layout--app-footer">
             <div className="content">
                 <div className="links-container">
                     <span>תרום למכביפדיה</span>
@@ -52,8 +44,3 @@ const SOIAL_NETWORKS = [
         path: 'https://www.youtube.com/channel/UCxnAYpW-2OJUXbrSil5EeQQ'
     },
 ]
-
-
-type propType = {
-    setFooterHeight: Dispatch<SetStateAction<number>>
-}

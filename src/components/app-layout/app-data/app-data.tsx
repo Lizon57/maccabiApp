@@ -1,11 +1,9 @@
-export const AppData = ({ footerHeight }: propsType) => {
+import { AppMessageList } from "./app-message/app-message-list"
+
+export const AppData = () => {
     return (
         <aside className="app-layout--app-data__aside-container">
+            <AppMessageList />
         </aside>
     )
-}
-
-
-type propsType = {
-    footerHeight: number
 }

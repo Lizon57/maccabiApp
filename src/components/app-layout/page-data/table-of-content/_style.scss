@@ -42,6 +42,7 @@ div.app-header--page-related-data__table-of-content-container {
       & > li {
         display: table;
         counter-increment: item;
+        font-weight: 500;
         margin-block-end: $space-block-xxSmall-rem;
 
         &::before {
