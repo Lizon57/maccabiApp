@@ -7,7 +7,7 @@ const POSSIBLE_SIZE = {
     mobile: 550,
     tablet: 900,
     laptop: 1080,
-    wide: 1300
+    wide: 1400
 }
 
 

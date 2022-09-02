@@ -1,4 +1,4 @@
-import { AppHeader } from "./components/app-layout/app-header/app-header"
+import { LaptopWidePluusAppHeader } from "./components/app-layout/app-header/laptop-wide-plus-app-header"
 import { PageRelatedData } from "./components/app-layout/page-data/page-related-data"
 import { AppData } from "./components/app-layout/app-data/app-data"
 import { AppFooter } from "./components/app-layout/app-footer/app-footer"
@@ -8,8 +8,8 @@ import { RenderByDeviceWidth } from "./components/common/render-by/render-by-dev
 export const App = () => {
     return (
         <div className="app-layout">
-            <RenderByDeviceWidth minDeviceWide="laptop">
-                <AppHeader />
+            <RenderByDeviceWidth minDeviceWide="tablet">
+                <LaptopWidePluusAppHeader />
             </RenderByDeviceWidth>
             <PageRelatedData />
             <div className="app-content">
