@@ -1,7 +1,9 @@
+import { MainTitle } from "../../../common/main-title/main-title"
+
 export const TableOfContent = () => {
     return (
         <div className="app-header--page-related-data__table-of-content-container">
-            <h3 className="title">תוכן עניינים</h3>
+            <MainTitle text="תוכן עניינים" />
             <div className="content">
                 <ol>
                     <li><span>שנות השישים: תינוקות ג'רי (1959-1969)</span></li>

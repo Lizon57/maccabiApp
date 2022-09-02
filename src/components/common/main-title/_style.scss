@@ -1,0 +1,23 @@
+h2.common-cmp--main-title {
+  position: relative;
+  border-start-end-radius: $border-radius-regular-rem;
+  border-end-end-radius: $border-radius-regular-rem;
+  border-inline-start: 5px solid $clr-blue-regular;
+  font-size: $font-size-regular-rem;
+  font-family: $typography-emphasis;
+  font-weight: 500;
+  padding-inline-start: $space-inline-small-rem;
+  padding-block: $space-block-xxxSmall-rem;
+  margin: 0;
+  margin-block-end: $space-block-xxxSmall-rem;
+  transition: $transition-regular;
+
+  &.sticky {
+    @include page-top-stick;
+    background-color: $clr-white-regular;
+  }
+
+  &:hover {
+    background-color: $clr-white-darker;
+  }
+}

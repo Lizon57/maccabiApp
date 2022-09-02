@@ -38,7 +38,7 @@ div.app-header--branch-chip__preview-container {
   position: relative;
 
   cursor: pointer;
-  border-radius: 0.5em;
+  border-radius: $border-radius-regular-em;
   border: 1px solid $clr-white-darker;
   background-color: transparent;
   color: $clr-white-darker;

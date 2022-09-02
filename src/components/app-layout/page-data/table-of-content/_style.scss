@@ -4,22 +4,6 @@ div.app-header--page-related-data__table-of-content-container {
 
   margin-inline: $space-inline-xxxxxLarge-rem;
 
-  h3.title {
-    border-inline-start: 5px solid $clr-blue-regular;
-    font-size: $font-size-regular-rem;
-    font-family: $typography-emphasis;
-    font-weight: 500;
-    padding-inline-start: $space-inline-small-rem;
-    padding-block: $space-block-xxxSmall-rem;
-    margin: 0;
-    margin-block-end: $space-block-xxxSmall-rem;
-    transition: $transition-regular;
-
-    &:hover {
-      background-color: $clr-white-darker;
-    }
-  }
-
   div.content {
     font-size: $font-size-small-rem;
 

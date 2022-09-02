@@ -1,11 +1,14 @@
 import { makeId } from "../../../../services/util/make-id"
+
+import { MainTitle } from "../../../common/main-title/main-title"
 import { AppMessagePreview } from "./app-message-preview"
+
 
 export const AppMessageList = () => {
     return (
         DATA.length
             ? <div className="app-data--message__list-container">
-                <div className="list-title">{(DATA.length > 1) ? 'הודעות מערכת' : 'הודעת מערכת'}</div>
+                <MainTitle text={(DATA.length > 1) ? 'הודעות מערכת' : 'הודעת מערכת'} />
 
                 {DATA.map((message) => {
                     return <AppMessagePreview key={message.id} message={message} />

@@ -62,7 +62,7 @@ li.app-header--category-link__preview-container {
     opacity: 0;
     visibility: hidden;
 
-    border-radius: 0.2rem;
+    border-radius: $border-radius-regular-rem;
     background-color: $clr-white-regular;
     color: $clr-black-regular;
     font-size: $font-size-regular-rem;
@@ -91,7 +91,7 @@ li.app-header--category-link__preview-container {
       grid-template-rows: repeat(2, auto);
       grid-template-columns: 3rem 1fr;
 
-      border-radius: 0.2rem;
+      border-radius: $border-radius-regular-rem;
       padding-inline: $space-inline-xxxSmall-rem;
       padding-block: $space-block-xxxSmall-rem;
       transition: $transition-regular;
