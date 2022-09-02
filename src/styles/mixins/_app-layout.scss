@@ -2,5 +2,17 @@
   $side: minmax(0.5rem, 1fr);
 
   display: grid;
-  grid-template-columns: $side minmax(auto, 1100px) $side;
+  grid-template-columns: $side minmax(auto, 1000px) $side;
+
+  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
+    grid-template-columns: $side minmax(auto, 1100px) $side;
+  }
+
+  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 400px)) {
+    grid-template-columns: $side minmax(auto, 1200px) $side;
+  }
+
+  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
+    grid-template-columns: $side minmax(auto, 1250px) $side;
+  }
 }

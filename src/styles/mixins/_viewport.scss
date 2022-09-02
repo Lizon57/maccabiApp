@@ -1,0 +1,17 @@
+@mixin viewport-wide-range($minDeviceWide, $maxDeviceWide) {
+  @media only screen and (max-width: $maxDeviceWide) and (min-width: $minDeviceWide) {
+    @content;
+  }
+}
+
+@mixin vieport-wide-up-to($maxDeviceWide) {
+  @media only screen and (max-width: $maxDeviceWide) {
+    @content;
+  }
+}
+
+@mixin vieport-wide-start-from($minDeviceWide) {
+  @media only screen and (min-width: $minDeviceWide) {
+    @content;
+  }
+}
