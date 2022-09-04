@@ -2,7 +2,19 @@ div.app-header--page-related-data__table-of-content-container {
   position: sticky;
   top: calc(#{$app-header-total-height} + #{$space-block-regular-rem});
 
-  margin-inline: $space-inline-xxxxxLarge-rem;
+  margin-inline: $space-inline-large-rem;
+
+  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
+    margin-inline: $space-inline-xxLarge-rem;
+  }
+
+  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
+    margin-inline: $space-inline-xxxxLarge-rem;
+  }
+
+  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 700px)) {
+    margin-inline-start: 0;
+  }
 
   div.content {
     font-size: $font-size-small-rem;
@@ -32,14 +44,18 @@ div.app-header--page-related-data__table-of-content-container {
         &::before {
           content: counters(item, ".") ". ";
           display: table-cell;
-          padding-inline-end: 5px;
+          padding-inline-end: 3px;
         }
       }
     }
 
     li ol > li {
       margin-block-start: $space-block-xxxSmall-rem;
-      font-size: $font-size-xSmall-rem;
+      font-size: $font-size-xxSmall-rem;
+
+      @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
+        font-size: $font-size-xSmall-rem;
+      }
 
       &::before {
         content: counters(item, ".") " ";

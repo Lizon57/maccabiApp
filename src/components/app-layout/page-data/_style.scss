@@ -3,4 +3,9 @@ aside.app-layout--page-related-data__aside-container {
   grid-column: 1/2;
 
   margin-block: $space-block-regular-rem;
+
+  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
+    justify-self: left;
+    max-width: 400px;
+  }
 }
