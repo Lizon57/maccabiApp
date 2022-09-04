@@ -4,7 +4,7 @@ import { CategoryLinkList } from "./category-link/category-link-list"
 import { OptionBar } from "./option-bar/option-bar"
 
 
-export const LaptopWidePluusAppHeader = () => {
+export const LaptopWidePlusAppHeader = () => {
     return (
         <div className="app-layout--app-header">
             <div className="content">

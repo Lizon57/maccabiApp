@@ -3,6 +3,21 @@ div.app-header--page-related-data__table-of-content-container {
   top: calc(#{$app-header-total-height} + #{$space-block-regular-rem});
 
   margin-inline: $space-inline-large-rem;
+  overflow-y: hidden;
+  word-break: normal;
+
+  &:hover {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 1px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $clr-black-lightest;
+    }
+  }
 
   @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
     margin-inline: $space-inline-xxLarge-rem;
@@ -42,6 +57,7 @@ div.app-header--page-related-data__table-of-content-container {
         margin-block-end: $space-block-xxSmall-rem;
 
         &::before {
+          font-size: $font-size-xSmall-rem;
           content: counters(item, ".") ". ";
           display: table-cell;
           padding-inline-end: 3px;
@@ -51,6 +67,7 @@ div.app-header--page-related-data__table-of-content-container {
 
     li ol > li {
       margin-block-start: $space-block-xxxSmall-rem;
+      margin-block-end: 0;
       font-size: $font-size-xxSmall-rem;
 
       @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
