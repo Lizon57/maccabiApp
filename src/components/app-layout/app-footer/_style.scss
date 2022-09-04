@@ -15,10 +15,18 @@ footer.app-layout--app-footer {
     div.links-container {
       display: flex;
       justify-content: center;
-      gap: $space-inline-xLarge-rem;
+      gap: $space-inline-regular-rem;
 
-      font-size: $font-size-small-rem;
+      font-size: $font-size-xSmall-rem;
       margin-block-end: $space-block-small-rem;
+
+      @include vieport-wide-start-from($viewport-xSmall) {
+        font-size: $font-size-small-rem;
+      }
+
+      @include vieport-wide-start-from($viewport-small) {
+        gap: $space-inline-large-rem;
+      }
 
       span {
         padding-inline: $space-inline-xSmall-rem;
@@ -32,17 +40,24 @@ footer.app-layout--app-footer {
 
     div.social-netwroks-container {
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
+      align-items: center;
+      gap: $space-block-small-rem;
 
-      position: relative;
+      @include vieport-wide-start-from($viewport-xSmall) {
+        flex-direction: row;
+        justify-content: space-evenly;
 
-      &::after {
-        position: absolute;
-        top: 50%;
+        position: relative;
 
-        content: "";
-        border-block-end: 1px solid $clr-white-regular;
-        width: 100%;
+        &::after {
+          position: absolute;
+          top: 50%;
+
+          content: "";
+          border-block-end: 1px solid $clr-white-regular;
+          width: 100%;
+        }
       }
 
       span.title {
@@ -50,23 +65,23 @@ footer.app-layout--app-footer {
         z-index: 5;
 
         background-color: $clr-blue-darkest;
+        font-size: $font-size-large-rem;
         font-family: $typography-emphasis;
         font-weight: 500;
         letter-spacing: 0.3px;
-        padding-inline: $space-inline-xxLarge-rem;
+        padding-inline: $space-inline-large-rem;
       }
 
       span.social-networks-icons {
+        display: flex;
+        align-items: center;
+        gap: $space-inline-large-rem;
         position: relative;
         z-index: 5;
 
-        display: flex;
-        align-items: center;
-        gap: $space-inline-xSmall-rem;
-
         background-color: $clr-blue-darkest;
         font-size: $font-size-xxLarge-rem;
-        padding-inline: $space-inline-xxLarge-rem;
+        padding-inline: $space-inline-large-rem;
 
         a {
           color: $clr-white-regular;
