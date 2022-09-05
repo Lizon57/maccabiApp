@@ -4,7 +4,9 @@ div.app-data--message__list-container {
   gap: $space-block-xxSmall-rem;
 
   position: sticky;
-  top: calc(#{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem});
+  top: calc(
+    #{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem}
+  );
 
   margin-inline: $space-inline-large-rem;
 
@@ -22,9 +24,31 @@ div.app-data--message__list-container {
 }
 
 div.app-data--message__preview-container {
+  position: relative;
   padding-inline: $space-inline-xxxSmall-rem;
   padding-block: $space-block-xxxSmall-rem;
   box-shadow: 0 0 5px 1px $clr-white-darkest;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    content: "";
+    background-color: $clr-blue-regular;
+    width: 100%;
+    height: 1px;
+    animation: visibility-duration 5s linear;
+
+    @keyframes visibility-duration {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 100%;
+      }
+    }
+  }
 
   div.preview-title {
     font-size: $font-size-small-rem;
@@ -38,10 +62,5 @@ div.app-data--message__preview-container {
     @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
       font-size: $font-size-xSmall-rem;
     }
-  }
-
-  div.preview-timer {
-    float: left;
-    clear: both;
   }
 }
