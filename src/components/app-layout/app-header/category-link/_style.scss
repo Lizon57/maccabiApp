@@ -27,7 +27,7 @@ ul.app-header--category-link__container {
     }
   }
 
-  @include vieport-wide-start-from($viewport-xLarge) {
+  @include viewport-wide-start-from($viewport-xLarge) {
     gap: 8%;
   }
 }
@@ -49,11 +49,11 @@ li.app-header--category-link__preview-container {
     letter-spacing: 0.2px;
   }
 
-  @include vieport-wide-start-from($viewport-xLarge) {
+  @include viewport-wide-start-from($viewport-xLarge) {
     font-size: $font-size-xLarge-rem;
   }
 
-  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
+  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
     font-size: $font-size-xxLarge-rem;
   }
 

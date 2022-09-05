@@ -20,11 +20,11 @@ footer.app-layout--app-footer {
       font-size: $font-size-xSmall-rem;
       margin-block-end: $space-block-small-rem;
 
-      @include vieport-wide-start-from($viewport-xSmall) {
+      @include viewport-wide-start-from($viewport-xSmall) {
         font-size: $font-size-small-rem;
       }
 
-      @include vieport-wide-start-from($viewport-small) {
+      @include viewport-wide-start-from($viewport-small) {
         gap: $space-inline-large-rem;
       }
 
@@ -44,7 +44,7 @@ footer.app-layout--app-footer {
       align-items: center;
       gap: $space-block-small-rem;
 
-      @include vieport-wide-start-from($viewport-xSmall) {
+      @include viewport-wide-start-from($viewport-xSmall) {
         flex-direction: row;
         justify-content: space-evenly;
 

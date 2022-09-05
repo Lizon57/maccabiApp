@@ -19,15 +19,15 @@ div.app-header--page-related-data__table-of-content-container {
     }
   }
 
-  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
+  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
     margin-inline: $space-inline-xxLarge-rem;
   }
 
-  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
+  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
     margin-inline: $space-inline-xxxxLarge-rem;
   }
 
-  @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 700px)) {
+  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 700px)) {
     margin-inline-start: 0;
   }
 
@@ -70,7 +70,7 @@ div.app-header--page-related-data__table-of-content-container {
       margin-block-end: 0;
       font-size: $font-size-xxSmall-rem;
 
-      @include vieport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
+      @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
         font-size: $font-size-xSmall-rem;
       }
 
