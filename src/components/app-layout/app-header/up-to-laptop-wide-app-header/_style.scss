@@ -17,16 +17,16 @@ header.app-layout--app-header__up-to-laptop-wide {
     align-items: center;
     justify-content: space-between;
 
-    div.options-container {
+    div.navigator-container {
       display: flex;
+      align-items: center;
 
-      div.options-icon-wrapper {
-        display: flex;
-        align-items: center;
+      cursor: pointer;
+      color: $clr-white-regular;
+      line-height: $up-to-laptop-wide-header-total-height;
+      transition: $transition-regular;
 
-        cursor: pointer;
-        color: $clr-white-regular;
-        line-height: $up-to-laptop-wide-header-total-height;
+      span.icon-wrapper {
         padding-inline-end: $space-inline-regular-rem;
         transition: $transition-regular;
 
