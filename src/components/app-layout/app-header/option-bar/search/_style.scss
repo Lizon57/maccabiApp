@@ -11,7 +11,10 @@ div.app-header--option-bar__search-container {
 
     input {
       color: $clr-yellow-regular;
-      width: 15rem;
+
+      @include viewport-wide-start-from($viewport-small) {
+        width: 15rem;
+      }
     }
 
     svg {
