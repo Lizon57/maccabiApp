@@ -2,7 +2,11 @@ aside.app-layout--page-related-data__aside-container {
   grid-row: 2/3;
   grid-column: 1/2;
 
-  margin-block: $space-block-regular-rem;
+  margin-block: $space-block-xSmall-rem;
+
+  @include viewport-wide-start-from-exclusive($viewport-regular) {
+    margin-block: $space-block-regular-rem;
+  }
 
   @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
     justify-self: left;

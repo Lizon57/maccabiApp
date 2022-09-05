@@ -1,6 +1,9 @@
 aside.app-layout--app-data__aside-container {
   grid-row: 2/3;
   grid-column: 3/4;
+  margin-block: $space-block-xSmall-rem;
 
-  margin-block: $space-block-regular-rem;
+  @include viewport-wide-start-from-exclusive($viewport-regular) {
+    margin-block: $space-block-regular-rem;
+  }
 }

@@ -8,8 +8,39 @@ header.app-layout--app-header__up-to-laptop-wide {
   user-select: none;
   background-color: $clr-blue-regular;
   width: 100%;
+  height: $up-to-laptop-wide-header-total-height;
 
   div.content {
     grid-column: 2/3;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div.options-container {
+      display: flex;
+
+      div.options-icon-wrapper {
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
+        color: $clr-white-regular;
+        line-height: $up-to-laptop-wide-header-total-height;
+        padding-inline-end: $space-inline-regular-rem;
+        transition: $transition-regular;
+
+        &:hover {
+          color: $clr-yellow-regular;
+        }
+      }
+
+      img.brand-logo {
+        background-color: $clr-yellow-regular;
+        padding: 0.2rem;
+        width: auto;
+        height: $up-to-laptop-wide-header-total-height;
+      }
+    }
   }
 }

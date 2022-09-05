@@ -1,13 +1,22 @@
 div.app-layout {
   @include app-grid-colums;
-  grid-template-rows: $laptop-wide-plus-app-header-total-height auto max-content;
+
+  grid-template-rows: $up-to-laptop-wide-header-total-height auto max-content;
 
   min-height: 100vh;
+
+  @include viewport-wide-start-from-exclusive($viewport-regular) {
+    grid-template-rows: $laptop-wide-plus-app-header-total-height auto max-content;
+  }
 
   div.app-content {
     grid-row: 2/3;
     grid-column: 2/3;
 
-    margin-block: $space-block-regular-rem;
+    margin-block: $space-block-xSmall-rem;
+
+    @include viewport-wide-start-from-exclusive($viewport-regular) {
+      margin-block: $space-block-regular-rem;
+    }
   }
 }
