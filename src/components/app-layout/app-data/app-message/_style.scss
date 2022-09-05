@@ -4,7 +4,7 @@ div.app-data--message__list-container {
   gap: $space-block-xxSmall-rem;
 
   position: sticky;
-  top: calc(#{$app-header-total-height} + #{$space-block-regular-rem});
+  top: calc(#{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem});
 
   margin-inline: $space-inline-large-rem;
 

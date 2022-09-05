@@ -1,4 +1,5 @@
-import { LaptopWidePlusAppHeader } from "./components/app-layout/app-header/laptop-wide-plus-app-header"
+import { LaptopWidePlusAppHeader } from "./components/app-layout/app-header/laptop-wide-plus-app-header/laptop-wide-plus-app-header"
+import { UpToLaptopWideAppHeader } from "./components/app-layout/app-header/up-to-laptop-wide-app-header/up-to-laptp-wide-app-header"
 import { PageRelatedData } from "./components/app-layout/page-data/page-related-data"
 import { AppData } from "./components/app-layout/app-data/app-data"
 import { AppFooter } from "./components/app-layout/app-footer/app-footer"
@@ -12,7 +13,7 @@ export const App = () => {
                 <LaptopWidePlusAppHeader />
             </RenderByDeviceWidth>
             <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
-                <div>הדר</div>
+                <UpToLaptopWideAppHeader />
             </RenderByDeviceWidth>
             <PageRelatedData />
             <div className="app-content">

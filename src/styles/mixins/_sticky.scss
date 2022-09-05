@@ -1,4 +1,4 @@
 @mixin page-top-stick {
   position: sticky;
-  top: calc(#{$app-header-total-height} + #{$space-block-regular-rem});
+  top: calc(#{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem});
 }

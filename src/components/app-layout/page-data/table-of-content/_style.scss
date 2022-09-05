@@ -1,6 +1,6 @@
 div.app-header--page-related-data__table-of-content-container {
   position: sticky;
-  top: calc(#{$app-header-total-height} + #{$space-block-regular-rem});
+  top: calc(#{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem});
 
   margin-inline: $space-inline-large-rem;
   overflow-y: hidden;

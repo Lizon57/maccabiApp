@@ -1,0 +1,15 @@
+header.app-layout--app-header__up-to-laptop-wide {
+  @include app-grid-colums;
+
+  position: fixed;
+  top: 0;
+  z-index: $app-header-z-index;
+
+  user-select: none;
+  background-color: $clr-blue-regular;
+  width: 100%;
+
+  div.content {
+    grid-column: 2/3;
+  }
+}

@@ -1,4 +1,4 @@
-div.app-layout--app-header {
+header.app-layout--app-header__laptop_wide_plus {
   @include app-grid-colums;
 
   position: fixed;
@@ -16,7 +16,7 @@ div.app-layout--app-header {
     grid-column: 2/3;
     display: grid;
     grid-template-rows: repeat(2, $app-header-bar-height);
-    grid-template-columns: 1fr $app-header-total-height 1fr;
+    grid-template-columns: 1fr $laptop-wide-plus-app-header-total-height 1fr;
   }
 
   div.brand-logo-container {
