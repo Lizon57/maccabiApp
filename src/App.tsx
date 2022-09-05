@@ -11,6 +11,9 @@ export const App = () => {
             <RenderByDeviceWidth minDeviceWide="tablet">
                 <LaptopWidePlusAppHeader />
             </RenderByDeviceWidth>
+            <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
+                <div>הדר</div>
+            </RenderByDeviceWidth>
             <PageRelatedData />
             <div className="app-content">
                 תוכן העמוד<br />
