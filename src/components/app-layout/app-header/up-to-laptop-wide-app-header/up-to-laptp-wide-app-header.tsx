@@ -3,7 +3,7 @@ import { useState } from "react"
 import { FaBars } from "react-icons/fa"
 
 import wideLogo from "../../../../assets/images/wide-logo.png"
-import { Search } from "../search/search"
+import { AppSearch } from "../app-search/app-search"
 import { SideMenu } from "./side-menu/side-menu"
 
 
@@ -21,7 +21,7 @@ export const UpToLaptopWideAppHeader = () => {
                         className="brand-logo"
                         onClick={() => { setIsNavOpen(false) }} />
                 </div>
-                <Search />
+                <AppSearch />
             </div>
 
             <SideMenu isNavOpen={isNavOpen} />

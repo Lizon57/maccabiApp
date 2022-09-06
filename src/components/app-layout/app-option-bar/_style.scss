@@ -42,7 +42,7 @@ div.app-layout--app-option-bar__container {
           background-color: $clr-yellow-regular;
           color: $clr-blue-regular;
 
-          ul.links-list-container{
+          ul.links-list-container {
             display: block;
           }
         }
@@ -96,12 +96,17 @@ div.app-layout--app-option-bar__container {
         }
 
         li.link-container {
+          border-radius: 0.2rem;
           padding-inline: $space-inline-xxxSmall-rem;
           padding-block: $space-block-xxxSmall-rem;
           transition: $transition-regular;
 
           &:not(:last-of-type) {
             border-block-end: 1px solid $clr-white-darkest;
+
+            @include viewport-wide-start-from-exclusive($viewport-regular) {
+              border-block-end: 0;
+            }
           }
 
           &:hover {

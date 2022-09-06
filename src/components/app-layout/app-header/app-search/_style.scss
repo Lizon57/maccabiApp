@@ -1,8 +1,9 @@
-div.app-header--option-bar__search-container {
+div.app-header--app-search__container {
   display: flex;
   align-items: center;
 
   position: relative;
+
   border-block-end: 1px solid $clr-white-regular;
   padding-block-end: 0.1rem;
 
@@ -25,7 +26,6 @@ div.app-header--option-bar__search-container {
   svg {
     position: absolute;
     left: $space-inline-xxxSmall-rem;
-    z-index: -1;
 
     color: $clr-white-regular;
   }
