@@ -39,7 +39,6 @@ div.app-header--option-bar__option-link-container {
 
       border-radius: $border-radius-regular-rem;
       background-color: $clr-white-regular;
-      color: $clr-black-regular;
       font-size: $font-size-regular-rem;
       font-family: $typography-regular;
       font-weight: 400;
@@ -69,6 +68,11 @@ div.app-header--option-bar__option-link-container {
 
         &:hover {
           background-color: $clr-white-darker;
+        }
+
+        a {
+          color: $clr-black-regular;
+          text-decoration: none;
         }
       }
     }

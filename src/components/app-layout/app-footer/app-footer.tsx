@@ -1,4 +1,5 @@
 import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 
 export const AppFooter = () => {
@@ -6,9 +7,9 @@ export const AppFooter = () => {
         <footer className="app-layout--app-footer">
             <div className="content">
                 <div className="links-container">
-                    <span>תרום למכביפדיה</span>
-                    <span>מדריך האתר</span>
-                    <span>הפוך לעורך</span>
+                    <Link to="/תרומה למכביפדיה">תרום למכביפדיה</Link>
+                    <Link to="/מדריך העריכה">הפוך לעורך</Link>
+                    <Link to="/אודות">מי אנחנו</Link>
                 </div>
 
                 <div className="social-netwroks-container">

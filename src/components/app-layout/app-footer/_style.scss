@@ -28,7 +28,9 @@ footer.app-layout--app-footer {
         gap: $space-inline-large-rem;
       }
 
-      span {
+      a {
+        color: $clr-white-regular;
+        text-decoration: none;
         padding-inline: $space-inline-xSmall-rem;
         transition: $transition-regular;
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { GoGear } from "react-icons/go"
 import { FiEdit2 } from "react-icons/fi"
 import { AiOutlineUser } from "react-icons/ai"
@@ -9,9 +10,9 @@ export const OptionLink = () => {
             <span className="icon-wrapper">
                 <GoGear />
                 <ul className="links-container">
-                    <li>שינויים אחרונים</li>
-                    <li>העלאת קבצים</li>
-                    <li>קישורי מפעיל</li>
+                    <li><Link to="">שינויים אחרונים</Link></li>
+                    <li><Link to="">העלאת קבצים</Link></li>
+                    <li><Link to="">קישורי מפעיל</Link></li>
                 </ul>
             </span>
 

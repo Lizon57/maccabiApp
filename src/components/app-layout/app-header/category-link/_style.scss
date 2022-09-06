@@ -79,7 +79,6 @@ li.app-header--category-link__preview-container {
 
     border-radius: $border-radius-regular-rem;
     background-color: $clr-white-regular;
-    color: $clr-black-regular;
     font-size: $font-size-regular-rem;
     font-family: $typography-regular;
     font-weight: 400;
@@ -101,14 +100,16 @@ li.app-header--category-link__preview-container {
       height: 1rem;
     }
 
-    div.link-container {
+    a.link-container {
       display: grid;
       grid-template-rows: repeat(2, auto);
       grid-template-columns: 3rem 1fr;
 
       border-radius: $border-radius-regular-rem;
+      color: $clr-black-regular;
       padding-inline: $space-inline-xxxSmall-rem;
       padding-block: $space-block-xxxSmall-rem;
+      text-decoration: none;
       transition: $transition-regular;
 
       &:hover {
