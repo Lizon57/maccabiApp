@@ -14,7 +14,7 @@ export const BranchChipPreview = ({ branch }: branchProp) => {
             onClick={() => setIsActive(!isActive)}
             title={`סנן ענף (${displayName})`}>
             <img src={require(`../../../../assets/images/branch-symbol/${symbol}`)} alt={displayName} className="symbol" />
-            <button className="clear-botton">{displayName}</button>
+            <span className="branch-name">{displayName}</span>
         </div>
     )
 }
