@@ -6,16 +6,16 @@ export const AppFooter = () => {
     return (
         <footer className="app-layout--app-footer">
             <div className="content">
-                <div className="links-container">
+                <div className="internal-links-container">
                     <Link to="/תרומה למכביפדיה">תרום למכביפדיה</Link>
                     <Link to="/מדריך העריכה">הפוך לעורך</Link>
                     <Link to="/אודות">מי אנחנו</Link>
                 </div>
 
-                <div className="social-netwroks-container">
+                <div className="social-networks-links-container">
                     <span className="title">עקבו אחרינו</span>
 
-                    <span className="social-networks-icons">
+                    <span className="social-networks-icons-container">
                         {SOIAL_NETWORKS.map(network => <a key={network.path} href={network.path} target="_blank" rel="noreferrer">
                             <network.icon />
                         </a>)}

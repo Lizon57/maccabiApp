@@ -12,7 +12,7 @@ footer.app-layout--app-footer {
 
     margin-block: $space-block-small-rem;
 
-    div.links-container {
+    div.internal-links-container {
       display: flex;
       justify-content: center;
       gap: $space-inline-regular-rem;
@@ -40,7 +40,7 @@ footer.app-layout--app-footer {
       }
     }
 
-    div.social-netwroks-container {
+    div.social-networks-links-container {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -66,18 +66,20 @@ footer.app-layout--app-footer {
         position: relative;
         z-index: 5;
 
+        user-select: none;
         background-color: $clr-blue-darkest;
         font-size: $font-size-large-rem;
         font-family: $typography-emphasis;
         font-weight: 500;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.5px;
         padding-inline: $space-inline-large-rem;
       }
 
-      span.social-networks-icons {
+      span.social-networks-icons-container {
         display: flex;
         align-items: center;
         gap: $space-inline-large-rem;
+
         position: relative;
         z-index: 5;
 
