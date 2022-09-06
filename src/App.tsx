@@ -4,28 +4,34 @@ import { PageRelatedData } from "./components/app-layout/page-data/page-related-
 import { AppData } from "./components/app-layout/app-data/app-data"
 import { AppFooter } from "./components/app-layout/app-footer/app-footer"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
+import { UpToLaptopOptionBar } from "./components/app-layout/up-to-laptop-option-bar/up-to-laptop-option-bar"
 
 
 export const App = () => {
     return (
-        <div className="app-layout">
-            <RenderByDeviceWidth minDeviceWide="tablet">
-                <LaptopWidePlusAppHeader />
-            </RenderByDeviceWidth>
-            <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
-                <UpToLaptopWideAppHeader />
-            </RenderByDeviceWidth>
-            <PageRelatedData />
-            <div className="app-content">
-                תוכן העמוד<br />
-                {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <>
+            <div className="app-layout">
+                <RenderByDeviceWidth minDeviceWide="tablet">
+                    <LaptopWidePlusAppHeader />
+                </RenderByDeviceWidth>
+                <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
+                    <UpToLaptopWideAppHeader />
+                </RenderByDeviceWidth>
+                <PageRelatedData />
+
+                <div className="app-content">
+                    תוכן העמוד<br />
+                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> */}
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                </div>
+                <AppData />
+                <AppFooter />
             </div>
-            <AppData />
-            <AppFooter />
-        </div>
+
+            <UpToLaptopOptionBar />
+        </>
     )
 }

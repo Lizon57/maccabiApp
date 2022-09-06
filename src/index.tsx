@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals'
 import 'normalize.css'
 import "./styles/Styles.scss"
 
-import { App } from './app'
+import { App } from './App'
 
 
 const root = ReactDOM.createRoot(
