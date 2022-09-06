@@ -13,11 +13,11 @@ export const AppFooter = () => {
                 </div>
 
                 <div className="social-networks-links-container">
-                    <span className="title">עקבו אחרינו</span>
+                    <span className="title" title="עקבו אחרי מכביפדיה (גם) ברשתות החברתיות">עקבו אחרינו</span>
 
                     <span className="social-networks-icons-container">
                         {SOIAL_NETWORKS.map(network => <a key={network.path} href={network.path} target="_blank" rel="noreferrer">
-                            <network.icon />
+                            <network.icon title={`מכביפדיה ב${network.name}`} />
                         </a>)}
                     </span>
                 </div>
@@ -29,18 +29,22 @@ export const AppFooter = () => {
 
 const SOIAL_NETWORKS = [
     {
+        name: 'פייסבוק',
         icon: FaFacebookSquare,
         path: 'https://www.facebook.com/MaccabiPedia'
     },
     {
+        name: 'טוויטר',
         icon: FaTwitterSquare,
         path: 'https://twitter.com/MaccabiPedia'
     },
     {
+        name: 'אינסטגרם',
         icon: FaInstagramSquare,
         path: 'https://www.instagram.com/maccabipedia/'
     },
     {
+        name: 'יוטיוב',
         icon: FaYoutubeSquare,
         path: 'https://www.youtube.com/channel/UCxnAYpW-2OJUXbrSil5EeQQ'
     },
