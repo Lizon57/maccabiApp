@@ -5,8 +5,8 @@ import { UpToLaptopWideAppHeader } from "./components/app-layout/app-header/up-t
 import { PageRelatedData } from "./components/app-layout/page-data/page-related-data"
 import { AppData } from "./components/app-layout/app-data/app-data"
 import { AppFooter } from "./components/app-layout/app-footer/app-footer"
+import { AppOptionBar } from "./components/app-layout/app-option-bar/app-option-bar"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
-import { UpToLaptopOptionBar } from "./components/app-layout/up-to-laptop-option-bar/up-to-laptop-option-bar"
 
 import { APP_ROUTES } from "./data/app-routes"
 
@@ -15,11 +15,11 @@ export const App = () => {
     return (
         <Router>
             <div className="app-layout">
-                <RenderByDeviceWidth minDeviceWide="tablet">
-                    <LaptopWidePlusAppHeader />
-                </RenderByDeviceWidth>
                 <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
                     <UpToLaptopWideAppHeader />
+                </RenderByDeviceWidth>
+                <RenderByDeviceWidth minDeviceWide="tablet">
+                    <LaptopWidePlusAppHeader />
                 </RenderByDeviceWidth>
                 <PageRelatedData />
 
@@ -35,7 +35,9 @@ export const App = () => {
                 <AppFooter />
             </div>
 
-            <UpToLaptopOptionBar />
+            <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
+                <AppOptionBar />
+            </RenderByDeviceWidth>
         </Router>
     )
 }

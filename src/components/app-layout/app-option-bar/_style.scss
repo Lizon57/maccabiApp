@@ -1,0 +1,119 @@
+div.app-layout--app-option-bar__container {
+  display: flex;
+  justify-content: center;
+
+  position: fixed;
+  bottom: 0;
+  z-index: $up-to-laptop-option-bar-z-index;
+
+  background-color: $clr-black-regular;
+  color: $clr-white-regular;
+  width: 100%;
+
+  @include viewport-wide-start-from-exclusive($viewport-regular) {
+    position: unset;
+    background-color: unset;
+  }
+
+  ul.options-list-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @include clean-list-style;
+    width: 100%;
+    height: $up-to-laptop-option-bar-total-height;
+    max-width: 220px;
+
+    @include viewport-wide-start-from-exclusive($viewport-regular) {
+      gap: $space-inline-xxxSmall-rem;
+    }
+
+    li.category-container {
+      padding-inline: $space-inline-xxxSmall-rem;
+      padding-block: $space-block-xxxSmall-rem;
+
+      @include viewport-wide-start-from-exclusive($viewport-regular) {
+        position: relative;
+        border-radius: 0.2rem;
+        transition: $transition-regular;
+
+        &:hover {
+          background-color: $clr-yellow-regular;
+          color: $clr-blue-regular;
+
+          ul.links-list-container{
+            display: block;
+          }
+        }
+      }
+
+      svg {
+        display: block;
+        font-size: $font-size-xLarge-rem;
+      }
+
+      ul.links-list-container {
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        bottom: -50vh;
+        right: 0;
+
+        @include clean-list-style;
+        background-color: $clr-white-regular;
+        width: 100%;
+        box-shadow: 0 0 5px 1px $clr-white-darkest;
+        transition: $transition-regular;
+
+        @include viewport-wide-up-to($viewport-regular) {
+          &.open {
+            bottom: calc(#{$up-to-laptop-option-bar-total-height} + 1px);
+          }
+        }
+
+        @include viewport-wide-start-from-exclusive($viewport-regular) {
+          top: 2.5rem;
+          right: unset;
+          bottom: unset;
+          left: 0;
+
+          display: none;
+
+          width: max-content;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: -1rem;
+            left: 0;
+
+            width: 100%;
+            height: 1rem;
+          }
+        }
+
+        li.link-container {
+          padding-inline: $space-inline-xxxSmall-rem;
+          padding-block: $space-block-xxxSmall-rem;
+          transition: $transition-regular;
+
+          &:not(:last-of-type) {
+            border-block-end: 1px solid $clr-white-darkest;
+          }
+
+          &:hover {
+            background-color: $clr-white-darker;
+          }
+
+          a {
+            display: block;
+            color: $clr-black-regular;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}

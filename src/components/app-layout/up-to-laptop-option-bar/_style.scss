@@ -15,11 +15,9 @@ div.app-layout--up-to-laptop-option-bar__container {
     justify-content: space-evenly;
     align-items: center;
 
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    @include clean-list-style;
     width: 100%;
-    height: $up-t0-laptop-option-bar-total-height;
+    height: $up-to-laptop-option-bar-total-height;
     max-width: 220px;
 
     li {

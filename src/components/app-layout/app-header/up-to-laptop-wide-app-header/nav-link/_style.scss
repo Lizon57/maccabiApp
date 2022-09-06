@@ -1,7 +1,5 @@
 ul.app-header--side-menu__category-links-container {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  @include clean-list-style;
 }
 
 li.app-header--side-menu__drop-down {
@@ -39,9 +37,9 @@ li.app-header--side-menu__drop-down {
 
   ul.drop-down-container {
     display: none;
-    list-style-type: none;
+
+    @include clean-list-style;
     background-color: $clr-white-regular;
-    padding: 0;
 
     &.open {
       display: block;

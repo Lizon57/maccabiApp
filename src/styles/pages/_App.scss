@@ -1,7 +1,7 @@
 div.app-layout {
   @include app-grid-colums;
 
-  grid-template-rows: $up-to-laptop-wide-header-total-height auto max-content $up-t0-laptop-option-bar-total-height;
+  grid-template-rows: $up-to-laptop-wide-header-total-height auto max-content $up-to-laptop-option-bar-total-height;
 
   min-height: 100vh;
 
