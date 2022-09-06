@@ -1,4 +1,4 @@
-import { categoryLinks } from "./data"
+import { categoryLinks } from "../data"
 import { CategoryLinkPreview } from "./category-link-preview"
 
 

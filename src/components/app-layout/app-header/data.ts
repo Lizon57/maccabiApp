@@ -1,4 +1,4 @@
-import { makeId } from "../../../../services/util/make-id";
+import { makeId } from "../../../services/util/make-id";
 
 export const categoryLinks = [
     {
