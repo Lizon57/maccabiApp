@@ -28,6 +28,28 @@ div.app-data--message__preview-container {
   padding-inline: $space-inline-xxxSmall-rem;
   padding-block: $space-block-xxxSmall-rem;
   box-shadow: 0 0 5px 1px $clr-white-darkest;
+  animation: make-not-visibility 5s linear;
+  animation-fill-mode: forwards;
+
+  @keyframes make-not-visibility {
+    0% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    animation-play-state: paused;
+
+    &:before {
+      animation-play-state: paused;
+    }
+  }
 
   &:before {
     position: absolute;
