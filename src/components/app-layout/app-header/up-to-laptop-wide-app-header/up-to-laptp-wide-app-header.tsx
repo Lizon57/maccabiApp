@@ -3,7 +3,7 @@ import { useState } from "react"
 import { FaBars } from "react-icons/fa"
 
 import wideLogo from "../../../../assets/images/wide-logo.png"
-import { Search } from "../option-bar/search/search"
+import { Search } from "../search/search"
 import { SideMenu } from "./side-menu/side-menu"
 
 

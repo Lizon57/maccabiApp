@@ -81,6 +81,7 @@ div.app-layout--app-option-bar__container {
 
           display: none;
 
+          border-radius: $border-radius-regular-rem;
           width: max-content;
 
           &::before {

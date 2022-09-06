@@ -1,5 +1,5 @@
 import { AppOptionBar } from "../../app-option-bar/app-option-bar"
-import { Search } from "./search/search"
+import { Search } from "../search/search"
 
 
 
