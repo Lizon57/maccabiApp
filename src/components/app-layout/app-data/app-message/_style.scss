@@ -2,25 +2,6 @@ div.app-data--message__list-container {
   display: flex;
   flex-direction: column;
   gap: $space-block-xxSmall-rem;
-
-  position: sticky;
-  top: calc(
-    #{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem}
-  );
-
-  margin-inline: $space-inline-large-rem;
-
-  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
-    margin-inline: $space-inline-xxLarge-rem;
-  }
-
-  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
-    margin-inline: $space-inline-xxxxLarge-rem;
-  }
-
-  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 700px)) {
-    margin-inline-end: 0;
-  }
 }
 
 div.app-data--message__preview-container {

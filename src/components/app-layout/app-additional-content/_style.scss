@@ -1,0 +1,12 @@
+:root {
+  --app-additional-content-app-footer-in-view: 0;
+}
+
+aside.app-layout--app-additional-content__container {
+  @include app-additional-content-functionallity;
+
+  div.content {
+    overflow-y: auto;
+    height: 100%;
+  }
+}

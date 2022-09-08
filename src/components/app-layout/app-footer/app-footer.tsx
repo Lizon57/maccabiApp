@@ -1,10 +1,32 @@
+import { useCallback, useEffect, useRef } from "react"
+
 import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import { useStoreDispatch } from "../../../hooks/store/use-store-dispatch"
+import { useAppSelector } from "../../../hooks/store/use-store-selector"
+import { useOnWindowResize } from "../../../hooks/use-on-window-resize"
+import { setAppFooterClientHeight } from "../../../store/slicer/app-layout-slicer"
 
 
 export const AppFooter = () => {
+    const dispatch = useStoreDispatch()
+    const { appFooterClientHeight } = useAppSelector(state => state.appLayout)
+    const EL_APP_FOOTER = useRef<HTMLDivElement>(null)
+
+    const handleAppFooterRefUpdate = useCallback(() => {
+        if (!EL_APP_FOOTER.current || (EL_APP_FOOTER.current.clientHeight === appFooterClientHeight)) return
+        dispatch(setAppFooterClientHeight(EL_APP_FOOTER.current.clientHeight))
+    }, [dispatch, appFooterClientHeight])
+
+    useEffect(() => {
+        handleAppFooterRefUpdate()
+    }, [EL_APP_FOOTER, handleAppFooterRefUpdate])
+
+    useOnWindowResize(() => handleAppFooterRefUpdate())
+
+
     return (
-        <footer className="app-layout--app-footer">
+        <footer className="app-layout--app-footer" ref={EL_APP_FOOTER}>
             <div className="content">
                 <div className="internal-links-container">
                     <Link to="/תרומה למכביפדיה">תרום למכביפדיה</Link>

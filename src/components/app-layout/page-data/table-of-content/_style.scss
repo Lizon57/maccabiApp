@@ -1,10 +1,4 @@
 div.app-header--page-related-data__table-of-content-container {
-  position: sticky;
-  top: calc(
-    #{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem}
-  );
-
-  margin-inline: $space-inline-large-rem;
   overflow-y: hidden;
   word-break: normal;
 
@@ -19,18 +13,6 @@ div.app-header--page-related-data__table-of-content-container {
     &::-webkit-scrollbar-thumb {
       background-color: $clr-black-lightest;
     }
-  }
-
-  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
-    margin-inline: $space-inline-xxLarge-rem;
-  }
-
-  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
-    margin-inline: $space-inline-xxxxLarge-rem;
-  }
-
-  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 700px)) {
-    margin-inline-start: 0;
   }
 
   div.content {

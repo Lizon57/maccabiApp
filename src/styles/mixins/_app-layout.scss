@@ -16,3 +16,64 @@
     grid-template-columns: $side minmax(auto, 1250px) $side;
   }
 }
+
+@mixin app-additional-content-functionallity {
+  :root {
+    --app-additional-content-app-footer-in-view: 0;
+  }
+
+  position: sticky;
+  top: calc(
+    #{$up-to-laptop-wide-header-total-height} + #{$space-block-xSmall-rem}
+  );
+
+  margin-inline: $space-inline-large-rem;
+  margin-block: $space-block-xSmall-rem;
+  height: calc(
+    100vh - #{$up-to-laptop-wide-header-total-height} - #{$space-block-xSmall-rem} -
+      #{$up-to-laptop-option-bar-total-height} - #{$space-block-xSmall-rem} -
+      var(--app-additional-content-app-footer-in-view)
+  );
+  transition: $transition-regular;
+
+  &.block-end-container {
+    grid-column: 3/4;
+  }
+
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    height: calc(
+      100vh - #{$up-to-laptop-wide-header-total-height} - #{$space-block-xSmall-rem} -
+        #{$space-block-xSmall-rem} - var(--app-additional-content-app-footer-in-view)
+    );
+  }
+
+  @include viewport-wide-start-from-exclusive($viewport-regular) {
+    top: calc(
+      #{$laptop-wide-plus-app-header-total-height} + #{$space-block-regular-rem}
+    );
+    height: calc(
+      100vh - #{$laptop-wide-plus-app-header-total-height} - #{$space-block-regular-rem} -
+        #{$space-block-regular-rem} - var(--app-additional-content-app-footer-in-view)
+    );
+  }
+
+  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
+    margin-inline: $space-inline-xxLarge-rem;
+  }
+
+  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 600px)) {
+    grid-column: 1/2;
+    justify-self: flex-end;
+
+    margin-inline: $space-inline-xxxxLarge-rem;
+    max-width: 400px;
+
+    &.block-end-container {
+      justify-self: flex-start;
+      width: calc(100% - #{$space-inline-xxxxLarge-rem} - #{$space-inline-xxxxLarge-rem});
+    }
+  }
+
+  @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 700px)) {
+  }
+}
