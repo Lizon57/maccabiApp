@@ -34,7 +34,6 @@ All necessary data comes from data.ts, and it includes:
 | div.app-layout--app-option-bar\_\_container |  9000   | Only on up-to-laptop-wide, use to show the bar over everything of app. |
 
 ### Important viewport changes:
-
 - **div.app-layout--app-option-bar\_\_container** - Unset position (fixed, on page's bottom) and background color (black).
 - **li.category-container** - Change dropdown position, change background color and color when hovering.
 - **ul.links-list-container** - Add psuedo ::before element to keep dropdown render when hovering

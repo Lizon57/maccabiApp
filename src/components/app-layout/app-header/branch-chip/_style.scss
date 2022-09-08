@@ -75,6 +75,11 @@ div.app-header--branch-chip__preview-container {
     color: $clr-black-regular;
   }
 
+  &:hover {
+    background-color: $clr-white-darkest;
+    color: $clr-black-regular;
+  }
+
   img.symbol {
     padding-inline-end: $space-inline-xxSmall-em;
     width: 100%;

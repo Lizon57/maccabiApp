@@ -13,6 +13,10 @@ div.app-header--side-menu__container {
   height: calc(100vh - #{$up-to-laptop-wide-header-total-height} - #{$up-to-laptop-wide-header-total-height} + 8px);
   transition: $transition-regular;
 
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    height: calc(100vh - #{$up-to-laptop-wide-header-total-height});
+  }
+
   &.open {
     right: 0;
   }
