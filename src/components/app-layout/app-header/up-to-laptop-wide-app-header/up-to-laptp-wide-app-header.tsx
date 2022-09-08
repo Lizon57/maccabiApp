@@ -24,7 +24,7 @@ export const UpToLaptopWideAppHeader = () => {
                         onClick={() => { setIsNavOpen(false) }} />
                 </div>
                 <div className="options-container">
-                    <RenderByDeviceWidth minDeviceWide="mobile" maxDeviceWide="tablet">
+                    <RenderByDeviceWidth minDeviceWide="mobile" maxDeviceWide="tablet" isInclusive={true}>
                         <AppOptionBar />
                     </RenderByDeviceWidth>
                     <AppSearch />

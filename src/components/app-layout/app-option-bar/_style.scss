@@ -15,6 +15,10 @@ div.app-layout--app-option-bar__container {
     background-color: unset;
   }
 
+  @include viewport-wide-range($viewport-small, $viewport-regular) {
+    margin-inline-end: $space-inline-regular-rem;
+  }
+
   ul.options-list-container {
     display: flex;
     justify-content: space-evenly;
