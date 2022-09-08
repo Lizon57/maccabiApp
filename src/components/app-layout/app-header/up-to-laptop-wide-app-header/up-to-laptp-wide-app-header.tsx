@@ -3,6 +3,8 @@ import { useState } from "react"
 import { FaBars } from "react-icons/fa"
 
 import wideLogo from "../../../../assets/images/wide-logo.png"
+import { RenderByDeviceWidth } from "../../../common/render-by/render-by-device-width"
+import { AppOptionBar } from "../../app-option-bar/app-option-bar"
 import { AppSearch } from "../app-search/app-search"
 import { SideMenu } from "./side-menu/side-menu"
 
@@ -21,7 +23,12 @@ export const UpToLaptopWideAppHeader = () => {
                         className="brand-logo"
                         onClick={() => { setIsNavOpen(false) }} />
                 </div>
-                <AppSearch />
+                <div className="options-container">
+                    <RenderByDeviceWidth minDeviceWide="mobile" maxDeviceWide="tablet">
+                        <AppOptionBar />
+                    </RenderByDeviceWidth>
+                    <AppSearch />
+                </div>
             </div>
 
             <SideMenu isNavOpen={isNavOpen} />

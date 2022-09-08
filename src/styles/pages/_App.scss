@@ -5,6 +5,10 @@ div.app-layout {
 
   min-height: 100vh;
 
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    grid-template-rows: $up-to-laptop-wide-header-total-height auto max-content;
+  }
+
   @include viewport-wide-start-from-exclusive($viewport-regular) {
     grid-template-rows: $laptop-wide-plus-app-header-total-height auto max-content;
   }

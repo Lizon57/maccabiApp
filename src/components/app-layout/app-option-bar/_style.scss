@@ -10,7 +10,7 @@ div.app-layout--app-option-bar__container {
   color: $clr-white-regular;
   width: 100%;
 
-  @include viewport-wide-start-from-exclusive($viewport-regular) {
+  @include viewport-wide-start-from-exclusive($viewport-small) {
     position: unset;
     background-color: unset;
   }
@@ -25,7 +25,7 @@ div.app-layout--app-option-bar__container {
     height: $up-to-laptop-option-bar-total-height;
     max-width: 220px;
 
-    @include viewport-wide-start-from-exclusive($viewport-regular) {
+    @include viewport-wide-start-from-exclusive($viewport-small) {
       gap: $space-inline-xxxSmall-rem;
     }
 
@@ -33,7 +33,7 @@ div.app-layout--app-option-bar__container {
       padding-inline: $space-inline-xxxSmall-rem;
       padding-block: $space-block-xxxSmall-rem;
 
-      @include viewport-wide-start-from-exclusive($viewport-regular) {
+      @include viewport-wide-start-from-exclusive($viewport-small) {
         position: relative;
         border-radius: 0.2rem;
         transition: $transition-regular;
@@ -73,7 +73,7 @@ div.app-layout--app-option-bar__container {
           }
         }
 
-        @include viewport-wide-start-from-exclusive($viewport-regular) {
+        @include viewport-wide-start-from-exclusive($viewport-small) {
           top: 2.5rem;
           right: unset;
           bottom: unset;
@@ -104,7 +104,7 @@ div.app-layout--app-option-bar__container {
           &:not(:last-of-type) {
             border-block-end: 1px solid $clr-white-darkest;
 
-            @include viewport-wide-start-from-exclusive($viewport-regular) {
+            @include viewport-wide-start-from-exclusive($viewport-small) {
               border-block-end: 0;
             }
           }

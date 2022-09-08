@@ -24,6 +24,7 @@ export const App = () => {
                 <PageRelatedData />
 
                 <div className="app-content">
+                    תוכן
                     <Routes>
                         {APP_ROUTES.map(route => <Route
                             key={route.id}
@@ -35,7 +36,7 @@ export const App = () => {
                 <AppFooter />
             </div>
 
-            <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
+            <RenderByDeviceWidth maxDeviceWide="mobile" isInclusive={true}>
                 <AppOptionBar />
             </RenderByDeviceWidth>
         </Router>

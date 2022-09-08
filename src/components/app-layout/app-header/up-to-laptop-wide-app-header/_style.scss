@@ -42,5 +42,10 @@ header.app-layout--app-header__up-to-laptop-wide {
         height: $up-to-laptop-wide-header-total-height;
       }
     }
+
+    div.options-container{
+      display: flex;
+      align-items: center;
+    }
   }
 }
