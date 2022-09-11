@@ -56,14 +56,14 @@ export const categoryLinks = [
             {
                 id: makeId(),
                 title: 'שחקנים',
-                description: 'תיאור העמוד',
+                description: 'ממיקי ברקוביץ\' ועד אבי נמני, למעלה מ-2000 שחקנים לבשו את החולצה הצהובה. האם אתה מכיר את כולם?',
                 path: '#',
                 img: 'pns-player.png'
             },
             {
                 id: makeId(),
                 title: 'אנשי צוות',
-                description: 'תיאור העמוד',
+                description: 'המאמנים, המנהלים המקצועיים, האנשים שעושים את הקבוצה לקבוצה',
                 path: '#',
                 img: 'pns-staff.png'
             },
@@ -76,58 +76,58 @@ export const categoryLinks = [
             {
                 id: makeId(),
                 title: 'שירים',
-                description: 'תיאור העמוד',
+                description: 'כבר ב-1920 צעקו ההמונים "מה טוב להיות מכבי", ומה שרים כעת?',
                 path: '#',
                 img: 'cnc-song.png'
             },
             {
                 id: makeId(),
                 title: 'כרטיסים ומנויים',
-                description: 'תיאור העמוד',
+                description: 'הכרטיסים שכולנו שומרים, המנויים שכולנו ממסגרים',
                 path: '#',
                 img: 'cnc-ticket.png'
             },
             {
                 id: makeId(),
                 title: 'כרזות',
-                description: 'תיאור העמוד',
+                description: 'בעבר היו זמנים בהם הכרזות על משחקים בוצעו דרך כרזות שנתלו בלוח המודעות',
                 path: '#',
-                img: ''
+                img: 'cnc-poster.png'
             },
             {
                 id: makeId(),
                 title: 'אלבומי מדבקות',
-                description: 'תיאור העמוד',
+                description: 'מפציצים 97, סופרגול, ועוד',
                 path: '#',
-                img: 'cnc-stick-book.png'
+                img: 'cnc-sticker.png'
             },
             {
                 id: makeId(),
                 title: 'תפאורות',
-                description: 'תיאור העמוד',
+                description: 'הקהל צובע את המגרש ומבהיר - באנו כדי לנצח',
                 path: '#',
-                img: ''
+                img: 'cnc-scenery.png'
             },
             {
                 id: makeId(),
                 title: 'ארגונים',
-                description: 'תיאור העמוד',
+                description: 'הארגונים שאחראיים על הצבע, השירים והסדר ביציע',
                 path: '#',
-                img: ''
+                img: 'cnc-organization.png'
             },
             {
                 id: makeId(),
                 title: 'ספרים',
-                description: 'תיאור העמוד',
+                description: 'מילים אינספור נשפכו על מכבי, אצלנו באתר וגם בדפוס',
                 path: '#',
-                img: ''
+                img: 'cnc-book.png'
             },
             {
                 id: makeId(),
                 title: 'חתימות',
-                description: 'תיאור העמוד',
+                description: 'תן לי חתימה',
                 path: '#',
-                img: ''
+                img: 'cnc-signature.png'
             },
         ]
     },
