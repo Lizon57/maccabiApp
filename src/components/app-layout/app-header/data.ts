@@ -24,14 +24,14 @@ export const categoryLinks = [
                 title: 'מתקנים',
                 description: 'מיד אליהו האגדי ועד מגרש מכבי הנשכח.',
                 path: '#',
-                img: 'mta-stadium.jpg'
+                img: 'mta-stadium.png'
             },
             {
                 id: makeId(),
                 title: 'מפעלים',
                 description: 'בין אם זה גביע הטוטו ובין אם היורוליג, מכבי תמיד שואפת לזכות בכל המפעלים.',
                 path: '#',
-                img: 'mta-tournament.jpg'
+                img: 'mta-tournament.png'
             },
             {
                 id: makeId(),
@@ -58,14 +58,14 @@ export const categoryLinks = [
                 title: 'שחקנים',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'pns-player.png'
             },
             {
                 id: makeId(),
                 title: 'אנשי צוות',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'pns-staff.png'
             },
         ]
     },
@@ -78,14 +78,14 @@ export const categoryLinks = [
                 title: 'שירים',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'cnc-song.png'
             },
             {
                 id: makeId(),
                 title: 'כרטיסים ומנויים',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'cnc-ticket.png'
             },
             {
                 id: makeId(),
@@ -99,7 +99,7 @@ export const categoryLinks = [
                 title: 'אלבומי מדבקות',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'cnc-stick-book.png'
             },
             {
                 id: makeId(),
