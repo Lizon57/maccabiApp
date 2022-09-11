@@ -69,14 +69,14 @@ div.app-header--branch-chip__preview-container {
   padding-block: $space-inline-xxxSmall-em;
   transition: $transition-regular;
 
-  &.active {
-    border-color: $clr-white-darkest;
-    background-color: $clr-white-regular;
+  &:hover {
+    background-color: $clr-white-darkest;
     color: $clr-black-regular;
   }
 
-  &:hover {
-    background-color: $clr-white-darkest;
+  &.active {
+    border-color: $clr-white-darkest;
+    background-color: $clr-white-regular;
     color: $clr-black-regular;
   }
 
