@@ -6,7 +6,18 @@ aside.app-layout--app-additional-content__container {
   @include app-additional-content-functionallity;
 
   div.content {
-    overflow-y: auto;
+    direction: ltr;
+    overflow-y: hidden;
     height: 100%;
+
+    @include scroll-bar-colorize;
+
+    &:hover {
+      overflow-y: auto;
+    }
+
+    > * {
+      direction: rtl;
+    }
   }
 }

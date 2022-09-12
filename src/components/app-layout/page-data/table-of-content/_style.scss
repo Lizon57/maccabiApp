@@ -2,19 +2,6 @@ div.app-header--page-related-data__table-of-content-container {
   overflow-y: hidden;
   word-break: normal;
 
-  &:hover {
-    overflow-y: auto;
-
-    &::-webkit-scrollbar {
-      background-color: transparent;
-      width: 1px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: $clr-black-lightest;
-    }
-  }
-
   div.content {
     font-size: $font-size-small-rem;
 

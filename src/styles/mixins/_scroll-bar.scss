@@ -1,0 +1,18 @@
+@mixin scroll-bar-colorize {
+  // Mozilla
+  scrollbar-color: $clr-white-darkest $clr-white-darker;
+  scrollbar-width: thin;
+
+  // Chrome
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $clr-white-darkest;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: $clr-white-darker;
+  }
+}
