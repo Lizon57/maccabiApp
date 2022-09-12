@@ -11,7 +11,6 @@ export const AppAdditionalContent = ({ isBlockEnd = false, children }: propsType
     const WINDOW_HEIGHT = useWindowSize().height
     const CONTENT_HEIGHT = document.body.offsetHeight
 
-
     useEffect(() => {
         let appFooterPixelsInViewPort = 0
 
@@ -23,6 +22,7 @@ export const AppAdditionalContent = ({ isBlockEnd = false, children }: propsType
 
         document.documentElement.style.setProperty('--app-additional-content-app-footer-in-view', `${appFooterPixelsInViewPort}px`)
     }, [scrollY, WINDOW_HEIGHT, CONTENT_HEIGHT, appFooterClientHeight])
+
 
     return (
         <aside className={'app-layout--app-additional-content__container' + (isBlockEnd ? ' block-end-container' : '')}>
