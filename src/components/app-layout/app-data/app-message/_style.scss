@@ -6,6 +6,10 @@ div.app-data--message__list-container {
 
 div.app-data--message__preview-container {
   position: relative;
+
+  overflow: hidden;
+  border-radius: $border-radius-regular-rem;
+  background-color: $clr-white-darker;
   padding-inline: $space-inline-xxxSmall-rem;
   padding-block: $space-block-xxxSmall-rem;
   animation: make-not-visibility 5s linear;
