@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface AppState {
-    appFooterClientHeight: number
+    appFooterClientHeight: number,
+    appScreenZIndex: number
 }
 
 
 const initialState: AppState = {
     appFooterClientHeight: 0,
+    appScreenZIndex: 0
 }
 
 export const appSlicer = createSlice({
@@ -15,12 +17,16 @@ export const appSlicer = createSlice({
     reducers: {
         setAppFooterClientHeight: (state, action: PayloadAction<number>) => {
             state.appFooterClientHeight = action.payload
-        }
+        },
+
+        setAppScreenZIndex: (state, action: PayloadAction<number>) => {
+            state.appScreenZIndex = action.payload
+        },
     }
 })
 
 
-export const { setAppFooterClientHeight, } = appSlicer.actions
+export const { setAppFooterClientHeight, setAppScreenZIndex } = appSlicer.actions
 
 
 export default appSlicer.reducer

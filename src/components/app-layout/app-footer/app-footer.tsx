@@ -3,14 +3,14 @@ import { useCallback, useEffect, useRef } from "react"
 import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { useStoreDispatch } from "../../../hooks/store/use-store-dispatch"
-import { useAppSelector } from "../../../hooks/store/use-store-selector"
+import { useStoreSelector } from "../../../hooks/store/use-store-selector"
 import { useOnWindowResize } from "../../../hooks/use-on-window-resize"
 import { setAppFooterClientHeight } from "../../../store/slicer/app-layout-slicer"
 
 
 export const AppFooter = () => {
     const dispatch = useStoreDispatch()
-    const { appFooterClientHeight } = useAppSelector(state => state.appLayout)
+    const { appFooterClientHeight } = useStoreSelector(state => state.appLayout)
     const EL_APP_FOOTER = useRef<HTMLDivElement>(null)
 
     const handleAppFooterRefUpdate = useCallback(() => {

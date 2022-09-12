@@ -1,12 +1,12 @@
 import { useEffect } from "react"
 
-import { useAppSelector } from "../../../hooks/store/use-store-selector"
+import { useStoreSelector } from "../../../hooks/store/use-store-selector"
 import { useWindowSize } from "../../../hooks/use-window-size"
 import { useWindowScrollY } from "../../../hooks/use-window-scroll-y"
 
 
 export const AppAdditionalContent = ({ isBlockEnd = false, children }: propsType) => {
-    const { appFooterClientHeight } = useAppSelector(state => state.appLayout)
+    const { appFooterClientHeight } = useStoreSelector(state => state.appLayout)
     const scrollY = useWindowScrollY()
     const WINDOW_HEIGHT = useWindowSize().height
     const CONTENT_HEIGHT = document.body.offsetHeight
