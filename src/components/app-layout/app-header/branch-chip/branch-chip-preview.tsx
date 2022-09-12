@@ -10,7 +10,7 @@ export const BranchChipPreview = ({ branch }: branchProp) => {
 
     return (
         <div
-            className={'app-header--branch-chip__preview-container' + (isActive ? ' active' : '')}
+            className={'app-header--branch-chip__preview-container' + (isActive ? ' active' : ' inactive')}
             onClick={() => setIsActive(!isActive)}
             title={`סנן ענף (${displayName})`}>
             <img src={require(`../../../../assets/images/branch-symbol/${symbol}`)} alt={displayName} className="symbol" />

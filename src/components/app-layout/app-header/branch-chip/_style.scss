@@ -62,22 +62,19 @@ div.app-header--branch-chip__preview-container {
   cursor: pointer;
   border-radius: $border-radius-regular-em;
   border: 1px solid $clr-white-darker;
-  background-color: transparent;
-  color: $clr-white-darker;
   font-size: $font-size-xSmall-rem;
   padding-inline: $space-inline-xxSmall-em;
   padding-block: $space-inline-xxxSmall-em;
   transition: $transition-regular;
 
-  &:hover {
-    background-color: $clr-white-darkest;
+  &.active {
+    background-color: $clr-white-regular;
     color: $clr-black-regular;
   }
 
-  &.active {
-    border-color: $clr-white-darkest;
-    background-color: $clr-white-regular;
-    color: $clr-black-regular;
+  &.inactive {
+    background-color: transparent;
+    color: $clr-white-darker;
   }
 
   img.symbol {
