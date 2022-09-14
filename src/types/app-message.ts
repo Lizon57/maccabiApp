@@ -1,4 +1,4 @@
-export type appMessage = {
+export type appMessageType = {
     id: string,
     type: string,
     title: string,
@@ -6,6 +6,6 @@ export type appMessage = {
 }
 
 export type appMessageProps = {
-    message: appMessage,
+    message: appMessageType,
     className?: string,
 }
