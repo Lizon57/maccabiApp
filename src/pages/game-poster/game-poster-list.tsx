@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { gamePosterService } from "../../services/entities/game-poster-service"
 import { gamePosterType } from "../../types/game-poster"
 
+import { Loader } from "../../components/common/loader/loader"
+
 
 export const GamePosterList = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -20,9 +22,9 @@ export const GamePosterList = () => {
                 const gamePosters = await gamePosterService.query() as gamePosterType[]
                 setGamePosters(gamePosters)
             } catch ({ message }) {
-                // TODO: Handle error
                 setErrorMessage(message as string)
-            } finally {
+            }
+            finally {
                 setIsLoading(false)
             }
         }
@@ -30,7 +32,7 @@ export const GamePosterList = () => {
     }, [isLoading])
 
 
-    if (isLoading) return <div>טוען</div>
+    if (isLoading) return <Loader />
     if (errorMessage) return <div>{errorMessage}</div>
 
     return (

@@ -15,11 +15,11 @@ const query = async () => {
         throw new Error('שגיאה בטעינת נתונים')
     }
 
-    return data
+    // return data
 
     // DEBUG:
     // Resolve after delay
-    // return new Promise(res => setTimeout(() => res(data), 2000))
+    return new Promise(res => setTimeout(() => res(data), 3000))
 
     // Reject:
     // throw new Error('שגיאה מכוונת')
