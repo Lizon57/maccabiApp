@@ -1,0 +1,10 @@
+div.game-poster--list__page-container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-regular-rem;
+
+  div.list-container{
+    display: flex;
+    gap: $space-inline-large-rem;
+  }
+}

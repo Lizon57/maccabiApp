@@ -2,10 +2,11 @@ import { useEffect, useState } from "react"
 
 import { gamePosterService } from "../../services/entities/game-poster-service"
 import { gamePosterType } from "../../types/game-poster"
-import { GamePosterPreview } from "./game-poster-preview"
+import { GamePosterPreview } from "../../components/entities/game-poster/game-poster-preview"
 
 import { Loader } from "../../components/common/loader/loader"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
+import { MainTitle } from "../../components/common/main-title/main-title"
 
 
 export const GamePosterList = () => {
@@ -38,8 +39,21 @@ export const GamePosterList = () => {
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
     return (
-        <div className="game-poster--list__container">
-            {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
+        <div className="game-poster--list__page-container">
+            <section>
+                <MainTitle text="הכי נצפים" isSticky={true} />
+            </section>
+
+            <section>
+                <MainTitle text="הכי חדשים" isSticky={true} />
+            </section>
+
+            <section className="list">
+                <MainTitle text="אוסף הכרזות" isSticky={true} />
+                <div className="list-container">
+                    {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
+                </div>
+            </section>
         </div>
     )
 }
