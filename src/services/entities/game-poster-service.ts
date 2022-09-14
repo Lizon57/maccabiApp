@@ -1,8 +1,11 @@
-import { GAME_POSTERS_DB } from "../../data/entities/game-poster/game-posters-db"
-import { gamePosterType } from "../../types/game-poster"
 import { asyncLocalStorageService } from "../async-local-storage-service"
 
+import { gamePosterType } from "../../types/game-poster"
+import { GAME_POSTERS_DB } from "../../data/entities/game-poster/game-posters-db"
+
+
 const STORAGE_KEY = 'GAME_POSTER_DB'
+
 
 const query = async () => {
     let data: gamePosterType[]
@@ -21,8 +24,6 @@ const query = async () => {
     // Reject:
     // throw new Error('שגיאה מכוונת')
 }
-
-
 
 
 export const gamePosterService = {
