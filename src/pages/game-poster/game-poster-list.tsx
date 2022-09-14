@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 import { gamePosterService } from "../../services/entities/game-poster-service"
 import { gamePosterType } from "../../types/game-poster"
+import { GamePosterPreview } from "./game-poster-preview"
 
 import { Loader } from "../../components/common/loader/loader"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
@@ -38,11 +39,7 @@ export const GamePosterList = () => {
 
     return (
         <div className="game-poster--list__container">
-            {gamePosters.map(poster => {
-                return (
-                    <div key={poster.id}>כרזת משחק</div>
-                )
-            })}
+            {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
         </div>
     )
 }

@@ -1,7 +1,7 @@
 const query = async<T>(entityName: string, fallBackDB: T[]) => {
     let entities: null | string | T[] = localStorage.getItem(entityName)
 
-    if (!Array.isArray(entities)) {
+    if (!entities) {
         _createDB(entityName, fallBackDB)
         entities = JSON.stringify(fallBackDB)
     }
