@@ -19,10 +19,10 @@ const query = async () => {
 
     // DEBUG:
     // Resolve after delay
-    return new Promise(res => setTimeout(() => res(data), 3000))
+    // return new Promise(res => setTimeout(() => res(data), 3000))
 
     // Reject:
-    // throw new Error('שגיאה מכוונת')
+    throw new Error('שגיאה מכוונת')
 }
 
 

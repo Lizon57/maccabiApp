@@ -4,6 +4,7 @@ import { gamePosterService } from "../../services/entities/game-poster-service"
 import { gamePosterType } from "../../types/game-poster"
 
 import { Loader } from "../../components/common/loader/loader"
+import { ErrorMessage } from "../../components/common/error-message/error-message"
 
 
 export const GamePosterList = () => {
@@ -33,7 +34,7 @@ export const GamePosterList = () => {
 
 
     if (isLoading) return <Loader />
-    if (errorMessage) return <div>{errorMessage}</div>
+    if (errorMessage) return <ErrorMessage message={errorMessage} />
 
     return (
         <div className="game-poster--list__container">

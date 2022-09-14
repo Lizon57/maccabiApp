@@ -1,0 +1,21 @@
+div.common-cmp--error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-block-xxxSmall-rem;
+
+  width: 100%;
+  height: 100%;
+
+  div.error-emoji-container {
+    color: $clr-blue-regular;
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  div.text {
+    font-size: $font-size-small-rem;
+  }
+}
