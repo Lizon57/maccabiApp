@@ -1,10 +1,12 @@
-import { Test1 } from "../pages/test2";
-import { makeId } from "../services/util/make-id";
+import { makeId } from "../services/util/make-id"
+
+import { GamePosterList } from "../pages/game-poster/game-poster-list"
+
 
 export const APP_ROUTES = [
     {
         id: makeId(),
-        path: 'חתימות',
-        element: Test1
+        path: 'כרזות משחק',
+        element: GamePosterList
     }
 ]
