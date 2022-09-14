@@ -91,7 +91,7 @@ export const categoryLinks = [
                 id: makeId(),
                 title: 'כרזות',
                 description: 'בעבר היו זמנים בהם הכרזות על משחקים בוצעו דרך כרזות שנתלו בלוח המודעות',
-                path: '#',
+                path: 'כרזות משחק',
                 img: 'cnc-poster.png'
             },
             {
