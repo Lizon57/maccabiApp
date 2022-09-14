@@ -5,5 +5,11 @@ export type gamePosterType = {
         opponentId: string
     },
 
+    entityInfo: {
+        time: {
+            timestamp?: number
+        }
+    },
+
     imgPath: string
 }

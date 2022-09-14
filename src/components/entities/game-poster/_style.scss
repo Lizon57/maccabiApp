@@ -1,6 +1,36 @@
 div.entities-cmp-game-poster-preview__container {
-  img {
-    aspect-ratio: 3/4;
-    width: 150px;
+  overflow: hidden;
+  border-radius: $border-radius-regular-rem;
+
+  div.date {
+    background-color: $clr-blue-regular;
+    color: $clr-white-regular;
+    font-size: $font-size-regular-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  div.image-container {
+    position: relative;
+
+    img {
+      display: block;
+
+      aspect-ratio: 6/9;
+      width: 150px;
+    }
+
+    div.game-link {
+      position: absolute;
+      bottom: 0;
+
+      background-color: $clr-blue-darkest;
+      color: $clr-white-regular;
+      font-size: $font-size-small-rem;
+      padding-block: $space-block-xxxSmall-rem;
+      text-align: center;
+      width: 100%;
+    }
   }
 }
