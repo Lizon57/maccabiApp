@@ -30,7 +30,6 @@ export const App = () => {
                     <PageRelatedData />
 
                     <div className="app-content">
-                        תוכן
                         <Routes>
                             {APP_ROUTES.map(route => <Route
                                 key={route.id}
