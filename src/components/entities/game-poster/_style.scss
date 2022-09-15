@@ -21,7 +21,7 @@ div.entities-cmp-game-poster-preview__container {
       width: 100%;
     }
 
-    div.icons-container {
+    div.branch-icon-container {
       position: absolute;
       top: 0;
       left: 0;
@@ -29,6 +29,29 @@ div.entities-cmp-game-poster-preview__container {
 
       margin-inline: $space-inline-xxxSmall-em;
       margin-block: $space-block-xxxSmall-em;
+    }
+
+    div.options-drop-down-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 5;
+
+      background-color: rgba($clr-blue-darkest, 1);
+      border-radius: 50vw;
+      font-size: 0.8rem;
+      margin-inline: $space-inline-xxxSmall-em;
+      margin-block: $space-block-xxxSmall-em;
+      width: 1.2rem;
+      height: 1.2rem;
+
+      svg {
+        color: white;
+      }
     }
   }
 }
