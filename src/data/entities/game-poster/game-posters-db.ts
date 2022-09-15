@@ -32,4 +32,106 @@ export const GAME_POSTERS_DB = [
 
         imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
     },
+
+    {
+        id: 'gamePosterId_ihGoAJjiOptKap3MeQynGgmPh',
+
+        relatedInfo: {
+            branchId: 'brandId00001',
+            opponentId: 'opponentId_3wT071iV2ZxfQWz23xNVsSeWj',
+        },
+
+        entityInfo: {
+            time: {
+                timestamp: -349362900000
+            }
+        },
+
+        imgPath: 'כרזת משחק 06 בדצמבר 1958.jpg',
+    },
+
+    {
+        id: 'gamePosterId_3ybadR1yZzJft4pqleVk8JRuz',
+
+        relatedInfo: {
+            branchId: 'brandId00002',
+            opponentId: 'opponentId_n6lsJFgjiGutfKmqSYX1ydxxO',
+        },
+
+        entityInfo: {
+            time: {
+                timestamp: -909397800000
+            }
+        },
+
+        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+    },
+
+    {
+        id: 'gamePosterId_LW7gwuvNMLsBv8YXsZSOCi1on',
+
+        relatedInfo: {
+            branchId: 'brandId00001',
+            opponentId: 'opponentId_3wT071iV2ZxfQWz23xNVsSeWj',
+        },
+
+        entityInfo: {
+            time: {
+                timestamp: -349362900000
+            }
+        },
+
+        imgPath: 'כרזת משחק 06 בדצמבר 1958.jpg',
+    },
+
+    {
+        id: 'gamePosterId_4mflnSxdTDNHw3Fs6DTFwXN5b',
+
+        relatedInfo: {
+            branchId: 'brandId00002',
+            opponentId: 'opponentId_n6lsJFgjiGutfKmqSYX1ydxxO',
+        },
+
+        entityInfo: {
+            time: {
+                timestamp: -909397800000
+            }
+        },
+
+        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+    },
+
+    {
+        id: 'gamePosterId_xto9oweKyq5td36slPpdjF5vf',
+
+        relatedInfo: {
+            branchId: 'brandId00002',
+            opponentId: 'opponentId_n6lsJFgjiGutfKmqSYX1ydxxO',
+        },
+
+        entityInfo: {
+            time: {
+                timestamp: -909397800000
+            }
+        },
+
+        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+    },
+
+    {
+        id: 'gamePosterId_xPArUeptKOGxDjoDGJWpqNalB',
+
+        relatedInfo: {
+            branchId: 'brandId00002',
+            opponentId: 'opponentId_n6lsJFgjiGutfKmqSYX1ydxxO',
+        },
+
+        entityInfo: {
+            time: {
+                timestamp: -909397800000
+            }
+        },
+
+        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+    },
 ]
