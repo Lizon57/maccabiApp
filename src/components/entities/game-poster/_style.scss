@@ -14,23 +14,21 @@ div.entities-cmp-game-poster-preview__container {
   div.image-container {
     position: relative;
 
-    img {
+    img.preview-image {
       display: block;
 
       aspect-ratio: 6/9;
-      width: 150px;
+      width: 170px;
     }
 
-    div.game-link {
+    div.icons-container {
       position: absolute;
-      bottom: 0;
+      top: 0;
+      left: 0;
+      z-index: 5;
 
-      background-color: $clr-blue-darkest;
-      color: $clr-white-regular;
-      font-size: $font-size-small-rem;
-      padding-block: $space-block-xxxSmall-rem;
-      text-align: center;
-      width: 100%;
+      margin-inline: $space-inline-xxxSmall-em;
+      margin-block: $space-block-xxxSmall-em;
     }
   }
 }

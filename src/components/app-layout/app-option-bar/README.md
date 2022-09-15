@@ -20,7 +20,7 @@ AppOptionBar contains 2 sections:
 
 ## Data
 
-All necessary data comes from data.ts, and it includes:
+All necessary data comes from option-bar.ts, and it includes:
 
 - List of categories (title, icon)
 - In-dorpdown-link (text, path)

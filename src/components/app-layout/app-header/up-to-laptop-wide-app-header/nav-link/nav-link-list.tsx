@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { categoryLinks } from "../../data"
+import { CATEGORY_LINKS } from "../../../../../data/app/app-header-category-links"
 import { NavListPreview } from "./nav-list-preview"
 
 
@@ -9,7 +9,7 @@ export const NavLinkList = () => {
 
     return (
         <ul className="app-header--side-menu__category-links-container">
-            {categoryLinks.map(category => <NavListPreview
+            {CATEGORY_LINKS.map(category => <NavListPreview
                 key={category.id}
                 category={category}
                 currentCategoryOpen={currentCategoryOpen}

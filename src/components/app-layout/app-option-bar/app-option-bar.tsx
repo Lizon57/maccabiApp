@@ -6,7 +6,7 @@ import { useOnClickOutside } from "../../../hooks/use-on-click-outside"
 import { useWindowSize } from "../../../hooks/use-window-size"
 import { setAppScreenZIndex } from "../../../store/slicer/app-layout-slicer"
 
-import { APP_OPTION_BAR_OPTIONS } from "./data"
+import { OPTION_BAR } from "../../../data/app/option-bar"
 
 
 export const AppOptionBar = () => {
@@ -36,7 +36,7 @@ export const AppOptionBar = () => {
     return (
         <div className="app-layout--app-option-bar__container" ref={optionBarRef}>
             <ul className="options-list-container">
-                {APP_OPTION_BAR_OPTIONS.map(option => {
+                {OPTION_BAR.map(option => {
                     return (
                         <li key={option.id} className="category-container">
                             <span className="icon-wrapper">

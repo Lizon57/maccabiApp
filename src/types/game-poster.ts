@@ -1,8 +1,9 @@
 export type gamePosterType = {
     id: string,
 
-    relatedInfo?: {
-        opponentId: string
+    relatedInfo: {
+        branchId: string,
+        opponentId?: string
     },
 
     entityInfo: {

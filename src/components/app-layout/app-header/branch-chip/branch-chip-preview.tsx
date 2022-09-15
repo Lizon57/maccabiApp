@@ -5,7 +5,7 @@ import { branchProp } from "../../../../types/branch"
 export const BranchChipPreview = ({ branch }: branchProp) => {
     const [isActive, setIsActive] = useState(true)
 
-    const { name: { chipFilter: displayName }, asset: { symbol } } = branch
+    const { name: { display: displayName }, asset: { symbol } } = branch
 
 
     return (

@@ -1,6 +1,6 @@
-import { makeId } from "../../../services/util/make-id";
+import { makeId } from "../../services/util/make-id";
 
-export const categoryLinks = [
+export const CATEGORY_LINKS = [
     {
         id: makeId(),
         text: 'מכבי תל אביב',

@@ -1,7 +1,7 @@
 export type branchType = {
     _id: string,
     name: {
-        chipFilter: string
+        display: string
     },
     asset: {
         symbol: string

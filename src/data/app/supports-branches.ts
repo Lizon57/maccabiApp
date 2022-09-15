@@ -1,8 +1,8 @@
-export const APP_BRANCHES = [
+export const BRANCHES = [
     {
         _id: 'brandId00001',
         name: {
-            chipFilter: 'כדורגל'
+            display: 'כדורגל'
         },
         asset: {
             symbol: 'football.svg'
@@ -11,7 +11,7 @@ export const APP_BRANCHES = [
     {
         _id: 'brandId00002',
         name: {
-            chipFilter: 'כדורסל'
+            display: 'כדורסל'
         },
         asset: {
             symbol: 'basketball.svg'
@@ -20,7 +20,7 @@ export const APP_BRANCHES = [
     {
         _id: 'brandId00003',
         name: {
-            chipFilter: 'כדורעף'
+            display: 'כדורעף'
         },
         asset: {
             symbol: 'volleyball.svg'
@@ -29,7 +29,7 @@ export const APP_BRANCHES = [
     {
         _id: 'brandId00004',
         name: {
-            chipFilter: 'כדוריד'
+            display: 'כדוריד'
         },
         asset: {
             symbol: 'handball.svg'

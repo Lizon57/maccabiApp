@@ -12,7 +12,7 @@ import { AppOptionBar } from "./components/app-layout/app-option-bar/app-option-
 import { AppScreen } from "./components/app-layout/app-screen/app-screen"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
 
-import { APP_ROUTES } from "./data/app-routes"
+import { ROUTES } from "./data/app/app-routes"
 
 
 export const App = () => {
@@ -31,7 +31,7 @@ export const App = () => {
 
                     <div className="app-content">
                         <Routes>
-                            {APP_ROUTES.map(route => <Route
+                            {ROUTES.map(route => <Route
                                 key={route.id}
                                 path={encodeURIComponent(route.path)}
                                 element={<route.element />} />)}

@@ -3,6 +3,7 @@ export const GAME_POSTERS_DB = [
         id: 'gamePosterId_SSaWUL5WwEAXuqbnkYUcGtWeS',
 
         relatedInfo: {
+            branchId: 'brandId00001',
             opponentId: 'opponentId_3wT071iV2ZxfQWz23xNVsSeWj',
         },
 
@@ -19,6 +20,7 @@ export const GAME_POSTERS_DB = [
         id: 'gamePosterId_VNbzYf0HCk7d5fv9WzviUxW3T',
 
         relatedInfo: {
+            branchId: 'brandId00002',
             opponentId: 'opponentId_n6lsJFgjiGutfKmqSYX1ydxxO',
         },
 

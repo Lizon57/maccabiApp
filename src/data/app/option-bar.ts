@@ -3,10 +3,10 @@ import { AiOutlineUser } from "react-icons/ai"
 import { FiEdit2 } from "react-icons/fi"
 import { GoGear } from "react-icons/go"
 
-import { makeId } from "../../../services/util/make-id"
+import { makeId } from "../../services/util/make-id"
 
 
-export const APP_OPTION_BAR_OPTIONS: option[] = [
+export const OPTION_BAR: option[] = [
     {
         id: makeId(),
         icon: GoGear,
