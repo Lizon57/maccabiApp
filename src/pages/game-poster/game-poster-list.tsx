@@ -7,6 +7,7 @@ import { GamePosterPreview } from "../../components/entities/game-poster/game-po
 import { Loader } from "../../components/common/loader/loader"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { MainTitle } from "../../components/common/main-title/main-title"
+import { ListOptions } from "../../components/entities/common/list-options/list-options"
 
 
 export const GamePosterList = () => {
@@ -40,10 +41,10 @@ export const GamePosterList = () => {
 
     return (
         <section className="game-poster--list__page-container">
-                <MainTitle text="אוסף הכרזות" />
-                <div className="list-container">
-                    {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
-                </div>
+            <MainTitle text="אוסף הכרזות" additionalCmp={<ListOptions />} />
+            <div className="list-container">
+                {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
+            </div>
         </section>
     )
 }

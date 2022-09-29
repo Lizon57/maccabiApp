@@ -1,0 +1,45 @@
+div.entities-common-cmp--list-options__container {
+  display: flex;
+  gap: $space-inline-xxSmall-rem;
+
+  div.search {
+    position: relative;
+
+    input.search-input {
+      outline: 0;
+      border: 0;
+      border-block-end: 1px solid $clr-black-lightest;
+      background-color: transparent;
+      font-size: $font-size-small-rem;
+      padding-inline-start: $space-inline-xxxSmall-rem;
+      padding-inline-end: 2rem;
+      width: 10rem;
+      transition: $transition-regular;
+
+      &:focus-within {
+        width: 15rem;
+      }
+    }
+
+    svg {
+      position: absolute;
+      left: $space-inline-xxxSmall-rem;
+
+      color: $clr-black-lightest;
+    }
+  }
+
+  div.filter,
+  div.sort {
+    display: flex;
+    align-items: center;
+
+    border-radius: 0.2rem;
+    padding: 5px;
+    transition: $transition-regular;
+
+    &:hover {
+      background-color: $clr-white-darkest;
+    }
+  }
+}
