@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import { Link } from "react-router-dom"
 import { useOnClickOutside } from "../../../../hooks/use-on-click-outside"
 import { useStoreDispatch } from "../../../../hooks/store/use-store-dispatch"
 import { setAppScreenZIndex } from "../../../../store/slicer/app-layout-slicer"
@@ -41,10 +42,12 @@ export const UpToLaptopWideAppHeader = () => {
             <div className="content">
                 <div className="navigator-container">
                     <span className="icon-wrapper" onClick={toggleMenuOpen}><FaBars /></span>
-                    <img src={wideLogo}
-                        alt="עמוד ראשי"
-                        title="עמוד ראשי"
-                        className="brand-logo" />
+                    <Link to="./">
+                        <img src={wideLogo}
+                            alt="עמוד ראשי"
+                            title="עמוד ראשי"
+                            className="brand-logo" />
+                    </Link>
                 </div>
                 <div className="options-container">
                     <RenderByDeviceWidth minDeviceWide="mobile" maxDeviceWide="tablet" isInclusive={true}>

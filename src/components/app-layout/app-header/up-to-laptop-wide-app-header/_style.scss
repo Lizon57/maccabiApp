@@ -36,6 +36,8 @@ header.app-layout--app-header__up-to-laptop-wide {
       }
 
       img.brand-logo {
+        display: block;
+
         background-color: $clr-yellow-regular;
         padding: 0.2rem;
         width: auto;
@@ -43,7 +45,7 @@ header.app-layout--app-header__up-to-laptop-wide {
       }
     }
 
-    div.options-container{
+    div.options-container {
       display: flex;
       align-items: center;
     }
