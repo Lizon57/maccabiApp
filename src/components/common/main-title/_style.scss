@@ -1,14 +1,11 @@
-h2.common-cmp--main-title {
-  position: relative;
+div.common-cmp--main-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   border-start-end-radius: $border-radius-regular-rem;
   border-end-end-radius: $border-radius-regular-rem;
   border-inline-start: 5px solid $clr-blue-regular;
-  font-size: $font-size-large-rem;
-  font-family: $typography-emphasis;
-  font-weight: 500;
-  padding-inline-start: $space-inline-small-rem;
-  padding-block: $space-block-xxxSmall-rem;
-  margin: 0;
   transition: $transition-regular;
 
   &.sticky {
@@ -16,7 +13,18 @@ h2.common-cmp--main-title {
     background-color: $clr-white-regular;
   }
 
-  &:hover {
-    background-color: $clr-white-darker;
+  &.background-colorize {
+    &:hover {
+      background-color: $clr-white-darker;
+    }
+  }
+
+  h2 {
+    font-size: $font-size-large-rem;
+    font-family: $typography-emphasis;
+    font-weight: 500;
+    padding-inline-start: $space-inline-small-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    margin: 0;
   }
 }
