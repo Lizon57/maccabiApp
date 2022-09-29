@@ -10,7 +10,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -349362900000
-            }
+            },
+            view: 120
         },
 
         imgPath: 'כרזת משחק 06 בדצמבר 1958.jpg',
@@ -27,7 +28,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -909397800000
-            }
+            },
+            view: 14
         },
 
         imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
@@ -44,7 +46,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -349362900000
-            }
+            },
+            view: 150
         },
 
         imgPath: 'כרזת משחק 06 בדצמבר 1958.jpg',
@@ -61,7 +64,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -909397800000
-            }
+            },
+            view: 130
         },
 
         imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
@@ -78,7 +82,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -349362900000
-            }
+            },
+            view: 100
         },
 
         imgPath: 'כרזת משחק 06 בדצמבר 1958.jpg',
@@ -95,7 +100,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -909397800000
-            }
+            },
+            view: 5
         },
 
         imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
@@ -112,7 +118,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -909397800000
-            }
+            },
+            view: 40
         },
 
         imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
@@ -129,7 +136,8 @@ export const GAME_POSTERS_DB = [
         entityInfo: {
             time: {
                 timestamp: -909397800000
-            }
+            },
+            view: 66
         },
 
         imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
