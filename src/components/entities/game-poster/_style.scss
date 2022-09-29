@@ -46,7 +46,7 @@ div.entities-cmp-game-poster-preview__container {
 
       position: absolute;
       bottom: calc((#{$space-block-xxxSmall-rem} + 1.2rem) * -1);
-      left: -100vw;
+      left: -100px;
       z-index: 5;
 
       background-color: rgba($clr-blue-darkest, 1);
@@ -73,7 +73,7 @@ div.entities-cmp-game-poster-preview__container {
 
   div.game-link {
     position: absolute;
-    bottom: -100vh;
+    bottom: -100px;
 
     background-color: $clr-blue-darkest;
     color: $clr-white-regular;
