@@ -46,7 +46,6 @@ li.app-header--side-menu__drop-down {
     }
 
     li {
-      color: $clr-black-regular;
       font-size: $font-size-small-rem;
       padding-inline: $space-block-xxSmall-rem;
       padding-block: $space-block-xxSmall-rem;
@@ -58,6 +57,11 @@ li.app-header--side-menu__drop-down {
 
       &:hover {
         background-color: $clr-white-darker;
+      }
+
+      a {
+        color: $clr-black-regular;
+        text-decoration: none;
       }
     }
   }

@@ -31,7 +31,7 @@ export const AppOptionBar = () => {
         selectOption === option ? onCloseOption() : onOpenOption(option)
     }
 
-    useOnClickOutside(optionBarRef, () => onIconClick(''))
+    useOnClickOutside(optionBarRef, onCloseOption)
 
     return (
         <div className="app-layout--app-option-bar__container" ref={optionBarRef}>
@@ -48,7 +48,7 @@ export const AppOptionBar = () => {
                                 {option.childrens.map(link => {
                                     return (
                                         <li key={link.id} className="link-container">
-                                            <Link to={link.path}>{link.text}</Link>
+                                            <Link to={link.path} onClick={onCloseOption}>{link.text}</Link>
                                         </li>
                                     )
                                 })}

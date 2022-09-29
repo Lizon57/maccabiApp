@@ -1,4 +1,5 @@
 import { FiTriangle } from "react-icons/fi"
+import { Link } from "react-router-dom"
 
 
 export const NavListPreview = ({ category, currentCategoryOpen, setCurrentCategoryOpen }: propsType) => {
@@ -14,7 +15,9 @@ export const NavListPreview = ({ category, currentCategoryOpen, setCurrentCatego
             </div>
 
             <ul className={'drop-down-container' + (currentCategoryOpen === category.id ? ' open' : '')}>
-                {category.childrens.map(link => <li key={link.id}>{link.title}</li>)}
+                {category.childrens.map(link => <li key={link.id}>
+                    <Link to={link.path}>{link.title}</Link>
+                </li>)}
             </ul>
         </li>
     )
