@@ -41,15 +41,15 @@ export const GamePosterList = () => {
     return (
         <div className="game-poster--list__page-container">
             <section>
-                <MainTitle text="הכי נצפים" isSticky={true} />
+                <MainTitle text="הכי נצפים" />
             </section>
 
             <section>
-                <MainTitle text="הכי חדשים" isSticky={true} />
+                <MainTitle text="הכי חדשים" />
             </section>
 
             <section className="list">
-                <MainTitle text="אוסף הכרזות" isSticky={true} />
+                <MainTitle text="אוסף הכרזות" />
                 <div className="list-container">
                     {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
                 </div>

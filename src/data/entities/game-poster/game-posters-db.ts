@@ -50,7 +50,7 @@ export const GAME_POSTERS_DB = [
             view: 150
         },
 
-        imgPath: 'כרזת משחק 06 בדצמבר 1958.jpg',
+        imgPath: 'כרזת משחק 10 במאי 1930.jpg',
     },
 
     {
@@ -68,7 +68,7 @@ export const GAME_POSTERS_DB = [
             view: 130
         },
 
-        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+        imgPath: 'כרזת משחק 15 באפריל 1941.jpg',
     },
 
     {
@@ -86,7 +86,7 @@ export const GAME_POSTERS_DB = [
             view: 100
         },
 
-        imgPath: 'כרזת משחק 06 בדצמבר 1958.jpg',
+        imgPath: 'כרזת משחק 16 ביוני 1954.jpg',
     },
 
     {
@@ -104,7 +104,7 @@ export const GAME_POSTERS_DB = [
             view: 5
         },
 
-        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+        imgPath: 'כרזת משחק 17 במאי 1930.jpg',
     },
 
     {
@@ -122,7 +122,7 @@ export const GAME_POSTERS_DB = [
             view: 40
         },
 
-        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+        imgPath: 'כרזת משחק 18 בינואר 1958.jpg',
     },
 
     {
@@ -140,6 +140,6 @@ export const GAME_POSTERS_DB = [
             view: 66
         },
 
-        imgPath: 'כרזת משחק 08 במרץ 1941.jpg',
+        imgPath: 'כרזת משחק 21 ביוני 1930.jpg',
     },
 ]
