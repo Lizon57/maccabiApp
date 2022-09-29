@@ -2,16 +2,37 @@ div.app-data--message__list-container {
   display: flex;
   flex-direction: column;
   gap: $space-block-xxSmall-rem;
+
+  position: fixed;
+  top: $up-to-laptop-wide-header-total-height;
+  left: 0;
+  z-index: $app-header-z-index;
+
+  background-color: $clr-white-regular;
+  width: 100%;
+
+  @include viewport-wide-start-from-exclusive($viewport-regular) {
+    top: $laptop-wide-plus-app-header-total-height;
+  }
+
+  @include viewport-wide-start-from-exclusive($viewport-xLarge) {
+    position: unset;
+    width: unset;
+  }
 }
 
 div.app-data--message__preview-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-inline-xxxSmall-rem;
+
   position: relative;
 
-  overflow: hidden;
-  border-radius: $border-radius-regular-rem;
   background-color: $clr-white-darker;
   padding-inline: $space-inline-xxxSmall-rem;
   padding-block: $space-block-xxxSmall-rem;
+
   animation: make-not-visibility 5s linear;
   animation-fill-mode: forwards;
 
@@ -27,46 +48,57 @@ div.app-data--message__preview-container {
     }
   }
 
-  &:hover {
-    animation-play-state: paused;
-
-    &:before {
-      animation-play-state: paused;
-    }
-  }
-
-  &:before {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    content: "";
-    background-color: $clr-blue-regular;
-    width: 100%;
-    height: 1px;
-    animation: visibility-duration 5s linear;
-
-    @keyframes visibility-duration {
-      from {
-        width: 0%;
-      }
-      to {
-        width: 100%;
-      }
-    }
-  }
-
   div.preview-title {
-    font-size: $font-size-small-rem;
-    font-weight: 500;
-    margin-block-end: $space-block-xxxSmall-rem;
+    display: flex;
+    align-items: center;
+
+    min-width: max-content;
+
+    &.success {
+      color: $clr-green-regular;
+    }
+
+    &.fail {
+      color: $clr-red-regular;
+    }
+
+    &.message {
+      color: $clr-blue-regular;
+    }
+
+    &::before {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      content: "";
+      background-color: $clr-blue-darkest;
+      width: 100%;
+      height: 1px;
+      animation: visibility-duration 5s linear;
+
+      @keyframes visibility-duration {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 100%;
+        }
+      }
+    }
+
+    span.type-icon {
+      font-size: $font-size-xSmall-rem;
+      margin-inline-end: $space-inline-xxxSmall-rem;
+    }
+
+    span.title {
+      font-size: $font-size-xSmall-rem;
+      font-family: $typography-emphasis;
+    }
   }
 
   div.preview-text {
     font-size: $font-size-xxSmall-rem;
-
-    @include viewport-wide-start-from(calc(#{$viewport-xLarge} + 200px)) {
-      font-size: $font-size-xSmall-rem;
-    }
   }
 }

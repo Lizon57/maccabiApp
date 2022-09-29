@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
+
 import appLayoutSlicer from "./slicer/app-layout-slicer"
+import appStateSlicer from "./slicer/app-state-slicer"
 
 
 export const store = configureStore({
     reducer: {
-        appLayout: appLayoutSlicer
+        appLayout: appLayoutSlicer,
+        appState: appStateSlicer
     },
 
     middleware: getDefaultMiddleware =>
