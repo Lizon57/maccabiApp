@@ -1,7 +1,6 @@
 div.app-data--message__list-container {
   display: flex;
   flex-direction: column;
-  gap: $space-block-xxSmall-rem;
 
   position: fixed;
   top: $up-to-laptop-wide-header-total-height;
@@ -18,6 +17,10 @@ div.app-data--message__list-container {
   @include viewport-wide-start-from-exclusive($viewport-xLarge) {
     position: unset;
     width: unset;
+  }
+
+  h2 {
+    margin-block-end: $space-block-xxxSmall-rem;
   }
 }
 

@@ -39,21 +39,11 @@ export const GamePosterList = () => {
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
     return (
-        <div className="game-poster--list__page-container">
-            <section>
-                <MainTitle text="הכי נצפים" />
-            </section>
-
-            <section>
-                <MainTitle text="הכי חדשים" />
-            </section>
-
-            <section className="list">
+        <section className="game-poster--list__page-container">
                 <MainTitle text="אוסף הכרזות" />
                 <div className="list-container">
                     {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
                 </div>
-            </section>
-        </div>
+        </section>
     )
 }

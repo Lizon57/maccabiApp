@@ -1,13 +1,11 @@
-div.game-poster--list__page-container {
+section.game-poster--list__page-container {
   display: flex;
   flex-direction: column;
-  gap: $space-block-regular-rem;
+  gap: $space-block-xxxSmall-rem;
 
   div.list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    // display: flex;
-    // flex-wrap: wrap;
     gap: $space-inline-large-rem;
   }
 }

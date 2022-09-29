@@ -2,6 +2,10 @@ div.app-header--page-related-data__table-of-content-container {
   overflow-y: hidden;
   word-break: normal;
 
+  h2 {
+    margin-block-end: $space-block-xxxSmall-rem;
+  }
+
   div.content {
     font-size: $font-size-small-rem;
 
