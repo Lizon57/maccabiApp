@@ -12,20 +12,21 @@ export const GamePosterPreview = ({ poster }: propsType) => {
 
     return (
         <div className="entities-cmp-game-poster-preview__container">
-            <div className="date">{timestamp && convertTimestampToDisplayText(timestamp)}</div>
+            <div className="preview-title">
+                <span className="branch-icon-container">
+                    <DisplayBranchIconById id={poster.relatedInfo.branchId} className="branch-icon" />
+                </span>
+                <span className="title">{timestamp && convertTimestampToDisplayText(timestamp)}</span>
+                <div className="options-drop-down-container">
+                    <BsThreeDotsVertical />
+                </div>
+            </div>
+
             <div className="image-container">
                 <img
                     src={require(`../../../assets/images/entities/game-posters/${poster.imgPath}`)}
                     className="preview-image"
                     alt="כרזת משחק" />
-
-                <div className="branch-icon-container">
-                    <DisplayBranchIconById id={poster.relatedInfo.branchId} />
-                </div>
-
-                <div className="options-drop-down-container">
-                    <BsThreeDotsVertical />
-                </div>
             </div>
         </div>
     )

@@ -1,57 +1,66 @@
 div.entities-cmp-game-poster-preview__container {
+  position: relative;
+
   overflow: hidden;
   border-radius: $border-radius-regular-rem;
 
-  div.date {
-    background-color: $clr-blue-regular;
-    color: $clr-white-regular;
-    font-size: $font-size-regular-rem;
-    padding-block: $space-block-xxxSmall-rem;
-    text-align: center;
-    width: 100%;
+  &:hover div.options-drop-down-container {
+    display: flex !important;
   }
 
-  div.image-container {
-    position: relative;
+  div.preview-title {
+    position: absolute;
+    top: 0;
+    z-index: 5;
 
-    img.preview-image {
-      display: block;
+    background-color: $clr-blue-regular;
+    padding-inline: $space-inline-xxxSmall-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    width: 100%;
 
-      aspect-ratio: 6/9;
-      width: 100%;
+    span.branch-icon-container {
+      float: right;
+      margin-inline-end: $space-inline-xxxSmall-rem;
+
+      img.branch-icon {
+        width: 1rem;
+        height: 1rem;
+      }
     }
 
-    div.branch-icon-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 5;
-
-      margin-inline: $space-inline-xxxSmall-em;
-      margin-block: $space-block-xxxSmall-em;
+    span.title {
+      color: $clr-white-regular;
+      font-family: $typography-emphasis;
     }
 
     div.options-drop-down-container {
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      bottom: calc((#{$space-block-xxxSmall-rem} + 1.2rem) * -1);
+      left: $space-inline-xxxSmall-rem;
       z-index: 5;
 
       background-color: rgba($clr-blue-darkest, 1);
       border-radius: 50vw;
       font-size: 0.8rem;
-      margin-inline: $space-inline-xxxSmall-em;
-      margin-block: $space-block-xxxSmall-em;
       width: 1.2rem;
       height: 1.2rem;
 
       svg {
         color: white;
       }
+    }
+  }
+
+  div.image-container {
+    img.preview-image {
+      display: block;
+
+      aspect-ratio: 6/9;
+      width: 100%;
     }
   }
 }
