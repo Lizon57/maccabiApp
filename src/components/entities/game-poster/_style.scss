@@ -4,8 +4,14 @@ div.entities-cmp-game-poster-preview__container {
   overflow: hidden;
   border-radius: $border-radius-regular-rem;
 
-  &:hover div.options-drop-down-container {
-    display: flex !important;
+  &:hover {
+    div.options-drop-down-container {
+      left: $space-inline-xxxSmall-rem !important;
+    }
+
+    div.game-link {
+      bottom: 0;
+    }
   }
 
   div.preview-title {
@@ -34,13 +40,13 @@ div.entities-cmp-game-poster-preview__container {
     }
 
     div.options-drop-down-container {
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: center;
 
       position: absolute;
       bottom: calc((#{$space-block-xxxSmall-rem} + 1.2rem) * -1);
-      left: $space-inline-xxxSmall-rem;
+      left: -100vw;
       z-index: 5;
 
       background-color: rgba($clr-blue-darkest, 1);
@@ -48,6 +54,7 @@ div.entities-cmp-game-poster-preview__container {
       font-size: 0.8rem;
       width: 1.2rem;
       height: 1.2rem;
+      transition: $transition-regular;
 
       svg {
         color: white;
@@ -62,5 +69,19 @@ div.entities-cmp-game-poster-preview__container {
       aspect-ratio: 6/9;
       width: 100%;
     }
+  }
+
+  div.game-link {
+    position: absolute;
+    bottom: -100vh;
+
+    background-color: $clr-blue-darkest;
+    color: $clr-white-regular;
+    font-size: $font-size-small-rem;
+    text-align: center;
+    padding-inline: $space-inline-xxxSmall-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    width: 100%;
+    transition: $transition-regular;
   }
 }

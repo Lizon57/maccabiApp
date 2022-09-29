@@ -28,6 +28,10 @@ export const GamePosterPreview = ({ poster }: propsType) => {
                     className="preview-image"
                     alt="כרזת משחק" />
             </div>
+
+            <div className="game-link">
+                עמוד המשחק
+            </div>
         </div>
     )
 }
