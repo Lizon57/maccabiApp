@@ -10,10 +10,7 @@ export const SearchInput = ({ placeholder, title }: propsType) => {
         setSearch(value)
     }
 
-    const onClearInput = () => {
-        setSearch('')
-    }
-
+    const onClearInput = () => setSearch('')
 
     return (
         <div className="common-cmp--search-input__container" title={title}>

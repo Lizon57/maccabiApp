@@ -1,12 +1,12 @@
-
 # AppSearch cmp
 
 ## Motivation & Context
 AppSearch cmp will provide text input to allow user preform search on the app.
+AppSearch use common commponent SearchInput for ui.
 
 
 ## In app use
-Currently, AppOptionBar renders once:
+Currently, AppSearch renders once:
 1. **AppHeader** - Renders at top left corner of the header (neither up-to-laptop and laptop-wider screens).
 
 ## Contains
