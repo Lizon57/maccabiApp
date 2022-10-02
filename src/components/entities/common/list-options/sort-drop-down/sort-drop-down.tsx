@@ -62,8 +62,8 @@ const DATA = [
     { text: 'כותרת (ת-א)', key: 'name', order: 'desc' },
     { text: 'תאריך הוספה (חדש-ישן)', key: 'createdAt', order: 'asc' },
     { text: 'תאריך הוספה (ישן-חדש)', key: 'createdAt', order: 'desc' },
-    { text: 'צפיות (יותר-פחות)', key: 'views', order: 'asc' },
-    { text: 'צפיות (פחות-יותר)', key: 'views', order: 'desc' },
+    { text: 'צפיות (יותר-פחות)', key: 'view', order: 'asc' },
+    { text: 'צפיות (פחות-יותר)', key: 'view', order: 'desc' },
 ]
 
 

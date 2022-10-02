@@ -1,9 +1,4 @@
-import { useRef, useState } from "react"
-import { useOnClickOutside } from "../../../../hooks/use-on-click-outside"
-
-import { BiSort } from "react-icons/bi"
 import { BsFilter } from "react-icons/bs"
-import { useNavigate } from "react-router-dom"
 import { SearchInput } from "../../../common/search-input/search-input"
 import { SortDropDown } from "./sort-drop-down/sort-drop-down"
 

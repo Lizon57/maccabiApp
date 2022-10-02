@@ -9,7 +9,8 @@ export type gamePosterType = {
     entityInfo: {
         time: {
             timestamp?: number
-        }
+        },
+        view: number
     },
 
     imgPath: string
