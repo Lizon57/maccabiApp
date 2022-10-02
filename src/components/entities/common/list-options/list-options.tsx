@@ -6,7 +6,7 @@ import { BsFilter } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 
 
-export const ListOptions = () => {
+export const ListOptions = ({ setIsLoading }: propsType) => {
     const [isSortModalOpen, setIsSortModalOpen] = useState(false)
     const toggleIsSortModalOpen = () => setIsSortModalOpen(!isSortModalOpen)
 
@@ -18,10 +18,11 @@ export const ListOptions = () => {
     const navigate = useNavigate()
     const setSort = ({ key, order }: sortType) => {
         const url = new URL(window.location.href)
-        const params = new URLSearchParams(url.search);
-        params.set('מיון', key)
-        params.set('סדר', order)
+        const params = new URLSearchParams(url.search)
+        params.set('sKey', key)
+        params.set('sOrder', order)
         navigate({ search: params.toString() })
+        setIsLoading(true)
     }
 
 
@@ -46,15 +47,20 @@ export const ListOptions = () => {
                 {isSortModalOpen && <div className="sort-drop-down-container">
                     <div className="title">מיין תצוגה</div>
                     <div className="options-list">
-                        <div className="option" onClick={() => setSort({ key: 'כותרת', order: 'עולה' })}> כותרת (א-ת)</div>
-                        <div className="option" onClick={() => setSort({ key: 'כותרת', order: 'יורד' })}> כותרת (ת-א)</div>
-                        <div className="option" onClick={() => setSort({ key: 'הוספה', order: 'עולה' })}> תאריך הוספה (מהחדש לישן)</div>
-                        <div className="option" onClick={() => setSort({ key: 'הוספה', order: 'יורד' })}> תאריך הוספה (מהישן לחדש)</div>
+                        <div className="option" onClick={() => setSort({ key: 'name', order: 'asc' })}> כותרת (א-ת)</div>
+                        <div className="option" onClick={() => setSort({ key: 'name', order: 'desc' })}> כותרת (ת-א)</div>
+                        <div className="option" onClick={() => setSort({ key: 'createdAt', order: 'asc' })}> תאריך הוספה (מהחדש לישן)</div>
+                        <div className="option" onClick={() => setSort({ key: 'createdAt', order: 'desc' })}> תאריך הוספה (מהישן לחדש)</div>
                     </div>
                 </div>}
             </div>
         </div>
     )
+}
+
+
+type propsType = {
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 

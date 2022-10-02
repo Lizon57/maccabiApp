@@ -8,12 +8,15 @@ import { Loader } from "../../components/common/loader/loader"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { ListOptions } from "../../components/entities/common/list-options/list-options"
+import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
 
 
 export const GamePosterList = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     const [gamePosters, setGamePosters] = useState<gamePosterType[]>([])
+
+    const sortBy = useEntitySortHandler()
 
 
     useEffect(() => {
@@ -23,7 +26,7 @@ export const GamePosterList = () => {
             if (!isLoading) return
 
             try {
-                const gamePosters = await gamePosterService.query() as gamePosterType[]
+                const gamePosters = await gamePosterService.query(sortBy) as gamePosterType[]
                 setGamePosters(gamePosters)
             } catch ({ message }) {
                 setErrorMessage(message as string)
@@ -33,7 +36,7 @@ export const GamePosterList = () => {
             }
         }
         loadGamePosters()
-    }, [isLoading])
+    }, [isLoading, sortBy])
 
 
     if (isLoading) return <Loader />
@@ -41,7 +44,7 @@ export const GamePosterList = () => {
 
     return (
         <section className="game-poster--list__page-container">
-            <MainTitle text="אוסף הכרזות" additionalCmp={<ListOptions />} />
+            <MainTitle text="אוסף הכרזות" additionalCmp={<ListOptions setIsLoading={setIsLoading} />} />
             <div className="list-container">
                 {gamePosters.map(poster => <GamePosterPreview key={poster.id} poster={poster} />)}
             </div>
