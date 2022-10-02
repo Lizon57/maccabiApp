@@ -60,8 +60,10 @@ export const SortDropDown = ({ setIsLoading }: propsType) => {
 const DATA = [
     { text: 'כותרת (א-ת)', key: 'name', order: 'asc' },
     { text: 'כותרת (ת-א)', key: 'name', order: 'desc' },
-    { text: 'תאריך הוספה (מהחדש לישן)', key: 'createdAt', order: 'asc' },
-    { text: 'תאריך הוספה (מהישן לחדש)', key: 'createdAt', order: 'desc' },
+    { text: 'תאריך הוספה (חדש-ישן)', key: 'createdAt', order: 'asc' },
+    { text: 'תאריך הוספה (ישן-חדש)', key: 'createdAt', order: 'desc' },
+    { text: 'צפיות (יותר-פחות)', key: 'views', order: 'asc' },
+    { text: 'צפיות (פחות-יותר)', key: 'views', order: 'desc' },
 ]
 
 
