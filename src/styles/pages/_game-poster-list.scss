@@ -5,7 +5,15 @@ section.game-poster--list__page-container {
 
   div.list-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: $space-inline-large-rem;
+
+    @include viewport-wide-start-from($viewport-small) {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    @include viewport-wide-start-from($viewport-large) {
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
   }
 }
