@@ -140,14 +140,14 @@ export const CATEGORY_LINKS = [
                 title: 'כל המשחקים',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'g-games.png'
             },
             {
                 id: makeId(),
                 title: 'חיפוש משחק',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'g-game-search.png'
             },
         ]
     },
