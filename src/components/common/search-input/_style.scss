@@ -17,9 +17,24 @@ div.common-cmp--search-input__container {
     }
   }
 
+  span.clear-icon,
+  span.search-icon {
+    opacity: 0;
+    transition: $transition-regular;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  span.clear-icon {
+    cursor: pointer;
+  }
+
   svg {
     position: absolute;
     left: $space-inline-xxxSmall-rem;
+    z-index: 1;
 
     color: $clr-black-lightest;
   }

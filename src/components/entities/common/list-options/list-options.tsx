@@ -29,7 +29,7 @@ export const ListOptions = ({ setIsLoading }: propsType) => {
 
     return (
         <div className="entities-common-cmp--list-options__container">
-            <SearchInput usageTitle="חפש לפי כותרת" />
+            <SearchInput title="חפש לפי כותרת" placeholder="חפש כותרת" />
             <div className="search" title="חפש לפי כותרת">
 
             </div>

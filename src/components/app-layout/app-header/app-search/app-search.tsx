@@ -1,10 +1,9 @@
-import { BiSearch } from "react-icons/bi"
+import { SearchInput } from "../../../common/search-input/search-input"
 
 export const AppSearch = () => {
     return (
         <div className="app-header--app-search__container" title="חפש במכביפדיה">
-            <input type="text" placeholder="חפש במכביפדיה" />
-            <BiSearch />
+            <SearchInput title="חפש במכביפדיה" />
         </div>
     )
 }
