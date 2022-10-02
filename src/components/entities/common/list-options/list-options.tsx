@@ -1,9 +1,10 @@
 import { useRef, useState } from "react"
 import { useOnClickOutside } from "../../../../hooks/use-on-click-outside"
 
-import { BiSearch, BiSort } from "react-icons/bi"
+import { BiSort } from "react-icons/bi"
 import { BsFilter } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
+import { SearchInput } from "../../../common/search-input/search-input"
 
 
 export const ListOptions = ({ setIsLoading }: propsType) => {
@@ -28,9 +29,9 @@ export const ListOptions = ({ setIsLoading }: propsType) => {
 
     return (
         <div className="entities-common-cmp--list-options__container">
+            <SearchInput usageTitle="חפש לפי כותרת" />
             <div className="search" title="חפש לפי כותרת">
-                <input type="text" className="search-input" placeholder="חפש כותרת" />
-                <BiSearch />
+
             </div>
 
             <div className="filter" title="סנן פריטים">

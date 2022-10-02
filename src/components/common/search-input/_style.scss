@@ -1,0 +1,26 @@
+div.common-cmp--search-input__container {
+  position: relative;
+
+  input.search-input {
+    outline: 0;
+    border: 0;
+    border-block-end: 1px solid $clr-black-lightest;
+    background-color: transparent;
+    font-size: $font-size-small-rem;
+    padding-inline-start: $space-inline-xxxSmall-rem;
+    padding-inline-end: 2rem;
+    width: 10rem;
+    transition: $transition-regular;
+
+    &:focus-within {
+      width: 15rem;
+    }
+  }
+
+  svg {
+    position: absolute;
+    left: $space-inline-xxxSmall-rem;
+
+    color: $clr-black-lightest;
+  }
+}
