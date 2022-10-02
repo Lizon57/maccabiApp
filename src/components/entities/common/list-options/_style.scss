@@ -4,7 +4,7 @@ div.entities-common-cmp--list-options__container {
   gap: $space-inline-xxSmall-rem;
 
   div.filter,
-  div.sort {
+  div.entities-common-cmp--sort-drop-down__container {
     display: flex;
     align-items: center;
 
@@ -14,109 +14,6 @@ div.entities-common-cmp--list-options__container {
 
     &:hover {
       background-color: $clr-white-darkest;
-    }
-  }
-
-  div.sort {
-    position: relative;
-
-    &.colorize {
-      background-color: $clr-white-darkest;
-    }
-
-    span.search-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      cursor: pointer;
-    }
-  }
-
-  div.sort-drop-down-container {
-    display: flex;
-    flex-direction: column;
-    gap: $space-block-xxxSmall-rem;
-
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    z-index: 10;
-
-    background-color: $clr-white-regular;
-    padding-inline: $space-inline-xSmall-rem;
-    padding-block: $space-block-xSmall-rem;
-    width: max-content;
-    box-shadow: 0 0 5px 1px $clr-white-darkest;
-
-    &::before {
-      position: absolute;
-      top: -1rem;
-      left: 0;
-
-      content: "";
-      width: 100%;
-      height: 1rem;
-    }
-
-    div.title {
-      font-size: $font-size-small-rem;
-      font-family: $typography-emphasis;
-    }
-
-    div.options-list {
-      display: grid;
-      grid-template-columns: 1fr;
-
-      font-size: $font-size-xSmall-rem;
-      margin-block-end: -$space-block-xSmall-rem;
-
-      @include viewport-wide-start-from($viewport-small) {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      div.option {
-        cursor: pointer;
-        padding-inline: $space-inline-xSmall-rem;
-        padding-block: $space-block-xxxSmall-rem;
-        transition: $transition-regular;
-
-        &:nth-of-type(-n + 1) {
-          position: relative;
-
-          &::before {
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            content: "";
-            border-block-start: 1px solid $clr-white-darker;
-            width: 100%;
-            height: 1px;
-          }
-        }
-
-        @include viewport-wide-start-from($viewport-small) {
-          &:nth-of-type(-n + 2) {
-            position: relative;
-
-            &::before {
-              position: absolute;
-              top: 0;
-              left: 0;
-
-              content: "";
-              border-block-start: 1px solid $clr-white-darker;
-              width: 100%;
-              height: 1px;
-            }
-          }
-        }
-
-        &:hover {
-          color: $clr-blue-darker;
-        }
-      }
     }
   }
 }
