@@ -1,4 +1,4 @@
-div.entities-cmp-game-poster-preview__container {
+div.entities-cmp--game-poster-preview__container {
   position: relative;
 
   overflow: hidden;
@@ -46,9 +46,10 @@ div.entities-cmp-game-poster-preview__container {
 
       position: absolute;
       bottom: calc((#{$space-block-xxxSmall-rem} + 1.2rem) * -1);
-      left: -100px;
+      left: -200px;
       z-index: 5;
 
+      cursor: pointer;
       background-color: rgba($clr-blue-darkest, 1);
       border-radius: 50vw;
       font-size: 0.8rem;
@@ -58,6 +59,66 @@ div.entities-cmp-game-poster-preview__container {
 
       svg {
         color: white;
+      }
+
+      div.entities-cmp-game-poster-preview-dropdown__container {
+        position: absolute;
+        top: $space-block-xxLarge-rem;
+        left: 0;
+
+        border-radius: $border-radius-regular-rem;
+        background-color: $clr-white-regular;
+        padding-inline: $space-inline-xxxSmall-rem;
+        padding-block: $space-block-xxxSmall-rem;
+        width: max-content;
+        box-shadow: 0 0 5px 1px $clr-white-darkest;
+
+        div.title {
+          font-size: $font-size-small-rem;
+          font-family: $typography-emphasis;
+
+          position: relative;
+
+          &::before {
+            position: absolute;
+            bottom: -$space-block-xxxSmall-rem;
+            left: 0;
+
+            content: "";
+            border-block-start: 1px solid $clr-white-darker;
+            width: 100%;
+            height: 1px;
+          }
+        }
+
+        div.options-list {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 5px;
+
+          font-size: $font-size-xSmall-rem;
+          margin-block-start: $space-block-xxxSmall-rem;
+
+          @include viewport-wide-start-from($viewport-small) {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          div.option {
+            cursor: pointer;
+            padding-inline: $space-inline-xSmall-rem;
+            padding-block: $space-block-xxxSmall-rem;
+            transition: $transition-regular;
+
+            &:hover {
+              color: $clr-blue-darker;
+            }
+
+            &.active {
+              border-radius: $border-radius-regular-rem;
+              background-color: $clr-white-darker;
+            }
+          }
+        }
       }
     }
   }
