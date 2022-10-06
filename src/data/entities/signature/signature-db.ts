@@ -9,7 +9,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'מיקי ברקוביץ'
             },
-            branchId: 'branchI00002',
+            branchId: 'brandId00002',
         },
 
         entityInfo: {
@@ -28,7 +28,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'אבי נמני'
             },
-            branchId: 'branchI00001',
+            branchId: 'brandId00001',
         },
 
         entityInfo: {
@@ -47,7 +47,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'עומר דבדה'
             },
-            branchId: 'branchI00004',
+            branchId: 'brandId00004',
         },
 
         entityInfo: {
@@ -66,7 +66,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'אריאל כצנלסון'
             },
-            branchId: 'branchI00003',
+            branchId: 'brandId00003',
         },
 
         entityInfo: {

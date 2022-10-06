@@ -1,2 +1,14 @@
 div.dynamic-entity-preview--square-entity-preview__container {
+  div.title {
+    display: flex;
+    align-items: center;
+    gap: $space-inline-xxxSmall-rem;
+
+    border-radius: $border-radius-regular-rem;
+    background-color: $clr-blue-regular;
+    color: $clr-white-regular;
+    font-family: $typography-emphasis;
+    padding-inline: $space-inline-xxxSmall-rem;
+    padding-block: $space-block-xxxSmall-rem;
+  }
 }
