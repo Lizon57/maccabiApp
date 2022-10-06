@@ -13,4 +13,22 @@ div.dynamic-entity-preview--square-entity-preview__container {
     padding-inline: $space-inline-xxxSmall-rem;
     padding-block: $space-block-xxxSmall-rem;
   }
+
+  div.image-container {
+    position: relative;
+
+    span.like-icon {
+      position: absolute;
+      top: $space-block-xxxSmall-rem;
+      right: $space-inline-xxxSmall-rem;
+      z-index: 5;
+
+      cursor: pointer;
+      transition: $transition-regular;
+
+      &.active {
+        color: $clr-red-regular;
+      }
+    }
+  }
 }

@@ -11,7 +11,7 @@ export const EntityList = ({ entity, items, imagePath }: Props) => {
                 key={item.id}
                 item={item}
                 type={entity.listPageInfo.previewType}
-                imagePath={entity.entityInfo.image.imagePath} />)}
+                imagePath={imagePath} />)}
         </div>
     )
 }
