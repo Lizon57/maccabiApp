@@ -28,6 +28,7 @@ export const signatureEntity: Entity = {
                 path: 'cnc-signature.png',
                 title: 'אוסף החתימות'
             },
+            imagePath: 'signatures',
             icon: FaSignature
         }
     },

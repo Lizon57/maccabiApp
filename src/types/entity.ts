@@ -26,6 +26,7 @@ export type Entity = {
                 path: string,
                 title: string
             },
+            imagePath: string,
             icon: IconType
         }
     },

@@ -1,4 +1,6 @@
 div.dynamic-entity-preview--square-entity-preview__container {
+  overflow: hidden;
+
   div.title {
     display: flex;
     align-items: center;

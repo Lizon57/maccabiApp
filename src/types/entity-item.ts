@@ -10,5 +10,7 @@ export type EntityItem = {
             display: string
         }
         view: number
-    }
+    },
+
+    images: string[]
 }

@@ -66,7 +66,7 @@ export const EntityPortal = (entityName: string) => {
                 </span>
             </h2>
 
-            <EntityList entity={ENTITY} items={items} />
+            <EntityList entity={ENTITY} items={items} imagePath={ENTITY.entityInfo.image.imagePath} />
         </section>
     )
 }
