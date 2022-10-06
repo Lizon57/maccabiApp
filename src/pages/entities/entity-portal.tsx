@@ -54,7 +54,7 @@ export const EntityPortal = (entityName: string) => {
     } = ENTITY
 
     return (
-        <section className="entities-pages--entity-list__container">
+        <section className="entities-pages--entity-portal__container">
             <h2 className="title-and-options-container">
                 <span className="title">
                     <span className="icon"><Icon /></span>
