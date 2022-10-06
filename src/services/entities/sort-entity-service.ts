@@ -1,16 +1,15 @@
-import { gamePosterType } from "../../types/game-poster"
+import { EntityItem } from "../../types/entity-item"
+import { EntitySortParam } from "../../types/entity-sort-param"
 
-const dynamicEntitySort = (entityList: gamePosterType[], sortBy: sortType) => {
-    const { sKey, sOrder } = sortBy
+const dynamicEntitySort = (entityList: EntityItem[], sortBy: EntitySortParam) => {
     let sortedList = entityList.slice()
-    switch (sKey) {
-
-        case 'createdAt':
-            _sortEntityByCreatedTime(sortedList, sOrder)
+    switch (sortBy.sKey) {
+        case 'entityInfo.name.display':
+            sortedList = _sortEntityByStringKey(sortedList, sortBy)
             break
 
-        case 'view':
-            _sortEntityByView(sortedList, sOrder)
+        case 'entityInfo.view':
+            sortedList = _sortEntityByNumberKey(sortedList, sortBy)
             break
 
         default:
@@ -21,32 +20,58 @@ const dynamicEntitySort = (entityList: gamePosterType[], sortBy: sortType) => {
 }
 
 
-const _sortEntityByCreatedTime = (entityList: gamePosterType[], sortMethod: string) => {
-    entityList.sort((a, b) => {
-        const isALowerThanB = (a.entityInfo?.time?.timestamp || 0) < (b.entityInfo?.time?.timestamp || 0)
+const _sortEntityByNumberKey = <T>(entityList: { [key: number]: T }[], sortBy: EntitySortParam) => {
+    const SORT_KEY_PATH = sortBy.sKey.split('.')
+    entityList = entityList.slice()
 
-        if (sortMethod === 'asc') return isALowerThanB ? 1 : 0
-        else return isALowerThanB ? 0 : 1
+    const getActualSortKeyValue = (item: { [key: number]: T }) => {
+        let actualSortKeyValue: any = item
+
+        for (let key of SORT_KEY_PATH) {
+            actualSortKeyValue = actualSortKeyValue[key as any]
+        }
+
+        return actualSortKeyValue
+    }
+
+    entityList.sort((a, b) => {
+        if (sortBy.sOrder === 'asc') return getActualSortKeyValue(a) - getActualSortKeyValue(b)
+        else return getActualSortKeyValue(b) - getActualSortKeyValue(a)
     })
+
+    return entityList as EntityItem[]
 }
 
 
-const _sortEntityByView = (entityList: gamePosterType[], sortMethod: string) => {
-    entityList.sort((a, b) => {
-        const isALowerThanB = (a.entityInfo?.view || 0) < (b.entityInfo?.view || 0)
+const _sortEntityByStringKey = <T>(entityList: { [key: string]: T }[], sortBy: EntitySortParam) => {
+    const SORT_KEY_PATH = sortBy.sKey.split('.')
+    entityList = entityList.slice()
 
-        if (sortMethod === 'asc') return isALowerThanB ? 1 : 0
-        else return isALowerThanB ? 0 : 1
+    const getActualSortKeyValue = (item: { [key: string]: T }) => {
+        let actualSortKeyValue: any = item
+
+        for (let key of SORT_KEY_PATH) {
+            actualSortKeyValue = actualSortKeyValue[key as any]
+        }
+
+
+        return actualSortKeyValue
+    }
+
+    entityList.sort((a, b) => {
+        if (sortBy.sOrder === 'asc') {
+            if (getActualSortKeyValue(b) < getActualSortKeyValue(a)) return 1
+            else return 0
+        } else {
+            if (getActualSortKeyValue(a) < getActualSortKeyValue(b)) return 1
+            else return 0
+        }
     })
+
+    return entityList as unknown as EntityItem[]
 }
 
 
 export const sortEntityService = {
     dynamicEntitySort
-}
-
-
-type sortType = {
-    sKey: string,
-    sOrder: string
 }

@@ -1,0 +1,63 @@
+div.options-list--sort-dropdown__container {
+  div.toggler {
+    cursor: pointer;
+    border-radius: 0.2rem;
+    padding-inline: $space-inline-xxxSmall-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    transition: $transition-regular;
+
+    &:hover {
+      background-color: $clr-white-darker;
+    }
+  }
+
+  div.sorts-container {
+    display: flex;
+    flex-direction: column;
+    gap: $space-block-xxxSmall-rem;
+
+    @include viewport-wide-start-from($viewport-small) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    div.sort-option {
+      cursor: pointer;
+      border-radius: $border-radius-regular-rem;
+      padding-inline: $space-inline-xxxSmall-rem;
+      padding-block: $space-block-xxxSmall-rem;
+      transition: $transition-regular;
+
+      &:not(.active):hover {
+        color: $clr-blue-darker;
+      }
+
+      &.active {
+        background-color: $clr-white-darker;
+      }
+    }
+  }
+
+  div.clear-sort {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    border-radius: 0.2rem;
+    font-size: $font-size-xSmall-rem;
+    padding-inline: $space-inline-xxxSmall-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    margin-block-start: $space-block-xxxSmall-rem;
+    transition: $transition-regular;
+
+    &:hover {
+      color: $clr-blue-darker;
+    }
+    
+    span.icon {
+      font-size: $font-size-xxSmall-rem;
+      margin-inline-end: 3px;
+      height: 10px;
+    }
+  }
+}

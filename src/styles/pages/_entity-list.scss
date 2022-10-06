@@ -1,0 +1,43 @@
+section.entities-pages--entity-list__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-regular-rem;
+
+  h2.title-and-options-container {
+    display: grid;
+    gap: $space-block-xxxSmall-rem;
+
+    font-size: $font-size-xLarge-rem;
+    font-family: $typography-emphasis;
+    font-weight: 500;
+    margin: 0;
+    width: 100%;
+
+    @include viewport-wide-start-from($viewport-regular) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    span.title {
+      display: flex;
+      align-items: center;
+
+      span.icon {
+        margin-inline-end: $space-inline-xxxSmall-rem;
+
+        svg {
+          display: block;
+        }
+      }
+    }
+
+    span.options {
+      justify-self: flex-end;
+    }
+  }
+}
+
+
+pre{
+  margin: 0;
+}

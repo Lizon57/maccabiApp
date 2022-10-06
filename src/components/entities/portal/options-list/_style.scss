@@ -1,0 +1,19 @@
+div.entities-portal-cmp--list-options__container {
+  display: flex;
+  align-items: center;
+  gap: $space-inline-xxSmall-rem;
+
+  div.filter,
+  div.entities-portal-cmp--sort-drop-down__container {
+    display: flex;
+    align-items: center;
+
+    border-radius: 0.2rem;
+    padding: 5px;
+    transition: $transition-regular;
+
+    &:hover {
+      background-color: $clr-white-darkest;
+    }
+  }
+}
