@@ -13,6 +13,11 @@ div.dynamic-entity-preview--square-entity-preview__container {
     font-family: $typography-emphasis;
     padding-inline: $space-inline-xxxSmall-rem;
     padding-block: $space-block-xxxSmall-rem;
+
+    span.branch-icon{
+      border-radius: 50vw;
+      background-color: white;
+    }
   }
 
   div.image-container {
