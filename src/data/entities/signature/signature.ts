@@ -33,7 +33,7 @@ export const signatureEntity: Entity = {
     },
 
     listPageInfo: {
-        previewType: 'long',
+        previewType: 'square',
         sorts: [
             { id: makeId(), title: 'כותרת (א-ת)', key: 'entityInfo.name.display', order: 'asc' },
             { id: makeId(), title: 'כותרת (ת-א)', key: 'entityInfo.name.display', order: 'desc' },
