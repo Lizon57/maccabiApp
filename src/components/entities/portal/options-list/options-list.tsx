@@ -7,6 +7,11 @@ import { SortDropdown } from "./sort-dropdown/sort-dropdown"
 
 
 export const OptionsList = ({ sorts, searchValue, setIsLoading, toggleIsFilterSectionOpen, searchCallback }: Props) => {
+    const onToggleFillter = () => {
+        window.scrollTo({ top: 0 })
+        toggleIsFilterSectionOpen()
+    }
+
     return (
         <div className="entities-portal-cmp--list-options__container">
             <SearchInput
@@ -15,7 +20,7 @@ export const OptionsList = ({ sorts, searchValue, setIsLoading, toggleIsFilterSe
                 initialValue={searchValue}
                 searchCallback={searchCallback} />
 
-            <div className="filter" title="סנן פריטים" onClick={() => toggleIsFilterSectionOpen()}>
+            <div className="filter" title="סנן פריטים" onClick={onToggleFillter}>
                 <BsFilter />
             </div>
 

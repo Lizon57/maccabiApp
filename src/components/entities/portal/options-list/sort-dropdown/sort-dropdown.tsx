@@ -18,6 +18,7 @@ export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
         params.set('sKey', key)
         params.set('sOrder', order)
         navigate({ search: params.toString() })
+        window.scrollTo({ top: 0 })
         setIsLoading(true)
     }
 
@@ -31,6 +32,7 @@ export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
         params.delete('sKey')
         params.delete('sOrder')
         navigate({ search: params.toString() })
+        window.scrollTo({ top: 0 })
         setIsLoading(true)
     }
 
