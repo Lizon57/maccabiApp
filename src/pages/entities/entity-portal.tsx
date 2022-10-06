@@ -20,9 +20,11 @@ export const EntityPortal = (entityName: string) => {
     const [errorMessage, setErrorMessage] = useState('')
     const [items, setItems] = useState<EntityItem[]>([])
     const [searchTitle, setSearchTitle] = useState('')
+    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(false)
 
-    const sortBy = useEntitySortHandler()
     const debouncedSearchCallback = useDebounce(setSearchTitle, 700)
+    const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
+    const sortBy = useEntitySortHandler()
 
     useEffect(() => {
         setIsLoading(true)
@@ -73,11 +75,17 @@ export const EntityPortal = (entityName: string) => {
                         sorts={ENTITY.listPageInfo.sorts}
                         searchValue={searchTitle}
                         setIsLoading={setIsLoading}
-                        searchCallback={debouncedSearchCallback} />
+                        searchCallback={debouncedSearchCallback}
+                        toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}
+                    />
                 </span>
             </h2>
 
-            <EntityList entity={ENTITY} items={items} imagePath={ENTITY.entityInfo.image.imagePath} />
+            {isFilterSectionOpen && <div>סינונים</div>}
+
+            {items.length
+                ? <EntityList entity={ENTITY} items={items} imagePath={ENTITY.entityInfo.image.imagePath} />
+                : <ErrorMessage message="לא נמצאו פריטים להצגה" />}
         </section>
     )
 }
