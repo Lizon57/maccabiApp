@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 
 import { BiSort } from "react-icons/bi"
-import { AiOutlineCloseCircle } from "react-icons/ai"
+import { FiXCircle } from "react-icons/fi"
 
 import { EntitySortOption } from "../../../../../types/entity-sort-option"
 
@@ -51,7 +51,7 @@ export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
                     </div>
 
                     <div className="clear-sort" onClick={onClearSort} title="נקה מיון">
-                        <span className="icon"><AiOutlineCloseCircle /></span>
+                        <span className="icon"><FiXCircle /></span>
                         <span className="text">נקה מיון</span>
                     </div>
                 </>
