@@ -6,10 +6,14 @@ import { SearchInput } from "../../../common/search-input/search-input"
 import { SortDropdown } from "./sort-dropdown/sort-dropdown"
 
 
-export const OptionsList = ({ setIsLoading, sorts }: Props) => {
+export const OptionsList = ({ sorts, searchValue, setIsLoading, searchCallback }: Props) => {
     return (
         <div className="entities-portal-cmp--list-options__container">
-            <SearchInput title="חפש לפי כותרת" placeholder="חפש כותרת" />
+            <SearchInput
+                placeholder="חפש כותרת"
+                title="חפש לפי כותרת"
+                initialValue={searchValue}
+                searchCallback={searchCallback} />
 
             <div className="filter" title="סנן פריטים">
                 <BsFilter />
@@ -22,6 +26,8 @@ export const OptionsList = ({ setIsLoading, sorts }: Props) => {
 
 
 type Props = {
+    sorts: EntitySortOption[],
+    searchValue: string,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-    sorts: EntitySortOption[]
+    searchCallback: (value: React.SetStateAction<string>) => Promise<void>
 }

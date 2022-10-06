@@ -3,14 +3,18 @@ import { BiSearch } from "react-icons/bi"
 import { FiXCircle } from "react-icons/fi"
 
 
-export const SearchInput = ({ placeholder, title }: Props) => {
-    const [search, setSearch] = useState<string>('')
+export const SearchInput = ({ placeholder, title, initialValue, searchCallback }: Props) => {
+    const [search, setSearch] = useState<string>(initialValue || '')
 
     const onSearchHandler = ({ currentTarget: { value } }: React.FormEvent<HTMLInputElement>) => {
+        searchCallback && searchCallback(value)
         setSearch(value)
     }
 
-    const onClearInput = () => setSearch('')
+    const onClearInput = () => {
+        searchCallback && searchCallback('')
+        setSearch('')
+    }
 
     return (
         <div className="common-cmp--search-input__container" title={title}>
@@ -34,5 +38,7 @@ export const SearchInput = ({ placeholder, title }: Props) => {
 
 type Props = {
     placeholder?: string
-    title: string
+    title: string,
+    initialValue?: string,
+    searchCallback?: (value: React.SetStateAction<string>) => Promise<void>
 }

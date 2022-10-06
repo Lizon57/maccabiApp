@@ -2,6 +2,7 @@ import { ENTITIES_LIST } from "../../data/entities/entities-list"
 
 import { asyncLocalStorageService } from "../async-local-storage-service"
 import { sortEntityService } from "./sort-entity-service"
+import { filterEntityService } from "./filter-entity-service"
 
 import { EntitySortParam } from "../../types/entity-sort-param"
 import { EntityItem } from "../../types/entity-item"
@@ -12,9 +13,10 @@ const getEntityByName = (name: string) => {
 }
 
 
-const queryEntityItems = async (dbName: string, sortBy: EntitySortParam, fallbackDB: unknown[]) => {
+const queryEntityItems = async (dbName: string, sortBy: EntitySortParam, searchTitle: string, fallbackDB: unknown[]) => {
     try {
         let items = await asyncLocalStorageService.query(dbName, fallbackDB) as EntityItem[]
+        if (searchTitle) items = filterEntityService.filterEntityByTitle(items, searchTitle)
         if (sortBy.sKey && sortBy.sOrder) items = sortEntityService.dynamicEntitySort(items, sortBy)
         return items
     }

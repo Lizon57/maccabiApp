@@ -10,6 +10,7 @@ import { Loader } from "../../components/common/loader/loader"
 import { EntityList } from "../../components/entities/portal/entity-list/entity-list"
 import { OptionsList } from "../../components/entities/portal/options-list/options-list"
 import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
+import { useDebounce } from "../../hooks/use-debounce"
 
 
 export const EntityPortal = (entityName: string) => {
@@ -18,8 +19,14 @@ export const EntityPortal = (entityName: string) => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     const [items, setItems] = useState<EntityItem[]>([])
+    const [searchTitle, setSearchTitle] = useState('')
 
     const sortBy = useEntitySortHandler()
+    const debouncedSearchCallback = useDebounce(setSearchTitle, 700)
+
+    useEffect(() => {
+        setIsLoading(true)
+    }, [searchTitle])
 
 
     useEffect(() => {
@@ -30,7 +37,7 @@ export const EntityPortal = (entityName: string) => {
 
             try {
                 const { dbInfo: { name: dbName, fallbackDB } } = ENTITY
-                const items = await entityService.queryEntityItems(dbName, sortBy, fallbackDB) as EntityItem[]
+                const items = await entityService.queryEntityItems(dbName, sortBy, searchTitle, fallbackDB) as EntityItem[]
                 setItems(items)
             } catch ({ message }) {
                 setErrorMessage(message as string)
@@ -40,7 +47,7 @@ export const EntityPortal = (entityName: string) => {
             }
         }
         loadItems()
-    }, [isLoading, ENTITY, items, sortBy])
+    }, [isLoading, ENTITY, items, sortBy, searchTitle])
 
 
     if (isLoading || !ENTITY) return <Loader />
@@ -62,7 +69,11 @@ export const EntityPortal = (entityName: string) => {
                 </span>
 
                 <span className="options">
-                    <OptionsList setIsLoading={setIsLoading} sorts={ENTITY.listPageInfo.sorts} />
+                    <OptionsList
+                        sorts={ENTITY.listPageInfo.sorts}
+                        searchValue={searchTitle}
+                        setIsLoading={setIsLoading}
+                        searchCallback={debouncedSearchCallback} />
                 </span>
             </h2>
 
