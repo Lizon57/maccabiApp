@@ -11,6 +11,10 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
     const [isLike, setIsLike] = useState(false)
     const toggleIsLike = () => setIsLike(!isLike)
 
+
+    const TOTAL_IMAGE = item.images.length
+
+
     return (
         <div className="dynamic-entity-preview--square-entity-preview__container">
             <div className="title">
@@ -25,6 +29,9 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
                     onClick={toggleIsLike}>
                     {isLike ? <AiFillHeart /> : <AiOutlineHeart />}
                 </span>
+
+                {TOTAL_IMAGE > 1 && <span className="image-counter" title={`${TOTAL_IMAGE} תמונות תצוגה`}>{TOTAL_IMAGE}</span>}
+
                 <ImageSlider imagePath={imagePath} images={item.images} />
             </div>
         </div>

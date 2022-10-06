@@ -30,5 +30,19 @@ div.dynamic-entity-preview--square-entity-preview__container {
         color: $clr-red-regular;
       }
     }
+
+    span.image-counter {
+      position: absolute;
+      top: $space-block-xxxSmall-rem;
+      left: $space-inline-xxxSmall-rem;
+      z-index: 5;
+
+      user-select: none;
+      border-radius: 0.2rem;
+      background-color: $clr-white-darkest;
+      font-size: $font-size-xxSmall-rem;
+      padding-inline: 3px;
+      padding-block: 3px;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import Slider from "react-slick"
 
 
-export const ImageSlider = ({ imagePath, images }: PropsType) => {
+export const ImageSlider = ({ imagePath, images }: Props) => {
     const SETTING = {
         dots: true,
         speed: 300,
@@ -22,7 +22,7 @@ export const ImageSlider = ({ imagePath, images }: PropsType) => {
 }
 
 
-type PropsType = {
+type Props = {
     imagePath: string,
     images: string[]
 }
