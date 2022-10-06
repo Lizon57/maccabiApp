@@ -39,12 +39,13 @@ div.entities-portal-cmp--image-carousel__container {
     }
 
     ul.slick-dots {
-      bottom: 0;
+      bottom: $space-block-xSmall-rem;
 
       li {
         margin: 0;
-        width: 1rem;
-        height: 1rem;
+        margin-inline-start: $space-inline-xxSmall-rem;
+        width: 0.5rem;
+        height: 0.5rem;
 
         button:hover::before {
           color: $clr-blue-darkest;

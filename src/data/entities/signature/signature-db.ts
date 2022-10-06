@@ -1,4 +1,6 @@
+import { getRandomInt } from "../../../services/util/get-random-int"
 import { makeId } from "../../../services/util/make-id"
+
 import { SignatureEntityItem } from "../../../types/signature-entity-item"
 
 
@@ -16,7 +18,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'מיקי ברקוביץ\''
             },
-            view: 120
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_1.png', 'signature_2.png', 'signature_3.png', 'signature_4.png']
@@ -35,7 +48,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'אבי נמני'
             },
-            view: 20
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_2.png', 'signature_3.png', 'signature_4.png', 'signature_5.png']
@@ -54,7 +78,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'עומר דבדה'
             },
-            view: 400
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_1.png', 'signature_4.png']
@@ -73,7 +108,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'אריאל כצנלסון'
             },
-            view: 40
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_4.png']
@@ -92,7 +138,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'קייל אנסינג'
             },
-            view: 40
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_2.png', 'signature_4.png']
@@ -111,7 +168,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'יותם בריגר'
             },
-            view: 40
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_1.png', 'signature_4.png']
@@ -130,7 +198,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'נח וולף'
             },
-            view: 40
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_3.png', 'signature_2.png']
@@ -149,7 +228,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'אייל פרולינגר'
             },
-            view: 40
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_1.png', 'signature_2.png']
@@ -168,7 +258,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'פטר קוממניץ\''
             },
-            view: 450
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_2.png', 'signature_5.png']
@@ -187,7 +288,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'טל בורנשטיין'
             },
-            view: 10
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_3.png', 'signature_5.png']
@@ -206,7 +318,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'יותם הלפרין'
             },
-            view: 5
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_5.png', 'signature_1.png']
@@ -225,7 +348,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'ערן זהבי'
             },
-            view: 50
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_5.png', 'signature_1.png']
@@ -244,7 +378,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'דור פרץ'
             },
-            view: 60
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_3.png', 'signature_2.png']
@@ -263,7 +408,18 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'דניאל פרץ'
             },
-            view: 70
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 480),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 40)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
         },
 
         images: ['signature_4.png', 'signature_2.png']

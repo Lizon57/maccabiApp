@@ -9,8 +9,19 @@ export type EntityItem = {
         name: {
             display: string
         }
-        view: number
     },
+
+    itemInfo: {
+        view: number,
+        rate: {
+            avg: number,
+            raterCount: number
+        }
+        editHistory: {
+            total: number,
+            lastEditDate: Date
+        }
+    }
 
     images: string[]
 }

@@ -8,7 +8,8 @@ const dynamicEntitySort = (entityList: EntityItem[], sortBy: EntitySortParam) =>
             sortedList = _sortEntityByStringKey(sortedList, sortBy)
             break
 
-        case 'entityInfo.view':
+        case 'itemInfo.view':
+        case 'itemInfo.rate.avg':
             sortedList = _sortEntityByNumberKey(sortedList, sortBy)
             break
 
