@@ -1,6 +1,6 @@
 let additionalStyle: style;
 
-export const CircularProgressBar = ({ type }: propsType) => {
+export const CircularProgressBar = ({ type }: Props) => {
     switch (type) {
         case 'success':
             additionalStyle = { stroke: 'green' }
@@ -27,7 +27,7 @@ export const CircularProgressBar = ({ type }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     type: string
 }
 

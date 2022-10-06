@@ -1,6 +1,6 @@
 import { branchService } from "../../../services/app/branch-service"
 
-export const DisplayBranchIconById = ({ id, className }: propsType) => {
+export const DisplayBranchIconById = ({ id, className }: Props) => {
     const branch = branchService.getById(id)
 
     return (
@@ -14,7 +14,7 @@ export const DisplayBranchIconById = ({ id, className }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     id: string,
     className?: string
 }

@@ -5,7 +5,7 @@ import { useWindowSize } from "../../../hooks/use-window-size"
 import { useWindowScrollY } from "../../../hooks/use-window-scroll-y"
 
 
-export const AppAdditionalContent = ({ isBlockEnd = false, children }: propsType) => {
+export const AppAdditionalContent = ({ isBlockEnd = false, children }: Props) => {
     const { appFooterClientHeight } = useStoreSelector(state => state.appLayout)
     const scrollY = useWindowScrollY()
     const WINDOW_HEIGHT = useWindowSize().height
@@ -34,7 +34,7 @@ export const AppAdditionalContent = ({ isBlockEnd = false, children }: propsType
 }
 
 
-type propsType = {
+type Props = {
     isBlockEnd?: boolean,
     children: JSX.Element,
 }

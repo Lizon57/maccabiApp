@@ -2,7 +2,7 @@ import { FiTriangle } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
 
-export const NavListPreview = ({ category, currentCategoryOpen, setCurrentCategoryOpen }: propsType) => {
+export const NavListPreview = ({ category, currentCategoryOpen, setCurrentCategoryOpen }: Props) => {
     return (
         <li className="app-header--side-menu__drop-down">
             <div
@@ -24,7 +24,7 @@ export const NavListPreview = ({ category, currentCategoryOpen, setCurrentCatego
 }
 
 
-type propsType = {
+type Props = {
     category: {
         id: string,
         text: string,

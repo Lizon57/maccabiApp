@@ -4,7 +4,7 @@ import { useOnClickOutside } from "../../../../../hooks/use-on-click-outside"
 import { BiSort } from "react-icons/bi"
 
 
-export const SortDropDown = ({ setIsLoading }: propsType) => {
+export const SortDropDown = ({ setIsLoading }: Props) => {
     const [isSortModalOpen, setIsSortModalOpen] = useState(false)
     const toggleIsSortModalOpen = () => setIsSortModalOpen(!isSortModalOpen)
 
@@ -67,7 +67,7 @@ const DATA = [
 ]
 
 
-type propsType = {
+type Props = {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 

@@ -1,7 +1,7 @@
 import { RiEmotionSadFill } from "react-icons/ri"
 
 
-export const ErrorMessage = ({ message }: propsType) => {
+export const ErrorMessage = ({ message }: Props) => {
     return (
         <div className="common-cmp--error-message">
             <div className="error-emoji-container">
@@ -16,6 +16,6 @@ export const ErrorMessage = ({ message }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     message: string
 }

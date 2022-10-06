@@ -11,7 +11,7 @@ const POSSIBLE_SIZE = {
 }
 
 
-export const RenderByDeviceWidth = ({ children, minDeviceWide, maxDeviceWide, isInclusive }: propsType) => {
+export const RenderByDeviceWidth = ({ children, minDeviceWide, maxDeviceWide, isInclusive }: Props) => {
     const ACTUAL_DEVICE_SIZE = useWindowSize().width
     const [shouldRender, setShouldRender] = useState(false)
 
@@ -67,7 +67,7 @@ export const RenderByDeviceWidth = ({ children, minDeviceWide, maxDeviceWide, is
 }
 
 
-type propsType = {
+type Props = {
     minDeviceWide?: device,
     maxDeviceWide?: device,
     isInclusive?: boolean,

@@ -3,7 +3,7 @@ import { BiSearch } from "react-icons/bi"
 import { FiXCircle } from "react-icons/fi"
 
 
-export const SearchInput = ({ placeholder, title }: propsType) => {
+export const SearchInput = ({ placeholder, title }: Props) => {
     const [search, setSearch] = useState<string>('')
 
     const onSearchHandler = ({ currentTarget: { value } }: React.FormEvent<HTMLInputElement>) => {
@@ -32,7 +32,7 @@ export const SearchInput = ({ placeholder, title }: propsType) => {
 
 
 
-type propsType = {
+type Props = {
     placeholder?: string
     title: string
 }

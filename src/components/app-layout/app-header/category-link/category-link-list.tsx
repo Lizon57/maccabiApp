@@ -4,7 +4,7 @@ import { CategoryLinkPreview } from "./category-link-preview"
 
 
 
-export const CategoryLinkList = ({ relevant, isLeftSided }: propsType) => {
+export const CategoryLinkList = ({ relevant, isLeftSided }: Props) => {
     return (
         <ul className={'app-header--category-link__container' + (isLeftSided ? ' left-sided' : '')}>
             {CATEGORY_LINKS.slice(...relevant).map(categoryLink => {
@@ -15,7 +15,7 @@ export const CategoryLinkList = ({ relevant, isLeftSided }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     relevant: number[],
     isLeftSided?: boolean
 }

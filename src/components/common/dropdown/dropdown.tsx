@@ -4,7 +4,7 @@ import { IconType } from "react-icons"
 import { useOnClickOutside } from "../../../hooks/use-on-click-outside"
 
 
-export const Dropdown = ({ controllerText, controllerIcon: Icon, title, children }: propsType) => {
+export const Dropdown = ({ controllerText, controllerIcon: Icon, title, children }: Props) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen)
 
@@ -29,7 +29,7 @@ export const Dropdown = ({ controllerText, controllerIcon: Icon, title, children
 }
 
 
-type propsType = {
+type Props = {
     controllerText?: string,
     controllerIcon?: IconType,
     title?: string,

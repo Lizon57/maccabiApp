@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export const CategoryLinkPreview = ({ child }: propsType) => {
+export const CategoryLinkPreview = ({ child }: Props) => {
     return (
         <li className="app-header--category-link__preview-container">
             {child.text}
@@ -17,7 +17,7 @@ export const CategoryLinkPreview = ({ child }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     child: {
         id: string,
         text: string,

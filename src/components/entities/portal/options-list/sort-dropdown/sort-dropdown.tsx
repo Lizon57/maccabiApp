@@ -8,7 +8,7 @@ import { EntitySortOption } from "../../../../../types/entity-sort-option"
 import { Dropdown } from "../../../../common/dropdown/dropdown"
 
 
-export const SortDropdown = ({ sorts, setIsLoading }: propsType) => {
+export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
     const navigate = useNavigate()
     const url = new URL(window.location.href)
     const params = new URLSearchParams(url.search)
@@ -61,7 +61,7 @@ export const SortDropdown = ({ sorts, setIsLoading }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     sorts: EntitySortOption[]
 }

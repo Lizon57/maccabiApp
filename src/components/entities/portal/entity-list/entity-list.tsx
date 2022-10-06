@@ -4,7 +4,7 @@ import { EntityItem } from "../../../../types/entity-item"
 import { DynamicEntityPreview } from "../dynamic-entity-preview/dynamic-entity-preview"
 
 
-export const EntityList = ({ entity, items }: propsType) => {
+export const EntityList = ({ entity, items }: Props) => {
     return (
         <div className="entity-portal--entitiy-list__container">
             {items.map(item => <DynamicEntityPreview
@@ -16,7 +16,7 @@ export const EntityList = ({ entity, items }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     entity: Entity,
     items: EntityItem[]
 }

@@ -6,7 +6,7 @@ import { SearchInput } from "../../../common/search-input/search-input"
 import { SortDropdown } from "./sort-dropdown/sort-dropdown"
 
 
-export const OptionsList = ({ setIsLoading, sorts }: propsType) => {
+export const OptionsList = ({ setIsLoading, sorts }: Props) => {
     return (
         <div className="entities-portal-cmp--list-options__container">
             <SearchInput title="חפש לפי כותרת" placeholder="חפש כותרת" />
@@ -21,7 +21,7 @@ export const OptionsList = ({ setIsLoading, sorts }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     sorts: EntitySortOption[]
 }

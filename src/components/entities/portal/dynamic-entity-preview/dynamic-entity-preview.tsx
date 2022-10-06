@@ -1,7 +1,7 @@
 import { EntityItem } from "../../../../types/entity-item"
 import { SquareEntityPreview } from "./square-entity-preview"
 
-export const DynamicEntityPreview = ({ item, type }: propsType) => {
+export const DynamicEntityPreview = ({ item, type }: Props) => {
     switch (type) {
         case 'square':
             return <SquareEntityPreview item={item} />
@@ -12,7 +12,7 @@ export const DynamicEntityPreview = ({ item, type }: propsType) => {
 }
 
 
-type propsType = {
+type Props = {
     item: EntityItem,
     type: string
 }
