@@ -1,6 +1,10 @@
-import { FiXCircle } from "react-icons/fi"
 import { useNavigate } from "react-router-dom"
+
+import { FaRegLightbulb } from "react-icons/fa"
+import { FiXCircle } from "react-icons/fi"
+
 import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
+
 
 export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
     const PARAMS = new URLSearchParams(window.location.search)
@@ -16,7 +20,7 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
 
     return (
-        <div className="entities-portal--active-filter-preview__container">
+        <div className="entities-portal--active-filter-preview__container" title="מציג ">
             <span className="icon-wrapper" title="בטל סנן" onClick={onRemoveFilter}><FiXCircle /></span>
             <span className="text">מתוך 2 ענפים</span>
         </div>

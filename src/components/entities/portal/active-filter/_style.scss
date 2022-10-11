@@ -18,14 +18,15 @@ div.entities-portal--active-filter-list__container {
 div.entities-portal--active-filter-preview__container {
   display: flex;
   align-items: center;
+  gap: $space-inline-xxxSmall-rem;
 
   position: relative;
 
   user-select: none;
   border-radius: 0.2rem;
+  border: 1px solid $clr-white-darkest;
   font-size: $font-size-xxSmall-rem;
   padding: 5px;
-  box-shadow: 0 0 5px 1px $clr-white-darkest;
 
   span.icon-wrapper {
     cursor: pointer;
@@ -37,15 +38,13 @@ div.entities-portal--active-filter-preview__container {
       right: 1.7em;
 
       content: "";
-      background-color: $clr-white-darkest;
+      background-color: $clr-white-darker;
       width: 1px;
       height: 100%;
     }
-  }
 
-  svg {
-    display: block;
-
-    margin-inline-end: $space-inline-xxxSmall-rem;
+    svg {
+      display: block;
+    }
   }
 }
