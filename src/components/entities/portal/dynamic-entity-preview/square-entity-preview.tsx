@@ -11,7 +11,10 @@ import { ImageSlider } from "../image-slider/image-slider"
 
 export const SquareEntityPreview = ({ item, imagePath }: Props) => {
     const [isLike, setIsLike] = useState(false)
-    const toggleIsLike = () => setIsLike(!isLike)
+    const toggleIsLike = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        ev.preventDefault()
+        setIsLike(!isLike)
+    }
 
 
     const TOTAL_IMAGE = item.images.length
@@ -21,7 +24,7 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
 
     return (
         <div className="dynamic-entity-preview--square-entity-preview__container">
-            <Link to={entityInfo.name.display}>
+            <Link to={item.id}>
                 <div className="title">
                     <span className="branch-icon"><DisplayBranchIconById id={relatedInfo.branchId} /></span>
                     <span className="title">{entityInfo.name.display}</span>
@@ -31,7 +34,7 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
                     <span
                         className={"like-icon" + (isLike ? ' active' : '')}
                         title={isLike ? 'הסר מרשימת המועדפים' : 'הוסף לרשימת המועדפים'}
-                        onClick={toggleIsLike}>
+                        onClick={(ev) => toggleIsLike(ev)}>
                         {isLike ? <AiFillHeart /> : <AiOutlineHeart />}
                     </span>
 
