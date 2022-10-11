@@ -8,7 +8,7 @@ export const DynamicFilterConstructor = ({ toggleIsFilterSectionOpen }: Props) =
 
 
     return (
-        <div className="filter" title="סנן פריטים" onClick={onToggleFillter}>
+        <div className="entities-portal--dynamic-filter__icon-wrapper" title="סנן פריטים" onClick={onToggleFillter}>
             <BsFilter />
         </div>
     )

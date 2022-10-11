@@ -3,7 +3,7 @@ div.entities-portal-cmp--list-options__container {
   align-items: center;
   gap: $space-inline-xxSmall-rem;
 
-  div.filter,
+  div.entities-portal--dynamic-filter__icon-wrapper,
   div.entities-portal-cmp--sort-drop-down__container {
     display: flex;
     align-items: center;
@@ -13,6 +13,14 @@ div.entities-portal-cmp--list-options__container {
     transition: $transition-regular;
 
     &:hover {
+      background-color: $clr-white-darker;
+    }
+  }
+  div.filterby-icon {
+    cursor: pointer;
+    border-radius: 0.2rem;
+
+    &.active {
       background-color: $clr-white-darker;
     }
   }

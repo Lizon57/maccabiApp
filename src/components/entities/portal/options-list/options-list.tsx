@@ -6,26 +6,25 @@ import { DynamicFilterConstructor } from "./dynamic-filter-constructor/dynamic-f
 import { SortDropdown } from "./sort-dropdown/sort-dropdown"
 
 
-export const OptionsList = ({ sorts, searchValue, filters, setIsLoading, toggleIsFilterSectionOpen, searchCallback }: Props) => {
-    const shouldRenderPrimaryTextSearch = () => {
-        return filters.find(filter => filter.type === 'primary_text')
-    }
+export const OptionsList = ({ sorts, searchValue, filters, isFilterSectionOpen, setIsLoading, toggleIsFilterSectionOpen, searchCallback }: Props) => {
+    const shouldRenderPrimaryTextSearch = filters.find(filter => filter.type === 'primary_text')
 
-    const shouldRenderFiltersToggle = () => {
-        return !!filters.filter(filter => filter.type !== 'primary_text').length
-    }
+    const shouldRenderFiltersToggle = !!filters.filter(filter => filter.type !== 'primary_text').length
 
 
     return (
         <div className="entities-portal-cmp--list-options__container">
-            {shouldRenderPrimaryTextSearch() &&
+            {shouldRenderPrimaryTextSearch &&
                 <SearchInput
                     placeholder="חפש כותרת"
                     title="חפש לפי כותרת"
                     initialValue={searchValue}
                     searchCallback={searchCallback} />}
 
-            {shouldRenderFiltersToggle() && <DynamicFilterConstructor toggleIsFilterSectionOpen={toggleIsFilterSectionOpen} />}
+            {shouldRenderFiltersToggle &&
+                <div className={"filterby-icon" + (isFilterSectionOpen ? ' active' : '')}>
+                    <DynamicFilterConstructor toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}  />
+                </div>}
 
             <SortDropdown sorts={sorts} setIsLoading={setIsLoading} />
         </div>
@@ -37,6 +36,7 @@ type Props = {
     sorts: EntitySortOption[],
     searchValue: string,
     filters: EntityFilterOption[],
+    isFilterSectionOpen: boolean,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     toggleIsFilterSectionOpen: () => void,
     searchCallback: (value: React.SetStateAction<string>) => Promise<void>
