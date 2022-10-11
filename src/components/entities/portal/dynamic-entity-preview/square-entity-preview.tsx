@@ -1,7 +1,10 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
+
 import { AiFillEye, AiFillHeart, AiFillStar, AiOutlineHeart } from "react-icons/ai"
 import { FiEdit2 } from "react-icons/fi"
-import { Link } from "react-router-dom"
+
+import { getFormatedNumber } from "../../../../services/util/get-formated-number"
 
 import { EntityItem } from "../../../../types/entity/entity-item"
 
@@ -44,15 +47,15 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
 
                     <div className="additional-info">
                         <div className="views-and-rate">
-                            <div className="views" title={`${itemInfo.view} צפיות`}>
+                            <div className="views" title={`${getFormatedNumber(itemInfo.view)} צפיות`}>
                                 <span className="icon"><AiFillEye size={11} /></span>
-                                <span className="text">{itemInfo.view ? itemInfo.view : 'לא נצפה'}</span>
+                                <span className="text">{itemInfo.view ? getFormatedNumber(itemInfo.view) : 'לא נצפה'}</span>
                             </div>
 
                             <div
                                 className="rate"
                                 title={itemInfo.rate.avg
-                                    ? `${itemInfo.rate.avg} כוכבי דירוג (בידי ${itemInfo.rate.raterCount} מדרגים)`
+                                    ? `${itemInfo.rate.avg} כוכבי דירוג (בידי ${getFormatedNumber(itemInfo.rate.raterCount)} מדרגים)`
                                     : 'טרם דורג'}>
                                 <span className="icon"><AiFillStar size={11} /></span>
                                 <span className="text">{itemInfo.rate.avg ? itemInfo.rate.avg : 'ללא דירוג'}</span>

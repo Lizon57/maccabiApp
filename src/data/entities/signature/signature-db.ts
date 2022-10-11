@@ -21,10 +21,10 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 480),
+            view: getRandomInt(40, 1000000),
             rate: {
                 avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
+                raterCount: getRandomInt(0, 1000000)
             },
             editHistory: {
                 total: getRandomInt(0, 20),
