@@ -6,6 +6,7 @@ import { filterEntityService } from "./filter-entity-service"
 
 import { EntitySortParam } from "../../types/entity-sort-param"
 import { EntityItem } from "../../types/entity-item"
+import { Entity } from "../../types/entity"
 
 
 const getEntityByName = (name: string) => {
@@ -26,7 +27,20 @@ const queryEntityItems = async (dbName: string, sortBy: EntitySortParam, searchT
 }
 
 
+const getEntityItemById = async (id: string, entity: Entity) => {
+    try {
+        const entityDB = await asyncLocalStorageService.query(entity.dbInfo.name, entity.dbInfo.fallbackDB) as EntityItem[]
+        const item = entityDB.find(entity => entity.id === id)
+        return item
+    }
+    catch (_err) {
+        console.log(_err)
+    }
+}
+
+
 export const entityService = {
     getEntityByName,
-    queryEntityItems
+    queryEntityItems,
+    getEntityItemById
 }
