@@ -1,20 +1,18 @@
-import { BsFilter } from "react-icons/bs"
-
 import { EntityFilterOption } from "../../../../types/entity-filter-option"
 import { EntitySortOption } from "../../../../types/entity-sort-option"
 
 import { SearchInput } from "../../../common/search-input/search-input"
+import { DynamicFilterConstructor } from "./dynamic-filter-constructor/dynamic-filter-constructor"
 import { SortDropdown } from "./sort-dropdown/sort-dropdown"
 
 
 export const OptionsList = ({ sorts, searchValue, filters, setIsLoading, toggleIsFilterSectionOpen, searchCallback }: Props) => {
-    const onToggleFillter = () => {
-        window.scrollTo({ top: 0 })
-        toggleIsFilterSectionOpen()
-    }
-
     const shouldRenderPrimaryTextSearch = () => {
         return filters.find(filter => filter.type === 'primary_text')
+    }
+
+    const shouldRenderFiltersToggle = () => {
+        return !!filters.filter(filter => filter.type !== 'primary_text').length
     }
 
 
@@ -27,9 +25,7 @@ export const OptionsList = ({ sorts, searchValue, filters, setIsLoading, toggleI
                     initialValue={searchValue}
                     searchCallback={searchCallback} />}
 
-            <div className="filter" title="סנן פריטים" onClick={onToggleFillter}>
-                <BsFilter />
-            </div>
+            {shouldRenderFiltersToggle() && <DynamicFilterConstructor toggleIsFilterSectionOpen={toggleIsFilterSectionOpen} />}
 
             <SortDropdown sorts={sorts} setIsLoading={setIsLoading} />
         </div>

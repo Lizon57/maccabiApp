@@ -8,7 +8,7 @@ export const useEntitySortHandler = () => {
     const parsedQueryString = queryString.parse(location.search)
 
     return {
-        sKey: parsedQueryString.sKey || 'name',
+        sKey: parsedQueryString.sKey || 'entityInfo.name.display',
         sOrder: parsedQueryString.sOrder || 'asc'
     } as EntitySortParam
 }

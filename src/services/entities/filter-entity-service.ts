@@ -1,3 +1,4 @@
+import { EntityFilterOption } from "../../types/entity-filter-option"
 import { EntityItem } from "../../types/entity-item"
 
 
@@ -6,6 +7,17 @@ const filterEntityByTitle = (items: EntityItem[], searchTitle: string) => {
 }
 
 
+const getActiveFilters = (possibleFilters: EntityFilterOption[]) => {
+    const PARAMS = new URLSearchParams(document.location.search)
+
+    return possibleFilters.filter(possibleFilter => {
+        if (PARAMS.get(possibleFilter.param)) return 1
+        else return 0
+    })
+}
+
+
 export const filterEntityService = {
-    filterEntityByTitle
+    filterEntityByTitle,
+    getActiveFilters
 }
