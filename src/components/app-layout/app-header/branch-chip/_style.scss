@@ -24,6 +24,8 @@ section.app-header--branch-chip__list-container {
     align-items: center;
     gap: $space-inline-regular-rem;
 
+    padding-inline: unset;
+
     &:hover {
       span.description {
         opacity: 1;

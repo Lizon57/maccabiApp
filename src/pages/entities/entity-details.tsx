@@ -21,9 +21,9 @@ export const EntityDetails = (entity: Entity) => {
     useEffect(() => {
         if (!isLoading || !EntityItemId) return
 
-        const loadItems = async () => {
+        const loadItem = async () => {
             if (!isLoading) return
-            const item = await entityService.getEntityItemById(EntityItemId, entity)
+            const item = await entityService.getEntityItemById(EntityItemId, entity) as EntityItem
             setItem(item)
             try {
 
@@ -34,7 +34,7 @@ export const EntityDetails = (entity: Entity) => {
                 setIsLoading(false)
             }
         }
-        loadItems()
+        loadItem()
     }, [isLoading, entity, EntityItemId])
 
 
@@ -44,7 +44,7 @@ export const EntityDetails = (entity: Entity) => {
 
     return (
         <div>
-            עמוד פריט
+            {item?.entityInfo.name.display}
         </div>
     )
 }

@@ -74,6 +74,7 @@ export const EntityPortal = (entityName: string) => {
                     <OptionsList
                         sorts={ENTITY.listPageInfo.sorts}
                         searchValue={searchTitle}
+                        filters={ENTITY.listPageInfo.filters}
                         setIsLoading={setIsLoading}
                         searchCallback={debouncedSearchCallback}
                         toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}

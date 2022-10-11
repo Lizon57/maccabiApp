@@ -44,6 +44,10 @@ export const signatureEntity: Entity = {
             { id: makeId(), title: 'צפיות (יותר-פחות)', key: 'itemInfo.view', order: 'desc' },
             { id: makeId(), title: 'דירוג (פחות-יותר)', key: 'itemInfo.rate.avg', order: 'asc' },
             { id: makeId(), title: 'דירוג (יותר-פחות)', key: 'itemInfo.rate.avg', order: 'desc' },
+        ],
+        filters: [
+            { id: makeId(), type: 'primary_text', key: 'entityInfo.name.display' },
+            { id: makeId(), type: 'multi_elect', key: 'relatedInfo.branchId' }
         ]
     }
 }

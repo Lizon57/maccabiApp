@@ -1,4 +1,5 @@
 import { IconType } from "react-icons"
+import { EntityFilterOption } from "./entity-filter-option"
 
 import { EntitySortOption } from "./entity-sort-option"
 import { SignatureEntityItem } from "./signature-entity-item"
@@ -35,6 +36,7 @@ export type Entity = {
 
     listPageInfo: {
         previewType: string,
-        sorts: EntitySortOption[]
+        sorts: EntitySortOption[],
+        filters: EntityFilterOption[]
     }
 }
