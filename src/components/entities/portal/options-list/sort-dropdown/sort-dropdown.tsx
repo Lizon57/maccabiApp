@@ -10,28 +10,27 @@ import { Dropdown } from "../../../../common/dropdown/dropdown"
 
 export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
     const navigate = useNavigate()
-    const url = new URL(window.location.href)
-    const params = new URLSearchParams(url.search)
+    const PARAMS = new URLSearchParams(window.location.href)
 
 
     const onSelectSort = ({ key, order }: EntitySortOption) => {
-        params.set('sKey', key)
-        params.set('sOrder', order)
-        navigate({ search: params.toString() })
+        PARAMS.set('sKey', key)
+        PARAMS.set('sOrder', order)
+        navigate({ search: PARAMS.toString() })
         window.scrollTo({ top: 0 })
         setIsLoading(true)
     }
 
 
     const getIsSortOptionActive = ({ key, order }: EntitySortOption) => {
-        return ((key === params.get('sKey')) && (order === params.get('sOrder'))) ? true : false
+        return ((key === PARAMS.get('sKey')) && (order === PARAMS.get('sOrder'))) ? true : false
     }
 
 
     const onClearSort = () => {
-        params.delete('sKey')
-        params.delete('sOrder')
-        navigate({ search: params.toString() })
+        PARAMS.delete('sKey')
+        PARAMS.delete('sOrder')
+        navigate({ search: PARAMS.toString() })
         window.scrollTo({ top: 0 })
         setIsLoading(true)
     }

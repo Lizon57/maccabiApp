@@ -7,7 +7,7 @@ import { EntityFilterOption } from "../../../../types/entity/filter/entity-filte
 import { ActiveFilterPreview } from "./active-filter-preview"
 
 
-export const ActiveFilterList = ({ possibleFiilters }: Props) => {
+export const ActiveFilterList = ({ possibleFiilters, setIsLoading }: Props) => {
     const [activeFilters, setActiveFilters] = useState<EntityFilterOption[]>()
 
     useEffect(() => {
@@ -21,7 +21,11 @@ export const ActiveFilterList = ({ possibleFiilters }: Props) => {
             <div className="entities-portal--active-filter-list__container">
                 <span className="title">סננים פעילים</span>
                 <div className="list-container">
-                    {activeFilters.map(activeFilter => <ActiveFilterPreview key={activeFilter.id} />)}
+                    {activeFilters.map(activeFilter => <ActiveFilterPreview
+                        key={activeFilter.id}
+                        filter={activeFilter}
+                        setIsLoading={setIsLoading}
+                    />)}
                 </div>
             </div>
         ) : null
@@ -29,5 +33,6 @@ export const ActiveFilterList = ({ possibleFiilters }: Props) => {
 
 
 type Props = {
-    possibleFiilters: EntityFilterOption[]
+    possibleFiilters: EntityFilterOption[],
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

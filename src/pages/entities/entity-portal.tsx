@@ -83,7 +83,7 @@ export const EntityPortal = (entityName: string) => {
                 </span>
             </h2>
 
-            <ActiveFilterList possibleFiilters={ENTITY.listPageInfo.filters} />
+            <ActiveFilterList possibleFiilters={ENTITY.listPageInfo.filters} setIsLoading={setIsLoading} />
             {isFilterSectionOpen && <div>סינונים</div>}
 
             {items.length
