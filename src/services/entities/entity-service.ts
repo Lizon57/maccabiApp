@@ -8,7 +8,7 @@ import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 import { EntityItem } from "../../types/entity/entity-item"
 import { Entity } from "../../types/entity/entity"
 import { pageCategoryService } from "../page-category-service"
-import { MiniPageCategory } from "../../types/page-category"
+import { MiniPageCategory, PageCategory } from "../../types/page-category"
 
 
 const getEntityByName = (name: string) => {
@@ -36,11 +36,14 @@ const getEntityItemById = async (id: string, entity: Entity) => {
         if (!item) return Promise.reject('לא נמצא פריט מבוקש')
 
         if (item.entityInfo.ctgIds) {
-            item.entityInfo.miniCategories = [] as MiniPageCategory[]
-            item.entityInfo.ctgIds.forEach(async categoryId => {
-                const miniCategory = await pageCategoryService.getById(categoryId) as MiniPageCategory
-                item.entityInfo.miniCategories?.push(miniCategory)
+            let miniCategoriesPrms = [] as Promise<PageCategory | undefined>[]
+            item.entityInfo.ctgIds.forEach(categoryId => {
+                const miniCategory = pageCategoryService.getById(categoryId)
+                miniCategoriesPrms.push(miniCategory)
             })
+
+            item.entityInfo.miniCategories = await Promise.all(miniCategoriesPrms) as PageCategory[]
+
         }
         return item
     }

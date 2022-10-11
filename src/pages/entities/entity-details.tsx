@@ -5,7 +5,6 @@ import { entityService } from "../../services/entities/entity-service"
 
 import { Entity } from "../../types/entity/entity"
 import { EntityItem } from "../../types/entity/entity-item"
-import { MiniPageCategory } from "../../types/page-category"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
@@ -18,7 +17,6 @@ export const EntityDetails = (entity: Entity) => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     const [item, setItem] = useState<EntityItem>()
-    const [pageCategories, setPageCategories] = useState<MiniPageCategory[]>()
 
     useEffect(() => {
         if (!isLoading || !EntityItemId) return

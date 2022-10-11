@@ -49,7 +49,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'אבי נמני'
             },
-            ctgIds: ['categoryId0001', 'categoryId0001']
+            ctgIds: ['categoryId0001', 'categoryId0002']
         },
 
         itemInfo: {
