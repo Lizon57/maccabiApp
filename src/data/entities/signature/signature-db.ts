@@ -18,6 +18,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'מיקי ברקוביץ\''
             },
+            ctgIds: ['categoryId0001', 'categoryId0003']
         },
 
         itemInfo: {
@@ -48,6 +49,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'אבי נמני'
             },
+            ctgIds: ['categoryId0001', 'categoryId0001']
         },
 
         itemInfo: {
@@ -78,6 +80,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'עומר דבדה'
             },
+            ctgIds: ['categoryId0001', 'categoryId0005']
         },
 
         itemInfo: {
@@ -108,6 +111,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             name: {
                 display: 'אריאל כצנלסון'
             },
+            ctgIds: ['categoryId0001', 'categoryId0004']
         },
 
         itemInfo: {
@@ -125,303 +129,303 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
         images: ['signature_4.png']
     },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'קייל אנסינג'
-            },
-            branchId: 'brandId00003',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'קייל אנסינג'
+    //         },
+    //         branchId: 'brandId00003',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'קייל אנסינג'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'קייל אנסינג'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_2.png', 'signature_4.png']
-    },
+    //     images: ['signature_2.png', 'signature_4.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'יותם בריגר'
-            },
-            branchId: 'brandId00003',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'יותם בריגר'
+    //         },
+    //         branchId: 'brandId00003',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'יותם בריגר'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'יותם בריגר'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_1.png', 'signature_4.png']
-    },
+    //     images: ['signature_1.png', 'signature_4.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'נח וולף'
-            },
-            branchId: 'brandId00003',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'נח וולף'
+    //         },
+    //         branchId: 'brandId00003',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'נח וולף'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'נח וולף'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_3.png', 'signature_2.png']
-    },
+    //     images: ['signature_3.png', 'signature_2.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'אייל פרולינגר'
-            },
-            branchId: 'brandId00004',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'אייל פרולינגר'
+    //         },
+    //         branchId: 'brandId00004',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'אייל פרולינגר'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'אייל פרולינגר'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_1.png', 'signature_2.png']
-    },
+    //     images: ['signature_1.png', 'signature_2.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'פטר קוממניץ\''
-            },
-            branchId: 'brandId00004',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'פטר קוממניץ\''
+    //         },
+    //         branchId: 'brandId00004',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'פטר קוממניץ\''
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'פטר קוממניץ\''
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_2.png', 'signature_5.png']
-    },
+    //     images: ['signature_2.png', 'signature_5.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'טל בורנשטיין'
-            },
-            branchId: 'brandId00002',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'טל בורנשטיין'
+    //         },
+    //         branchId: 'brandId00002',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'טל בורנשטיין'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'טל בורנשטיין'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_3.png', 'signature_5.png']
-    },
+    //     images: ['signature_3.png', 'signature_5.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'יותם הלפרין'
-            },
-            branchId: 'brandId00002',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'יותם הלפרין'
+    //         },
+    //         branchId: 'brandId00002',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'יותם הלפרין'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'יותם הלפרין'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_5.png', 'signature_1.png']
-    },
+    //     images: ['signature_5.png', 'signature_1.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'ערן זהבי'
-            },
-            branchId: 'brandId00001',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'ערן זהבי'
+    //         },
+    //         branchId: 'brandId00001',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'ערן זהבי'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'ערן זהבי'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_5.png', 'signature_1.png']
-    },
+    //     images: ['signature_5.png', 'signature_1.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'דור פרץ'
-            },
-            branchId: 'brandId00001',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'דור פרץ'
+    //         },
+    //         branchId: 'brandId00001',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'דור פרץ'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'דור פרץ'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_3.png', 'signature_2.png']
-    },
+    //     images: ['signature_3.png', 'signature_2.png']
+    // },
 
-    {
-        id: makeId(),
-        relatedInfo: {
-            miniProfile: {
-                displayName: 'דניאל פרץ'
-            },
-            branchId: 'brandId00001',
-        },
+    // {
+    //     id: makeId(),
+    //     relatedInfo: {
+    //         miniProfile: {
+    //             displayName: 'דניאל פרץ'
+    //         },
+    //         branchId: 'brandId00001',
+    //     },
 
-        entityInfo: {
-            name: {
-                display: 'דניאל פרץ'
-            },
-        },
+    //     entityInfo: {
+    //         name: {
+    //             display: 'דניאל פרץ'
+    //         },
+    //     },
 
-        itemInfo: {
-            view: getRandomInt(40, 480),
-            rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 40)
-            },
-            editHistory: {
-                total: getRandomInt(0, 20),
-                lastEditDate: new Date()
-            }
-        },
+    //     itemInfo: {
+    //         view: getRandomInt(40, 480),
+    //         rate: {
+    //             avg: getRandomInt(0, 5),
+    //             raterCount: getRandomInt(0, 40)
+    //         },
+    //         editHistory: {
+    //             total: getRandomInt(0, 20),
+    //             lastEditDate: new Date()
+    //         }
+    //     },
 
-        images: ['signature_4.png', 'signature_2.png']
-    },
+    //     images: ['signature_4.png', 'signature_2.png']
+    // },
 ]

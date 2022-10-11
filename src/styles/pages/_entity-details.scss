@@ -1,4 +1,8 @@
 section.entities-pages--entity-display__container {
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  height: 100%;
+
   h2.title {
     display: flex;
     align-items: center;
@@ -13,6 +17,7 @@ section.entities-pages--entity-display__container {
     font-family: $typography-emphasis;
     font-weight: 500;
     margin: 0;
+    margin-block-end: $space-block-xxSmall-rem;
     width: 100%;
 
     @include viewport-wide-start-from-exclusive($viewport-regular) {

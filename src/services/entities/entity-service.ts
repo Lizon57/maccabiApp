@@ -7,6 +7,8 @@ import { filterEntityService } from "./filter-entity-service"
 import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 import { EntityItem } from "../../types/entity/entity-item"
 import { Entity } from "../../types/entity/entity"
+import { pageCategoryService } from "../page-category-service"
+import { MiniPageCategory } from "../../types/page-category"
 
 
 const getEntityByName = (name: string) => {
@@ -31,6 +33,15 @@ const getEntityItemById = async (id: string, entity: Entity) => {
     try {
         const entityDB = await asyncLocalStorageService.query(entity.dbInfo.name, entity.dbInfo.fallbackDB) as EntityItem[]
         const item = entityDB.find(entity => entity.id === id)
+        if (!item) return Promise.reject('לא נמצא פריט מבוקש')
+
+        if (item.entityInfo.ctgIds) {
+            item.entityInfo.miniCategories = [] as MiniPageCategory[]
+            item.entityInfo.ctgIds.forEach(async categoryId => {
+                const miniCategory = await pageCategoryService.getById(categoryId) as MiniPageCategory
+                item.entityInfo.miniCategories?.push(miniCategory)
+            })
+        }
         return item
     }
     catch (_err) {

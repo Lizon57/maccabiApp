@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 
-import { FaRegLightbulb } from "react-icons/fa"
 import { FiXCircle } from "react-icons/fi"
 
 import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"

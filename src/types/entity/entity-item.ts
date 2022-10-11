@@ -1,3 +1,6 @@
+import { MiniPageCategory } from "../page-category"
+
+
 export type EntityItem = {
     id: string,
 
@@ -8,7 +11,9 @@ export type EntityItem = {
     entityInfo: {
         name: {
             display: string
-        }
+        },
+        ctgIds: string[],
+        miniCategories?: MiniPageCategory[]
     },
 
     itemInfo: {
