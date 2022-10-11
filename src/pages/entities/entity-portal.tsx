@@ -11,7 +11,7 @@ import { EntityList } from "../../components/entities/portal/entity-list/entity-
 import { OptionsList } from "../../components/entities/portal/options-list/options-list"
 import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
 import { useDebounce } from "../../hooks/use-debounce"
-import { ActiveFilterList } from "../../components/entities/portal/active-filter-list/active-filter-list"
+import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
 
 
 export const EntityPortal = (entityName: string) => {

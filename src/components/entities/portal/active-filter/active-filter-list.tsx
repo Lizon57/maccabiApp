@@ -4,6 +4,8 @@ import { filterEntityService } from "../../../../services/entities/filter-entity
 
 import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
 
+import { ActiveFilterPreview } from "./active-filter-preview"
+
 
 export const ActiveFilterList = ({ possibleFiilters }: Props) => {
     const [activeFilters, setActiveFilters] = useState<EntityFilterOption[]>()
@@ -16,8 +18,11 @@ export const ActiveFilterList = ({ possibleFiilters }: Props) => {
 
     return activeFilters?.length
         ? (
-            <div>
-                פילטרים פעילים: {activeFilters.map(activeFilter => <div>{JSON.stringify(activeFilter)}</div>)}
+            <div className="entities-portal--active-filter-list__container">
+                <span className="title">סננים פעילים</span>
+                <div className="list-container">
+                    {activeFilters.map(activeFilter => <ActiveFilterPreview key={activeFilter.id} />)}
+                </div>
             </div>
         ) : null
 }
