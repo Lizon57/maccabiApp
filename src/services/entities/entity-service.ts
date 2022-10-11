@@ -9,7 +9,7 @@ import { EntityItem } from "../../types/entity-item"
 
 
 const getEntityByName = (name: string) => {
-    return ENTITIES_LIST.find(entity => entity.entityInfo.name.display === name)
+    return ENTITIES_LIST.find(entity => entity.name === name)
 }
 
 

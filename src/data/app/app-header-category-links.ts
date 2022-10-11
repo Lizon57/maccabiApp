@@ -126,7 +126,7 @@ export const CATEGORY_LINKS = [
                 id: makeId(),
                 title: 'חתימות',
                 description: 'תן לי חתימה',
-                path: 'חתימות',
+                path: 'signature',
                 img: 'cnc-signature.png'
             },
         ]

@@ -9,6 +9,8 @@ import { SIGNATURE_DB } from "./signature-db"
 export const signatureEntity: Entity = {
     id: makeId(),
 
+    name: 'signature',
+
     dbInfo: {
         name: 'SignatureDB',
         fallbackDB: SIGNATURE_DB

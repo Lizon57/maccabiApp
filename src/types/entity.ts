@@ -7,6 +7,8 @@ import { SignatureEntityItem } from "./signature-entity-item"
 export type Entity = {
     id: string,
 
+    name: string,
+
     dbInfo: {
         name: string,
         fallbackDB: SignatureEntityItem[]

@@ -33,7 +33,7 @@ export const App = () => {
                         <Routes>
                             {ROUTES.map(route => <Route
                                 key={route.id}
-                                path={encodeURIComponent(route.path)}
+                                path={route.path}
                                 element={<route.element />} />)}
                         </Routes>
                         {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
