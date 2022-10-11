@@ -38,13 +38,18 @@ export const EntityDetails = (entity: Entity) => {
     }, [isLoading, entity, EntityItemId])
 
 
-    if (isLoading || !EntityItemId) return <Loader />
+    if (isLoading || !EntityItemId || !item) return <Loader />
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
+    const { entityInfo: { image: { icon: Icon } } } = entity
+    const { entityInfo: { name } } = item
 
     return (
-        <div>
-            {item?.entityInfo.name.display}
-        </div>
+        <section className="entities-pages--entity-display__container">
+            <h2 className="title">
+                <span className="icon">{<Icon />}</span>
+                <span className="title">{name.display}</span>
+            </h2>
+        </section>
     )
 }
