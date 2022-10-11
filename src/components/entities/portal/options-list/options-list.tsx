@@ -1,5 +1,5 @@
-import { EntityFilterOption } from "../../../../types/entity-filter-option"
-import { EntitySortOption } from "../../../../types/entity-sort-option"
+import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
+import { EntitySortOption } from "../../../../types/entity/sort/entity-sort-option"
 
 import { SearchInput } from "../../../common/search-input/search-input"
 import { DynamicFilterConstructor } from "./dynamic-filter-constructor/dynamic-filter-constructor"

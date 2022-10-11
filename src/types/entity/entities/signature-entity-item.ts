@@ -1,4 +1,4 @@
-import { EntityItem } from "./entity-item"
+import { EntityItem } from "../entity-item"
 
 export type SignatureEntityItem = SignatureItem & EntityItem
 

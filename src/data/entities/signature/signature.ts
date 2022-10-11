@@ -2,7 +2,7 @@ import { FaSignature } from "react-icons/fa"
 
 import { makeId } from "../../../services/util/make-id"
 
-import { Entity } from "../../../types/entity"
+import { Entity } from "../../../types/entity/entity"
 import { SIGNATURE_DB } from "./signature-db"
 
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { BiSort } from "react-icons/bi"
 import { FiXCircle } from "react-icons/fi"
 
-import { EntitySortOption } from "../../../../../types/entity-sort-option"
+import { EntitySortOption } from "../../../../../types/entity/sort/entity-sort-option"
 
 import { Dropdown } from "../../../../common/dropdown/dropdown"
 

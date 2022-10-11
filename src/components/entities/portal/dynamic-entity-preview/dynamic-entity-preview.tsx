@@ -1,4 +1,4 @@
-import { EntityItem } from "../../../../types/entity-item"
+import { EntityItem } from "../../../../types/entity/entity-item"
 import { SquareEntityPreview } from "./square-entity-preview"
 
 export const DynamicEntityPreview = ({ item, imagePath, type }: Props) => {

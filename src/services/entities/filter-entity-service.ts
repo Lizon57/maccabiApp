@@ -1,5 +1,5 @@
-import { EntityFilterOption } from "../../types/entity-filter-option"
-import { EntityItem } from "../../types/entity-item"
+import { EntityFilterOption } from "../../types/entity/filter/entity-filter-option"
+import { EntityItem } from "../../types/entity/entity-item"
 
 
 const filterEntityByTitle = (items: EntityItem[], searchTitle: string) => {

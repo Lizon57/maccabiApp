@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom"
 
 import { entityService } from "../../services/entities/entity-service"
 
-import { Entity } from "../../types/entity"
-import { EntityItem } from "../../types/entity-item"
+import { Entity } from "../../types/entity/entity"
+import { EntityItem } from "../../types/entity/entity-item"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"

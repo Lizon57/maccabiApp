@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import { EntityItem } from "../../types/entity-item"
+import { EntityItem } from "../../types/entity/entity-item"
 
 import { entityService } from "../../services/entities/entity-service"
 

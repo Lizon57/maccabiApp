@@ -4,9 +4,9 @@ import { asyncLocalStorageService } from "../async-local-storage-service"
 import { sortEntityService } from "./sort-entity-service"
 import { filterEntityService } from "./filter-entity-service"
 
-import { EntitySortParam } from "../../types/entity-sort-param"
-import { EntityItem } from "../../types/entity-item"
-import { Entity } from "../../types/entity"
+import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
+import { EntityItem } from "../../types/entity/entity-item"
+import { Entity } from "../../types/entity/entity"
 
 
 const getEntityByName = (name: string) => {

@@ -1,5 +1,5 @@
-import { Entity } from "../../../../types/entity"
-import { EntityItem } from "../../../../types/entity-item"
+import { Entity } from "../../../../types/entity/entity"
+import { EntityItem } from "../../../../types/entity/entity-item"
 
 import { DynamicEntityPreview } from "../dynamic-entity-preview/dynamic-entity-preview"
 

@@ -1,8 +1,8 @@
 import { IconType } from "react-icons"
-import { EntityFilterOption } from "./entity-filter-option"
+import { EntityFilterOption } from "./filter/entity-filter-option"
 
-import { EntitySortOption } from "./entity-sort-option"
-import { SignatureEntityItem } from "./signature-entity-item"
+import { EntitySortOption } from "./sort/entity-sort-option"
+import { SignatureEntityItem } from "./entities/signature-entity-item"
 
 
 export type Entity = {

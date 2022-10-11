@@ -1,5 +1,5 @@
-import { EntityItem } from "../../types/entity-item"
-import { EntitySortParam } from "../../types/entity-sort-param"
+import { EntityItem } from "../../types/entity/entity-item"
+import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 
 const dynamicEntitySort = (entityList: EntityItem[], sortBy: EntitySortParam) => {
     let sortedList = entityList.slice()

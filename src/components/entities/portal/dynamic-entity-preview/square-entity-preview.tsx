@@ -3,7 +3,7 @@ import { AiFillEye, AiFillHeart, AiFillStar, AiOutlineHeart } from "react-icons/
 import { FiEdit2 } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
-import { EntityItem } from "../../../../types/entity-item"
+import { EntityItem } from "../../../../types/entity/entity-item"
 
 import { DisplayBranchIconById } from "../../../common/branch-icon/display-branch-icon-by-id"
 import { ImageSlider } from "../image-slider/image-slider"

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { EntitySortParam } from "../../types/entity-sort-param"
+import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 
 
 export const useEntitySortHandler = () => {

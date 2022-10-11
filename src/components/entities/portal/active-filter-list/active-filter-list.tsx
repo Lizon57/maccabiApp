@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 import { filterEntityService } from "../../../../services/entities/filter-entity-service"
 
-import { EntityFilterOption } from "../../../../types/entity-filter-option"
+import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
 
 
 export const ActiveFilterList = ({ possibleFiilters }: Props) => {
