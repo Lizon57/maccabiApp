@@ -4,14 +4,16 @@ import { EntityItem } from "../../types/entity/entity-item"
 
 import { entityService } from "../../services/entities/entity-service"
 
+import { useDebounce } from "../../hooks/use-debounce"
+import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
+
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
 
 import { EntityList } from "../../components/entities/portal/entity-list/entity-list"
 import { OptionsList } from "../../components/entities/portal/options-list/options-list"
-import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
-import { useDebounce } from "../../hooks/use-debounce"
 import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
+import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 
 
 export const EntityPortal = (entityName: string) => {
@@ -60,6 +62,10 @@ export const EntityPortal = (entityName: string) => {
         entityInfo: {
             image: { icon: Icon },
             name: { listTitle }
+        },
+        listPageInfo: {
+            filters,
+            sorts
         }
     } = ENTITY
 
@@ -73,9 +79,9 @@ export const EntityPortal = (entityName: string) => {
 
                 <span className="options">
                     <OptionsList
-                        sorts={ENTITY.listPageInfo.sorts}
+                        sorts={sorts}
                         searchValue={searchTitle}
-                        filters={ENTITY.listPageInfo.filters}
+                        filters={filters}
                         isFilterSectionOpen={isFilterSectionOpen}
                         setIsLoading={setIsLoading}
                         searchCallback={debouncedSearchCallback}
@@ -84,8 +90,8 @@ export const EntityPortal = (entityName: string) => {
                 </span>
             </h2>
 
-            <ActiveFilterList possibleFiilters={ENTITY.listPageInfo.filters} setIsLoading={setIsLoading} />
-            {isFilterSectionOpen && <div>סינונים</div>}
+            <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
+            {isFilterSectionOpen && <FilterbyBuilder filters={filters} />}
 
             {items.length
                 ? <EntityList entity={ENTITY} items={items} imagePath={ENTITY.entityInfo.image.imagePath} />

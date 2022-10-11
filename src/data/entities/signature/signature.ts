@@ -47,7 +47,7 @@ export const signatureEntity: Entity = {
         ],
         filters: [
             { id: makeId(), type: 'primary_text', key: 'entityInfo.name.display', param: 'fDisplayName' },
-            { id: makeId(), type: 'multi_elect', key: 'relatedInfo.branchId', param: 'fbranchIds' }
+            { id: makeId(), type: 'multi_select', key: 'relatedInfo.branchId', param: 'fbranchIds' }
         ]
     }
 }
