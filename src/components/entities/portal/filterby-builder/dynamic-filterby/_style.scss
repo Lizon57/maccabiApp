@@ -1,0 +1,25 @@
+div.entities-portal--multi-select-filterby__container {
+  display: flex;
+  align-items: center;
+  gap: $space-inline-regular-rem;
+
+  position: relative;
+
+  border-radius: $border-radius-regular-rem;
+  border: 1px solid $clr-black-regular;
+  padding-inline: $space-inline-xxxSmall-rem;
+  padding-block-start: 10px;
+  padding-block-end: $space-block-xxxSmall-rem;
+
+  span.title {
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+
+    background-color: $clr-white-regular;
+    font-size: $font-size-xSmall-rem;
+    font-family: $typography-emphasis;
+    line-height: 1.5;
+    margin-inline-start: $space-inline-xSmall-rem;
+  }
+}

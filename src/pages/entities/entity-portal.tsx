@@ -23,7 +23,7 @@ export const EntityPortal = (entityName: string) => {
     const [errorMessage, setErrorMessage] = useState('')
     const [items, setItems] = useState<EntityItem[]>([])
     const [searchTitle, setSearchTitle] = useState('')
-    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(false)
+    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(true)
 
     const debouncedSearchCallback = useDebounce(setSearchTitle, 700)
     const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
