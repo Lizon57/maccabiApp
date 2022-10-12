@@ -20,6 +20,7 @@ div.dynamic-entity-preview--square-entity-preview__container {
     padding-block: $space-block-xxxSmall-rem;
 
     span.branch-icon {
+      user-select: none;
       border-radius: 50vw;
       background-color: white;
     }
