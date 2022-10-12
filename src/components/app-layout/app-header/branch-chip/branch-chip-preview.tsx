@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { branchProp } from "../../../../types/branch"
+import { BranchProp } from "../../../../types/branch"
 
 
-export const BranchChipPreview = ({ branch }: branchProp) => {
+export const BranchChipPreview = ({ branch }: BranchProp) => {
     const [isActive, setIsActive] = useState(true)
 
     const { name: { display: displayName }, asset: { symbol } } = branch

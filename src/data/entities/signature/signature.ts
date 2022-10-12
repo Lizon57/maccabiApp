@@ -37,6 +37,7 @@ export const signatureEntity: Entity = {
 
     listPageInfo: {
         previewType: 'square',
+
         sorts: [
             { id: makeId(), title: 'כותרת (א-ת)', key: 'entityInfo.name.display', order: 'asc' },
             { id: makeId(), title: 'כותרת (ת-א)', key: 'entityInfo.name.display', order: 'desc' },
@@ -45,6 +46,7 @@ export const signatureEntity: Entity = {
             { id: makeId(), title: 'דירוג (פחות-יותר)', key: 'itemInfo.rate.avg', order: 'asc' },
             { id: makeId(), title: 'דירוג (יותר-פחות)', key: 'itemInfo.rate.avg', order: 'desc' },
         ],
+
         filters: [
             {
                 id: makeId(),
@@ -55,7 +57,7 @@ export const signatureEntity: Entity = {
             },
             {
                 id: makeId(),
-                type: 'multi_select',
+                type: 'branch_multi_select',
                 key: 'relatedInfo.branchId',
                 param: 'fbranchIds',
                 title: 'בחירת ענפים'

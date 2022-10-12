@@ -1,4 +1,4 @@
-export type branchType = {
+export type BranchType = {
     _id: string,
     name: {
         display: string
@@ -8,6 +8,6 @@ export type branchType = {
     }
 }
 
-export type branchProp = {
-    branch: branchType
+export type BranchProp = {
+    branch: BranchType
 }

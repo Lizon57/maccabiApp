@@ -8,7 +8,7 @@ import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 import { EntityItem } from "../../types/entity/entity-item"
 import { Entity } from "../../types/entity/entity"
 import { pageCategoryService } from "../page-category-service"
-import { MiniPageCategory, PageCategory } from "../../types/page-category"
+import { PageCategory } from "../../types/page-category"
 
 
 const getEntityByName = (name: string) => {
