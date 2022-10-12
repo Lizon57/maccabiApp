@@ -8,7 +8,7 @@ const filterEntityByTitle = (items: EntityItem[], searchTitle: string) => {
 
 
 const getActiveFilters = (possibleFilters: EntityFilterOption[]) => {
-    const PARAMS = new URLSearchParams(document.location.search)
+    const PARAMS = new URL(window.location.href).searchParams
 
     return possibleFilters.filter(possibleFilter => {
         if (PARAMS.get(possibleFilter.param)) return 1

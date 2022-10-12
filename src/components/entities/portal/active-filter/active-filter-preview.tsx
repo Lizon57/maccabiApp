@@ -6,7 +6,7 @@ import { EntityFilterOption } from "../../../../types/entity/filter/entity-filte
 
 
 export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
-    const PARAMS = new URLSearchParams(window.location.search)
+    const PARAMS = new URL(window.location.href).searchParams
     const NAVIGATE = useNavigate()
 
 

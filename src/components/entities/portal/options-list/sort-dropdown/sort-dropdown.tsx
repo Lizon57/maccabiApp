@@ -10,7 +10,7 @@ import { Dropdown } from "../../../../common/dropdown/dropdown"
 
 export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
     const navigate = useNavigate()
-    const PARAMS = new URLSearchParams(window.location.href)
+    const PARAMS = new URL(window.location.href).searchParams
 
 
     const onSelectSort = ({ key, order }: EntitySortOption) => {
