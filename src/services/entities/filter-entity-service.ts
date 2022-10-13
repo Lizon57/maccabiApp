@@ -22,12 +22,24 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
     let filteredItems = items.slice()
     const { primaryFilter, filters } = optionalFilter
 
+    if (primaryFilter) {
+        switch (primaryFilter.type) {
+            case 'primary_text':
+                const paramValue = PARAMS.get(primaryFilter.param)
+                if (!paramValue) break
+                const regex = new RegExp(paramValue, 'gi')
+                filteredItems = filteredItems.filter(item => {
+                    const opptionalValue = _getValueOfDynamicKey(item, primaryFilter.key)
+                    return (regex.test(opptionalValue))
+                })
+        }
+    }
 
     filters?.forEach((filter) => {
         switch (filter.type) {
             case 'branch_multi_select':
                 const selectBranches = PARAMS.get(filter.param)?.split(',')
-                if (!selectBranches?.length) return
+                if (!selectBranches?.length) break
                 filteredItems = filteredItems.filter(item => {
                     const opptionalValue = _getValueOfDynamicKey(item, filter.key)
                     if (selectBranches?.includes(opptionalValue)) return 1
