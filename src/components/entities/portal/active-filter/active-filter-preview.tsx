@@ -8,6 +8,26 @@ import { EntityFilterOption } from "../../../../types/entity/filter/entity-filte
 export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
     const PARAMS = new URL(window.location.href).searchParams
     const NAVIGATE = useNavigate()
+    let text: string
+
+    switch (filter.activeFilterChip.type) {
+        case 'text':
+            text = `${filter.activeFilterChip.text}: "${PARAMS.get(filter.param)}"`
+            break
+
+        case 'multi_select':
+            const AMOUNT = PARAMS.get(filter.param)?.split(',').length
+            if (!AMOUNT) {
+                text = 'סנן פעיל'
+                break
+            }
+            text = filter.activeFilterChip.text.replace('AMOUNT', '' + AMOUNT)
+            break
+
+        default:
+            text = 'סנן פעיל'
+    }
+
 
 
     const onRemoveFilter = () => {
@@ -19,9 +39,9 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
 
     return (
-        <div className="entities-portal--active-filter-preview__container" title="מציג ">
+        <div className="entities-portal--active-filter-preview__container" title={text}>
             <span className="icon-wrapper" title="בטל סנן" onClick={onRemoveFilter}><FiXCircle /></span>
-            <span className="text">מתוך 2 ענפים</span>
+            <span className="text">{text}</span>
         </div>
     )
 }

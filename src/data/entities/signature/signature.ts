@@ -53,14 +53,22 @@ export const signatureEntity: Entity = {
                 type: 'primary_text',
                 key: 'entityInfo.name.display',
                 param: 'fDisplayName',
-                title: 'חפש כותרת'
+                title: 'חפש כותרת',
+                activeFilterChip: {
+                    type: 'text',
+                    text: 'כותרת כוללת'
+                }
             },
             {
                 id: makeId(),
                 type: 'branch_multi_select',
                 key: 'relatedInfo.branchId',
                 param: 'fbranchIds',
-                title: 'בחירת ענפים'
+                title: 'בחירת ענפים',
+                activeFilterChip: {
+                    type: 'multi_select',
+                    text: 'בתוך AMOUNT ענפים'
+                }
             }
         ]
     }

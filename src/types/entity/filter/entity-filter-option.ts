@@ -3,5 +3,10 @@ export type EntityFilterOption = {
     type: string,
     key: string,
     param: string,
-    title: string
+    title: string,
+
+    activeFilterChip: {
+        type: string,
+        text: string
+    }
 }
