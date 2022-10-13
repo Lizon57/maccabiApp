@@ -13,6 +13,11 @@ div.entities-portal--active-filter-list__container {
       content: ":";
     }
   }
+
+  div.list-container {
+    display: flex;
+    gap: $space-inline-xxSmall-rem;
+  }
 }
 
 div.entities-portal--active-filter-preview__container {
