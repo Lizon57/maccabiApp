@@ -4,7 +4,6 @@ import { EntityItem } from "../../types/entity/entity-item"
 
 import { entityService } from "../../services/entities/entity-service"
 
-import { useDebounce } from "../../hooks/use-debounce"
 import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
@@ -22,16 +21,10 @@ export const EntityPortal = (entityName: string) => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     const [items, setItems] = useState<EntityItem[]>([])
-    const [searchTitle, setSearchTitle] = useState('')
     const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(false)
 
-    const debouncedSearchCallback = useDebounce(setSearchTitle, 700)
     const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
     const sortBy = useEntitySortHandler()
-
-    useEffect(() => {
-        setIsLoading(true)
-    }, [searchTitle])
 
 
     useEffect(() => {
@@ -39,6 +32,11 @@ export const EntityPortal = (entityName: string) => {
 
         const loadItems = async () => {
             if (!isLoading) return
+
+            const PARAMS = new URL(window.location.href).searchParams
+            const primaryFilter = ENTITY.listPageInfo.filters.find(filter => filter.type === 'primary_text')
+            let searchTitle = ''
+            if (primaryFilter) searchTitle = (PARAMS.get(primaryFilter.param)) || ''
 
             try {
                 const { dbInfo: { name: dbName, fallbackDB } } = ENTITY
@@ -52,7 +50,7 @@ export const EntityPortal = (entityName: string) => {
             }
         }
         loadItems()
-    }, [isLoading, ENTITY, items, sortBy, searchTitle])
+    }, [isLoading, ENTITY, items, sortBy])
 
 
     if (isLoading || !ENTITY) return <Loader />
@@ -80,11 +78,9 @@ export const EntityPortal = (entityName: string) => {
                 <span className="options">
                     <OptionsList
                         sorts={sorts}
-                        searchValue={searchTitle}
                         filters={filters}
                         isFilterSectionOpen={isFilterSectionOpen}
                         setIsLoading={setIsLoading}
-                        searchCallback={debouncedSearchCallback}
                         toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}
                     />
                 </span>

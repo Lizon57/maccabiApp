@@ -40,5 +40,5 @@ type Props = {
     placeholder?: string
     title: string,
     initialValue?: string,
-    searchCallback?: (value: React.SetStateAction<string>) => Promise<void>
+    searchCallback?: (str: string) => void
 }

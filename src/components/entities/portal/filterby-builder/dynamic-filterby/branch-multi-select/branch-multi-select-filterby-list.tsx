@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
-
-import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
 
 import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby-preview"
 
