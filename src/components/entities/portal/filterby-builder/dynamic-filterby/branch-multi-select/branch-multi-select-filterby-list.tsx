@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
@@ -35,6 +35,13 @@ export const BranchMultiSelectFilterbyList = ({ filterParam }: Props) => {
         PARAMS.set(filterParam, initialFilterParam)
         NAVIGATE({ search: PARAMS.toString().replaceAll('%2C', ',') })
     }
+
+
+    useEffect(() => {
+        if (PARAMS.get(filterParam)) {
+            setIsActiveBranches(PARAMS.get(filterParam)?.split(',') || [])
+        }
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
