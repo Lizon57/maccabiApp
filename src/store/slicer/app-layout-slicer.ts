@@ -12,7 +12,7 @@ const initialState: AppLayoutState = {
 }
 
 export const appLayoutSlicer = createSlice({
-    name: 'app-layout',
+    name: 'app-layout-slicer',
     initialState,
     reducers: {
         setAppFooterClientHeight: (state, action: PayloadAction<number>) => {

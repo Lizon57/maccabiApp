@@ -13,7 +13,7 @@ const initialState: AppState = {
 }
 
 export const appStateSlicer = createSlice({
-    name: 'app-layout',
+    name: 'app-state-slicer',
     initialState,
     reducers: {
         insertAppMessage: (state, action: PayloadAction<appMessageType>) => {

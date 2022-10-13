@@ -29,7 +29,6 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
     }
 
 
-
     const onRemoveFilter = () => {
         PARAMS.delete(filter.param)
         NAVIGATE({ search: PARAMS.toString() })
