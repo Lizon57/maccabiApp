@@ -1,31 +1,39 @@
 import { useState } from "react"
+import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
 
 import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby-preview"
+import { useNavigate } from "react-router-dom"
 
 
-const IS_ACTIVE_BRANCH_MAP = BRANCHES.reduce((acc, branch) => {
-    const { _id: branchId } = branch
-    acc[branchId] = true
-    return acc
-}, {} as BranchesIsActiveMap)
+export const BranchMultiSelectFilterbyList = ({ filterParam }: Props) => {
+    const { user: { browseableBranchesIds } } = useStoreSelector(state => state.userModule)
+    const [isActiveBranches, setIsActiveBranches] = useState(browseableBranchesIds)
+
+    const PARAMS = new URL(window.location.href).searchParams
+    const NAVIGATE = useNavigate()
 
 
-export const BranchMultiSelectFilterbyList = () => {
-    const [isActiveBranchMap, setIsActiveBranchMap] = useState(IS_ACTIVE_BRANCH_MAP)
+    const getIsActiveBranch = (id: string) => !!isActiveBranches.find(branchId => branchId === id)
 
-    const getIsActiveBranch = (id: string) => isActiveBranchMap[id] ? true : false
+    const onBranchClick = (id: string) => {
+        const isActive = getIsActiveBranch(id)
 
-    const toggleActiveBranch = (id: string) => {
-
-
-        const newBranchState = !isActiveBranchMap[id]
-        const newState = {
-            ...isActiveBranchMap,
-            [id]: newBranchState
+        let newActiveBranches = isActiveBranches.slice()
+        if (isActive) {
+            newActiveBranches = newActiveBranches.filter(branchId => branchId !== id)
         }
-        setIsActiveBranchMap(newState)
+        else newActiveBranches.push(id)
+
+        setIsActiveBranches(newActiveBranches)
+        navigateToNewActiveBranches(newActiveBranches)
+    }
+
+    const navigateToNewActiveBranches = (newActiveBranches: string[]) => {
+        const initialFilterParam = newActiveBranches.join()
+        PARAMS.set(filterParam, initialFilterParam)
+        NAVIGATE({ search: PARAMS.toString().replaceAll('%2C', ',') })
     }
 
 
@@ -35,13 +43,13 @@ export const BranchMultiSelectFilterbyList = () => {
                 key={branch._id}
                 branch={branch}
                 isActive={getIsActiveBranch(branch._id)}
-                toggleActiveBranch={toggleActiveBranch}
+                toggleActiveBranch={onBranchClick}
             />)}
         </div>
     )
 }
 
 
-type BranchesIsActiveMap = {
-    [key: string]: boolean
+type Props = {
+    filterParam: string
 }

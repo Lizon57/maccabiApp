@@ -7,7 +7,7 @@ export const BranchMultiSelectFilterby = ({ filter }: Props) => {
     return (
         <div className="entities-portal--branch-multi-select-filterby__container">
             <span className="title">{filter.title}</span>
-            <BranchMultiSelectFilterbyList />
+            <BranchMultiSelectFilterbyList filterParam={filter.param} />
         </div>
     )
 }

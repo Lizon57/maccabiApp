@@ -1,6 +1,6 @@
 export const BRANCHES = [
     {
-        _id: 'brandId00001',
+        _id: 'branchId00001',
         name: {
             display: 'כדורגל'
         },
@@ -9,7 +9,7 @@ export const BRANCHES = [
         }
     },
     {
-        _id: 'brandId00002',
+        _id: 'branchId00002',
         name: {
             display: 'כדורסל'
         },
@@ -18,7 +18,7 @@ export const BRANCHES = [
         }
     },
     {
-        _id: 'brandId00003',
+        _id: 'branchId00003',
         name: {
             display: 'כדורעף'
         },
@@ -27,7 +27,7 @@ export const BRANCHES = [
         }
     },
     {
-        _id: 'brandId00004',
+        _id: 'branchId00004',
         name: {
             display: 'כדוריד'
         },

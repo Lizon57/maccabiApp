@@ -5,9 +5,9 @@ export const DisplayBranchIconById = ({ id, className }: Props) => {
 
     return (
         <img
-            src={require(`../../../assets/images/branch-symbol/${branch.asset.symbol}`)}
-            alt={branch.name.display}
-            title={branch.name.display}
+            src={require(`../../../assets/images/branch-symbol/${branch?.asset.symbol}`)}
+            alt={branch?.name.display}
+            title={branch?.name.display}
             className={'branch-icon--Display-branch-icon-by-id ' + className}
         />
     )
