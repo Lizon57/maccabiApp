@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
+import { useNavigate } from "react-router-dom"
+import { useDebounce } from "../../../../../../hooks/use-debounce"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
 
 import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby-preview"
-import { useNavigate } from "react-router-dom"
 
 
 export const BranchMultiSelectFilterbyList = ({ filterParam }: Props) => {
@@ -27,7 +28,7 @@ export const BranchMultiSelectFilterbyList = ({ filterParam }: Props) => {
         else newActiveBranches.push(id)
 
         setIsActiveBranches(newActiveBranches)
-        navigateToNewActiveBranches(newActiveBranches)
+        debouncedNavigateToNewActiveBranches(newActiveBranches)
     }
 
     const navigateToNewActiveBranches = (newActiveBranches: string[]) => {
@@ -35,6 +36,7 @@ export const BranchMultiSelectFilterbyList = ({ filterParam }: Props) => {
         PARAMS.set(filterParam, initialFilterParam)
         NAVIGATE({ search: PARAMS.toString().replaceAll('%2C', ',') })
     }
+    const debouncedNavigateToNewActiveBranches = useDebounce(navigateToNewActiveBranches, 1000)
 
 
     useEffect(() => {
