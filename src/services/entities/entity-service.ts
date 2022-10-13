@@ -2,13 +2,14 @@ import { ENTITIES_LIST } from "../../data/entities/entities-list"
 
 import { asyncLocalStorageService } from "../async-local-storage-service"
 import { sortEntityService } from "./sort-entity-service"
+import { pageCategoryService } from "../page-category-service"
 import { filterEntityService } from "./filter-entity-service"
 
 import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 import { EntityItem } from "../../types/entity/entity-item"
 import { Entity } from "../../types/entity/entity"
-import { pageCategoryService } from "../page-category-service"
 import { PageCategory } from "../../types/page-category"
+import { EntityFilterOption } from "../../types/entity/filter/entity-filter-option"
 
 
 const getEntityByName = (name: string) => {
@@ -16,10 +17,10 @@ const getEntityByName = (name: string) => {
 }
 
 
-const queryEntityItems = async (dbName: string, sortBy: EntitySortParam, searchTitle: string, fallbackDB: unknown[]) => {
+const queryEntityItems = async (dbName: string, sortBy: EntitySortParam, optionalFilter: OptionalFilter, fallbackDB: unknown[]) => {
     try {
         let items = await asyncLocalStorageService.query(dbName, fallbackDB) as EntityItem[]
-        if (searchTitle) items = filterEntityService.filterEntityByTitle(items, searchTitle)
+        items = filterEntityService.dynamicEntityFilterByParams(items, optionalFilter)
         if (sortBy.sKey && sortBy.sOrder) items = sortEntityService.dynamicEntitySort(items, sortBy)
         return items
     }
@@ -57,4 +58,10 @@ export const entityService = {
     getEntityByName,
     queryEntityItems,
     getEntityItemById
+}
+
+
+type OptionalFilter = {
+    primaryFilter?: EntityFilterOption | undefined,
+    filters?: EntityFilterOption[] | undefined
 }

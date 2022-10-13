@@ -33,14 +33,18 @@ export const EntityPortal = (entityName: string) => {
         const loadItems = async () => {
             if (!isLoading) return
 
-            const PARAMS = new URL(window.location.href).searchParams
+
             const primaryFilter = ENTITY.listPageInfo.filters.find(filter => filter.type === 'primary_text')
-            let searchTitle = ''
-            if (primaryFilter) searchTitle = (PARAMS.get(primaryFilter.param)) || ''
+            const filters = ENTITY.listPageInfo.filters.filter(filter => filter.type !== 'primary_text')
+            const optionalFilter = {
+                primaryFilter,
+                filters
+            }
+
 
             try {
                 const { dbInfo: { name: dbName, fallbackDB } } = ENTITY
-                const items = await entityService.queryEntityItems(dbName, sortBy, searchTitle, fallbackDB) as EntityItem[]
+                const items = await entityService.queryEntityItems(dbName, sortBy, optionalFilter, fallbackDB) as EntityItem[]
                 setItems(items)
             } catch ({ message }) {
                 setErrorMessage(message as string)
@@ -87,7 +91,7 @@ export const EntityPortal = (entityName: string) => {
             </h2>
 
             <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
-            {isFilterSectionOpen && <FilterbyBuilder filters={filters} />}
+            {isFilterSectionOpen && <FilterbyBuilder filters={filters} setIsLoading={setIsLoading} />}
 
             {items.length
                 ? <EntityList entity={ENTITY} items={items} imagePath={ENTITY.entityInfo.image.imagePath} />
