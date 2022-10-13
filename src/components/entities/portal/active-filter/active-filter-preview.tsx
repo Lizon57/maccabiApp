@@ -31,7 +31,7 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
     const onRemoveFilter = () => {
         PARAMS.delete(filter.param)
-        NAVIGATE({ search: PARAMS.toString() })
+        NAVIGATE({ search: PARAMS.toString().replaceAll('%2C', ',') })
         window.scrollTo({ top: 0 })
         setIsLoading(true)
     }

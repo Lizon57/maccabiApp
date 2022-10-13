@@ -16,7 +16,7 @@ export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
     const onSelectSort = ({ key, order }: EntitySortOption) => {
         PARAMS.set('sKey', key)
         PARAMS.set('sOrder', order)
-        navigate({ search: PARAMS.toString() })
+        navigate({ search: PARAMS.toString().replaceAll('%2C', ',') })
         window.scrollTo({ top: 0 })
         setIsLoading(true)
     }
@@ -30,7 +30,7 @@ export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
     const onClearSort = () => {
         PARAMS.delete('sKey')
         PARAMS.delete('sOrder')
-        navigate({ search: PARAMS.toString() })
+        navigate({ search: PARAMS.toString().replaceAll('%2C', ',') })
         window.scrollTo({ top: 0 })
         setIsLoading(true)
     }

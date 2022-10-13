@@ -24,7 +24,7 @@ export const OptionsList = ({ sorts, filters, isFilterSectionOpen, setIsLoading,
         if (!str) PARAMS.delete(primaryTextSearch?.param)
         else PARAMS.set(primaryTextSearch?.param, str)
 
-        navigate({ search: PARAMS.toString() })
+        navigate({ search: PARAMS.toString().replaceAll('%2C', ',') })
         setIsLoading(true)
     }
     const debouncedPrimarySearchCallback = useDebounce(primarySearchCallback, 700)
