@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { AiOutlinePlus } from "react-icons/ai"
 
 import { Entity } from "../../../../types/entity/entity"
@@ -16,8 +17,10 @@ export const EntityList = ({ entity, items, imagePath }: Props) => {
                 imagePath={imagePath} />)}
 
             <div className="add-entity-container" title="הוסף פריט">
-                <span className="icon-wrapper"><AiOutlinePlus size={40} /></span>
-                <span className="text">הוסף פריט</span>
+                <Link to="add">
+                    <span className="icon-wrapper"><AiOutlinePlus size={40} /></span>
+                    <span className="text">הוסף פריט</span>
+                </Link>
             </div>
         </div>
     )

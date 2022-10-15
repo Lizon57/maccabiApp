@@ -45,12 +45,12 @@ export const EntityDetails = (entity: Entity) => {
 
     return (
         <section className="entities-pages--entity-display__container">
-            <section className="intro">
+            <div className="intro">
                 <h2 className="title">
                     <span className="icon">{<Icon />}</span>
                     <span className="title">חתימות של {name.display}</span>
                 </h2>
-            </section>
+            </div>
 
             <div className="additional-content">
                 <UnitAdditionalContent miniCategories={item.entityInfo.miniCategories || []} />

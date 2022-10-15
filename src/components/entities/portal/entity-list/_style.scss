@@ -11,28 +11,35 @@ div.entity-portal--entitiy-list__container {
 
   div.add-entity-container {
     aspect-ratio: 1/1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: $space-block-xxxSmall-rem;
 
     cursor: pointer;
     border-radius: $border-radius-regular-rem;
-    color: $clr-white-darkest;
-    transition: $transition-regular;
 
-    &:hover {
-      color: $clr-blue-regular;
-    }
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: $space-block-xxxSmall-rem;
 
-    span.icon-wrapper svg {
-      display: block;
-    }
+      color: $clr-white-darkest;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+      transition: $transition-regular;
 
-    span.text {
-      font-size: $font-size-small-rem;
-      font-weight: 600;
+      &:hover {
+        color: $clr-blue-regular;
+      }
+
+      span.icon-wrapper svg {
+        display: block;
+      }
+
+      span.text {
+        font-size: $font-size-small-rem;
+        font-weight: 600;
+      }
     }
   }
 }
