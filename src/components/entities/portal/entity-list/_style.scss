@@ -8,4 +8,31 @@ div.entity-portal--entitiy-list__container {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     justify-content: space-between;
   }
+
+  div.add-entity-container {
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $space-block-xxxSmall-rem;
+
+    cursor: pointer;
+    border-radius: $border-radius-regular-rem;
+    color: $clr-white-darkest;
+    transition: $transition-regular;
+
+    &:hover {
+      color: $clr-blue-regular;
+    }
+
+    span.icon-wrapper svg {
+      display: block;
+    }
+
+    span.text {
+      font-size: $font-size-small-rem;
+      font-weight: 600;
+    }
+  }
 }

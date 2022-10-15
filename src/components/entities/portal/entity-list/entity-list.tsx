@@ -1,3 +1,5 @@
+import { AiOutlinePlus } from "react-icons/ai"
+
 import { Entity } from "../../../../types/entity/entity"
 import { EntityItem } from "../../../../types/entity/entity-item"
 
@@ -12,6 +14,11 @@ export const EntityList = ({ entity, items, imagePath }: Props) => {
                 item={item}
                 type={entity.listPageInfo.previewType}
                 imagePath={imagePath} />)}
+
+            <div className="add-entity-container" title="הוסף פריט">
+                <span className="icon-wrapper"><AiOutlinePlus size={40} /></span>
+                <span className="text">הוסף פריט</span>
+            </div>
         </div>
     )
 }
