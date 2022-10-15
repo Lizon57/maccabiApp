@@ -3,6 +3,8 @@ div.entities-portal-cmp--list-options__container {
   align-items: center;
   gap: $space-inline-xxSmall-rem;
 
+  font-size: $font-size-regular-rem;
+
   div.entities-portal--dynamic-filter__icon-wrapper,
   div.entities-portal-cmp--sort-drop-down__container {
     display: flex;

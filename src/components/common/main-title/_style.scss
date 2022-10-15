@@ -1,30 +1,39 @@
-div.common-cmp--main-title {
+h2.common-cmp--main-title {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: $space-block-regular-rem;
 
-  border-start-end-radius: $border-radius-regular-rem;
-  border-end-end-radius: $border-radius-regular-rem;
-  border-inline-start: 5px solid $clr-blue-regular;
-  transition: $transition-regular;
+  margin: 0;
+
+  @include viewport-wide-start-from($viewport-regular) {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+  }
 
   &.sticky {
-    @include page-top-stick;
-    background-color: $clr-white-regular;
+    position: sticky;
+    top: $up-to-laptop-wide-header-total-height;
+    z-index: 10;
   }
 
-  &.background-colorize {
-    &:hover {
-      background-color: $clr-white-darker;
+  div.title-container {
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+    word-wrap: break-word;
+
+    span.icon {
+      margin-inline-end: $space-inline-xxxSmall-rem;
+      align-self: stretch;
     }
-  }
 
-  h2 {
-    font-size: $font-size-large-rem;
-    font-family: $typography-emphasis;
-    font-weight: 500;
-    padding-inline-start: $space-inline-small-rem;
-    padding-block: $space-block-xxxSmall-rem;
-    margin: 0;
+    span.text {
+      font-size: $font-size-xLarge-rem;
+      font-family: $typography-emphasis;
+      font-weight: 500;
+      word-break: break-all;
+      word-wrap: break-word;
+  
+    }
   }
 }

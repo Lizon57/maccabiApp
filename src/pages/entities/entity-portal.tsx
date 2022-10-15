@@ -13,6 +13,7 @@ import { EntityList } from "../../components/entities/portal/entity-list/entity-
 import { OptionsList } from "../../components/entities/portal/options-list/options-list"
 import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
+import { MainTitle } from "../../components/common/main-title/main-title"
 
 
 export const EntityPortal = (entityName: string) => {
@@ -71,24 +72,17 @@ export const EntityPortal = (entityName: string) => {
         }
     } = ENTITY
 
+    const titleAdditionalCmp = <OptionsList
+        sorts={sorts}
+        filters={filters}
+        isFilterSectionOpen={isFilterSectionOpen}
+        setIsLoading={setIsLoading}
+        toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}
+    />
+
     return (
         <section className="entities-pages--entity-portal__container">
-            <h2 className="title-and-options-container">
-                <span className="title">
-                    <span className="icon"><Icon /></span>
-                    <span className="text">{listTitle}</span>
-                </span>
-
-                <span className="options">
-                    <OptionsList
-                        sorts={sorts}
-                        filters={filters}
-                        isFilterSectionOpen={isFilterSectionOpen}
-                        setIsLoading={setIsLoading}
-                        toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}
-                    />
-                </span>
-            </h2>
+            <MainTitle text={listTitle} Icon={Icon} isSticky={true} additionalCmp={titleAdditionalCmp} />
 
             <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
             {isFilterSectionOpen && <FilterbyBuilder filters={filters} setIsLoading={setIsLoading} />}

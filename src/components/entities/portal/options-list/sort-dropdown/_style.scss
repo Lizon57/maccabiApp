@@ -9,6 +9,10 @@ div.options-list--sort-dropdown__container {
     &:hover {
       background-color: $clr-white-darker;
     }
+
+    svg {
+      display: block;
+    }
   }
 
   div.sorts-container {
@@ -53,7 +57,7 @@ div.options-list--sort-dropdown__container {
     &:hover {
       color: $clr-blue-darker;
     }
-    
+
     span.icon {
       font-size: $font-size-xxSmall-rem;
       margin-inline-end: 3px;

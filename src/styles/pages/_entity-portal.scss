@@ -2,44 +2,4 @@ section.entities-pages--entity-portal__container {
   display: flex;
   flex-direction: column;
   gap: $space-block-regular-rem;
-
-  h2.title-and-options-container {
-    display: grid;
-    gap: $space-block-xxxSmall-rem;
-
-    position: sticky;
-    top: $up-to-laptop-wide-header-total-height;
-    z-index: 10;
-
-    background-color: $clr-white-regular;
-    font-size: $font-size-xLarge-rem;
-    font-family: $typography-emphasis;
-    font-weight: 500;
-    margin: 0;
-    width: 100%;
-
-    @include viewport-wide-start-from-exclusive($viewport-regular) {
-      display: flex;
-      justify-content: space-between;
-
-      top: $laptop-wide-plus-app-header-total-height;
-    }
-
-    span.title {
-      display: flex;
-      align-items: center;
-
-      span.icon {
-        margin-inline-end: $space-inline-xxxSmall-rem;
-
-        svg {
-          display: block;
-        }
-      }
-    }
-
-    span.options {
-      justify-self: flex-end;
-    }
-  }
 }

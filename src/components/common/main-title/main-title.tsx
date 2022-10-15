@@ -1,10 +1,15 @@
-export const MainTitle = ({ text, isSticky = false, additionalCmp }: Props) => {
+import { IconType } from "react-icons"
+
+export const MainTitle = ({ text, isSticky = false, Icon, additionalCmp }: Props) => {
     return (
-        <div className={'common-cmp--main-title' + (isSticky ? ' sticky' : '') + (additionalCmp ? '' : ' background-colorize')}>
-            <h2>{text}</h2>
+        <h2 className={'common-cmp--main-title' + (isSticky ? ' sticky' : '')}>
+            <div className="title-container">
+                {Icon && <span className="icon"><Icon /></span>}
+                <span className="text">{text}</span>
+            </div>
 
             {additionalCmp && <div className="additional-cmp-container">{additionalCmp}</div>}
-        </div>
+        </h2>
     )
 }
 
@@ -12,5 +17,6 @@ export const MainTitle = ({ text, isSticky = false, additionalCmp }: Props) => {
 type Props = {
     text: string,
     isSticky?: boolean,
+    Icon?: IconType,
     additionalCmp?: JSX.Element
 }
