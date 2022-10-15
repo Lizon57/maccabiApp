@@ -1,0 +1,36 @@
+div.entity-add-cmp--photo-uploader__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxSmall-rem;
+
+  div.file-drop {
+    cursor: pointer;
+    background-color: $clr-white-darker;
+    height: 20vh;
+
+    div.dropable-place {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $space-block-xxSmall-rem;
+    }
+
+    div.file-drop-target {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: rgba($clr-black-lightest, 0.7);
+      height: 100%;
+      transition: $transition-regular;
+
+      span.text {
+        font-size: $font-size-small-rem;
+      }
+
+      &.dragging-over{
+        background-color: $clr-white-darkest;
+      }
+    }
+  }
+}

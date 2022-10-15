@@ -1,0 +1,8 @@
+section.entities-pages--entity-add__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-regular-rem;
+
+  overflow: hidden;
+  border-radius: $border-radius-regular-rem;
+}
