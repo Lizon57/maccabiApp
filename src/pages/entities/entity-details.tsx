@@ -9,6 +9,7 @@ import { EntityItem } from "../../types/entity/entity-item"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
 import { UnitAdditionalContent } from "../../components/units/additional-content/additional-content"
+import { MainTitle } from "../../components/common/main-title/main-title"
 
 
 export const EntityDetails = (entity: Entity) => {
@@ -40,16 +41,13 @@ export const EntityDetails = (entity: Entity) => {
     if (isLoading || !EntityItemId || !item) return <Loader />
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
-    const { entityInfo: { image: { icon: Icon } } } = entity
+    const { entityInfo: { image: { icon } } } = entity
     const { entityInfo: { name } } = item
 
     return (
         <section className="entities-pages--entity-display__container">
-            <div className="intro">
-                <h2 className="title">
-                    <span className="icon">{<Icon />}</span>
-                    <span className="title">חתימות של {name.display}</span>
-                </h2>
+            <div className="primary-content">
+                <MainTitle text={`חתימות של ${name.display}`} Icon={icon} />
             </div>
 
             <div className="additional-content">
