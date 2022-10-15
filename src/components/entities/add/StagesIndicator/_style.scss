@@ -22,6 +22,7 @@ div.entity-add-cmp--stages-indicator__container {
     padding: 5px;
     width: 4rem;
     height: 4rem;
+    transition: $transition-regular;
 
     &:not(:last-of-type) {
       position: relative;
@@ -35,30 +36,37 @@ div.entity-add-cmp--stages-indicator__container {
         background-color: $clr-white-darker;
         width: calc(#{$pipe-width} + 3px);
         height: 5px;
+        pointer-events: none;
       }
     }
 
-    &.active,
-    &.fully-active {
+    &.active {
+      color: $clr-yellow-regular;
+    }
+
+    &.fully-active:not(.active),
+    &.latest-achived:not(.active) {
+      cursor: pointer !important;
+    }
+
+    &.fully-active,
+    &.latest-achived {
       background-color: $clr-blue-regular;
     }
 
-    &.active {
-      font-weight: 700;
-      letter-spacing: 1px;
+    &.fully-active {
+      &::after {
+        background: $clr-blue-regular;
+      }
+    }
 
+    &.latest-achived {
       &::after {
         background: linear-gradient(
           to left,
           $clr-blue-regular,
           $clr-white-darkest
         );
-      }
-    }
-
-    &.fully-active {
-      &::after {
-        background: $clr-blue-regular;
       }
     }
   }

@@ -3,7 +3,7 @@ import { StagesIndicator } from "../../components/entities/add/StagesIndicator/S
 export const EntityAdd = (entity: string) => {
     return (
         <section className="entities-pages--entity-add__container">
-            <StagesIndicator stages={['שלב ראשון', 'שלב שני', 'שלב שלישי', 'שלב רביעי', 'שלב חמישייי וואו אמאלה']} />
+            <StagesIndicator stages={['העלאת תמונות', 'שיוך חתימה', 'נתונים נוספים', 'אישור']} />
         </section>
     )
 }
