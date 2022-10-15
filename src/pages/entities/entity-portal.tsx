@@ -21,7 +21,7 @@ export const EntityPortal = (entityName: string) => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     const [items, setItems] = useState<EntityItem[]>([])
-    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(true)
+    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(false)
 
     const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
     const sortBy = useEntitySortHandler()

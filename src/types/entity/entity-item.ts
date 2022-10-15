@@ -5,7 +5,7 @@ export type EntityItem = {
     id: string,
 
     relatedInfo: {
-        branchId: string,
+        branchIds: string[],
     },
 
     entityInfo: {

@@ -11,7 +11,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'מיקי ברקוביץ'
             },
-            branchId: 'branchId00002',
+            branchIds: ['branchId00001', 'branchId00002'],
         },
 
         entityInfo: {
@@ -42,7 +42,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'אבי נמני'
             },
-            branchId: 'branchId00001',
+            branchIds: ['branchId00001'],
         },
 
         entityInfo: {
@@ -73,7 +73,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'עומר דבדה'
             },
-            branchId: 'branchId00004',
+            branchIds: ['branchId00004'],
         },
 
         entityInfo: {
@@ -104,7 +104,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 displayName: 'אריאל כצנלסון'
             },
-            branchId: 'branchId00003',
+            branchIds: ['branchId00003'],
         },
 
         entityInfo: {
@@ -135,7 +135,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'קייל אנסינג'
     //         },
-    //         branchId: 'branchId00003',
+    //         branchIds: ['branchId00003'],
     //     },
 
     //     entityInfo: {
@@ -165,7 +165,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'יותם בריגר'
     //         },
-    //         branchId: 'branchId00003',
+    //         branchIds: ['branchId00003'],
     //     },
 
     //     entityInfo: {
@@ -195,7 +195,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'נח וולף'
     //         },
-    //         branchId: 'branchId00003',
+    //         branchIds: ['branchId00003'],
     //     },
 
     //     entityInfo: {
@@ -225,7 +225,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'אייל פרולינגר'
     //         },
-    //         branchId: 'branchId00004',
+    //         branchIds: ['branchId00004'],
     //     },
 
     //     entityInfo: {
@@ -255,7 +255,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'פטר קוממניץ\''
     //         },
-    //         branchId: 'branchId00004',
+    //         branchIds: ['branchId00004'],
     //     },
 
     //     entityInfo: {
@@ -285,7 +285,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'טל בורנשטיין'
     //         },
-    //         branchId: 'branchId00002',
+    //         branchIds: ['branchId00002'],
     //     },
 
     //     entityInfo: {
@@ -315,7 +315,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'יותם הלפרין'
     //         },
-    //         branchId: 'branchId00002',
+    //         branchIds: ['branchId00002'],
     //     },
 
     //     entityInfo: {
@@ -345,7 +345,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'ערן זהבי'
     //         },
-    //         branchId: 'branchId00001',
+    //         branchIds: ['branchId00001'],
     //     },
 
     //     entityInfo: {
@@ -375,7 +375,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'דור פרץ'
     //         },
-    //         branchId: 'branchId00001',
+    //         branchIds: ['branchId00001'],
     //     },
 
     //     entityInfo: {
@@ -405,7 +405,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
     //         miniProfile: {
     //             displayName: 'דניאל פרץ'
     //         },
-    //         branchId: 'branchId00001',
+    //         branchIds: ['branchId00001'],
     //     },
 
     //     entityInfo: {

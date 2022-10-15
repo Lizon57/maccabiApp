@@ -1,4 +1,24 @@
-img.branch-icon--Display-branch-icon-by-id {
-  display: block;
-  height: 1.2rem;
+div.branch-icon--Display-branch-icon-by-id {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+
+  background-color: $clr-blue-regular;
+
+  span.additional-branch {
+    font-size: $font-size-xxSmall-rem;
+    margin-inline-end: 5px;
+
+    &::after {
+      content: "+";
+    }
+  }
+
+  img {
+    display: block;
+
+    border-radius: 50vw;
+    background-color: $clr-white-regular;
+    height: 1.2rem;
+  }
 }

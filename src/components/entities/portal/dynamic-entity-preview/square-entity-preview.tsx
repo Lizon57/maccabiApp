@@ -8,7 +8,7 @@ import { getFormatedNumber } from "../../../../services/util/get-formated-number
 
 import { EntityItem } from "../../../../types/entity/entity-item"
 
-import { DisplayBranchIconById } from "../../../common/branch-icon/display-branch-icon-by-id"
+import { DisplayBranchesIconByIds } from "../../../common/branch-icon/display-branches-icon-by-ids"
 import { ImageSlider } from "../image-slider/image-slider"
 
 
@@ -29,7 +29,7 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
         <div className="dynamic-entity-preview--square-entity-preview__container">
             <Link to={item.id}>
                 <div className="title">
-                    <span className="branch-icon"><DisplayBranchIconById id={relatedInfo.branchId} /></span>
+                    <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>
                     <span className="title">{entityInfo.name.display}</span>
                 </div>
 
