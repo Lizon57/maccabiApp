@@ -62,7 +62,7 @@ export const signatureEntity: Entity = {
             {
                 id: makeId(),
                 type: 'branch_multi_select',
-                key: 'relatedInfo.branchId',
+                key: 'relatedInfo.branchIds',
                 param: 'fbranchIds',
                 title: 'בחירת ענפים',
                 activeFilterChip: {

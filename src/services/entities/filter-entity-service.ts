@@ -41,9 +41,14 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 const selectBranches = PARAMS.get(filter.param)?.split(',')
                 if (!selectBranches?.length) break
                 filteredItems = filteredItems.filter(item => {
-                    const opptionalValue = _getValueOfDynamicKey(item, filter.key)
-                    if (selectBranches?.includes(opptionalValue)) return 1
-                    else return 0
+                    let shouldFilterOut = true
+                    const opptionalBranchesIds = _getValueOfDynamicKey(item, filter.key) as string[]
+                    opptionalBranchesIds.forEach(branchId => {
+                        if (selectBranches.includes(branchId)) shouldFilterOut = false
+                    })
+
+                    if (shouldFilterOut) return 0
+                    else return 1
                 })
         }
     })
