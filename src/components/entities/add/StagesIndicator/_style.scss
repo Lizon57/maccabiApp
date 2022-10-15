@@ -1,0 +1,65 @@
+div.entity-add-cmp--stages-indicator__container {
+  $pipe-width: 5rem;
+
+  display: flex;
+  justify-content: center;
+  gap: $pipe-width;
+
+  user-select: none;
+
+  div.stage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50vw;
+    border: 1px solid $clr-white-darkest;
+    color: $clr-white-darkest;
+    font-size: $font-size-xxSmall-rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: $font-size-small-rem;
+    padding: 5px;
+    width: 4rem;
+    height: 4rem;
+
+    &:not(:last-of-type) {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: calc((#{$pipe-width} + 2px) * -1);
+        z-index: 1;
+
+        background-color: $clr-white-darker;
+        width: calc(#{$pipe-width} + 3px);
+        height: 5px;
+      }
+    }
+
+    &.active,
+    &.fully-active {
+      background-color: $clr-blue-regular;
+    }
+
+    &.active {
+      font-weight: 700;
+      letter-spacing: 1px;
+
+      &::after {
+        background: linear-gradient(
+          to left,
+          $clr-blue-regular,
+          $clr-white-darkest
+        );
+      }
+    }
+
+    &.fully-active {
+      &::after {
+        background: $clr-blue-regular;
+      }
+    }
+  }
+}
