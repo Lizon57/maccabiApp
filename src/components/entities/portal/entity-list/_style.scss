@@ -1,14 +1,11 @@
 div.entity-portal--entitiy-list__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
+  justify-content: center;
   gap: $space-inline-xxLarge-rem;
 
-  &.short-list {
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
-
-    @include viewport-wide-start-from-exclusive($viewport-regular) {
-      justify-content: flex-start;
-    }
+  @include viewport-wide-start-from-exclusive($viewport-regular) {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    justify-content: space-between;
   }
 }
