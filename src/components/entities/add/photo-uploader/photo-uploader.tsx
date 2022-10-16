@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import { FileDrop } from "react-file-drop"
-import { AiOutlineCloudUpload } from "react-icons/ai"
+import { AiOutlineCheck, AiOutlineCloudUpload } from "react-icons/ai"
+// import { RiErrorWarningLine } from "react-icons/ri"
 
 import { cloudinaryService } from "../../../../services/cloudinary-service"
 import { makeId } from "../../../../services/util/make-id"
@@ -31,6 +32,7 @@ export const PhotoUploader = ({ entityName }: Props) => {
         try {
             const res = await cloudinaryService.fetchRequest(files as FileList, entityName)
             setUploadedFiles(res)
+            console.log(res)
             setIsLoading(false)
         } catch (err) {
             console.log(err)
@@ -68,10 +70,21 @@ export const PhotoUploader = ({ entityName }: Props) => {
             </div>}
 
             {!!uploadedFiles.length && <div className="uploaded-photo">
-                {uploadedFiles.map(image => <div key={makeId()}>
-                    <img src={image?.url} alt={image?.original_filename} />
-                </div>)}
-                <div onClick={onAbortUpload}>חזור אחורה</div>
+                <div className="list-container">
+                    {uploadedFiles.map(image => <div
+                        key={makeId()}
+                        className="photo-container"
+                        style={{ backgroundImage: `url(${image?.url})` }}
+                    >
+                        <div className="uploaded-name">מעריב 15-06-1990 סיקור משחק ליגה הפועל מרמורק (ב) (16.07.1990) ועוד כמה מילים לתיאור לראות שהכל בסדר עם שם ארוך</div>
+                        <span className="status complete">
+                            {/* <RiErrorWarningLine /> */}
+                            <AiOutlineCheck />
+                        </span>
+                    </div>)}
+                </div>
+
+                <button onClick={onAbortUpload} className="cancel-upload">בטל העלאה</button>
             </div>}
         </div>
     )

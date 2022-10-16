@@ -28,9 +28,96 @@ div.entity-add-cmp--photo-uploader__container {
         font-size: $font-size-small-rem;
       }
 
-      &.dragging-over{
+      &.dragging-over {
         background-color: $clr-white-darkest;
       }
+    }
+  }
+
+  div.uploaded-photo {
+    display: flex;
+    flex-direction: column;
+    gap: $space-block-regular-rem;
+
+    div.list-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 250px));
+      grid-auto-rows: minmax(180px, 250px);
+      gap: $space-inline-xxSmall-rem;
+
+      div.photo-container {
+        position: relative;
+
+        overflow: hidden;
+        border-radius: $border-radius-regular-rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        div.uploaded-name {
+          position: absolute;
+          bottom: 0;
+
+          display: -webkit-box;
+
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          background-color: $clr-black-regular;
+          color: $clr-white-regular;
+          font-size: $font-size-xxSmall-rem;
+          line-height: 1.4;
+          padding: 5px;
+          width: 100%;
+        }
+
+        span.status {
+          position: absolute;
+          top: $space-block-xxxSmall-rem;
+          left: $space-inline-xxSmall-rem;
+
+          border-radius: 50vw;
+          border: 1px solid $clr-white-darkest;
+          width: 1.5rem;
+          height: 1.5rem;
+
+          &.pending {
+            background-color: $clr-black-lightest;
+          }
+
+          &.complete{
+            background-color: $clr-blue-regular;
+          }
+
+          svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            color: $clr-white-darkest;
+          }
+        }
+      }
+    }
+  }
+
+  button.cancel-upload {
+    cursor: pointer;
+    border-radius: $border-radius-regular-rem;
+    border: 1px solid $clr-blue-regular;
+    background-color: transparent;
+    color: $clr-blue-regular;
+    font-size: $font-size-xSmall-rem;
+    padding-inline: $space-inline-xxxSmall-rem;
+    padding-block: $space-block-xxxSmall-rem;
+    width: max-content;
+    transition: $transition-regular;
+
+    &:hover {
+      background-color: $clr-white-darker;
     }
   }
 }
