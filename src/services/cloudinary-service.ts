@@ -5,9 +5,8 @@ const fetchRequest = async (files: FileList, folderName: string) => {
     formData.append('cloud_name', 'dyxf7nmbe')
     formData.append('api_key', '424317392422556')
 
-    let promises = []
+    let promises = new Array(files.length).fill(true)
     try {
-        for (let i = 0; i < files.length; i++) promises.push(null)
         promises = promises.map((nullMock, idx) => {
             return fetchSingleRequest(formData, files[idx])
         })
@@ -19,15 +18,19 @@ const fetchRequest = async (files: FileList, folderName: string) => {
 }
 
 
-const fetchSingleRequest = (formData: FormData, file: any) => {
-    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/dyxf7nmbe/image/upload`
+const fetchSingleRequest = async (formData: FormData, file: any) => {
     formData.append('file', file)
 
-    return fetch(UPLOAD_URL, {
-        method: 'POST',
-        body: formData
-    })
-        .then(res => res.json())
+    try {
+        const UPLOAD_URL = `https://api.cloudinary.com/v1_1/dyxf7nmbe/image/upload`
+        return await fetch(UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 

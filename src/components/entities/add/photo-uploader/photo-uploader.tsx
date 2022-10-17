@@ -10,7 +10,6 @@ import { MainTitle } from "../../../common/main-title/main-title"
 
 
 export const PhotoUploader = ({ entityName }: Props) => {
-    const [isLoading, setIsLoading] = useState(false)
     const [uploadedFiles, setUploadedFiles] = useState<any[]>([])
 
     const EL_INPUT_REF = useRef<HTMLInputElement>(null)
@@ -21,19 +20,17 @@ export const PhotoUploader = ({ entityName }: Props) => {
 
     const onTargetClick = () => EL_INPUT_REF.current?.click()
 
-    const onDropFile = (files: FileList | null) => {
+    const onDropFile = (files: FileList | null, ev: React.DragEvent<HTMLDivElement>) => {
+        ev.preventDefault()
         if (!files) return
         fetchFiles(files as FileList)
     }
 
     const fetchFiles = async (files: FileList) => {
-        setIsLoading(true)
-
         try {
             const res = await cloudinaryService.fetchRequest(files as FileList, entityName)
             setUploadedFiles(res)
             console.log(res)
-            setIsLoading(false)
         } catch (err) {
             console.log(err)
         }
@@ -41,8 +38,6 @@ export const PhotoUploader = ({ entityName }: Props) => {
 
     const onAbortUpload = () => setUploadedFiles([])
 
-
-    if (isLoading && !!uploadedFiles.length) return <div>מעלה...</div>
 
     return (
         <div className="entity-add-cmp--photo-uploader__container">
@@ -60,7 +55,7 @@ export const PhotoUploader = ({ entityName }: Props) => {
                 <FileDrop
                     draggingOverFrameClassName="dragging-over"
                     onTargetClick={onTargetClick}
-                    onDrop={onDropFile}
+                    onDrop={(files, event) => onDropFile(files, event)}
                 >
                     <div className="dropable-place">
                         <span className="icon"><AiOutlineCloudUpload size={50} /></span>
