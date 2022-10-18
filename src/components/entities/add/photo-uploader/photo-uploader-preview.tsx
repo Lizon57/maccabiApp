@@ -8,7 +8,7 @@ import { Loader } from "../../../common/loader/loader"
 import { ErrorMessage } from "../../../common/error-message/error-message"
 
 
-export const PhotoUploaderPreview = ({ file, delay, path, onUploadComplete }: Props) => {
+export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
     const [fileStatus, setFileStatus] = useState(0)
     const [fileDetails, setFileDetails] = useState<UploadedFile>()
 
@@ -22,14 +22,12 @@ export const PhotoUploaderPreview = ({ file, delay, path, onUploadComplete }: Pr
                     name: res.original_filename
                 }
                 setFileDetails(uploadedFile)
-
-                onUploadComplete()
                 setFileStatus(1)
             } else {
                 setFileStatus(500)
             }
         }, delay)
-    }, [file, delay, path, onUploadComplete])
+    }, [file, delay, path])
 
 
     return (
@@ -67,7 +65,6 @@ type Props = {
     file: File,
     delay: number,
     path: string,
-    onUploadComplete: () => void
 }
 
 type UploadedFile = {

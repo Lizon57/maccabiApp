@@ -3,47 +3,6 @@ div.entity-add-cmp--photo-uploader__container {
   flex-direction: column;
   gap: $space-block-regular-rem;
 
-  div.upload-section {
-    display: flex;
-    flex-direction: column;
-    gap: $space-block-xxSmall-rem;
-
-    div.uploading-loader {
-      background-color: $clr-white-darker;
-      color: rgba($clr-black-lightest, 0.7);
-      height: 20vh;
-    }
-
-    div.file-drop-target {
-      cursor: pointer;
-      border-radius: $border-radius-regular-rem;
-      background-color: $clr-white-darker;
-      color: rgba($clr-black-lightest, 0.7);
-      height: 20vh;
-      transition: $transition-regular;
-
-      &:hover,
-      &.dragging-over {
-        background-color: $clr-white-darkest;
-      }
-
-      div.dropable-place {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: $space-block-xxSmall-rem;
-
-        user-select: none;
-        height: 100%;
-
-        span.text {
-          font-size: $font-size-small-rem;
-        }
-      }
-    }
-  }
-
   div.upload-status-section {
     display: flex;
     flex-direction: column;
@@ -53,12 +12,51 @@ div.entity-add-cmp--photo-uploader__container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
       grid-auto-rows: minmax(220px, 250px);
-      justify-content: center;
       gap: $space-inline-xxLarge-rem;
 
       @include viewport-wide-start-from-exclusive($viewport-regular) {
         grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
-        justify-content: space-between;
+      }
+    }
+  }
+}
+
+div.entity-add-cmp--photo-uploader-dropable-section__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxSmall-rem;
+
+  div.uploading-loader {
+    background-color: $clr-white-darker;
+    color: rgba($clr-black-lightest, 0.7);
+    height: 20vh;
+  }
+
+  div.file-drop-target {
+    cursor: pointer;
+    border-radius: $border-radius-regular-rem;
+    background-color: $clr-white-darker;
+    color: rgba($clr-black-lightest, 0.7);
+    height: 20vh;
+    transition: $transition-regular;
+
+    &:hover,
+    &.dragging-over {
+      background-color: $clr-white-darkest;
+    }
+
+    div.dropable-place {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: $space-block-xxSmall-rem;
+
+      user-select: none;
+      height: 100%;
+
+      span.text {
+        font-size: $font-size-small-rem;
       }
     }
   }
