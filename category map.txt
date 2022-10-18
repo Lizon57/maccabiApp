@@ -1,5 +1,0 @@
-categoryId0001  חתימות
-categoryId0002  חתימות של אנשי כדורגל
-categoryId0003  חתימות של אנשי כדורסל
-categoryId0004  חתימות של אנשי כדורעף
-categoryId0005  חתימות של אנשי כדוריד

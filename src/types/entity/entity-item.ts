@@ -4,7 +4,7 @@ import { MiniPageCategory } from "../page-category"
 export type EntityItem = {
     id: string,
 
-    relatedInfo: {
+    relatedInfo?: {
         branchIds: string[],
     },
 
@@ -28,5 +28,5 @@ export type EntityItem = {
         }
     }
 
-    images: string[]
+    images?: string[]
 }

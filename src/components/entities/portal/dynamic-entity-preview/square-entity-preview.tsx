@@ -20,7 +20,7 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
     }
 
 
-    const TOTAL_IMAGE = item.images.length
+    const TOTAL_IMAGE = item?.images?.length || 0
 
 
     const { relatedInfo, entityInfo, itemInfo } = item
@@ -29,7 +29,7 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
         <div className="dynamic-entity-preview--square-entity-preview__container">
             <Link to={item.id}>
                 <div className="title">
-                    <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>
+                    {relatedInfo?.branchIds && <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>}
                     <span className="title">{entityInfo.name.display}</span>
                 </div>
 
@@ -43,7 +43,7 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
 
                     {TOTAL_IMAGE > 1 && <span className="image-counter" title={`${TOTAL_IMAGE} תמונות תצוגה`}>{TOTAL_IMAGE}</span>}
 
-                    <ImageSlider imagePath={imagePath} images={item.images} />
+                    {item?.images?.length && <ImageSlider imagePath={imagePath} images={item.images} />}
 
                     <div className="additional-info">
                         <div className="views-and-rate">
