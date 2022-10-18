@@ -42,7 +42,7 @@ export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
             <div
                 className={"photo-uploaded" + (!isFileUploadedToDB ? ' incomplete' : '')}
                 style={{ backgroundImage: `url(${fileDetails?.url})` }}
-                title={'תמונה שהועלתה: ' + fileDetails?.name}
+                title={fileDetails?.name}
             >
                 {isFileUploadedToDB &&
                     <span className="status-complete" title="תמונה הוזנה למערכת בהצלחה">
@@ -53,12 +53,10 @@ export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
                 <span className="name">{fileDetails?.name}</span>
             </div>
 
-            {!isFileUploadedToDB &&
-                <div className="complete-photo-description">
-                    <RiErrorWarningLine size={40} />
-                    <span>לחץ כאן להזנת פרטי התמונה</span>
-                </div>
-            }
+            {!isFileUploadedToDB && <div className="complete-photo-description">
+                <RiErrorWarningLine size={40} />
+                <span>לחץ כאן להזנת פרטי התמונה</span>
+            </div>}
         </div>
     )
 }

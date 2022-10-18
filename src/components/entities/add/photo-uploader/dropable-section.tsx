@@ -1,9 +1,8 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { FileDrop } from "react-file-drop"
 import { AiOutlineCloudUpload } from "react-icons/ai"
 import { BiSelectMultiple } from "react-icons/bi"
 
-import { Loader } from "../../../common/loader/loader"
 import { MainTitle } from "../../../common/main-title/main-title"
 
 
@@ -22,7 +21,6 @@ export const DropableSection = ({ onFetchFiles }: Props) => {
         if (!files) return
         onFetchFiles(files)
     }
-
 
 
     return (
