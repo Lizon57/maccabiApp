@@ -9,7 +9,9 @@ import { ErrorMessage } from "../../../common/error-message/error-message"
 
 
 export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
-    const [fileStatus, setFileStatus] = useState(0)
+    const [isUploading, setIsUploading] = useState(true)
+    const [isUploadFail, setIsUploadFail] = useState(false)
+    const [isFileUploadedToDB, setIsFileUploadedToDB] = useState(false)
     const [fileDetails, setFileDetails] = useState<UploadedFile>()
 
 
@@ -22,38 +24,39 @@ export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
                     name: res.original_filename
                 }
                 setFileDetails(uploadedFile)
-                setFileStatus(1)
+                setIsFileUploadedToDB(true)
             } else {
-                setFileStatus(500)
+                setIsUploadFail(true)
             }
+
+            setIsUploading(false)
         }, delay)
     }, [file, delay, path])
 
 
+    if (isUploading) return <Loader text="מעלה קובץ, אנא המתן..." />
+    if (isUploadFail) return <ErrorMessage message="שגיאה בהעלאת קובץ, אנא נסה שנית." />
+
     return (
         <div className="entity-add-cmp--photo-uploader-preview__container">
-            {!fileStatus && <Loader text="מעלה קובץ, אנא המתן..." />}
-
-            {fileStatus === 500 && <ErrorMessage message="שגיאה בהעלאת קובץ, אנא נסה שנית מאוחר יותר..." />}
-
-            {fileStatus && (fileStatus !== 500) && <div
-                className={"photo-uploaded" + (fileStatus === 1 ? ' incomplete' : '')}
+            <div
+                className={"photo-uploaded" + (!isFileUploadedToDB ? ' incomplete' : '')}
                 style={{ backgroundImage: `url(${fileDetails?.url})` }}
                 title={'תמונה שהועלתה: ' + fileDetails?.name}
             >
-                {fileStatus !== 1 &&
+                {isFileUploadedToDB &&
                     <span className="status-complete" title="תמונה הוזנה למערכת בהצלחה">
                         <AiOutlineCheck />
                     </span>
                 }
 
                 <span className="name">{fileDetails?.name}</span>
-            </div>}
+            </div>
 
-            {fileStatus === 1 &&
+            {!isFileUploadedToDB &&
                 <div className="complete-photo-description">
                     <RiErrorWarningLine size={40} />
-                    <span>יש להשלים את הזנת פרטי התמונה</span>
+                    <span>לחץ כאן להזנת פרטי התמונה</span>
                 </div>
             }
         </div>
@@ -69,5 +72,5 @@ type Props = {
 
 type UploadedFile = {
     url: string,
-    name: string
+    name: string,
 }
