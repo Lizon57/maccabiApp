@@ -34,20 +34,15 @@ export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
         <div className="entity-add-cmp--photo-uploader-preview__container">
             {!fileStatus && <Loader text="מעלה קובץ, אנא המתן..." />}
 
+            {fileStatus === 500 && <ErrorMessage message="שגיאה בהעלאת קובץ, אנא נסה שנית מאוחר יותר..." />}
+
             {fileStatus && (fileStatus !== 500) && <div
-                className="photo-uploaded"
+                className={"photo-uploaded" + (fileStatus === 1 ? ' incomplete' : '')}
                 style={{ backgroundImage: `url(${fileDetails?.url})` }}
                 title={'תמונה שהועלתה: ' + fileDetails?.name}
             >
-
-                {fileStatus === 1 &&
-                    <span className="status pending" title="שים לב: טרם הוזנו פרטים נחוצים">
-                        <RiErrorWarningLine />
-                    </span>
-                }
-
                 {fileStatus !== 1 &&
-                    <span className="status complete" title="תמונה הוזנה למערכת בהצלחה">
+                    <span className="status-complete" title="תמונה הוזנה למערכת בהצלחה">
                         <AiOutlineCheck />
                     </span>
                 }
@@ -55,7 +50,12 @@ export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
                 <span className="name">{fileDetails?.name}</span>
             </div>}
 
-            {fileStatus === 500 && <ErrorMessage message="שגיאה בהעלאת קובץ, אנא נסה שנית מאוחר יותר..." />}
+            {fileStatus === 1 &&
+                <div className="complete-photo-description">
+                    <RiErrorWarningLine size={40} />
+                    <span>יש להשלים את הזנת פרטי התמונה</span>
+                </div>
+            }
         </div>
     )
 }
