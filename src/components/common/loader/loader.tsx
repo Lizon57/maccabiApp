@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const Loader = ({ text = 'טוען נתונים, אנא המתן...' }: Props) => {
     return (
         <div className="common-cmp--loader">
             <div className="loader-container">
@@ -8,8 +8,13 @@ export const Loader = () => {
             </div>
 
             <div className="text">
-                טוען נתונים, אנא המתן...
+                {text}
             </div>
         </div>
     )
+}
+
+
+type Props = {
+    text?: string
 }

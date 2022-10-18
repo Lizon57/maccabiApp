@@ -1,86 +1,99 @@
 import { useRef, useState } from "react"
 import { FileDrop } from "react-file-drop"
-import { AiOutlineCheck, AiOutlineCloudUpload } from "react-icons/ai"
-// import { RiErrorWarningLine } from "react-icons/ri"
+import { AiOutlineCloudUpload } from "react-icons/ai"
+import { BiSelectMultiple } from "react-icons/bi"
 
-import { cloudinaryService } from "../../../../services/cloudinary-service"
 import { makeId } from "../../../../services/util/make-id"
 
 import { MainTitle } from "../../../common/main-title/main-title"
+import { Loader } from "../../../common/loader/loader"
+import { PhotoUploaderPreview } from "./photo-uploader-preview"
 
 
 export const PhotoUploader = ({ entityName }: Props) => {
-    const [uploadedFiles, setUploadedFiles] = useState<any[]>([])
+    const [isUploading, setIsUploading] = useState(false)
+    const [uploadedFiles, setUploadedFiles] = useState<File[]>()
+    const [uploadedFileCounter, setUploadedFileCounter] = useState(0)
 
-    const EL_INPUT_REF = useRef<HTMLInputElement>(null)
-
-    const onFileInputChange = async ({ target: { files } }: React.ChangeEvent<HTMLInputElement>) => {
-        fetchFiles(files as FileList)
+    const onFileInputChange = ({ target: { files } }: React.ChangeEvent<HTMLInputElement>) => {
+        if (!files) return
+        fetchFiles(files)
     }
-
-    const onTargetClick = () => EL_INPUT_REF.current?.click()
 
     const onDropFile = (files: FileList | null, ev: React.DragEvent<HTMLDivElement>) => {
         ev.preventDefault()
         if (!files) return
-        fetchFiles(files as FileList)
+        fetchFiles(files)
     }
 
-    const fetchFiles = async (files: FileList) => {
-        try {
-            const res = await cloudinaryService.fetchRequest(files as FileList, entityName)
-            setUploadedFiles(res)
-            console.log(res)
-        } catch (err) {
-            console.log(err)
-        }
+    const fetchFiles = (fileList: FileList) => {
+        const files = Array.from(fileList)
+        setIsUploading(true)
+        setUploadedFiles(files)
     }
 
-    const onAbortUpload = () => setUploadedFiles([])
+    const onUploadComplete = () => {
+        setUploadedFileCounter(uploadedFileCounter + 1)
+        if (uploadedFileCounter === uploadedFiles?.length) setIsUploading(false)
+    }
+
+
+    const EL_INPUT_REF = useRef<HTMLInputElement>(null)
+
+    const onTargetClick = () => EL_INPUT_REF.current?.click()
+
 
 
     return (
         <div className="entity-add-cmp--photo-uploader__container">
-            <MainTitle text="העלאת קבצים" Icon={AiOutlineCloudUpload} />
+            <div className="upload-section">
+                <MainTitle text="בחירת קבצים להעלאה" Icon={BiSelectMultiple} />
 
-            {!uploadedFiles.length && <div className="drop-container" title="גרור קבצים או לחץ כאן">
-                <input
-                    onChange={onFileInputChange}
-                    type="file"
-                    className="hidden"
-                    ref={EL_INPUT_REF}
-                    multiple
-                />
-
-                <FileDrop
-                    draggingOverFrameClassName="dragging-over"
-                    onTargetClick={onTargetClick}
-                    onDrop={(files, event) => onDropFile(files, event)}
-                >
-                    <div className="dropable-place">
-                        <span className="icon"><AiOutlineCloudUpload size={50} /></span>
-                        <span className="text">גרור קבצים או לחץ כאן</span>
+                {isUploading
+                    ? <div className="uploading-loader">
+                        <Loader text="מעלה קבצים, אנא המתן..." />
                     </div>
-                </FileDrop>
-            </div>}
 
-            {!!uploadedFiles.length && <div className="uploaded-photo">
-                <div className="list-container">
-                    {uploadedFiles.map(image => <div
-                        key={makeId()}
-                        className="photo-container"
-                        style={{ backgroundImage: `url(${image?.url})` }}
-                    >
-                        <div className="uploaded-name">מעריב 15-06-1990 סיקור משחק ליגה הפועל מרמורק (ב) (16.07.1990) ועוד כמה מילים לתיאור לראות שהכל בסדר עם שם ארוך</div>
-                        <span className="status complete">
-                            {/* <RiErrorWarningLine /> */}
-                            <AiOutlineCheck />
-                        </span>
-                    </div>)}
+                    : <div className="drop-files-container">
+                        <input
+                            type="file"
+                            className="hidden"
+                            ref={EL_INPUT_REF}
+                            onChange={onFileInputChange}
+                            multiple
+                        />
+
+                        <FileDrop
+                            draggingOverFrameClassName="dragging-over"
+                            onTargetClick={onTargetClick}
+                            onDrop={(files, event) => onDropFile(files, event)}
+                        >
+                            <div className="dropable-place">
+                                <span className="icon"><AiOutlineCloudUpload size={50} /></span>
+                                <span className="text">גרור קבצים או לחץ כאן</span>
+                            </div>
+                        </FileDrop>
+                    </div>
+                }
+            </div>
+
+            {!!uploadedFiles?.length &&
+                <div className="upload-status-section">
+                    <MainTitle text="קבצים שעלו" Icon={AiOutlineCloudUpload} />
+
+                    <div className="uploaded-files-list-container">
+                        {uploadedFiles.map((file, idx) => (
+                            <PhotoUploaderPreview
+                                key={file.name + makeId()}
+                                file={file}
+                                delay={idx * 500}
+                                path={entityName}
+                                onUploadComplete={onUploadComplete}
+                            />
+                        ))}
+                    </div>
                 </div>
-
-                <button onClick={onAbortUpload} className="cancel-upload">בטל העלאה</button>
-            </div>}
+            }
         </div>
     )
 }
