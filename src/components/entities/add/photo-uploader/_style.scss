@@ -73,27 +73,6 @@ div.entity-add-cmp--photo-uploader-preview__container {
     background-position: center center;
     height: 100%;
 
-    span.status-complete {
-      position: absolute;
-      top: $space-block-xxxSmall-rem;
-      left: $space-inline-xxxSmall-rem;
-
-      border-radius: 50vw;
-      border: 1px solid $clr-white-darkest;
-      background-color: $clr-blue-regular;
-      width: 1.5rem;
-      height: 1.5rem;
-
-      svg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        color: $clr-white-darkest;
-      }
-    }
-
     span.name {
       position: absolute;
       bottom: 0;
@@ -102,34 +81,21 @@ div.entity-add-cmp--photo-uploader-preview__container {
 
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
-      overflow: hidden;
       text-overflow: ellipsis;
+
+      outline: none;
+      border-end-end-radius: $border-radius-regular-rem;
       background-color: $clr-black-regular;
       color: $clr-white-regular;
       font-size: $font-size-xxSmall-rem;
       line-height: 1.4;
       padding: 5px;
       width: 100%;
+      overflow: hidden;
+
+      &.active {
+        display: block;
+      }
     }
-  }
-
-  div.complete-photo-description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: $space-block-xxxSmall-rem;
-
-    position: absolute;
-    top: 0;
-
-    user-select: none;
-    background-color: rgba($clr-white-regular, 0.8);
-    color: $clr-blue-regular;
-    font-size: $font-size-small-rem;
-    text-align: center;
-    padding: 5px;
-    width: 100%;
-    height: 100%;
   }
 }

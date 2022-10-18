@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react"
-import { AiOutlineCheck } from "react-icons/ai"
-import { RiErrorWarningLine } from "react-icons/ri"
+import { useEffect, useRef, useState } from "react"
 
 import { cloudinaryService } from "../../../../services/cloudinary-service"
 
@@ -11,8 +9,8 @@ import { ErrorMessage } from "../../../common/error-message/error-message"
 export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
     const [isUploading, setIsUploading] = useState(true)
     const [isUploadFail, setIsUploadFail] = useState(false)
-    const [isFileUploadedToDB, setIsFileUploadedToDB] = useState(false)
     const [fileDetails, setFileDetails] = useState<UploadedFile>()
+    const [isEditUploadFileName, setIsEditUploadFileName] = useState(false)
 
 
     useEffect(() => {
@@ -24,7 +22,6 @@ export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
                     name: res.original_filename
                 }
                 setFileDetails(uploadedFile)
-                setIsFileUploadedToDB(true)
             } else {
                 setIsUploadFail(true)
             }
@@ -34,29 +31,41 @@ export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {
     }, [file, delay, path])
 
 
+    const EL_UPLOADED_PHOTO_NAME_REF = useRef<HTMLSpanElement>(null)
+    const onUploadedPhotoNameEdit = () => {
+        setIsEditUploadFileName(false)
+        if (!fileDetails?.name) return
+
+        const newName = EL_UPLOADED_PHOTO_NAME_REF?.current?.innerText || fileDetails?.name
+
+        if (newName === fileDetails?.name) return
+        else setFileDetails({ ...fileDetails, name: newName })
+    }
+
+
     if (isUploading) return <Loader text="מעלה קובץ, אנא המתן..." />
     if (isUploadFail) return <ErrorMessage message="שגיאה בהעלאת קובץ, אנא נסה שנית." />
 
     return (
         <div className="entity-add-cmp--photo-uploader-preview__container">
             <div
-                className={"photo-uploaded" + (!isFileUploadedToDB ? ' incomplete' : '')}
+                className="photo-uploaded"
                 style={{ backgroundImage: `url(${fileDetails?.url})` }}
                 title={fileDetails?.name}
             >
-                {isFileUploadedToDB &&
-                    <span className="status-complete" title="תמונה הוזנה למערכת בהצלחה">
-                        <AiOutlineCheck />
-                    </span>
-                }
 
-                <span className="name">{fileDetails?.name}</span>
+                <span
+                    className={"name" + (isEditUploadFileName ? ' active' : '')}
+                    title="לחץ לעריכת שם הקובץ"
+                    ref={EL_UPLOADED_PHOTO_NAME_REF}
+                    onClick={() => setIsEditUploadFileName(true)}
+                    onBlur={onUploadedPhotoNameEdit}
+                    suppressContentEditableWarning={true}
+                    contentEditable
+                >
+                    {fileDetails?.name}
+                </span>
             </div>
-
-            {!isFileUploadedToDB && <div className="complete-photo-description">
-                <RiErrorWarningLine size={40} />
-                <span>לחץ כאן להזנת פרטי התמונה</span>
-            </div>}
         </div>
     )
 }
