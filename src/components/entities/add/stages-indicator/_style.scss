@@ -1,4 +1,4 @@
-div.entity-add-cmp--stages-indicator__container {
+div.entity-add-cmp--laptop-wide-plus-stages-indicator__container {
   $pipe-width: 5rem;
 
   display: flex;
@@ -68,6 +68,54 @@ div.entity-add-cmp--stages-indicator__container {
           $clr-white-darkest
         );
       }
+    }
+  }
+}
+
+div.entity-add-cmp--up-to-laptop-wide-stage-indicator__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: 100%;
+
+  button {
+    border-radius: $border-radius-regular-rem;
+    border: 1px solid $clr-blue-regular;
+    background-color: transparent;
+    font-size: $font-size-small-rem;
+    padding: 5px;
+    transition: $transition-regular;
+
+    &.disable {
+      cursor: pointer;
+      color: $clr-black-lightest;
+      border-color: $clr-black-lightest;
+    }
+
+    &:not(.disable) {
+      color: $clr-blue-regular;
+
+      &:hover {
+        background-color: $clr-blue-regular;
+        color: $clr-white-regular;
+      }
+    }
+  }
+
+  div.stage-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-block-xxxSmall-rem;
+
+    span.stage-counter {
+      font-size: $font-size-xSmall-rem;
+    }
+
+    span.curr-stage-name {
+      font-size: $font-size-small-rem;
+      font-family: $typography-emphasis;
     }
   }
 }

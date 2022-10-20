@@ -34,14 +34,12 @@ export const EntityPortal = (entityName: string) => {
         const loadItems = async () => {
             if (!isLoading) return
 
-
             const primaryFilter = ENTITY.listPageInfo.filters.find(filter => filter.type === 'primary_text')
             const filters = ENTITY.listPageInfo.filters.filter(filter => filter.type !== 'primary_text')
             const optionalFilter = {
                 primaryFilter,
                 filters
             }
-
 
             try {
                 const { dbInfo: { name: dbName, fallbackDB } } = ENTITY

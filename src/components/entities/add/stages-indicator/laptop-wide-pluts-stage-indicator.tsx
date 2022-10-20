@@ -1,18 +1,8 @@
-import { useState } from "react"
 import { makeId } from "../../../../services/util/make-id"
 
-export const StagesIndicator = ({ stages }: Props) => {
-    const [currStage] = useState(0)
-    const [activeStage, setActiveState] = useState(0)
-
-    const onStageClick = (stageIdx: number) => {
-        if (stageIdx > currStage) return
-        setActiveState(stageIdx)
-    }
-
-
+export const LaptopWidePlusStageIndicator = ({ stages, activeStage, currStage, onStageClick }: Props) => {
     return (
-        <div className="entity-add-cmp--stages-indicator__container">
+        <div className="entity-add-cmp--laptop-wide-plus-stages-indicator__container">
             {stages.map((stage, idx) => <div
                 key={makeId(5)}
                 title={stage}
@@ -31,5 +21,8 @@ export const StagesIndicator = ({ stages }: Props) => {
 
 
 type Props = {
-    stages: string[]
+    stages: string[],
+    activeStage: number,
+    currStage: number,
+    onStageClick: (stageIdx: number) => void
 }
