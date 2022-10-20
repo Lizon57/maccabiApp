@@ -1,13 +1,23 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AiOutlineCloudUpload } from "react-icons/ai"
 
-import { MainTitle } from "../../../common/main-title/main-title"
+import { MainTitle } from "../../../../common/main-title/main-title"
 import { PhotoUploaderPreview } from "./photo-uploader-preview"
 import { DropableSection } from "./dropable-section"
 
 
-export const PhotoUploader = ({ entityName }: Props) => {
+export const PhotoUploader = ({ entityName, minPhotoNumber, onStageFullfill }: Props) => {
     const [uploadedFiles, setUploadedFiles] = useState<File[]>()
+    const [uploadedFilesIds, setUploadedFilesIds] = useState<string[]>()
+
+
+    useEffect(() => {
+        if (!minPhotoNumber) onStageFullfill(null, 'photo-uploader')
+        else if (uploadedFiles?.length && uploadedFiles?.length >= minPhotoNumber) {
+            // onStageFullfill(uploadedFiles, 'photo-uploader')
+        }
+    }, [uploadedFiles, minPhotoNumber, onStageFullfill])
+
 
     const fetchFiles = (fileList: FileList) => {
         const files = Array.from(fileList)
@@ -41,5 +51,7 @@ export const PhotoUploader = ({ entityName }: Props) => {
 
 
 type Props = {
-    entityName: string
+    entityName: string,
+    minPhotoNumber?: number,
+    onStageFullfill: (data: any, stageType: string) => void
 }

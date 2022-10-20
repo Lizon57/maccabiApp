@@ -3,7 +3,7 @@ import { FileDrop } from "react-file-drop"
 import { AiOutlineCloudUpload } from "react-icons/ai"
 import { BiSelectMultiple } from "react-icons/bi"
 
-import { MainTitle } from "../../../common/main-title/main-title"
+import { MainTitle } from "../../../../common/main-title/main-title"
 
 
 export const DropableSection = ({ onFetchFiles }: Props) => {

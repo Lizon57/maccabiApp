@@ -1,3 +1,5 @@
+import { EntityItemAddStage } from "../../../../types/entity/add/entity-item-add-stage"
+
 export const UpToLaptopWideStageIndicator = ({ stages, activeStage, currStage }: Props) => {
     return (
         <div className="entity-add-cmp--up-to-laptop-wide-stage-indicator__container">
@@ -5,7 +7,7 @@ export const UpToLaptopWideStageIndicator = ({ stages, activeStage, currStage }:
 
             <div className="stage-indicator">
                 <span className="stage-counter">{currStage + 1}/{stages.length}</span>
-                <span className="curr-stage-name">{stages[activeStage]}</span>
+                <span className="curr-stage-name">{stages[activeStage].title}</span>
             </div>
 
             <button className={"next-stage" + (currStage <= activeStage ? ' disable' : '')}>הבא</button>
@@ -15,7 +17,7 @@ export const UpToLaptopWideStageIndicator = ({ stages, activeStage, currStage }:
 
 
 type Props = {
-    stages: string[],
+    stages: EntityItemAddStage[],
     activeStage: number,
     currStage: number
 }

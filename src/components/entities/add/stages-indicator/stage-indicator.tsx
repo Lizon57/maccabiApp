@@ -1,17 +1,13 @@
-import { useState } from "react"
+import { EntityItemAddStage } from "../../../../types/entity/add/entity-item-add-stage"
 
 import { RenderByDeviceWidth } from "../../../common/render-by/render-by-device-width"
-import { LaptopWidePlusStageIndicator } from "./laptop-wide-pluts-stage-indicator"
+import { LaptopWidePlusStageIndicator } from "./laptop-wide-plus-stage-indicator"
 import { UpToLaptopWideStageIndicator } from "./up-to-laptop-wide-stage-indicator"
 
 
-export const StageIndicator = ({ stages }: Props) => {
-    const [currStage] = useState(0)
-    const [activeStage, setActiveState] = useState(0)
-
+export const StageIndicator = ({ stages, currStage, activeStage }: Props) => {
     const onStageClick = (stageIdx: number) => {
         if (stageIdx > currStage) return
-        setActiveState(stageIdx)
     }
 
 
@@ -37,5 +33,7 @@ export const StageIndicator = ({ stages }: Props) => {
 
 
 type Props = {
-    stages: string[]
+    stages: EntityItemAddStage[],
+    currStage: number,
+    activeStage: number
 }

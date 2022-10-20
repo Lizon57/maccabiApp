@@ -5,6 +5,8 @@ import { sortEntityService } from "./sort-entity-service"
 import { pageCategoryService } from "../page-category-service"
 import { filterEntityService } from "./filter-entity-service"
 
+import { makeId } from "../util/make-id"
+
 import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 import { EntityItem } from "../../types/entity/entity-item"
 import { Entity } from "../../types/entity/entity"
@@ -54,10 +56,37 @@ const getEntityItemById = async (id: string, entity: Entity) => {
 }
 
 
+const getEmptyEntityItem = () => {
+    return {
+        id: makeId(),
+
+        entityInfo: {
+            name: {
+                display: ''
+            },
+            ctgIds: [],
+        },
+
+        itemInfo: {
+            view: 0,
+            rate: {
+                avg: 0,
+                raterCount: 0
+            },
+            editHistory: {
+                total: 0,
+                lastEditDate: new Date()
+            }
+        }
+    }
+}
+
+
 export const entityService = {
     getEntityByName,
     queryEntityItems,
-    getEntityItemById
+    getEntityItemById,
+    getEmptyEntityItem
 }
 
 

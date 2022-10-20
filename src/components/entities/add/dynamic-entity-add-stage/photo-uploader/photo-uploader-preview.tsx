@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 
-import { cloudinaryService } from "../../../../services/cloudinary-service"
+import { cloudinaryService } from "../../../../../services/cloudinary-service"
 
-import { Loader } from "../../../common/loader/loader"
-import { ErrorMessage } from "../../../common/error-message/error-message"
+import { Loader } from "../../../../common/loader/loader"
+import { ErrorMessage } from "../../../../common/error-message/error-message"
 
 
 export const PhotoUploaderPreview = ({ file, delay, path }: Props) => {

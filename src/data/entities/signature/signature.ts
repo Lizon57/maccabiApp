@@ -71,5 +71,15 @@ export const signatureEntity: Entity = {
                 }
             }
         ]
+    },
+
+    addItemPage: {
+        stages: [
+            {
+                title: 'העלאת תמונות',
+                type: 'photo-uploader',
+                minPhotoNumber: 1
+            }
+        ]
     }
 }

@@ -43,5 +43,9 @@ export const imageEntity: Entity = {
 
         filters: [
         ]
+    },
+
+    addItemPage: {
+        stages: [{ title: 'העלאת תמונות', type: 'photo-uploader' }]
     }
 }

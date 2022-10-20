@@ -21,7 +21,7 @@ export type EntityItem = {
         rate: {
             avg: number,
             raterCount: number
-        }
+        },
         editHistory: {
             total: number,
             lastEditDate: Date

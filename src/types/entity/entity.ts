@@ -3,6 +3,7 @@ import { EntityFilterOption } from "./filter/entity-filter-option"
 
 import { EntitySortOption } from "./sort/entity-sort-option"
 import { SignatureEntityItem } from "./entities/signature-entity-item"
+import { EntityItemAddStage } from "./add/entity-item-add-stage"
 
 
 export type Entity = {
@@ -38,5 +39,9 @@ export type Entity = {
         previewType: string,
         sorts: EntitySortOption[],
         filters: EntityFilterOption[]
+    },
+
+    addItemPage: {
+        stages: EntityItemAddStage[]
     }
 }
