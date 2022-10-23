@@ -13,7 +13,7 @@ import { UploadedPhotoPreview } from "./uploaded-photo-preview"
 
 export const PhotoUpload = ({ entityName }: Props) => {
     const [isUploading, setIsUploading] = useState(false)
-    const [uploadedPhotosUrls, setUploadedPhotosUrls] = useState<Photo[]>([])
+    const [uploadedPhotos, setUploadedPhotos] = useState<Photo[]>([])
     const [photosOnUpload, setPhotosOnUpload] = useState<File[]>([])
     const [uploadCounter, setUploadAttemptsCounter] = useState(0)
     const [failsUpload, setFailsUpload] = useState<string[]>([])
@@ -21,8 +21,8 @@ export const PhotoUpload = ({ entityName }: Props) => {
 
     useEffect(() => {
         if (!isUploading) return
-        else if (uploadCounter === uploadedPhotosUrls.length + photosOnUpload.length) setIsUploading(false)
-    }, [uploadCounter, isUploading, uploadedPhotosUrls.length, photosOnUpload.length])
+        else if (uploadCounter === uploadedPhotos.length + photosOnUpload.length) setIsUploading(false)
+    }, [uploadCounter, isUploading, uploadedPhotos.length, photosOnUpload.length])
 
 
     const onFetchFiles = (fileList: FileList) => {
@@ -36,9 +36,9 @@ export const PhotoUpload = ({ entityName }: Props) => {
         const filteredPhotosOnUpload = photosOnUpload.filter(fileItem => fileItem !== file)
         setPhotosOnUpload(filteredPhotosOnUpload)
 
-        const uploadedPhotos = uploadedPhotosUrls.slice()
-        uploadedPhotos.push(photo)
-        setUploadedPhotosUrls(uploadedPhotos)
+        const newUploadedPhotos = uploadedPhotos.slice()
+        newUploadedPhotos.push(photo)
+        setUploadedPhotos(newUploadedPhotos)
 
         setUploadAttemptsCounter(uploadCounter + 1)
     }
@@ -54,20 +54,20 @@ export const PhotoUpload = ({ entityName }: Props) => {
 
 
     const onRemovePhoto = (photo: Photo) => {
-        const newUploadedPhotosUrls = uploadedPhotosUrls.filter(fileItem => fileItem !== photo)
-        setUploadedPhotosUrls(newUploadedPhotosUrls)
+        const newUploadedPhotos = uploadedPhotos.filter(fileItem => fileItem !== photo)
+        setUploadedPhotos(newUploadedPhotos)
     }
 
 
     const setNewPhotoName = (photo: Photo) => {
-        const photoIdx = uploadedPhotosUrls.findIndex(photoItem => photoItem === photo)
-        const uploadedPhotos = uploadedPhotosUrls.slice()
-        uploadedPhotos.splice(photoIdx, 1, photo)
-        setUploadedPhotosUrls(uploadedPhotos)
+        const photoIdx = uploadedPhotos.findIndex(photoItem => photoItem === photo)
+        const newUploadedPhotos = uploadedPhotos.slice()
+        newUploadedPhotos.splice(photoIdx, 1, photo)
+        setUploadedPhotos(newUploadedPhotos)
     }
 
 
-    const shouldRenderFilesList = !!uploadedPhotosUrls.length || !!photosOnUpload.length || !!failsUpload.length
+    const shouldRenderFilesList = !!uploadedPhotos.length || !!photosOnUpload.length || !!failsUpload.length
 
     return (
         <div className="entity-add-cmp--photo-upload__container">
@@ -80,7 +80,7 @@ export const PhotoUpload = ({ entityName }: Props) => {
                 <MainTitle text="קבצים שעלו" Icon={AiOutlineCloudUpload} />
                 <div
                     className={"files-list-container"
-                        + ((uploadedPhotosUrls.length + photosOnUpload.length < 4) ? ' short-list' : '')}
+                        + ((uploadedPhotos.length + photosOnUpload.length < 4) ? ' short-list' : '')}
                 >
                     {photosOnUpload.map(file => <PhotoOnUploadPreview
                         key={file.name}
@@ -89,7 +89,7 @@ export const PhotoUpload = ({ entityName }: Props) => {
                         onUploadSuccess={onUploadSuccess}
                         onUploadFail={onUploadFail}
                     />)}
-                    {uploadedPhotosUrls.map(photo => <UploadedPhotoPreview
+                    {uploadedPhotos.map(photo => <UploadedPhotoPreview
                         key={photo.url}
                         photo={photo}
                         setNewPhotoName={setNewPhotoName}
