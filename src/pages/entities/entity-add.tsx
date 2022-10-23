@@ -10,7 +10,16 @@ import { DynamicEntityAddStage } from "../../components/entities/add/dynamic-ent
 export const EntityAdd = (entityName: string) => {
     const ENTITY = entityService.getEntityByName(entityName)
 
-    const [stageStatus, setStageStatus] = useState({ currActiveStageIdx: 0, lastAchieveStageIdx: 0, isNextStageAvailable: false })
+    const [stageStatus, setStageStatus] = useState({ currActiveStageIdx: 1, lastAchieveStageIdx: 0, isNextStageAvailable: true })
+
+
+    const onStageComplete = () => {
+        const newStageStatus = {
+            ...stageStatus,
+            isNextStageAvailable: true
+        }
+        setStageStatus(newStageStatus)
+    }
 
 
     if (!ENTITY) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
@@ -18,13 +27,22 @@ export const EntityAdd = (entityName: string) => {
     const { addItemPage: { stages } } = ENTITY
 
     return (
-        <section className="entities-pages--entity-add__container2">
+        <section className="entities-pages--entity-add__container">
             <StageIndicator stages={stages} stageStatus={stageStatus} />
 
             <DynamicEntityAddStage
                 entityName={ENTITY.name}
                 stage={stages[stageStatus.currActiveStageIdx]}
+                onStageComplete={onStageComplete}
             />
+
+            <div className="stage-navigation">
+                {!!stageStatus.currActiveStageIdx && <button className="prev">שלב קודם</button>}
+
+                {stageStatus.isNextStageAvailable &&
+                    <button className="next">שלב הבא</button>
+                }
+            </div>
         </section>
     )
 }

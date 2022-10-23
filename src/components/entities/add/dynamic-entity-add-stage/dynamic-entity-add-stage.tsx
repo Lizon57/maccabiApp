@@ -1,16 +1,30 @@
+import { useEffect } from "react"
+
 import { EntityAddItemStage } from "../../../../types/entity/add/entity-add-item-stage"
+
 import { PhotoUpload } from "./photo-upload/photo-upload"
 
-// import { PhotoUploader } from "./photo-uploader/photo-uploader"
+
+export const DynamicEntityAddStage = ({ stage, entityName, onStageComplete }: Props) => {
+    useEffect(() => {
+        const isCompleteStage = () => {
+            switch (stage.type) {
+                case 'photo-uploader':
+                    if (!stage.option?.minPhotoCount) return false
+                    // if (uploadedPhotos >= minPhotoCount) return true
+                    break
+
+                default:
+                    return true
+            }
+        }
+
+        isCompleteStage()
+    }, [stage.type, stage.option?.minPhotoCount])
 
 
-export const DynamicEntityAddStage = ({ stage, entityName }: Props) => {
     switch (stage.type) {
         case 'photo-upload':
-            // return <PhotoUploader
-            //     entityName={entityName}
-            //     minPhotoNumber={stage?.option?.minPhotoCount}
-            // />
             return <PhotoUpload entityName={entityName} />
 
         default:
@@ -22,4 +36,5 @@ export const DynamicEntityAddStage = ({ stage, entityName }: Props) => {
 type Props = {
     stage: EntityAddItemStage,
     entityName: string,
+    onStageComplete:  () => void
 }
