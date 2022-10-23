@@ -78,7 +78,17 @@ export const signatureEntity: Entity = {
             {
                 title: 'העלאת תמונות',
                 type: 'photo-uploader',
-                minPhotoNumber: 1
+                isRequired: true,
+
+                option: {
+                    minPhotoCount: 1
+                }
+            },
+
+            {
+                title: 'שיוך חתימה',
+                type: 'branch-picker',
+                isRequired: true
             }
         ]
     }

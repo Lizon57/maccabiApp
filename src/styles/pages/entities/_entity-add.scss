@@ -6,3 +6,9 @@ section.entities-pages--entity-add__container {
   overflow: hidden;
   border-radius: $border-radius-regular-rem;
 }
+
+section.entities-pages--entity-add__container2 {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-regular-rem;
+}
