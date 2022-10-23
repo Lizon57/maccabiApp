@@ -1,0 +1,122 @@
+div.entity-add-cmp--photo-upload__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-regular-rem;
+
+  div.file-picker,
+  div.uploaded-files {
+    display: flex;
+    flex-direction: column;
+    gap: $space-block-xxSmall-rem;
+  }
+
+  div.file-picker {
+    div.entity-add-cmp--photo-uploader-dropable-section__container {
+      div.uploading-loader {
+        background-color: $clr-white-darker;
+        color: rgba($clr-black-lightest, 0.7);
+        height: 20vh;
+      }
+
+      div.file-drop-target {
+        cursor: pointer;
+        border-radius: $border-radius-regular-rem;
+        background-color: $clr-white-darker;
+        color: rgba($clr-black-lightest, 0.7);
+        height: 20vh;
+        transition: $transition-regular;
+
+        &:hover,
+        &.dragging-over {
+          background-color: $clr-white-darkest;
+        }
+
+        div.dropable-place {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: $space-block-xxSmall-rem;
+
+          user-select: none;
+          height: 100%;
+
+          span.text {
+            font-size: $font-size-small-rem;
+          }
+        }
+      }
+    }
+  }
+
+  div.files-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
+    grid-auto-rows: minmax(220px, 250px);
+    gap: $space-inline-xxLarge-rem;
+    justify-content: center;
+
+    @include viewport-wide-start-from-exclusive($viewport-regular) {
+      justify-content: unset;
+
+      &:not(.short-list) {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+
+    div.entity-add-cmp--uploaded-photo-preview__container {
+      position: relative;
+
+      overflow: hidden;
+      border-radius: $border-radius-regular-rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100%;
+
+      &:hover > div.remove {
+        left: $space-inline-xxxSmall-rem;
+      }
+
+      div.remove {
+        position: absolute;
+        top: $space-block-xxxSmall-rem;
+        left: -50px;
+
+        display: flex;
+
+        cursor: pointer;
+        border-radius: 50vw;
+        background-color: $clr-black-regular;
+        color: $clr-white-regular;
+        padding: 5px;
+        transition: $transition-regular;
+      }
+
+      div.name {
+        position: absolute;
+        bottom: 0;
+
+        display: -webkit-box;
+
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+
+        outline: none;
+        background-color: $clr-blue-darkest;
+        color: $clr-white-regular;
+        font-size: $font-size-xSmall-rem;
+        line-height: 1.4;
+        padding: 5px;
+        width: 100%;
+
+        &:focus-within {
+          display: block;
+          -webkit-line-clamp: unset;
+          text-overflow: unset;
+        }
+      }
+    }
+  }
+}

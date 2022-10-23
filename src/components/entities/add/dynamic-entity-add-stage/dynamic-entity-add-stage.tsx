@@ -1,16 +1,17 @@
 import { EntityAddItemStage } from "../../../../types/entity/add/entity-add-item-stage"
+import { PhotoUpload } from "./photo-upload/photo-upload"
 
-import { PhotoUploader } from "./photo-uploader/photo-uploader"
+// import { PhotoUploader } from "./photo-uploader/photo-uploader"
 
 
-export const DynamicEntityAddStage = ({ stage, entityName, onStageFullfill }: Props) => {
+export const DynamicEntityAddStage = ({ stage, entityName }: Props) => {
     switch (stage.type) {
-        case 'photo-uploader':
-            return <PhotoUploader
-                entityName={entityName}
-                minPhotoNumber={stage?.option?.minPhotoCount}
-                onStageFullfill={onStageFullfill}
-            />
+        case 'photo-upload':
+            // return <PhotoUploader
+            //     entityName={entityName}
+            //     minPhotoNumber={stage?.option?.minPhotoCount}
+            // />
+            return <PhotoUpload entityName={entityName} />
 
         default:
             return <></>
@@ -21,6 +22,4 @@ export const DynamicEntityAddStage = ({ stage, entityName, onStageFullfill }: Pr
 type Props = {
     stage: EntityAddItemStage,
     entityName: string,
-    onStageFullfill: (data: any, stageType: string) => void
-
 }

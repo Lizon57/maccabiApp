@@ -77,7 +77,7 @@ export const signatureEntity: Entity = {
         stages: [
             {
                 title: 'העלאת תמונות',
-                type: 'photo-uploader',
+                type: 'photo-upload',
                 isRequired: true,
 
                 option: {
