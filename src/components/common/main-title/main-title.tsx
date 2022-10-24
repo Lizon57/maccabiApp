@@ -4,7 +4,7 @@ export const MainTitle = ({ text, isSticky = false, Icon, additionalCmp }: Props
     return (
         <h2 className={'common-cmp--main-title' + (isSticky ? ' sticky' : '')}>
             <div className="title-container">
-                {Icon && <span className="icon"><Icon /></span>}
+                {Icon && <span className="icon"><Icon size={18} /></span>}
                 <span className="text">{text}</span>
             </div>
 

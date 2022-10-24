@@ -67,6 +67,7 @@ export const PhotoUpload = ({ entityName }: Props) => {
     }
 
 
+
     const shouldRenderFilesList = !!uploadedPhotos.length || !!photosOnUpload.length || !!failsUpload.length
 
     return (
@@ -107,7 +108,7 @@ export const PhotoUpload = ({ entityName }: Props) => {
 
 
 type Props = {
-    entityName: string
+    entityName: string,
 }
 
 

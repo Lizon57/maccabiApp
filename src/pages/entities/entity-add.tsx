@@ -10,18 +10,9 @@ import { DynamicEntityAddStage } from "../../components/entities/add/dynamic-ent
 export const EntityAdd = (entityName: string) => {
     const ENTITY = entityService.getEntityByName(entityName)
 
-    const [stageStatus, setStageStatus] = useState({ currActiveStageIdx: 1, lastAchieveStageIdx: 0, isNextStageAvailable: true })
+    const [stageStatus, setStageStatus] = useState({ currActiveStageIdx: 0, lastAchieveStageIdx: 0, isNextStageAvailable: true })
 
-
-    const onStageComplete = () => {
-        const newStageStatus = {
-            ...stageStatus,
-            isNextStageAvailable: true
-        }
-        setStageStatus(newStageStatus)
-    }
-
-
+ 
     if (!ENTITY) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
 
     const { addItemPage: { stages } } = ENTITY
@@ -33,7 +24,6 @@ export const EntityAdd = (entityName: string) => {
             <DynamicEntityAddStage
                 entityName={ENTITY.name}
                 stage={stages[stageStatus.currActiveStageIdx]}
-                onStageComplete={onStageComplete}
             />
 
             <div className="stage-navigation">

@@ -76,6 +76,21 @@ export const signatureEntity: Entity = {
     addItemPage: {
         stages: [
             {
+                title: 'שיוך',
+                type: 'associate-related-data',
+                isRequired: true,
+
+                option: {
+                    relateds: [
+                        {
+                            type: 'profile',
+                            isRequired: true
+                        }
+                    ]
+                }
+            },
+
+            {
                 title: 'העלאת תמונות',
                 type: 'photo-upload',
                 isRequired: true,
@@ -84,12 +99,6 @@ export const signatureEntity: Entity = {
                     minPhotoCount: 1
                 }
             },
-
-            {
-                title: 'שיוך חתימה',
-                type: 'branch-picker',
-                isRequired: true
-            }
         ]
     }
 }

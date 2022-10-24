@@ -3,11 +3,16 @@ export type EntityAddItemStage = {
     type: string,
     isRequired: boolean,
 
-    option?: PhotoUploadStage
+    option?: PhotoUploadStage | AssociateRelatedDataStage
 }
 
 
 type PhotoUploadStage = {
     minPhotoCount?: number,
     maxPhotoCount?: number,
+}
+
+
+type AssociateRelatedDataStage = {
+    relateds: { type: string, isRequired: boolean }[]
 }
