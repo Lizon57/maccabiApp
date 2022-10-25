@@ -14,10 +14,12 @@ export const PROFILE_DB: ProfileEntityItem[] = [
 
         entityInfo: {
             name: {
-                private: 'משה',
-                middle: 'מיכאל',
-                family: 'ברקוביץ\'',
-                nickname: 'מיקי',
+                he: {
+                    private: 'משה',
+                    middle: 'מיכאל',
+                    family: 'ברקוביץ\'',
+                    nickname: 'מיקי',
+                },
                 display: 'מיקי ברקוביץ\''
             },
 
@@ -58,8 +60,10 @@ export const PROFILE_DB: ProfileEntityItem[] = [
 
         entityInfo: {
             name: {
-                private: 'אבי',
-                family: 'נמני',
+                he: {
+                    private: 'אבי',
+                    family: 'נמני',
+                },
                 display: 'אבי נמני'
             },
 
@@ -100,8 +104,10 @@ export const PROFILE_DB: ProfileEntityItem[] = [
 
         entityInfo: {
             name: {
-                private: 'עומר',
-                family: 'דבדה',
+                he: {
+                    private: 'עומר',
+                    family: 'דבדה',
+                },
                 display: 'עומר דבדה'
             },
 
@@ -131,8 +137,10 @@ export const PROFILE_DB: ProfileEntityItem[] = [
 
         entityInfo: {
             name: {
-                private: 'אריאל',
-                family: 'כצנלסון',
+                he: {
+                    private: 'אריאל',
+                    family: 'כצנלסון',
+                },
                 display: 'אריאל כצנלסון'
             },
 

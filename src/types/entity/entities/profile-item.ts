@@ -4,12 +4,18 @@ export type ProfileEntityItem = _ProfileEntityItem & EntityItem
 
 
 type _ProfileEntityItem = {
+    relatedInfo: {
+        profileImageId?: string
+    },
+
     entityInfo: {
-        name: {
-            private?: string,
-            middle?: string,
-            family?: string,
-            nickname?: string
+        name?: {
+            he?: {
+                private?: string,
+                middle?: string,
+                family?: string,
+                nickname?: string
+            }
         },
 
         lifetime?: {

@@ -40,8 +40,39 @@ div.entity-add-cmp--related-profile-picker__container {
       right: -$space-inline-xxxSmall-rem;
     }
   }
+}
 
-  datalist{
-    width: 5rem;
+div.entity-add-cmp--related-profile-option-preview__container {
+  display: flex;
+  align-items: center;
+  gap: $space-inline-xxxSmall-rem;
+
+  user-select: none;
+
+  span.image {
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+      display: block;
+
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  div.name-and-branch {
+    display: flex;
+    flex-direction: column;
+    gap: $space-inline-xxxSmall-rem;
+
+    span.name {
+      font-family: $typography-emphasis;
+    }
+
+    span.branch {
+      color: $clr-white-darkest;
+      font-size: $font-size-xxSmall-rem;
+    }
   }
 }

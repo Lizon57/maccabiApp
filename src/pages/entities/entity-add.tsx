@@ -12,7 +12,7 @@ export const EntityAdd = (entityName: string) => {
 
     const [stageStatus, setStageStatus] = useState({ currActiveStageIdx: 0, lastAchieveStageIdx: 0, isNextStageAvailable: true })
 
- 
+
     if (!ENTITY) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
 
     const { addItemPage: { stages } } = ENTITY
