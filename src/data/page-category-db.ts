@@ -86,4 +86,44 @@ export const PAGE_CATEGORY_DB = [
             display: 'מיקי ברקוביץ\' - תמונות'
         }
     },
+
+    {
+        id: 'categoryId0012',
+
+        name: {
+            display: 'פרופילים'
+        }
+    },
+
+    {
+        id: 'categoryId0013',
+
+        name: {
+            display: 'שחקני כדורגל'
+        }
+    },
+
+    {
+        id: 'categoryId0014',
+
+        name: {
+            display: 'שחקני כדורסל'
+        }
+    },
+
+    {
+        id: 'categoryId0015',
+
+        name: {
+            display: 'שחקני כדורעף'
+        }
+    },
+
+    {
+        id: 'categoryId0016',
+
+        name: {
+            display: 'שחקני כדוריד'
+        }
+    },
 ]

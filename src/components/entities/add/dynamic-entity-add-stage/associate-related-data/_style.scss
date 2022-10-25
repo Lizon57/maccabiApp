@@ -1,0 +1,47 @@
+div.entity-add-cmp--associate-related-data__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-inline-xxLarge-rem;
+}
+
+div.entity-add-cmp--related-profile-picker__container {
+  position: relative;
+
+  border-radius: $border-radius-regular-rem;
+  border: 1px solid $clr-black-regular;
+  padding-inline: $space-inline-xxxSmall-rem;
+  padding-block-start: $space-block-xSmall-rem;
+  padding-block-end: $space-block-xxxSmall-rem;
+  max-width: max-content;
+
+  span.title {
+    position: absolute;
+    z-index: 1;
+    top: -$space-block-xSmall-rem;
+
+    user-select: none;
+    background-color: $clr-white-regular;
+    font-size: $font-size-xSmall-rem;
+    font-family: $typography-emphasis;
+    line-height: 1.5;
+    margin-inline-start: $space-inline-xSmall-rem;
+
+    &::after,
+    &::before {
+      position: absolute;
+
+      content: "";
+      background-color: $clr-white-regular;
+      width: $space-inline-xxxSmall-rem;
+      height: 100%;
+    }
+
+    &::before {
+      right: -$space-inline-xxxSmall-rem;
+    }
+  }
+
+  datalist{
+    width: 5rem;
+  }
+}

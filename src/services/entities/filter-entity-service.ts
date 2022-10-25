@@ -2,8 +2,8 @@ import { EntityFilterOption } from "../../types/entity/filter/entity-filter-opti
 import { EntityItem } from "../../types/entity/entity-item"
 
 
-const filterEntityByTitle = (items: EntityItem[], searchTitle: string) => {
-    return items.filter(item => item.entityInfo.name.display.includes(searchTitle))
+const filterEntityByTitle = (items: EntityItem[], pharse: string) => {
+    return items.filter(item => item.entityInfo.name.display.includes(pharse))
 }
 
 

@@ -12,7 +12,8 @@ export const DynamicEntityAddStage = ({ stage, entityName }: Props) => {
             />
 
         case 'associate-related-data':
-            return <AssociateRelatedData />
+            if (!stage?.option?.relateds?.length) return null
+            return <AssociateRelatedData relateds={stage.option.relateds} />
 
         default:
             return <></>

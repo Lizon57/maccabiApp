@@ -81,12 +81,7 @@ export const signatureEntity: Entity = {
                 isRequired: true,
 
                 option: {
-                    relateds: [
-                        {
-                            type: 'profile',
-                            isRequired: true
-                        }
-                    ]
+                    relateds: ['profile']
                 }
             },
 

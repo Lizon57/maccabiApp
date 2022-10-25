@@ -22,6 +22,8 @@ const dynamicEntitySort = (entityList: EntityItem[], sortBy: EntitySortParam) =>
 
 
 const _sortEntityByNumberKey = <T>(entityList: { [key: number]: T }[], sortBy: EntitySortParam) => {
+    if (!sortBy.sKey) return entityList as EntityItem[]
+
     const SORT_KEY_PATH = sortBy.sKey.split('.')
     entityList = entityList.slice()
 
@@ -45,6 +47,9 @@ const _sortEntityByNumberKey = <T>(entityList: { [key: number]: T }[], sortBy: E
 
 
 const _sortEntityByStringKey = <T>(entityList: { [key: string]: T }[], sortBy: EntitySortParam) => {
+    // @ts-ignore
+    if (!sortBy.sKey) return entityList as EntityItem[]
+
     const SORT_KEY_PATH = sortBy.sKey.split('.')
     entityList = entityList.slice()
 
