@@ -16,7 +16,8 @@ export const RelatedProfilePicker = () => {
                 value: {
                     id: item.id,
                     name: item.name,
-                    branchIds: item.branchIds
+                    branchIds: item.branchIds,
+                    profileImageUrl: item.profileImageUrl
                 }
             }))
             return options as ProfileOption[]
@@ -101,6 +102,7 @@ type ProfileOption = {
     value: {
         id: string,
         name: string,
-        branchIds: string[]
+        branchIds: string[],
+        profileImageUrl: string
     }
 }

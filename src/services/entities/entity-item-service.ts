@@ -1,4 +1,7 @@
+import { IMAGE_DB } from "../../data/entities/image/image-db"
 import { PROFILE_DB } from "../../data/entities/profile/profile-db"
+import { ImageEntityItem } from "../../types/entity/entities/image-entity-item"
+import { ProfileEntityItem } from "../../types/entity/entities/profile-item"
 
 import { makeId } from "../util/make-id"
 
@@ -34,14 +37,16 @@ const getEmptyEntityItem = () => {
 
 const getMiniProfilesByPharse = async (pharse: string = '') => {
     try {
-        let items = await entityService.queryEntityItems('ProfileDB', {}, {}, PROFILE_DB) || []
-        items = filterEntityService.filterEntityByTitle(items, pharse)
+        let items = await entityService.queryEntityItems('ProfileDB', {}, {}, PROFILE_DB) as ProfileEntityItem[] || []
+        items = filterEntityService.filterEntityByTitle(items, pharse) as ProfileEntityItem[]
+        const images = await entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB) as ImageEntityItem[] || []
         if (!items) return []
 
         const availableOptions = items.map(item => ({
             id: item.id,
             name: item.entityInfo.name.display,
-            branchIds: item.relatedInfo?.branchIds || []
+            branchIds: item.relatedInfo?.branchIds || [],
+            profileImageUrl: images.find(image => image.id === item.relatedInfo.profileImageId)?.entityInfo.imageUrl
         }))
 
         return availableOptions
