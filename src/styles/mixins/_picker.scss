@@ -1,0 +1,37 @@
+@mixin squarePicker {
+  position: relative;
+
+  border-radius: $border-radius-regular-rem;
+  border: 1px solid $clr-black-regular;
+  padding-inline: $space-inline-xxxSmall-rem;
+  padding-block-start: $space-block-xSmall-rem;
+  padding-block-end: $space-block-xxxSmall-rem;
+  min-width: max-content;
+
+  span.title {
+    position: absolute;
+    z-index: 1;
+    top: -$space-block-xSmall-rem;
+
+    user-select: none;
+    background-color: $clr-white-regular;
+    font-size: $font-size-xSmall-rem;
+    font-family: $typography-emphasis;
+    line-height: 1.5;
+    margin-inline-start: $space-inline-xSmall-rem;
+
+    &::after,
+    &::before {
+      position: absolute;
+
+      content: "";
+      background-color: $clr-white-regular;
+      width: $space-inline-xxxSmall-rem;
+      height: 100%;
+    }
+
+    &::before {
+      right: -$space-inline-xxxSmall-rem;
+    }
+  }
+}

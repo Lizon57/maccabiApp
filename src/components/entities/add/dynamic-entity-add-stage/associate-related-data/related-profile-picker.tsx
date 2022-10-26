@@ -46,13 +46,12 @@ export const RelatedProfilePicker = () => {
                 loadOptions={loadOptions}
                 styles={customStyles}
                 placeholder="הקלד שם"
-                noOptionsMessage={(pharse) => pharse.inputValue.length
-                    ? `לא נמצא פרופיל המכיל את "${pharse.inputValue}"`
+                noOptionsMessage={({ inputValue }) => inputValue.length
+                    ? `לא נמצא פרופיל המכיל את "${inputValue}"`
                     : 'יש להקליד ביטוי לחיפוש'}
-                loadingMessage={(pharse) => `מחפש פרופיל המכיל את "${pharse.inputValue}"`}
+                loadingMessage={({ inputValue }) => `מחפש פרופיל המכיל את "${inputValue}"`}
                 formatOptionLabel={({ value }) => <RelatedProfileOptionPreview option={value} />}
                 isRtl={true}
-                menuPlacement="auto"
                 cacheOptions
             />
         </div>

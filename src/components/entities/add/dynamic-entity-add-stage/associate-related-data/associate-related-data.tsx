@@ -1,3 +1,4 @@
+import { RelatedBranchPicker } from "./related-branch-picker"
 import { RelatedProfilePicker } from "./related-profile-picker"
 
 
@@ -6,6 +7,9 @@ export const AssociateRelatedData = ({ relateds }: Props) => {
         switch (related) {
             case 'profile':
                 return <RelatedProfilePicker key={related} />
+
+            case 'branch':
+                return <RelatedBranchPicker key={related} />
 
             default:
                 return null

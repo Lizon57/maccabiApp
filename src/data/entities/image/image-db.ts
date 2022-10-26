@@ -3,7 +3,6 @@ import { getRandomInt } from "../../../services/util/get-random-int"
 import { ImageEntityItem } from "../../../types/entity/entities/image-entity-item"
 
 
-
 export const IMAGE_DB: ImageEntityItem[] = [
     {
         id: 'imageId00001',
