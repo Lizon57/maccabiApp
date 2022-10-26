@@ -41,6 +41,7 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
         const availableOptions = items.map(item => ({
             id: item.id,
             name: item.entityInfo.name.display,
+            branchIds: item.relatedInfo?.branchIds || []
         }))
 
         return availableOptions

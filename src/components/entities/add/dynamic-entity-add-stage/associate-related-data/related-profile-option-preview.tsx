@@ -1,4 +1,12 @@
+import { branchService } from "../../../../../services/app/branch-service"
+
+
 export const RelatedProfileOptionPreview = ({ option }: Props) => {
+    const branchNames = branchService.getByIds(option.branchIds).map(branch => branch.name.display)
+    const formatter = new Intl.ListFormat('he', { style: 'long', type: 'conjunction' })
+    const branchesNameList = formatter.format(branchNames)
+
+
     return (
         <div className="entity-add-cmp--related-profile-option-preview__container" title={option.name}>
             <span className="image">
@@ -10,7 +18,7 @@ export const RelatedProfileOptionPreview = ({ option }: Props) => {
 
             <div className="name-and-branch">
                 <span className="name">{option.name}</span>
-                <span className="branch">כדורגל, כדוריד</span>
+                <span className="branch">{branchesNameList}</span>
             </div>
         </div>
     )
@@ -20,6 +28,7 @@ export const RelatedProfileOptionPreview = ({ option }: Props) => {
 type Props = {
     option: {
         id: string,
-        name: string
+        name: string,
+        branchIds: string[]
     }
 }
