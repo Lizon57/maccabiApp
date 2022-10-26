@@ -1,3 +1,9 @@
 import { EntityItem } from "../entity-item"
 
-export type ImageEntityItem = EntityItem
+export type ImageEntityItem = _ImageEntityItem & EntityItem
+
+type _ImageEntityItem = {
+    entityInfo: {
+        imageUrl: string
+    }
+}

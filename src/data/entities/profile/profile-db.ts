@@ -1,5 +1,4 @@
 import { getRandomInt } from "../../../services/util/get-random-int"
-import { makeId } from "../../../services/util/make-id"
 
 import { ProfileEntityItem } from "../../../types/entity/entities/profile-item"
 
@@ -9,6 +8,7 @@ export const PROFILE_DB: ProfileEntityItem[] = [
     {
         id: 'profileId00001',
         relatedInfo: {
+            profileImageId: 'imageId00003',
             branchIds: ['branchId00002'],
         },
 
@@ -49,12 +49,13 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: []
+        images: ['imageId00003', 'imageId00001']
     },
 
     {
         id: 'profileId00002',
         relatedInfo: {
+            profileImageId: 'imageId00002',
             branchIds: ['branchId00001'],
         },
 
@@ -93,12 +94,13 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: []
+        images: ['imageId00002']
     },
 
     {
         id: 'profileId00003',
         relatedInfo: {
+            profileImageId: 'imageId00004',
             branchIds: ['branchId00004'],
         },
 
@@ -126,12 +128,13 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: []
+        images: ['imageId00004']
     },
 
     {
         id: 'profileId00004',
         relatedInfo: {
+            profileImageId: 'imageId00005',
             branchIds: ['branchId00003'],
         },
 
@@ -159,6 +162,6 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: []
+        images: ['imageId00005']
     },
 ]

@@ -1,9 +1,9 @@
 import { EntityItem } from "../entity-item"
 
-export type SignatureEntityItem = SignatureItem & EntityItem
+export type SignatureEntityItem = _SignatureItem & EntityItem
 
 
-interface SignatureItem {
+interface _SignatureItem {
     relatedInfo: {
         miniProfile: {
             profileId?: string
