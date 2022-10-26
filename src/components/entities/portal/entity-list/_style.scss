@@ -1,12 +1,16 @@
 div.entity-portal--entitiy-list__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
+  grid-auto-rows: minmax(220px, 250px);
   justify-content: center;
   gap: $space-inline-xxLarge-rem;
 
   @include viewport-wide-start-from-exclusive($viewport-regular) {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    justify-content: space-between;
+    justify-content: unset;
+
+    &:not(.short-list) {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
   }
 
   div.add-entity-container {
@@ -14,6 +18,12 @@ div.entity-portal--entitiy-list__container {
 
     cursor: pointer;
     border-radius: $border-radius-regular-rem;
+    border: 1px solid $clr-white-darkest;
+    transition: $transition-regular;
+
+    &:hover {
+      border-color: $clr-blue-regular;
+    }
 
     a {
       display: flex;
