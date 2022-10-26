@@ -44,6 +44,7 @@ export const RelatedProfilePicker = () => {
 
             <AsyncSelect
                 loadOptions={loadOptions}
+                className="react-select-cmp-container"
                 styles={customStyles}
                 placeholder="הקלד שם"
                 noOptionsMessage={({ inputValue }) => inputValue.length

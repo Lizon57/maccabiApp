@@ -17,6 +17,7 @@ export const RelatedBranchPicker = () => {
 
             <Select
                 options={OPTIONS.map(option => ({ label: option.name, value: option }))}
+                className="react-select-cmp-container"
                 styles={customStyles}
                 placeholder="בחר ענף"
                 noOptionsMessage={(({ inputValue }) => `לא נמצא ענף המכיל את "${inputValue}"`)}
@@ -48,4 +49,12 @@ const customStyles = {
         fontSize: '13px',
         padding: '2px'
     }),
+
+    multiValueRemove: (provided: any) => ({
+        ...provided,
+        ':hover': {
+            backgroundColor: '#195da6',
+            color: '#ffff'
+        }
+    })
 }
