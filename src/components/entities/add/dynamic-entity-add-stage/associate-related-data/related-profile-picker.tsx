@@ -7,7 +7,7 @@ import { entityItemService } from "../../../../../services/entities/entity-item-
 import { RelatedProfileOptionPreview } from "./related-profile-option-preview"
 
 
-export const RelatedProfilePicker = () => {
+export const RelatedProfilePicker = ({ onSetTempData }: Props) => {
     const getOptions = async (pharse: string) => {
         try {
             const items = await entityItemService.getMiniProfilesByPharse(pharse)
@@ -53,6 +53,7 @@ export const RelatedProfilePicker = () => {
                 loadingMessage={({ inputValue }) => `מחפש פרופיל המכיל את "${inputValue}"`}
                 formatOptionLabel={({ value }) => <RelatedProfileOptionPreview option={value} />}
                 isRtl={true}
+                onChange={(value) => onSetTempData('profile', value)}
                 cacheOptions
             />
         </div>
@@ -95,6 +96,10 @@ const customStyles = {
     }),
 }
 
+
+type Props = {
+    onSetTempData: (type: string, payload: unknown) => void
+}
 
 
 type ProfileOption = {

@@ -78,17 +78,26 @@ export const signatureEntity: Entity = {
             {
                 title: 'שיוך',
                 type: 'associate-related-data',
-                isRequired: true,
+                isRequire: true,
 
                 option: {
-                    relateds: ['profile', 'branch']
+                    relateds: [
+                        {
+                            type: 'profile',
+                            isRequire: true
+                        },
+                        {
+                            type: 'branch',
+                            isRequire: false
+                        }
+                    ]
                 }
             },
 
             {
                 title: 'העלאת תמונות',
                 type: 'photo-upload',
-                isRequired: true,
+                isRequire: true,
 
                 option: {
                     minPhotoCount: 1

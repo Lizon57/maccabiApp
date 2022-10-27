@@ -1,7 +1,7 @@
 export type EntityAddItemStage = {
     title: string,
     type: string,
-    isRequired: boolean,
+    isRequire: boolean,
 
     option?: PhotoUploadOption & AssociateRelatedDataOption
 }
@@ -14,5 +14,5 @@ export type PhotoUploadOption = {
 
 
 export type AssociateRelatedDataOption = {
-    relateds?: string[]
+    relateds?: { type: string, isRequire: boolean }[]
 }

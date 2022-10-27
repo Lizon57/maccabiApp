@@ -10,7 +10,7 @@ const OPTIONS = BRANCHES.map(branch => ({
 }))
 
 
-export const RelatedBranchPicker = () => {
+export const RelatedBranchPicker = ({ onSetTempData }: Props) => {
     return (
         <div className="entity-add-cmp--related-branch-picker__container">
             <span className="title">בחירת ענף</span>
@@ -22,6 +22,7 @@ export const RelatedBranchPicker = () => {
                 placeholder="בחר ענף"
                 noOptionsMessage={(({ inputValue }) => `לא נמצא ענף המכיל את "${inputValue}"`)}
                 formatOptionLabel={({ value }) => <RelatedBranchOptionPreview option={value} />}
+                onChange={(value => onSetTempData('branch', value))}
                 isMulti
             />
         </div>
@@ -57,4 +58,9 @@ const customStyles = {
             color: '#ffff'
         }
     })
+}
+
+
+type Props = {
+    onSetTempData: (type: string, payload: unknown) => void
 }
