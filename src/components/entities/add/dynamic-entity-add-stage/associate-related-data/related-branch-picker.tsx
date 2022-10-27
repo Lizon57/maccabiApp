@@ -1,33 +1,56 @@
+import { useState, useEffect } from "react"
 import Select from 'react-select'
+
 import { BRANCHES } from '../../../../../data/app/supports-branches'
+
 import { RelatedBranchOptionPreview } from './related-branch-option-preview'
 
 
 const OPTIONS = BRANCHES.map(branch => ({
-    id: branch._id,
-    name: branch.name.display,
-    img: branch.asset.symbol
+    label: branch.name.display,
+    value: {
+        id: branch._id,
+        name: branch.name.display,
+        img: branch.asset.symbol
+    }
 }))
 
 
-export const RelatedBranchPicker = ({ onSetTempData }: Props) => {
+export const RelatedBranchPicker = ({ profileRelatedBranchesIds, onSetTempData }: Props) => {
+    const [values, setValues] = useState<Option[]>([])
+
+
+    useEffect(() => {
+        const values = OPTIONS.filter(option => profileRelatedBranchesIds?.includes(option.value.id))
+        setValues(values)
+    }, [profileRelatedBranchesIds])
+
+
+    const handleSelectChange = (values: any) => {
+        setValues(values)
+        onSetTempData('branch', values)
+    }
+
+
     return (
         <div className="entity-add-cmp--related-branch-picker__container">
             <span className="title">בחירת ענף</span>
 
             <Select
-                options={OPTIONS.map(option => ({ label: option.name, value: option }))}
+                options={OPTIONS}
+                value={values}
                 className="react-select-cmp-container"
                 styles={customStyles}
                 placeholder="בחר ענף"
                 noOptionsMessage={(({ inputValue }) => `לא נמצא ענף המכיל את "${inputValue}"`)}
                 formatOptionLabel={({ value }) => <RelatedBranchOptionPreview option={value} />}
-                onChange={(value => onSetTempData('branch', value))}
+                onChange={(value => handleSelectChange(value))}
                 isMulti
             />
         </div>
     )
 }
+
 
 const customStyles = {
     control: () => ({
@@ -62,5 +85,16 @@ const customStyles = {
 
 
 type Props = {
+    profileRelatedBranchesIds?: string[],
     onSetTempData: (type: string, payload: unknown) => void
+}
+
+
+type Option = {
+    label: string,
+    value: {
+        id: string,
+        name: string,
+        img: string
+    }
 }

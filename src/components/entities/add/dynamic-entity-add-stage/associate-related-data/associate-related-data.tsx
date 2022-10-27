@@ -6,6 +6,8 @@ import { RelatedProfilePicker } from "./related-profile-picker"
 
 export const AssociateRelatedData = ({ relateds }: Props) => {
     const [tempData, setTempData] = useState({})
+    const [profileRelatedBranchesIds, setProfileRelatedBranchesIds] = useState([])
+
 
     const onSetTempData = (type: string, payload: any) => {
         switch (type) {
@@ -22,6 +24,7 @@ export const AssociateRelatedData = ({ relateds }: Props) => {
                         branchIds
                     }
                 })
+                setProfileRelatedBranchesIds(branchIds)
                 break
 
             case 'branch':
@@ -45,15 +48,23 @@ export const AssociateRelatedData = ({ relateds }: Props) => {
     const getRelatedDataPickerCmp = (type: string) => {
         switch (type) {
             case 'profile':
-                return <RelatedProfilePicker key={type} onSetTempData={onSetTempData} />
+                return <RelatedProfilePicker
+                    key={type}
+                    onSetTempData={onSetTempData}
+                />
 
             case 'branch':
-                return <RelatedBranchPicker key={type} onSetTempData={onSetTempData} />
+                return <RelatedBranchPicker
+                    key={type}
+                    profileRelatedBranchesIds={profileRelatedBranchesIds}
+                    onSetTempData={onSetTempData}
+                />
 
             default:
                 return null
         }
     }
+
 
     return (
         <div className="entity-add-cmp--associate-related-data__container">
