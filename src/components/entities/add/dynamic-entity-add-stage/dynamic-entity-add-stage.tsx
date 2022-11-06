@@ -9,6 +9,8 @@ export const DynamicEntityAddStage = ({ stage, entityName }: Props) => {
         case 'photo-upload':
             return <PhotoUpload
                 entityName={entityName}
+                minPhotoCount={stage.option?.minPhotoCount || 0}
+                maxPhotoCount={stage.option?.maxPhotoCount || Infinity}
             />
 
         case 'associate-related-data':

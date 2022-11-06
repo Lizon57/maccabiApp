@@ -10,7 +10,7 @@ import { DynamicEntityAddStage } from "../../components/entities/add/dynamic-ent
 export const EntityAdd = (entityName: string) => {
     const ENTITY = entityService.getEntityByName(entityName)
 
-    const [stageStatus, setStageStatus] = useState({ currActiveStageIdx: 0, lastAchieveStageIdx: 0, isNextStageAvailable: true })
+    const [stageStatus, setStageStatus] = useState({ currActiveStageIdx: 0, lastAchieveStageIdx: 0, isNextStageAvailable: false })
 
 
     if (!ENTITY) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
