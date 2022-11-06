@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { RelatedBranchPicker } from "./related-branch-picker"
 import { RelatedProfilePicker } from "./related-profile-picker"
 
 
-export const AssociateRelatedData = ({ relateds }: Props) => {
-    const [tempData, setTempData] = useState({})
+export const AssociateRelatedData = ({ relateds, onCompleteStage }: Props) => {
+    const [tempData, setTempData] = useState<TempData>({})
     const [profileRelatedBranchesIds, setProfileRelatedBranchesIds] = useState([])
 
 
@@ -66,6 +66,28 @@ export const AssociateRelatedData = ({ relateds }: Props) => {
     }
 
 
+    useEffect(() => {
+        if (!Object.keys(tempData).length) return
+
+        let isStageFillValid = false
+        relateds.forEach(related => {
+            if (!related.isRequire) return
+
+            switch (related.type) {
+                case 'profile':
+                    if (tempData.relatedInfo?.miniProfile?.profileId) isStageFillValid = true
+                    break
+
+                case 'branch':
+                    if (tempData.relatedInfo?.branchIds?.length) isStageFillValid = true
+                    break
+            }
+        })
+
+        if (isStageFillValid) onCompleteStage()
+    }, [tempData, relateds, onCompleteStage])
+
+
     return (
         <div className="entity-add-cmp--associate-related-data__container">
             {relateds.map(related => getRelatedDataPickerCmp(related.type))}
@@ -76,4 +98,16 @@ export const AssociateRelatedData = ({ relateds }: Props) => {
 
 type Props = {
     relateds: { type: string, isRequire: boolean }[]
+    onCompleteStage: () => void
+}
+
+
+type TempData = {
+    relatedInfo?: {
+        miniProfile?: {
+            displayName: string,
+            profileId: string
+        },
+        branchIds?: string[]
+    }
 }

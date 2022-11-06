@@ -11,7 +11,7 @@ import { PhotoOnUploadPreview } from "./photo-on-upload-preview"
 import { UploadedPhotoPreview } from "./uploaded-photo-preview"
 
 
-export const PhotoUpload = ({ entityName, minPhotoCount, maxPhotoCount }: Props) => {
+export const PhotoUpload = ({ entityName, minPhotoCount, maxPhotoCount, onCompleteStage }: Props) => {
     const [isUploading, setIsUploading] = useState(false)
     const [uploadedPhotos, setUploadedPhotos] = useState<Photo[]>([])
     const [photosOnUpload, setPhotosOnUpload] = useState<File[]>([])
@@ -26,12 +26,8 @@ export const PhotoUpload = ({ entityName, minPhotoCount, maxPhotoCount }: Props)
 
 
     useEffect(() => {
-        if (uploadedPhotos.length >= minPhotoCount && uploadedPhotos.length <= maxPhotoCount) {
-            console.log('stage complete')
-        } else {
-            console.log('stage not complete')
-        }
-    }, [uploadedPhotos, minPhotoCount, maxPhotoCount])
+        if (uploadedPhotos.length >= minPhotoCount && uploadedPhotos.length <= maxPhotoCount) onCompleteStage()
+    }, [uploadedPhotos, minPhotoCount, maxPhotoCount, onCompleteStage])
 
 
     const onFetchFiles = (fileList: FileList) => {
@@ -119,7 +115,8 @@ export const PhotoUpload = ({ entityName, minPhotoCount, maxPhotoCount }: Props)
 type Props = {
     entityName: string,
     minPhotoCount: number,
-    maxPhotoCount: number
+    maxPhotoCount: number,
+    onCompleteStage: () => void
 }
 
 
