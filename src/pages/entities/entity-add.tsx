@@ -18,7 +18,6 @@ export const EntityAdd = (entityName: string) => {
     const [currActiveStageIdx, setCurrActiveStageIdx] = useState(0)
     const [stagesStatus, setStagesStatus] = useState<boolean[]>(getInitStagesStatus(ENTITY?.addItemPage.stages || []))
 
-
     const changeStageRender = (diff: number) => setCurrActiveStageIdx(currActiveStageIdx + diff)
 
     const onCompleteStage = useCallback(() => {

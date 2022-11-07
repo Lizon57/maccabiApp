@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDebounce } from "./use-debounce"
 
+
 export const useWindowSize = (): viewportSize => {
     const [windowSize, setWindowSize] = useState<viewportSize>({
         width: window.innerWidth,
@@ -13,7 +14,7 @@ export const useWindowSize = (): viewportSize => {
     useEffect(() => {
         window.addEventListener('resize', debouncedHandleResize)
 
-        return () => window.removeEventListener('resize', debouncedHandleResize);
+        return () => window.removeEventListener('resize', debouncedHandleResize)
     }, [debouncedHandleResize])
 
 
@@ -22,6 +23,6 @@ export const useWindowSize = (): viewportSize => {
 
 
 type viewportSize = {
-    width: number;
-    height: number;
+    width: number,
+    height: number
 }
