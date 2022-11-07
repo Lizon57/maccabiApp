@@ -160,14 +160,14 @@ export const CATEGORY_LINKS = [
                 title: 'כל הסטטיסטיקות',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 's-all-stats.png'
             },
             {
                 id: makeId(),
                 title: 'הרכב סטטיסטיקה',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 's-build-stats.png'
             },
         ]
     },
@@ -180,21 +180,21 @@ export const CATEGORY_LINKS = [
                 title: 'סרטונים',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'mm-video.png'
             },
             {
                 id: makeId(),
                 title: 'תמונות',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'mm-image.png'
             },
             {
                 id: makeId(),
                 title: 'חיפוש מדיה',
                 description: 'תיאור העמוד',
                 path: '#',
-                img: ''
+                img: 'mm-search.png'
             },
         ]
     },
