@@ -12,6 +12,12 @@ import { PageCategory } from "../../types/page-category"
 import { EntityFilterOption } from "../../types/entity/filter/entity-filter-option"
 
 
+
+const getEntityById = (id: string) => {
+    return ENTITIES_LIST.find(entity => entity.id === id)
+}
+
+
 const getEntityByName = (name: string) => {
     return ENTITIES_LIST.find(entity => entity.name === name)
 }
@@ -55,6 +61,7 @@ const getEntityItemById = async (id: string, entity: Entity) => {
 
 
 export const entityService = {
+    getEntityById,
     getEntityByName,
     queryEntityItems,
     getEntityItemById,

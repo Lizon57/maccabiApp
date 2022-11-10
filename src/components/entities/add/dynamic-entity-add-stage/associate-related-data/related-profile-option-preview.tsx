@@ -2,6 +2,7 @@ import { branchService } from "../../../../../services/app/branch-service"
 
 
 export const RelatedProfileOptionPreview = ({ option }: Props) => {
+    if (!option) return null
     const branchNames = branchService.getByIds(option.branchIds).map(branch => branch.name.display)
     const formatter = new Intl.ListFormat('he', { style: 'long', type: 'conjunction' })
     const branchesNameList = formatter.format(branchNames)

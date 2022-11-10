@@ -35,6 +35,27 @@ const getEmptyEntityItem = () => {
 }
 
 
+const getMiniProfileById = async (id: string = '') => {
+    try {
+        let items = await entityService.queryEntityItems('ProfileDB', {}, {}, PROFILE_DB) as ProfileEntityItem[] || []
+        const item = filterEntityService.getEntityById(items, id) as ProfileEntityItem
+        if (!item) return
+        const images = await entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB) as ImageEntityItem[] || []
+
+        const miniProfile = {
+            id: item.id,
+            name: item.entityInfo.name.display,
+            branchIds: item.relatedInfo?.branchIds || [],
+            profileImageUrl: images.find(image => image.id === item.relatedInfo.profileImageId)?.entityInfo.imageUrl
+        }
+
+        return miniProfile
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
 const getMiniProfilesByPharse = async (pharse: string = '') => {
     try {
         let items = await entityService.queryEntityItems('ProfileDB', {}, {}, PROFILE_DB) as ProfileEntityItem[] || []
@@ -59,5 +80,6 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
 
 export const entityItemService = {
     getEmptyEntityItem,
+    getMiniProfileById,
     getMiniProfilesByPharse
 }

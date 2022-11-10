@@ -4,70 +4,19 @@ import { RelatedBranchPicker } from "./related-branch-picker"
 import { RelatedProfilePicker } from "./related-profile-picker"
 
 
-export const AssociateRelatedData = ({ relateds, onCompleteStage }: Props) => {
-    const [tempData, setTempData] = useState<TempData>({})
-    const [profileRelatedBranchesIds, setProfileRelatedBranchesIds] = useState([])
+export const AssociateRelatedData = ({ relateds, tempItem, onCompleteStage }: Props) => {
+    const [stageData, setStageData] = useState<TempData>({})
 
-
-    const onSetTempData = (type: string, payload: any) => {
-        switch (type) {
-            case 'profile':
-                if (!payload.value || !payload.value.id || !payload.value.name || !payload.value.branchIds) return
-                const { value: { id: profileId, name: displayName, branchIds } } = payload
-                setTempData({
-                    ...tempData,
-                    relatedInfo: {
-                        miniProfile: {
-                            profileId,
-                            displayName
-                        },
-                        branchIds
-                    }
-                })
-                setProfileRelatedBranchesIds(branchIds)
-                break
-
-            case 'branch':
-                if (!Array.isArray(payload)) return
-                payload = payload.filter(branch => branch.value.id)
-                payload = payload.map((branch: any) => branch.value.id)
-                setTempData({
-                    ...tempData,
-                    relatedInfo: {
-                        branchIds: payload
-                    }
-                })
-                break
-
-            default:
-                return
+    const onSetStageData = (data: Object) => {
+        const newStageData = {
+            ...stageData,
+            ...data
         }
+        setStageData(newStageData)
     }
-
-
-    const getRelatedDataPickerCmp = (type: string) => {
-        switch (type) {
-            case 'profile':
-                return <RelatedProfilePicker
-                    key={type}
-                    onSetTempData={onSetTempData}
-                />
-
-            case 'branch':
-                return <RelatedBranchPicker
-                    key={type}
-                    profileRelatedBranchesIds={profileRelatedBranchesIds}
-                    onSetTempData={onSetTempData}
-                />
-
-            default:
-                return null
-        }
-    }
-
 
     useEffect(() => {
-        if (!Object.keys(tempData).length) return
+        if (!Object.keys(stageData).length) return
 
         let isStageFillValid = false
         relateds.forEach(related => {
@@ -75,17 +24,40 @@ export const AssociateRelatedData = ({ relateds, onCompleteStage }: Props) => {
 
             switch (related.type) {
                 case 'profile':
-                    if (tempData.relatedInfo?.miniProfile?.profileId) isStageFillValid = true
+                    if (stageData.relatedInfo?.miniProfile?.profileId) isStageFillValid = true
                     break
 
                 case 'branch':
-                    if (tempData.relatedInfo?.branchIds?.length) isStageFillValid = true
+                    if (stageData.relatedInfo?.branchIds?.length) isStageFillValid = true
                     break
             }
         })
 
-        if (isStageFillValid) onCompleteStage()
-    }, [tempData, relateds, onCompleteStage])
+        if (isStageFillValid) onCompleteStage(stageData)
+    }, [stageData, relateds, onCompleteStage])
+
+
+    const getRelatedDataPickerCmp = (type: string) => {
+        switch (type) {
+            case 'profile':
+                return <RelatedProfilePicker
+                    key={type}
+                    tempItem={tempItem}
+                    onSetStageData={onSetStageData}
+                />
+
+            case 'branch':
+                return <RelatedBranchPicker
+                    key={type}
+                    profileRelatedBranchesIds={stageData.relatedInfo?.branchIds || []}
+                    tempItem={tempItem}
+                    onSetStageData={onSetStageData}
+                />
+
+            default:
+                return null
+        }
+    }
 
 
     return (
@@ -97,8 +69,9 @@ export const AssociateRelatedData = ({ relateds, onCompleteStage }: Props) => {
 
 
 type Props = {
-    relateds: { type: string, isRequire: boolean }[]
-    onCompleteStage: () => void
+    relateds: { type: string, isRequire: boolean }[],
+    tempItem: any,
+    onCompleteStage: (data: Object) => void,
 }
 
 

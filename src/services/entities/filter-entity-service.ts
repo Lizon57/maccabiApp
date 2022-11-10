@@ -2,6 +2,11 @@ import { EntityFilterOption } from "../../types/entity/filter/entity-filter-opti
 import { EntityItem } from "../../types/entity/entity-item"
 
 
+const getEntityById = (items: EntityItem[], id: string) => {
+    return items.find(item => item.id === id)
+}
+
+
 const filterEntityByTitle = (items: EntityItem[], pharse: string) => {
     return items.filter(item => item.entityInfo.name.display.includes(pharse))
 }
@@ -70,6 +75,7 @@ const _getValueOfDynamicKey = <T>(item: { [key: string]: T }, dynamicKey: string
 
 
 export const filterEntityService = {
+    getEntityById,
     filterEntityByTitle,
     getActiveFilters,
     dynamicEntityFilterByParams

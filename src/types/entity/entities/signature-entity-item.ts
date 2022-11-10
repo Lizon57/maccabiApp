@@ -6,7 +6,7 @@ export type SignatureEntityItem = _SignatureItem & EntityItem
 interface _SignatureItem {
     relatedInfo: {
         miniProfile: {
-            profileId?: string
+            profileId?: string,
             displayName: string,
         }
     },

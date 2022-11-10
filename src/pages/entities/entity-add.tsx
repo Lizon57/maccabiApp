@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react"
 
 import { entityService } from "../../services/entities/entity-service"
+import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
 
 import { EntityAddItemStage } from "../../types/entity/add/entity-add-item-stage"
 
@@ -17,15 +18,26 @@ export const EntityAdd = (entityName: string) => {
 
     const [currActiveStageIdx, setCurrActiveStageIdx] = useState(0)
     const [stagesStatus, setStagesStatus] = useState<boolean[]>(getInitStagesStatus(ENTITY?.addItemPage.stages || []))
+    const [tempItem, setTempItem] = useState(emptyEntityItemService.get(ENTITY?.name || ''))
 
-    const changeStageRender = (diff: number) => setCurrActiveStageIdx(currActiveStageIdx + diff)
+    const setTempItemData = (data: Object) => {
+        const EditedtempItem = {
+            ...tempItem,
+            ...data
+        }
+        setTempItem(EditedtempItem)
+    }
 
-    const onCompleteStage = useCallback(() => {
+    const onCompleteStage = useCallback((data: Object) => {
         const newStagesStatus = stagesStatus.slice()
         newStagesStatus[currActiveStageIdx] = true
         setStagesStatus(newStagesStatus)
+        setTempItemData(data)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currActiveStageIdx])
+
+
+    const changeStageRender = (diff: number) => setCurrActiveStageIdx(currActiveStageIdx + diff)
 
 
     if (!ENTITY) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
@@ -39,6 +51,7 @@ export const EntityAdd = (entityName: string) => {
             <DynamicEntityAddStage
                 entityName={ENTITY.name}
                 stage={stages[currActiveStageIdx]}
+                tempItem={tempItem}
                 onCompleteStage={onCompleteStage}
             />
 

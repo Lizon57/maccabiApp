@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import Select from 'react-select'
+import Select, { PropsValue } from 'react-select'
 
 import { BRANCHES } from '../../../../../data/app/supports-branches'
 
@@ -16,7 +16,7 @@ const OPTIONS = BRANCHES.map(branch => ({
 }))
 
 
-export const RelatedBranchPicker = ({ profileRelatedBranchesIds, onSetTempData }: Props) => {
+export const RelatedBranchPicker = ({ profileRelatedBranchesIds, tempItem, onSetStageData }: Props) => {
     const [values, setValues] = useState<Option[]>([])
 
 
@@ -27,13 +27,33 @@ export const RelatedBranchPicker = ({ profileRelatedBranchesIds, onSetTempData }
 
 
     const handleSelectChange = (values: any) => {
+        const branchIds = values.map((value: Option) => value.value.id)
+        const data = { relatedInfo: { branchIds } }
+
+        console.log(values)
+        onSetStageData(data)
         setValues(values)
-        onSetTempData('branch', values)
     }
 
 
+    useEffect(() => {
+        if (values.length || !tempItem?.relatedInfo?.branchIds) return
+
+        const branches = BRANCHES.filter(branch => tempItem?.relatedInfo?.branchIds.includes(branch._id))
+        const defaultValues = branches.map(branch => ({
+            label: branch.name.display,
+            value: {
+                id: branch._id,
+                img: branch.asset.symbol,
+                name: branch.name.display
+            }
+        }))
+        setValues(defaultValues)
+    }, [tempItem, values])
+
+
     return (
-        <div className="entity-add-cmp--related-branch-picker__container">
+        <div className="entity-add-cmp--related-branch-picker__container" title="בחירת ענף">
             <span className="title">בחירת ענף</span>
 
             <Select
@@ -86,7 +106,8 @@ const customStyles = {
 
 type Props = {
     profileRelatedBranchesIds?: string[],
-    onSetTempData: (type: string, payload: unknown) => void
+    tempItem: any,
+    onSetStageData: (data: Object) => void
 }
 
 
