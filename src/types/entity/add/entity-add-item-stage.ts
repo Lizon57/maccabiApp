@@ -8,8 +8,8 @@ export type EntityAddItemStage = {
 
 
 export type PhotoUploadOption = {
-    minPhotoCount?: number,
-    maxPhotoCount?: number,
+    minImageCount?: number,
+    maxImageCount?: number,
 }
 
 

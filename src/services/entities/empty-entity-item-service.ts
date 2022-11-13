@@ -34,6 +34,7 @@ const get = (type: string) => {
 
         case 'image':
             ITEM.entityInfo = {
+                ...ITEM.entityInfo,
                 imageUrl: ''
             }
             break

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 
 import { branchService } from "../../../../../services/app/branch-service"
 import { entityItemService } from "../../../../../services/entities/entity-item-service"
-import { entityService } from "../../../../../services/entities/entity-service"
 
 
 export const RelatedProfileOptionPreviewAsync = ({ id }: Props) => {

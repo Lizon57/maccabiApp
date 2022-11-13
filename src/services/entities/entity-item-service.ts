@@ -1,38 +1,15 @@
 import { IMAGE_DB } from "../../data/entities/image/image-db"
 import { PROFILE_DB } from "../../data/entities/profile/profile-db"
+import { EntityItem } from "../../types/entity/entities/entity-item"
+
 import { ImageEntityItem } from "../../types/entity/entities/image-entity-item"
 import { ProfileEntityItem } from "../../types/entity/entities/profile-item"
 
-import { makeId } from "../util/make-id"
-
 import { entityService } from "./entity-service"
 import { filterEntityService } from "./filter-entity-service"
+import { asyncLocalStorageService } from "../async-local-storage-service"
+import { makeId } from "../util/make-id"
 
-
-const getEmptyEntityItem = () => {
-    return {
-        id: makeId(),
-
-        entityInfo: {
-            name: {
-                display: ''
-            },
-            ctgIds: [],
-        },
-
-        itemInfo: {
-            view: 0,
-            rate: {
-                avg: 0,
-                raterCount: 0
-            },
-            editHistory: {
-                total: 0,
-                lastEditDate: new Date()
-            }
-        }
-    }
-}
 
 
 const getMiniProfileById = async (id: string = '') => {
@@ -78,8 +55,15 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
 }
 
 
+const save = async (item: EntityItem, dbName: string, fallBackDB: unknown[]) => {
+    if (!item.id) item.id = makeId()
+    const savedItem = asyncLocalStorageService.save(item, dbName, fallBackDB)
+    return savedItem
+}
+
+
 export const entityItemService = {
-    getEmptyEntityItem,
     getMiniProfileById,
-    getMiniProfilesByPharse
+    getMiniProfilesByPharse,
+    save
 }

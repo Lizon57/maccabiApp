@@ -1,4 +1,4 @@
-div.entity-add-cmp--photo-upload__container {
+div.entity-add-cmp--image-upload__container {
   display: flex;
   flex-direction: column;
   gap: $space-block-regular-rem;
@@ -11,7 +11,7 @@ div.entity-add-cmp--photo-upload__container {
   }
 
   div.file-picker {
-    div.entity-add-cmp--photo-uploader-dropable-section__container {
+    div.entity-add-cmp--image-uploader-dropable-section__container {
       div.uploading-loader {
         background-color: $clr-white-darker;
         color: rgba($clr-black-lightest, 0.7);
@@ -64,7 +64,7 @@ div.entity-add-cmp--photo-upload__container {
       }
     }
 
-    div.entity-add-cmp--uploaded-photo-preview__container {
+    div.entity-add-cmp--uploaded-image-preview__container {
       position: relative;
 
       overflow: hidden;

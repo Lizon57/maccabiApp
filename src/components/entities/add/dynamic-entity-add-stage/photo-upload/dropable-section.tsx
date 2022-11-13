@@ -24,7 +24,7 @@ export const DropableSection = ({ isUploading, onFetchFiles }: Props) => {
     if (isUploading) return <Loader text="מעלה קבצים, אנא המתן..." />
 
     return (
-        <div className="entity-add-cmp--photo-uploader-dropable-section__container">
+        <div className="entity-add-cmp--image-uploader-dropable-section__container">
             <input
                 type="file"
                 className="hidden"

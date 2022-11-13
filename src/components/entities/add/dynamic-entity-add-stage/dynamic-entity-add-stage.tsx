@@ -1,18 +1,19 @@
 import { EntityAddItemStage } from "../../../../types/entity/add/entity-add-item-stage"
 
-import { PhotoUpload } from "./photo-upload/photo-upload"
+import { ImageUpload } from "./photo-upload/image-upload"
 import { AssociateRelatedData } from "./associate-related-data/associate-related-data"
 
 
 export const DynamicEntityAddStage = ({ stage, entityName, tempItem, onCompleteStage }: Props) => {
     switch (stage.type) {
-        // case 'photo-upload':
-        //     return <PhotoUpload
-        //         entityName={entityName}
-        //         minPhotoCount={stage.option?.minPhotoCount || 0}
-        //         maxPhotoCount={stage.option?.maxPhotoCount || Infinity}
-        //         onCompleteStage={onCompleteStage}
-        //     />
+        case 'image-upload':
+            return <ImageUpload
+                entityName={entityName}
+                minImageCount={stage.option?.minImageCount || 0}
+                maxImageCount={stage.option?.maxImageCount || Infinity}
+                tempItem={tempItem}
+                onCompleteStage={onCompleteStage}
+            />
 
         case 'associate-related-data':
             if (!stage?.option?.relateds?.length) return null

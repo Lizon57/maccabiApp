@@ -76,6 +76,16 @@ export const signatureEntity: Entity = {
     addItemPage: {
         stages: [
             {
+                title: 'העלאת תמונות',
+                type: 'image-upload',
+                isRequire: true,
+
+                option: {
+                    minImageCount: 1
+                }
+            },
+
+            {
                 title: 'שיוך',
                 type: 'associate-related-data',
                 isRequire: true,
@@ -91,16 +101,6 @@ export const signatureEntity: Entity = {
                             isRequire: false
                         }
                     ]
-                }
-            },
-
-            {
-                title: 'העלאת תמונות',
-                type: 'photo-upload',
-                isRequire: true,
-
-                option: {
-                    minPhotoCount: 1
                 }
             },
         ]
