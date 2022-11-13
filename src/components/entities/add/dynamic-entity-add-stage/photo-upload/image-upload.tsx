@@ -27,9 +27,15 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount, tempItem
     }, [uploadCounter, isUploading, uploadedImages.length, imagesOnUpload.length])
 
 
-    // useEffect(() => {
-    //     if (uploadedImages.length >= minImageCount && uploadedImages.length <= maxImageCount) onCompleteStage()
-    // }, [uploadedImages, minImageCount, maxImageCount, onCompleteStage])
+    useEffect(() => {
+        if (uploadedImages.length >= minImageCount && uploadedImages.length <= maxImageCount) {
+            const newItemImages = [...tempItem.images]
+            const uploadedImagesIds = uploadedImages.map(uploadedImage => uploadedImage.id)
+            newItemImages.concat(uploadedImagesIds)
+            onCompleteStage({ images: newItemImages })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [uploadedImages])
 
 
     const onFetchFiles = (fileList: FileList) => {

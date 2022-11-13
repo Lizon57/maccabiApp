@@ -30,6 +30,8 @@ const get = (type: string) => {
                     displayName: ''
                 }
             }
+
+            ITEM.images = []
             break
 
         case 'image':
