@@ -20,7 +20,6 @@ export const SquareEntityPreview = ({ item }: Props) => {
     }
 
     const TOTAL_IMAGE = item?.miniImages?.length || 0
-    console.log(TOTAL_IMAGE)
 
 
     const { relatedInfo, entityInfo, itemInfo } = item

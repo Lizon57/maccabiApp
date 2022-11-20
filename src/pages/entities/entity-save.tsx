@@ -29,10 +29,6 @@ export const EntitySave = (entityName: string) => {
 
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
-        // console.log(item)
-    }, [item])
-
 
     const { id } = useParams()
     useEffect(() => {
