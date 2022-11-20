@@ -1,0 +1,178 @@
+section.entity-save-cmp--stage-stepper__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxSmall-rem;
+}
+
+div.entity-save-cmp--tablet-wide-plus-stage-stepper__container {
+  $pipe-width: 3rem;
+
+  display: flex;
+  justify-content: center;
+  gap: $pipe-width;
+
+  user-select: none;
+
+  div.stage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50vw;
+    border: 1px solid $clr-white-darkest;
+    color: $clr-white-darkest;
+    font-size: $font-size-xxSmall-rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: $font-size-small-rem;
+    padding: 5px;
+    width: 4rem;
+    height: 4rem;
+    transition: $transition-regular;
+
+    &:not(:last-of-type) {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: calc((#{$pipe-width} + 1px) * -1);
+        z-index: 1;
+
+        background-color: $clr-white-darker;
+        width: calc(#{$pipe-width} - 1px);
+        height: 5px;
+        pointer-events: none;
+      }
+    }
+
+    &.active {
+      color: $clr-yellow-regular;
+      background-color: $clr-blue-regular;
+    }
+
+    &.fail {
+      cursor: pointer;
+      border: 1px solid $clr-red-regular;
+      color: $clr-red-regular;
+    }
+
+    &.complete {
+      cursor: pointer;
+      background-color: $clr-blue-regular;
+
+      &::after {
+        background-color: $clr-blue-regular;
+      }
+
+      &:not(.active) {
+        cursor: pointer;
+      }
+    }
+
+    &.completed {
+      cursor: pointer;
+      border: 1px solid $clr-blue-regular;
+      color: $clr-blue-regular;
+    }
+  }
+}
+
+div.entity-save-cmp--up-to-tablet-wide-stage-stepper__container {
+  display: grid;
+  grid-template-columns: 5rem 1fr 5rem;
+  grid-template-rows: repeat(3, auto);
+
+  user-select: none;
+
+  button {
+    border-radius: $border-radius-regular-rem;
+    background-color: transparent;
+    font-size: $font-size-small-rem;
+    padding: 5px;
+    width: max-content;
+
+    &:not(.disable) {
+      cursor: pointer;
+      border: 1px solid $clr-blue-regular;
+      color: $clr-blue-regular;
+    }
+
+    &.prev {
+      grid-column: 1/2;
+      justify-self: flex-start;
+
+      &.fail {
+        background-color: $clr-red-regular;
+        color: $clr-red-regular;
+      }
+    }
+
+    &.next {
+      grid-column: 3/4;
+      justify-self: flex-end;
+    }
+  }
+
+  div.common-cmp--dropdown__container {
+    grid-column: 2/3;
+    justify-self: center;
+    align-self: center;
+
+    div.dropdown-container {
+      left: 0;
+
+      transform: translateX(-50%);
+    }
+
+    div.dropdown-children-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $space-block-xxxSmall-rem $space-inline-regular-rem;
+
+      div.stage-preview {
+        transition: $transition-regular;
+
+        &.active {
+          font-weight: bold;
+        }
+
+        &.fail {
+          cursor: pointer;
+          color: $clr-red-regular;
+        }
+
+        &.completed,
+        &.available {
+          cursor: pointer;
+          color: $clr-blue-regular;
+        }
+      }
+    }
+  }
+
+  span.stage-title {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    justify-self: center;
+
+    font-size: $font-size-small-rem;
+    font-family: $typography-emphasis;
+  }
+
+  button.save {
+    grid-column: 2/3;
+    grid-row: -1/-2;
+    justify-self: center;
+
+    background-color: $clr-blue-regular;
+    color: $clr-white-regular;
+    padding-inline: $space-inline-xLarge-rem;
+    margin-block-start: $space-block-xxSmall-rem;
+    transition: $transition-regular;
+
+    &:hover {
+      color: $clr-yellow-regular;
+    }
+  }
+}

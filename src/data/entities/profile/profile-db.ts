@@ -49,7 +49,8 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: ['imageId00003', 'imageId00001']
+        images: ['imageId00003', 'imageId00001'],
+        miniImages: []
     },
 
     {
@@ -94,7 +95,8 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: ['imageId00002']
+        images: ['imageId00002'],
+        miniImages: []
     },
 
     {
@@ -128,7 +130,8 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: ['imageId00004']
+        images: ['imageId00004'],
+        miniImages: []
     },
 
     {
@@ -162,6 +165,7 @@ export const PROFILE_DB: ProfileEntityItem[] = [
             }
         },
 
-        images: ['imageId00005']
+        images: ['imageId00005'],
+        miniImages: []
     },
 ]

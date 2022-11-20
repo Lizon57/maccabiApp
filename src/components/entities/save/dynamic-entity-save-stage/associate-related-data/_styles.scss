@@ -1,0 +1,47 @@
+div.entity-save-cmp--associate-related-data__container {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 20rem));
+  gap: $space-inline-xxLarge-rem;
+}
+
+div.entity-save-cmp--related-profile-picker__container,
+div.entity-save-cmp--related-branch-picker__container {
+  div.picker {
+    transition: $transition-regular;
+
+    @include squarePicker;
+    margin-block-end: $space-block-xxxSmall-rem;
+
+    &.fail {
+      border: 1px solid $clr-red-regular;
+    }
+  }
+
+  div.msg {
+    color: $clr-red-regular;
+    font-size: $font-size-xxSmall-rem;
+    margin-inline-start: $space-inline-xxxSmall-rem;
+
+    &::before {
+      content: "* ";
+    }
+  }
+}
+
+div.entity-save-cmp--related-profile-option-preview__container {
+  @include reactSelectAsyncDefaultValue;
+}
+
+div.entity-save-cmp--related-branch-option-preview__container {
+  display: flex;
+  align-items: center;
+  gap: $space-inline-xxxSmall-rem;
+  padding: 2px;
+
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+}

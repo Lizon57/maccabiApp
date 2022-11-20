@@ -1,9 +1,12 @@
 import { useEffect, useRef } from "react"
-import { IMAGE_DB } from "../../../../../data/entities/image/image-db"
+
 
 import { cloudinaryService } from "../../../../../services/cloudinary-service"
 import { emptyEntityItemService } from "../../../../../services/entities/empty-entity-item-service"
 import { entityItemService } from "../../../../../services/entities/entity-item-service"
+
+import { IMAGE_DB } from "../../../../../data/entities/image/image-db"
+
 import { makeId } from "../../../../../services/util/make-id"
 
 import { ImageEntityItem } from "../../../../../types/entity/entities/image-entity-item"
@@ -13,6 +16,7 @@ import { Loader } from "../../../../common/loader/loader"
 
 export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUploadFail }: Props) => {
     let isFirstRender = useRef(true)
+
 
     useEffect(() => {
         if (!isFirstRender.current) return
@@ -38,15 +42,17 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
                 // image.entityInfo.imageUrl = url
                 // image.entityInfo.name.display = name
 
-                // const uploadedImage = await entityItemService.save(image, 'ImageDB', IMAGE_DB)
+                // const uploadedImage = await entityItemService.save(image, 'ImageDB', IMAGE_DB) as ImageEntityItem
 
-                // onUploadSuccess(image, file)
+                // onUploadSuccess(uploadedImage, file)
             } catch (err) {
                 console.log(err)
                 onUploadFail(file)
             }
         }
+
         fetchFile()
+        // }, [entityName, file, onUploadSuccess, onUploadFail])
     }, [entityName, file, onUploadSuccess, onUploadFail])
 
 

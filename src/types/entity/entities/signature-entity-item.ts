@@ -12,4 +12,5 @@ interface _SignatureItem {
     },
 
     images: string[]
+    miniImages: { id: string, name: string, imageUrl: string }[]
 }

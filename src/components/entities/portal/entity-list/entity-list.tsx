@@ -17,7 +17,7 @@ export const EntityList = ({ entity, items, imagePath }: Props) => {
                 imagePath={imagePath} />)}
 
             <div className="add-entity-container" title="הוסף פריט">
-                <Link to="add">
+                <Link to="save">
                     <span className="icon-wrapper"><AiOutlinePlus size={40} /></span>
                     <span className="text">הוסף פריט</span>
                 </Link>

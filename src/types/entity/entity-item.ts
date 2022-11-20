@@ -5,6 +5,11 @@ export type EntityItem = {
     id: string,
 
     relatedInfo?: {
+        miniProfile?: {
+            profileId: string,
+            displayName: string,
+            profileImageUrl: string
+        },
         branchIds: string[],
     },
 
@@ -28,5 +33,6 @@ export type EntityItem = {
         }
     }
 
-    images?: string[]
+    images?: string[],
+    miniImages?: { id: string, name: string, imageUrl: string }[]
 }

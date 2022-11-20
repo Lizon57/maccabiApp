@@ -1,5 +1,9 @@
-export type EntityAddItemStage = {
+import { IconType } from "react-icons"
+
+
+export type EntitySaveItemStage = {
     title: string,
+    icon?: IconType
     type: string,
     isRequire: boolean,
 

@@ -3,7 +3,7 @@ import { EntityFilterOption } from "./filter/entity-filter-option"
 
 import { EntitySortOption } from "./sort/entity-sort-option"
 import { SignatureEntityItem } from "./entities/signature-entity-item"
-import { EntityAddItemStage } from "./add/entity-add-item-stage"
+import { EntitySaveItemStage } from "./save/entity-save-item-stage"
 
 
 export type Entity = {
@@ -41,7 +41,7 @@ export type Entity = {
         filters: EntityFilterOption[]
     },
 
-    addItemPage: {
-        stages: EntityAddItemStage[]
+    saveItemPage: {
+        stages: EntitySaveItemStage[]
     }
 }

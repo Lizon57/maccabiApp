@@ -1,9 +1,10 @@
-import { FaSignature } from "react-icons/fa"
-
 import { makeId } from "../../../services/util/make-id"
 
 import { Entity } from "../../../types/entity/entity"
 import { SIGNATURE_DB } from "./signature-db"
+
+import { BiBrain } from "react-icons/bi"
+import { FaSignature, FaUpload } from "react-icons/fa"
 
 
 export const signatureEntity: Entity = {
@@ -73,20 +74,24 @@ export const signatureEntity: Entity = {
         ]
     },
 
-    addItemPage: {
+    saveItemPage: {
         stages: [
             {
                 title: 'העלאת תמונות',
+                icon: FaUpload,
                 type: 'image-upload',
                 isRequire: true,
 
                 option: {
-                    minImageCount: 1
+                    minImageCount: 1,
+                    maxImageCount: 3
                 }
             },
 
+
             {
-                title: 'שיוך',
+                title: 'שיוך החתימה',
+                icon: BiBrain,
                 type: 'associate-related-data',
                 isRequire: true,
 

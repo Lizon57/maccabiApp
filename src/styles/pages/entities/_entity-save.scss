@@ -1,4 +1,4 @@
-section.entities-pages--entity-add__container {
+main.entities-pages--entity-save__container {
   display: flex;
   flex-direction: column;
   gap: $space-block-regular-rem;
@@ -40,6 +40,22 @@ section.entities-pages--entity-add__container {
           background-color: $clr-blue-regular;
           color: $clr-white-regular;
         }
+      }
+    }
+
+    button.save {
+      grid-column: -1/-2;
+      justify-self: flex-end;
+      align-self: center;
+
+      background-color: $clr-blue-regular;
+      color: $clr-white-regular;
+      padding-inline: $space-inline-xLarge-rem;
+      margin-block-start: $space-block-xxSmall-rem;
+      transition: $transition-regular;
+
+      &:hover {
+        color: $clr-yellow-regular;
       }
     }
   }

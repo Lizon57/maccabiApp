@@ -1,4 +1,4 @@
-div.entity-add-cmp--image-upload__container {
+div.entity-save-cmp--image-upload__container {
   display: flex;
   flex-direction: column;
   gap: $space-block-regular-rem;
@@ -11,7 +11,7 @@ div.entity-add-cmp--image-upload__container {
   }
 
   div.file-picker {
-    div.entity-add-cmp--image-uploader-dropable-section__container {
+    div.entity-save-cmp--image-uploader-dropable-section__container {
       div.uploading-loader {
         background-color: $clr-white-darker;
         color: rgba($clr-black-lightest, 0.7);
@@ -64,7 +64,7 @@ div.entity-add-cmp--image-upload__container {
       }
     }
 
-    div.entity-add-cmp--uploaded-image-preview__container {
+    div.entity-save-cmp--uploaded-image-preview__container {
       position: relative;
 
       overflow: hidden;
@@ -117,6 +117,16 @@ div.entity-add-cmp--image-upload__container {
           text-overflow: unset;
         }
       }
+    }
+  }
+
+  div.msg {
+    color: $clr-red-regular;
+    font-size: $font-size-small-rem;
+    margin-inline-start: $space-inline-xxxSmall-rem;
+
+    &::before {
+      content: "* ";
     }
   }
 }

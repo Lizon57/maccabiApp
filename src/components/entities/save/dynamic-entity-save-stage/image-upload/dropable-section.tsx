@@ -1,6 +1,8 @@
 import { useRef } from "react"
 import { FileDrop } from "react-file-drop"
+
 import { AiOutlineCloudUpload } from "react-icons/ai"
+
 import { Loader } from "../../../../common/loader/loader"
 
 
@@ -14,6 +16,7 @@ export const DropableSection = ({ isUploading, onFetchFiles }: Props) => {
         onFetchFiles(files)
     }
 
+
     const onDropFile = (files: FileList | null, ev: React.DragEvent<HTMLDivElement>) => {
         ev.preventDefault()
         if (!files) return
@@ -24,7 +27,7 @@ export const DropableSection = ({ isUploading, onFetchFiles }: Props) => {
     if (isUploading) return <Loader text="מעלה קבצים, אנא המתן..." />
 
     return (
-        <div className="entity-add-cmp--image-uploader-dropable-section__container">
+        <div className="entity-save-cmp--image-uploader-dropable-section__container">
             <input
                 type="file"
                 className="hidden"
@@ -49,6 +52,6 @@ export const DropableSection = ({ isUploading, onFetchFiles }: Props) => {
 
 
 type Props = {
-    isUploading: boolean,
+    isUploading: boolean
     onFetchFiles: (fileList: FileList) => void
 }

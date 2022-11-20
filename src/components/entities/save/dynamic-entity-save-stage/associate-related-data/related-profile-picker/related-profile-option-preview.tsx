@@ -1,4 +1,4 @@
-import { branchService } from "../../../../../services/app/branch-service"
+import { branchService } from "../../../../../../services/app/branch-service"
 
 
 export const RelatedProfileOptionPreview = ({ option }: Props) => {
@@ -9,7 +9,7 @@ export const RelatedProfileOptionPreview = ({ option }: Props) => {
 
 
     return (
-        <div className="entity-add-cmp--related-profile-option-preview__container" title={option.name}>
+        <div className="entity-save-cmp--related-profile-option-preview__container" title={option.name}>
             <span className="image">
                 <img
                     src={option.profileImageUrl}

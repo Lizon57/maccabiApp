@@ -11,6 +11,7 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             miniProfile: {
                 profileId: 'profileId00001',
                 displayName: 'מיקי ברקוביץ',
+                profileImageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785409/profile/%D7%9E%D7%99%D7%A7%D7%99_vo8kjw.jpg'
             },
             branchIds: ['branchId00001', 'branchId00002'],
         },
@@ -34,7 +35,14 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_1.png', 'signature_2.png', 'signature_3.png', 'signature_4.png']
+        images: ['signature_1.png', 'signature_2.png', 'signature_3.png', 'signature_4.png'],
+        miniImages: [
+            {
+                id: 'imageId00001',
+                name: 'חתימה של מיקי ברקוביץ\'',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
+            }
+        ]
     },
 
     {
@@ -42,7 +50,8 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00002',
-                displayName: 'אבי נמני'
+                displayName: 'אבי נמני',
+                profileImageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785409/profile/%D7%90%D7%91%D7%99_aalabt.jpg'
             },
             branchIds: ['branchId00001'],
         },
@@ -66,7 +75,14 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_2.png', 'signature_3.png', 'signature_4.png', 'signature_5.png']
+        images: ['signature_2.png', 'signature_3.png', 'signature_4.png', 'signature_5.png'],
+        miniImages: [
+            {
+                id: 'imageId00001',
+                name: 'חתימה של מיקי ברקוביץ\'',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
+            }
+        ]
     },
 
     {
@@ -74,7 +90,8 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00003',
-                displayName: 'עומר דבדה'
+                displayName: 'עומר דבדה',
+                profileImageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785409/profile/%D7%A2%D7%95%D7%9E%D7%A8_o2neky.jpg'
             },
             branchIds: ['branchId00004'],
         },
@@ -98,7 +115,14 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_1.png', 'signature_4.png']
+        images: ['signature_1.png', 'signature_4.png'],
+        miniImages: [
+            {
+                id: 'imageId00001',
+                name: 'חתימה של מיקי ברקוביץ\'',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
+            }
+        ]
     },
 
     {
@@ -106,7 +130,8 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00004',
-                displayName: 'אריאל כצנלסון'
+                displayName: 'אריאל כצנלסון',
+                profileImageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785409/profile/%D7%90%D7%A8%D7%99%D7%90%D7%9C_uzyt25.jpg'
             },
             branchIds: ['branchId00003'],
         },
@@ -130,6 +155,13 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_4.png']
+        images: ['signature_4.png'],
+        miniImages: [
+            {
+                id: 'imageId00001',
+                name: 'חתימה של מיקי ברקוביץ\'',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
+            }
+        ]
     },
 ]
