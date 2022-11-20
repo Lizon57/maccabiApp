@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"
 
-import { useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { useStoreDispatch } from "../../hooks/store/use-store-dispatch"
 import { useStoreSelector } from "../../hooks/store/use-store-selector"
-import { updateItem } from "../../store/slicer/entity-save-slicer"
+import { setEmptyItem, updateItem } from "../../store/slicer/entity-save-slicer"
 
 import { entityService } from "../../services/entities/entity-service"
+import { entityItemService } from "../../services/entities/entity-item-service"
 
-import { EntityItem } from "../../types/entity/entity-item"
 import { EntitySaveItemStage } from "../../types/entity/save/entity-save-item-stage"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
@@ -15,6 +15,7 @@ import { Loader } from "../../components/common/loader/loader"
 import { DynamicEntitySaveStage } from "../../components/entities/save/dynamic-entity-save-stage/dynamic-entity-save-stage"
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { StageStepper } from "../../components/entities/save/stage-stepper/stage-stepper"
+import { EntityItem } from "../../types/entity/entities/entity-item"
 
 
 const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.length).fill(false)
@@ -29,8 +30,18 @@ export const EntitySave = (entityName: string) => {
 
     const [isLoading, setIsLoading] = useState(true)
 
-
     const { id } = useParams()
+    const navigate = useNavigate()
+    const location = useLocation()
+
+
+    useEffect(() => {
+        return () => {
+            dispatch(setEmptyItem())
+        }
+    }, [dispatch])
+
+
     useEffect(() => {
         if ((id && !isLoading) || !ENTITY) return
         if (!id) return setIsLoading(false)
@@ -92,6 +103,20 @@ export const EntitySave = (entityName: string) => {
     }
 
 
+    const saveItem = async () => {
+        if (!getIsSaveable() || !ENTITY) return
+        const editedItem = structuredClone(item) as EntityItem
+        if (id) editedItem.id = id
+
+        try {
+            await entityItemService.save(editedItem, ENTITY?.dbInfo.name, ENTITY?.dbInfo.fallbackDB)
+            navigate(location.pathname.replace('/save', ''))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+
     if (!ENTITY) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
     if (isLoading) return <Loader />
 
@@ -127,7 +152,11 @@ export const EntitySave = (entityName: string) => {
                 }
 
                 {getIsSaveable() &&
-                    <button className="save" title="שמור">שמור</button>
+                    <button
+                        title="שמור"
+                        className="save"
+                        onClick={saveItem}
+                    >שמור</button>
                 }
             </div>
         </main >

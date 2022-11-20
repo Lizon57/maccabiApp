@@ -76,6 +76,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
             displayName: option?.value.name,
             profileImageUrl: option?.value.profileImageUrl
         }
+        editedItem.entityInfo.name.display = option?.value.name
         editedItem.relatedInfo.branchIds = option?.value.branchIds
         setValue(editedItem.relatedInfo)
         dispatch(updateItem(editedItem))

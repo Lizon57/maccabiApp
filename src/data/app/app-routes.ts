@@ -19,7 +19,7 @@ export const ROUTES = [
     },
     {
         id: makeId(),
-        path: 'signature/save/:id',
+        path: 'signature/:id/save',
         element: () => EntitySave('signature')
     },
     {

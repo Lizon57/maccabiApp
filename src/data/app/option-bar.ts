@@ -27,7 +27,7 @@ export const OPTION_BAR: option[] = [
             {
                 id: makeId(),
                 text: 'עריכה',
-                path: 'עריכה',
+                path: '/save',
             },
             {
                 id: makeId(),
