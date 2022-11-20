@@ -35,7 +35,6 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_1.png', 'signature_2.png', 'signature_3.png', 'signature_4.png'],
         miniImages: [
             {
                 id: 'imageId00001',
@@ -75,7 +74,6 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_2.png', 'signature_3.png', 'signature_4.png', 'signature_5.png'],
         miniImages: [
             {
                 id: 'imageId00001',
@@ -115,7 +113,6 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_1.png', 'signature_4.png'],
         miniImages: [
             {
                 id: 'imageId00001',
@@ -160,7 +157,6 @@ export const SIGNATURE_DB: SignatureEntityItem[] = [
             }
         },
 
-        images: ['signature_4.png'],
         miniImages: [
             {
                 id: 'imageId00001',
