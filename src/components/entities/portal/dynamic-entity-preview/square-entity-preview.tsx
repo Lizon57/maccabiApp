@@ -12,15 +12,15 @@ import { DisplayBranchesIconByIds } from "../../../common/branch-icon/display-br
 import { ImageSlider } from "../image-slider/image-slider"
 
 
-export const SquareEntityPreview = ({ item, imagePath }: Props) => {
+export const SquareEntityPreview = ({ item }: Props) => {
     const [isLike, setIsLike] = useState(false)
     const toggleIsLike = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         ev.preventDefault()
         setIsLike(!isLike)
     }
 
-
-    const TOTAL_IMAGE = item?.images?.length || 0
+    const TOTAL_IMAGE = item?.miniImages?.length || 0
+    console.log(TOTAL_IMAGE)
 
 
     const { relatedInfo, entityInfo, itemInfo } = item
@@ -43,7 +43,7 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
 
                     {TOTAL_IMAGE > 1 && <span className="image-counter" title={`${TOTAL_IMAGE} תמונות תצוגה`}>{TOTAL_IMAGE}</span>}
 
-                    {item?.images?.length && <ImageSlider imagePath={imagePath} images={item.images} />}
+                    {item?.miniImages?.length && <ImageSlider images={item.miniImages} />}
 
                     <div className="additional-info">
                         <div className="views-and-rate">
@@ -76,6 +76,5 @@ export const SquareEntityPreview = ({ item, imagePath }: Props) => {
 
 type Props = {
     item: EntityItem,
-    imagePath: string
 }
 

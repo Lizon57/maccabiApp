@@ -1,10 +1,10 @@
 import { EntityItem } from "../../../../types/entity/entity-item"
 import { SquareEntityPreview } from "./square-entity-preview"
 
-export const DynamicEntityPreview = ({ item, imagePath, type }: Props) => {
+export const DynamicEntityPreview = ({ item, type }: Props) => {
     switch (type) {
         case 'square':
-            return <SquareEntityPreview item={item} imagePath={imagePath} />
+            return <SquareEntityPreview item={item} />
 
         default:
             return null
@@ -15,5 +15,4 @@ export const DynamicEntityPreview = ({ item, imagePath, type }: Props) => {
 type Props = {
     item: EntityItem,
     type: string,
-    imagePath: string
 }

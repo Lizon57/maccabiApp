@@ -86,7 +86,7 @@ export const EntityPortal = (entityName: string) => {
             {isFilterSectionOpen && <FilterbyBuilder filters={filters} setIsLoading={setIsLoading} />}
 
             {items.length
-                ? <EntityList entity={ENTITY} items={items} imagePath={ENTITY.entityInfo.image.imagePath} />
+                ? <EntityList entity={ENTITY} items={items} />
                 : <ErrorMessage message="לא נמצאו פריטים להצגה" />}
         </section>
     )

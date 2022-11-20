@@ -1,7 +1,7 @@
 import Slider from "react-slick"
 
 
-export const ImageSlider = ({ imagePath, images }: Props) => {
+export const ImageSlider = ({ images }: Props) => {
     const SETTING = {
         dots: true,
         speed: 300,
@@ -9,13 +9,14 @@ export const ImageSlider = ({ imagePath, images }: Props) => {
     }
 
     return (
-        <div className="entities-portal-cmp--image-carousel__container" title="תצוגת תמונות">
+        <div className="entities-portal-cmp--image-carousel__container">
             <Slider {...SETTING}>
                 {images.map(image => <img
-                    key={image}
-                    src={require(`../../../../assets/images/entities/${imagePath}/${image}`)}
-                    alt="תמונת תצוגה" />
-                )}
+                    key={image.id}
+                    src={image.imageUrl}
+                    alt={image.name}
+                    title={image.name + ((images.length > 1) ? ` (מתוך ${images.length} תמונות)` : '')}
+                />)}
             </Slider>
         </div>
     )
@@ -23,6 +24,9 @@ export const ImageSlider = ({ imagePath, images }: Props) => {
 
 
 type Props = {
-    imagePath: string,
-    images: string[]
+    images: {
+        id: string,
+        name: string,
+        imageUrl: string,
+    }[]
 }

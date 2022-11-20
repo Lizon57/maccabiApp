@@ -7,14 +7,14 @@ import { EntityItem } from "../../../../types/entity/entity-item"
 import { DynamicEntityPreview } from "../dynamic-entity-preview/dynamic-entity-preview"
 
 
-export const EntityList = ({ entity, items, imagePath }: Props) => {
+export const EntityList = ({ entity, items }: Props) => {
     return (
         <div className={"entity-portal--entitiy-list__container" + (items.length < 4 ? ' short-list' : '')}>
             {items.map(item => <DynamicEntityPreview
                 key={item.id}
                 item={item}
                 type={entity.listPageInfo.previewType}
-                imagePath={imagePath} />)}
+            />)}
 
             <div className="add-entity-container" title="הוסף פריט">
                 <Link to="save">
@@ -30,5 +30,4 @@ export const EntityList = ({ entity, items, imagePath }: Props) => {
 type Props = {
     entity: Entity,
     items: EntityItem[],
-    imagePath: string
 }
