@@ -56,7 +56,7 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
 
 
 const save = async (item: EntityItem, dbName: string, fallBackDB: unknown[]) => {
-    if (!item.id) return
+    if (!item.id) item.id = makeId()
 
     const savedItem = await asyncLocalStorageService.replaceEntityItem(item, dbName, fallBackDB as EntityItem[])
     return savedItem
