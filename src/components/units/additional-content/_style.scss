@@ -1,4 +1,12 @@
-section.unit-cmps--additional-content__container {
+section.unit-cmps--additional-content__container div.page-categories-container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxxSmall-rem;
+
+  h2 {
+    margin: 0;
+  }
+
   div.list-container {
     display: flex;
     gap: $space-inline-xSmall-rem;
