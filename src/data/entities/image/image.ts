@@ -35,6 +35,10 @@ export const imageEntity: Entity = {
         }
     },
 
+    detailsPageInfo: {
+        type: 'media',
+    },
+
     listPageInfo: {
         previewType: 'square',
 

@@ -9,7 +9,8 @@ import { EntityItem } from "../../types/entity/entity-item"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
 import { UnitAdditionalContent } from "../../components/units/additional-content/additional-content"
-import { MainTitle } from "../../components/common/main-title/main-title"
+import { ArticleHeadCmpList } from "../../components/entities/details/article-head-cmp/article-head-cmp-list"
+import { ArticleAdditionalContentCmpList } from "../../components/entities/details/article-additional-content-cmp/article-additional-content-cmp-list"
 
 
 export const EntityDetails = (entity: Entity) => {
@@ -41,18 +42,20 @@ export const EntityDetails = (entity: Entity) => {
     if (isLoading || !EntityItemId || !item) return <Loader />
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
-    const { entityInfo: { image: { icon } } } = entity
-    const { entityInfo: { name } } = item
 
     return (
         <section className="entities-pages--entity-display__container">
-            <div className="primary-content">
-                <MainTitle text={`חתימות של ${name.display}`} Icon={icon} />
-            </div>
+            {!!entity.detailsPageInfo.structure?.head?.length &&
+                <div className="primary-content">
+                    <ArticleHeadCmpList cmps={entity.detailsPageInfo.structure?.head} />
+                </div>
+            }
 
-            <div className="additional-content">
-                <UnitAdditionalContent miniCategories={item.entityInfo.miniCategories || []} />
-            </div>
+            {!!entity.detailsPageInfo.structure?.additional?.length &&
+                <div className="additional-content">
+                    <ArticleAdditionalContentCmpList cmps={entity.detailsPageInfo.structure?.additional} />
+                    {/* <UnitAdditionalContent miniCategories={item.entityInfo.miniCategories || []} /> */}
+                </div>}
         </section>
     )
 }

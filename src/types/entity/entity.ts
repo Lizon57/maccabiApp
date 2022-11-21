@@ -4,6 +4,7 @@ import { EntityFilterOption } from "./filter/entity-filter-option"
 import { EntitySortOption } from "./sort/entity-sort-option"
 import { SignatureEntityItem } from "./entities/signature-entity-item"
 import { EntitySaveItemStage } from "./save/entity-save-item-stage"
+import { EntityDetailsStuctureCmp } from "./details/entity-details-structure-cmp"
 
 
 export type Entity = {
@@ -32,6 +33,15 @@ export type Entity = {
             },
             imagePath: string,
             icon: IconType
+        }
+    },
+
+    detailsPageInfo: {
+        type: string,
+
+        structure?: {
+            head?: EntityDetailsStuctureCmp[],
+            additional?: EntityDetailsStuctureCmp[]
         }
     },
 

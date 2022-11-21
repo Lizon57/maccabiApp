@@ -36,6 +36,26 @@ export const signatureEntity: Entity = {
         }
     },
 
+    detailsPageInfo: {
+        type: 'article',
+
+        structure: {
+            head: [
+                {
+                    type: 'page-title',
+                    title: 'חתימתו של RELATED_PROFILE_NAME',
+                    Icon: FaSignature
+                }
+            ],
+            additional: [
+                {
+                    type: 'image-gallery',
+                    title: 'חתימות של RELATED_PROFILE_NAME'
+                }
+            ]
+        }
+    },
+
     listPageInfo: {
         previewType: 'square',
 
@@ -84,7 +104,6 @@ export const signatureEntity: Entity = {
 
                 option: {
                     minImageCount: 1,
-                    maxImageCount: 3
                 }
             },
 

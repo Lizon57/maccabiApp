@@ -82,8 +82,8 @@ export const EntitySave = (entityName: string) => {
 
                 case 'image-upload':
                     if ((item.miniImages?.length || 0) < (stage.option?.minImageCount || 0)
-                        || (item.miniImages?.length || 0) > (stage.option?.maxImageCount || 0)
-                    ) isFilled = false
+                        || (item.miniImages?.length || 0) > (stage.option?.maxImageCount || Infinity)
+                    ) { console.log('fails'); isFilled = false }
             }
 
             return isFilled
