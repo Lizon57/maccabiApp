@@ -2,8 +2,9 @@ import { configureStore } from "@reduxjs/toolkit"
 
 import appLayoutSlicer from "./slicer/app-layout-slicer"
 import appStateSlicer from "./slicer/app-state-slicer"
-import entitySaveSlicer from "./slicer/entity-save-slicer"
 import userSlicer from "./slicer/user-slicer"
+import displayEntitySlicer from "./slicer/display-entity-slicer"
+import entitySaveSlicer from "./slicer/entity-save-slicer"
 
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
         appLayout: appLayoutSlicer,
         appState: appStateSlicer,
         userModule: userSlicer,
+        displayEntityModule: displayEntitySlicer,
         entitySaveModule: entitySaveSlicer
     },
 

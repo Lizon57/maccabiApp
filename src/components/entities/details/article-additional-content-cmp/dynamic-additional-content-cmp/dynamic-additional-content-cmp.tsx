@@ -2,7 +2,7 @@ import { BsImages } from "react-icons/bs"
 
 import { EntityDetailsStuctureCmp } from "../../../../../types/entity/details/entity-details-structure-cmp"
 
-import { ImageGallery } from "./ImageGallery"
+import { ImageGallery } from "./image-gallery/image-gallery"
 
 
 export const DynamicAdditionalContentCmp = ({ cmp }: Props) => {

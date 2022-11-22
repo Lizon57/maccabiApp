@@ -39,7 +39,7 @@ export const EntitySave = (entityName: string) => {
         return () => {
             dispatch(setEmptyItem())
         }
-    }, [dispatch])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     useEffect(() => {
@@ -90,8 +90,7 @@ export const EntitySave = (entityName: string) => {
         })
 
         setStagesStatus(stagesStatus)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ENTITY, item])
+    }, [ENTITY, item]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     const changeCurrStageIdx = (idx: number) => setCurrStageIdx(idx)
