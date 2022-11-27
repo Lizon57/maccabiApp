@@ -3,7 +3,7 @@ import { PROFILE_DB } from "../../data/entities/profile/profile-db"
 import { EntityItem } from "../../types/entity/entities/entity-item"
 
 import { ImageEntityItem } from "../../types/entity/entities/image-entity-item"
-import { ProfileEntityItem } from "../../types/entity/entities/profile-item"
+import { ProfileEntityItem } from "../../types/entity/entities/profile-entity-item"
 
 import { entityService } from "./entity-service"
 import { filterEntityService } from "./filter-entity-service"

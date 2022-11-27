@@ -126,4 +126,60 @@ export const PAGE_CATEGORY_DB = [
             display: 'שחקני כדוריד'
         }
     },
+
+    {
+        id: 'categoryId0017',
+
+        name: {
+            display: 'תמונות פרופיל'
+        }
+    },
+
+    {
+        id: 'categoryId0018',
+
+        name: {
+            display: 'אבי נמני - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0019',
+
+        name: {
+            display: 'עומר דבדה - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0020',
+
+        name: {
+            display: 'אריאל כצנלסון - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0021',
+
+        name: {
+            display: 'ספרייה'
+        }
+    },
+
+    {
+        id: 'categoryId0022',
+
+        name: {
+            display: 'ספרים אוטוביוגרפיים'
+        }
+    },
+
+    {
+        id: 'categoryId0023',
+
+        name: {
+            display: 'ספרי כדורסל'
+        }
+    },
 ]

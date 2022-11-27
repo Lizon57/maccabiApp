@@ -117,9 +117,9 @@ export const CATEGORY_LINKS = [
             },
             {
                 id: makeId(),
-                title: 'ספרים',
-                description: 'מילים אינספור נשפכו על מכבי, אצלנו באתר וגם בדפוס',
-                path: '#',
+                title: 'ספרייה',
+                description: 'מסיפור ההקמה ועד הביוגרפיה של ערן זהבי, מכבי בדפוס',
+                path: 'library',
                 img: 'cnc-book.png'
             },
             {

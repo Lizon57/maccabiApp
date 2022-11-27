@@ -1,6 +1,6 @@
 import { getRandomInt } from "../../../services/util/get-random-int"
 
-import { ProfileEntityItem } from "../../../types/entity/entities/profile-item"
+import { ProfileEntityItem } from "../../../types/entity/entities/profile-entity-item"
 
 
 

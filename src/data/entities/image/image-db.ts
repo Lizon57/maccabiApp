@@ -123,4 +123,28 @@ export const IMAGE_DB: ImageEntityItem[] = [
             }
         },
     },
+
+    {
+        id: 'imageId00006',
+
+        entityInfo: {
+            name: {
+                display: 'מיקי ברקוביץ\': נולד כדי לנצח - כריכה קדמית'
+            },
+            imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1669587732/library/%D7%9E%D7%99%D7%A7%D7%99_%D7%91%D7%A8%D7%A7%D7%95%D7%91%D7%99%D7%A5_-_%D7%A0%D7%95%D7%9C%D7%93_%D7%9B%D7%93%D7%99_%D7%9C%D7%A0%D7%A6%D7%97_-_%D7%9B%D7%A8%D7%99%D7%9B%D7%94_%D7%A7%D7%93%D7%9E%D7%99%D7%AA_sz62md.jpg',
+            ctgIds: ['categoryId0006', 'categoryId0008', 'categoryId0011', 'categoryId0021', 'categoryId0022', 'categoryId0023']
+        },
+
+        itemInfo: {
+            view: getRandomInt(100, 300),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 100)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
+        },
+    },
 ]

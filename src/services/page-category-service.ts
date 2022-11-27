@@ -5,7 +5,7 @@ import { PageCategory } from "../types/page-category"
 import { asyncLocalStorageService } from "./async-local-storage-service"
 
 
-const STORAGE_KEY = 'pageCategoryDB'
+const STORAGE_KEY = 'PageCategoryDB'
 const FALLBACKDB = PAGE_CATEGORY_DB
 
 
@@ -16,8 +16,8 @@ const query = async () => {
 
 const getById = async (id: string) => {
     try {
-        const pageCategoryDB = await query() as PageCategory[]
-        const category = pageCategoryDB.find(category => category.id === id)
+        const PageCategoryDB = await query() as PageCategory[]
+        const category = PageCategoryDB.find(category => category.id === id)
         if (!category) throw new Error('לא נמצא פריט מבוקש')
         return category
     }
