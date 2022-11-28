@@ -2,10 +2,9 @@ import { IconType } from "react-icons"
 import { EntityFilterOption } from "./filter/entity-filter-option"
 
 import { EntitySortOption } from "./sort/entity-sort-option"
-import { SignatureEntityItem } from "./entities/signature-entity-item"
-import { LibraryEntityItem } from "./entities/library-entity-item"
 import { EntitySaveItemStage } from "./save/entity-save-item-stage"
 import { EntityDetailsStuctureCmp } from "./details/entity-details-structure-cmp"
+import { EntityItem } from "./entity-item"
 
 
 export type Entity = {
@@ -15,7 +14,7 @@ export type Entity = {
 
     dbInfo: {
         name: string,
-        fallbackDB: SignatureEntityItem[] | LibraryEntityItem[]
+        fallbackDB: EntityItem[]
     },
 
     entityInfo: {

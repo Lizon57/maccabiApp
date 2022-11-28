@@ -168,4 +168,39 @@ export const PROFILE_DB: ProfileEntityItem[] = [
         images: ['imageId00005'],
         miniImages: []
     },
+
+    {
+        id: 'profileId00006',
+        relatedInfo: {
+            profileImageId: 'imageId00007',
+            branchIds: ['branchId00001'],
+        },
+
+        entityInfo: {
+            name: {
+                he: {
+                    private: 'ערן',
+                    family: 'זהבי',
+                },
+                display: 'ערן זהבי'
+            },
+
+            ctgIds: ['categoryId0012', 'categoryId0013']
+        },
+
+        itemInfo: {
+            view: getRandomInt(0, 10),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 10)
+            },
+            editHistory: {
+                total: getRandomInt(0, 5),
+                lastEditDate: new Date()
+            }
+        },
+
+        images: ['imageId00007'],
+        miniImages: []
+    },
 ]

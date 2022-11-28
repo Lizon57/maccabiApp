@@ -147,4 +147,52 @@ export const IMAGE_DB: ImageEntityItem[] = [
             }
         },
     },
+
+    {
+        id: 'imageId00007',
+
+        entityInfo: {
+            name: {
+                display: 'ערן זהבי - פרופיל'
+            },
+            imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1669625106/profile/%D7%A2%D7%A8%D7%9F_%D7%96%D7%94%D7%91%D7%99_-_%D7%A4%D7%A8%D7%95%D7%A4%D7%99%D7%9C_qpzdbr.png',
+            ctgIds: ['categoryId0006', 'categoryId0007', 'categoryId0017', 'categoryId0024']
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 500),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 500)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
+        },
+    },
+
+    {
+        id: 'imageId00007',
+
+        entityInfo: {
+            name: {
+                display: 'ערן זהבי: סיפורו של ווינר - כריכה קדמית'
+            },
+            imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1669628101/library/%D7%A2%D7%A8%D7%9F_%D7%96%D7%94%D7%91%D7%99_-_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%95_%D7%A9%D7%9C_%D7%95%D7%95%D7%99%D7%A0%D7%A8_-_%D7%9B%D7%A8%D7%99%D7%9B%D7%94_%D7%A7%D7%93%D7%9E%D7%99%D7%AA_yewzkr.jpg',
+            ctgIds: ['categoryId0006', 'categoryId0021', 'categoryId0022', 'categoryId0025']
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 500),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 500)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
+        },
+    },
 ]
