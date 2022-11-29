@@ -1,4 +1,4 @@
-import { EntityItem } from "../../types/entity/entity-item"
+import { EntityItem } from "../../types/entity/entities/entity-item"
 import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
 
 const dynamicEntitySort = (entityList: EntityItem[], sortBy: EntitySortParam) => {
@@ -21,13 +21,13 @@ const dynamicEntitySort = (entityList: EntityItem[], sortBy: EntitySortParam) =>
 }
 
 
-const _sortEntityByNumberKey = <T>(entityList: { [key: number]: T }[], sortBy: EntitySortParam) => {
-    if (!sortBy.sKey) return entityList as EntityItem[]
+const _sortEntityByNumberKey = (entityList: EntityItem[], sortBy: EntitySortParam) => {
+    if (!sortBy.sKey) return entityList
 
     const SORT_KEY_PATH = sortBy.sKey.split('.')
     entityList = entityList.slice()
 
-    const getActualSortKeyValue = (item: { [key: number]: T }) => {
+    const getActualSortKeyValue = (item: EntityItem) => {
         let actualSortKeyValue: any = item
 
         for (let key of SORT_KEY_PATH) {
@@ -42,18 +42,18 @@ const _sortEntityByNumberKey = <T>(entityList: { [key: number]: T }[], sortBy: E
         else return getActualSortKeyValue(b) - getActualSortKeyValue(a)
     })
 
-    return entityList as EntityItem[]
+    return entityList
 }
 
 
-const _sortEntityByStringKey = <T>(entityList: { [key: string]: T }[], sortBy: EntitySortParam) => {
+const _sortEntityByStringKey = (entityList: EntityItem[], sortBy: EntitySortParam) => {
     // @ts-ignore
-    if (!sortBy.sKey) return entityList as EntityItem[]
+    if (!sortBy.sKey) return entityList
 
     const SORT_KEY_PATH = sortBy.sKey.split('.')
     entityList = entityList.slice()
 
-    const getActualSortKeyValue = (item: { [key: string]: T }) => {
+    const getActualSortKeyValue = (item: EntityItem) => {
         let actualSortKeyValue: any = item
 
         for (let key of SORT_KEY_PATH) {
@@ -74,7 +74,7 @@ const _sortEntityByStringKey = <T>(entityList: { [key: string]: T }[], sortBy: E
         }
     })
 
-    return entityList as unknown as EntityItem[]
+    return entityList
 }
 
 

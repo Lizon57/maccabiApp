@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { AiOutlinePlus } from "react-icons/ai"
 
 import { Entity } from "../../../../types/entity/entity"
-import { EntityItem } from "../../../../types/entity/entity-item"
+import { EntityItem } from "../../../../types/entity/entities/entity-item"
 
 import { DynamicEntityPreview } from "../dynamic-entity-preview/dynamic-entity-preview"
 

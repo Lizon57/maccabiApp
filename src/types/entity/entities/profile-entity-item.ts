@@ -1,9 +1,9 @@
-import { EntityItem } from "../entity-item"
+import { BasicEntityItem } from "../basic-entity-item"
 
-export type ProfileEntityItem = _ProfileEntityItem & EntityItem
+export type ProfileEntityItem = BasicEntityItem & _ProfileEntityItem
 
 
-type _ProfileEntityItem = {
+interface _ProfileEntityItem {
     relatedInfo: {
         profileImageId?: string
     },

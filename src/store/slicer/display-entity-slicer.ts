@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
 
-import { EntityItem } from "../../types/entity/entity-item"
+import { EntityItem } from "../../types/entity/entities/entity-item"
 
 
 interface DisplayEntitySlicer {

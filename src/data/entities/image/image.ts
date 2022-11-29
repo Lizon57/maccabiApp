@@ -3,7 +3,7 @@ import { BsCamera } from "react-icons/bs"
 import { makeId } from "../../../services/util/make-id"
 
 import { Entity } from "../../../types/entity/entity"
-import { SIGNATURE_DB } from "../signature/signature-db"
+import { IMAGE_DB } from "./image-db"
 
 
 export const imageEntity: Entity = {
@@ -13,7 +13,7 @@ export const imageEntity: Entity = {
 
     dbInfo: {
         name: 'ImageDB',
-        fallbackDB: SIGNATURE_DB
+        fallbackDB: IMAGE_DB
     },
 
     entityInfo: {

@@ -5,6 +5,9 @@ import { useStoreDispatch } from "../../../../../hooks/store/use-store-dispatch"
 import { useStoreSelector } from "../../../../../hooks/store/use-store-selector"
 
 import { ImageEntityItem } from "../../../../../types/entity/entities/image-entity-item"
+import { EntityItem } from "../../../../../types/entity/entities/entity-item"
+
+import { updateItem } from "../../../../../store/slicer/entity-save-slicer"
 
 import { makeId } from "../../../../../services/util/make-id"
 
@@ -13,8 +16,6 @@ import { ImageOnUploadPreview } from "./image-on-upload-preview"
 import { UploadedImagePreview } from "./uploaded-image-preview"
 import { MainTitle } from "../../../../common/main-title/main-title"
 import { ErrorMessage } from "../../../../common/error-message/error-message"
-import { updateItem } from "../../../../../store/slicer/entity-save-slicer"
-import { EntityItem } from "../../../../../types/entity/entity-item"
 
 
 export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props) => {

@@ -1,4 +1,4 @@
-import { EntityItem } from "../types/entity/entity-item"
+import { EntityItem } from "../types/entity/entities/entity-item"
 
 
 const query = async<T>(dbName: string, fallBackDB: T[]) => {

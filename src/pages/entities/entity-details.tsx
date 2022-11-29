@@ -8,7 +8,7 @@ import { clearItem, setItem } from "../../store/slicer/display-entity-slicer"
 import { entityService } from "../../services/entities/entity-service"
 
 import { Entity } from "../../types/entity/entity"
-import { EntityItem } from "../../types/entity/entity-item"
+import { EntityItem } from "../../types/entity/entities/entity-item"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"

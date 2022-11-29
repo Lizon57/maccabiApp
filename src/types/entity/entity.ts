@@ -4,7 +4,7 @@ import { EntityFilterOption } from "./filter/entity-filter-option"
 import { EntitySortOption } from "./sort/entity-sort-option"
 import { EntitySaveItemStage } from "./save/entity-save-item-stage"
 import { EntityDetailsStuctureCmp } from "./details/entity-details-structure-cmp"
-import { EntityItem } from "./entity-item"
+import { EntityItem } from "./entities/entity-item"
 
 
 export type Entity = {

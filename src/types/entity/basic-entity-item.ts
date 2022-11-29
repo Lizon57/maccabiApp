@@ -1,7 +1,7 @@
 import { MiniPageCategory } from "../page-category"
 
 
-export type EntityItem = {
+export type BasicEntityItem = {
     id: string,
 
     relatedInfo?: {

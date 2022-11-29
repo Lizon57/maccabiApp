@@ -6,7 +6,7 @@ import { pageCategoryService } from "../page-category-service"
 import { filterEntityService } from "./filter-entity-service"
 
 import { EntitySortParam } from "../../types/entity/sort/entity-sort-param"
-import { EntityItem } from "../../types/entity/entity-item"
+import { EntityItem } from "../../types/entity/entities/entity-item"
 import { Entity } from "../../types/entity/entity"
 import { PageCategory } from "../../types/page-category"
 import { EntityFilterOption } from "../../types/entity/filter/entity-filter-option"

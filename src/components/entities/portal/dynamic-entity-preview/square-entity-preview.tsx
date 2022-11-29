@@ -6,7 +6,7 @@ import { FiEdit2 } from "react-icons/fi"
 
 import { getFormatedNumber } from "../../../../services/util/get-formated-number"
 
-import { EntityItem } from "../../../../types/entity/entity-item"
+import { EntityItem } from "../../../../types/entity/entities/entity-item"
 
 import { DisplayBranchesIconByIds } from "../../../common/branch-icon/display-branches-icon-by-ids"
 import { ImageSlider } from "../image-slider/image-slider"

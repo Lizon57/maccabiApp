@@ -1,8 +1,8 @@
-import { EntityItem } from "../entity-item"
+import { BasicEntityItem } from "../basic-entity-item"
 
-export type ImageEntityItem = _ImageEntityItem & EntityItem
+export type ImageEntityItem = BasicEntityItem & _ImageEntityItem
 
-type _ImageEntityItem = {
+interface _ImageEntityItem {
     entityInfo: {
         imageUrl: string
     }

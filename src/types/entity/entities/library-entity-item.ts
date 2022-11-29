@@ -1,13 +1,14 @@
-import { EntityItem } from "../entity-item"
+import { BasicEntityItem } from "../basic-entity-item"
 
-export type LibraryEntityItem = _LibraryItem & EntityItem
-
+export type LibraryEntityItem = BasicEntityItem & _LibraryItem
 
 interface _LibraryItem {
     entityInfo: {
         item?: {
-            pageCount?: number
-            publishYear?: number
+            writers?: string[],
+            publishers?: string[],
+            pageCount?: number,
+            publishYear?: number,
         }
     }
 }

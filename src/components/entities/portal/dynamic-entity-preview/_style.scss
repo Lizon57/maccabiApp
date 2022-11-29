@@ -1,6 +1,10 @@
 div.dynamic-entity-preview--square-entity-preview__container {
   overflow: hidden;
 
+  &:hover div.image-container span.like-icon {
+    color: $clr-yellow-regular;
+  }
+
   a {
     color: $clr-black-regular;
     text-decoration: none;

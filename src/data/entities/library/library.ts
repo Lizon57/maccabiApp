@@ -40,7 +40,7 @@ export const libraryEntity: Entity = {
     },
 
     listPageInfo: {
-        previewType: 'square',
+        previewType: 'detailed-square',
 
         sorts: [
             { id: makeId(), title: 'כותרת (א-ת)', key: 'entityInfo.name.display', order: 'asc' },

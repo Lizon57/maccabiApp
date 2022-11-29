@@ -1,5 +1,5 @@
 import { EntityFilterOption } from "../../types/entity/filter/entity-filter-option"
-import { EntityItem } from "../../types/entity/entity-item"
+import { EntityItem } from "../../types/entity/entities/entity-item"
 
 
 const getEntityById = (items: EntityItem[], id: string) => {
@@ -62,7 +62,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
 }
 
 
-const _getValueOfDynamicKey = <T>(item: { [key: string]: T }, dynamicKey: string) => {
+const _getValueOfDynamicKey = (item: EntityItem, dynamicKey: string) => {
     const KEY_PATH = dynamicKey.split('.')
     let actualValue: any = item
 
