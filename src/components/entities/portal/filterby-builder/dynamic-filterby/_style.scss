@@ -1,1 +1,8 @@
+div.entities-portal--multi-range-picker__container {
+  @include squarePicker;
 
+  div.range-container {
+    flex-grow: 1;
+    min-width: 250px;
+  }
+}

@@ -7,7 +7,7 @@ export const FilterbyBuilder = ({ filters, setIsLoading }: Props) => {
     filters = filters.filter(filter => filter.type !== 'primary_text')
 
     return (
-        <div>
+        <div className="entity-portal--filterby-builder__container">
             {filters.map(filter => <DynamicFilterby key={filter.id} filter={filter} setIsLoading={setIsLoading} />)}
         </div>
     )

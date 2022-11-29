@@ -73,6 +73,17 @@ export const libraryEntity: Entity = {
                     type: 'multi_select',
                     text: 'בתוך AMOUNT ענפים'
                 }
+            },
+            {
+                id: makeId(),
+                type: 'multi_range_picker',
+                key: 'entityInfo.item.pageCount',
+                param: 'fbranchIds',
+                title: 'מס\' עמודים',
+                activeFilterChip: {
+                    type: 'multi_select',
+                    text: 'מס\' עמודים'
+                }
             }
         ]
     },
