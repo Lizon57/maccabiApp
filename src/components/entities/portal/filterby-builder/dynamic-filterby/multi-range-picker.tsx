@@ -1,15 +1,18 @@
 import { useState } from "react"
-import { Range, getTrackBackground } from "react-range"
+import { Range } from "react-range"
 import { EntityFilterOption } from "../../../../../types/entity/filter/entity-filter-option"
+import { Thumb } from "./multi-range-picker/thumb"
+import { Track } from "./multi-range-picker/track"
 
 
-export const MultiRangePicker = ({ filter, setIsLoading }: Props) => {
+export const MultiRangePicker = ({ filter, debouncedSetIsLoading }: Props) => {
     const [values, setValues] = useState([20, 80])
 
 
     const onChangeValues = (values: number[]) => {
-        console.log(values)
         setValues(values)
+        debouncedSetIsLoading(true)
+        console.log(values)
     }
 
 
@@ -24,65 +27,19 @@ export const MultiRangePicker = ({ filter, setIsLoading }: Props) => {
                     max={100}
                     rtl={true}
                     onChange={(values) => onChangeValues(values)}
-                    renderTrack={({ props, children }) => (
-                        <div
-                            style={{
-                                ...props.style,
-                                height: '2rem',
-                                display: 'flex',
-                            }}
-                        >
-                            <div
-                                ref={props.ref}
-                                style={{
-                                    height: '2px',
-                                    width: '100%',
-                                    background: getTrackBackground({
-                                        values,
-                                        colors: ['#d4d4d4', '#195da6', '#d4d4d4'],
-                                        min: 0,
-                                        max: 100,
-                                        rtl: true
-                                    }),
-                                    alignSelf: 'center'
-                                }}
-                            >
-                                {children}
-                            </div>
-                        </div>
-                    )}
-                    renderThumb={({ index, props, isDragged }) => (
-                        <div
-                            {...props}
-                            style={{
-                                ...props.style,
-                                height: '10px',
-                                width: '10px',
-                                borderRadius: '50%',
-                                backgroundColor: isDragged ? '#114174' : '#195da6',
-
-                            }}
-                        >
-                            <div
-                                style={{
-                                    position: 'absolute',
-                                    top: '-7px',
-                                    color: '#fff',
-                                    backgroundColor: '#195da6',
-                                    padding: '5px',
-                                    fontSize: '12px',
-                                    borderRadius: '50vw',
-                                }}
-                            >
-                                {values[index]}
-                            </div>
-                        </div>
-                    )}
+                    renderTrack={({ props, children }) => <Track props={props} children={children} values={values} />}
+                    renderThumb={({ index, props, isDragged }) => <Thumb
+                        key={index}
+                        index={index}
+                        props={props}
+                        isDragged={isDragged}
+                        values={values}
+                    />}
                 />
-            </div>
-            <div style={{ width: '100%' }}>
-                לפחות <span></span>
-                ועד <span></span>
+
+                <div className="range-indicator">
+                    לפחות {values[0]} ועד {values[1]}
+                </div>
             </div>
         </div>
     )
@@ -91,5 +48,5 @@ export const MultiRangePicker = ({ filter, setIsLoading }: Props) => {
 
 type Props = {
     filter: EntityFilterOption,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

@@ -4,13 +4,19 @@ import { BranchMultiSelectFilterby } from "./branch-multi-select/branch-multi-se
 import { MultiRangePicker } from "./multi-range-picker"
 
 
-export const DynamicFilterby = ({ filter, setIsLoading }: Props) => {
+export const DynamicFilterby = ({ filter, debouncedSetIsLoading }: Props) => {
     switch (filter.type) {
         case 'branch_multi_select':
-            return <BranchMultiSelectFilterby filter={filter} setIsLoading={setIsLoading} />
+            return <BranchMultiSelectFilterby
+                filter={filter}
+                debouncedSetIsLoading={debouncedSetIsLoading}
+            />
 
         case 'multi_range_picker':
-            return <MultiRangePicker filter={filter} setIsLoading={setIsLoading} />
+            return <MultiRangePicker
+                filter={filter}
+                debouncedSetIsLoading={debouncedSetIsLoading}
+            />
 
         default:
             return null
@@ -20,5 +26,6 @@ export const DynamicFilterby = ({ filter, setIsLoading }: Props) => {
 
 type Props = {
     filter: EntityFilterOption,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+
 }

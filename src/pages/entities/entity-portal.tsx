@@ -14,6 +14,7 @@ import { OptionsList } from "../../components/entities/portal/options-list/optio
 import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 import { MainTitle } from "../../components/common/main-title/main-title"
+import { useDebounce } from "../../hooks/use-debounce"
 
 
 export const EntityPortal = (entityName: string) => {
@@ -23,6 +24,8 @@ export const EntityPortal = (entityName: string) => {
     const [errorMessage, setErrorMessage] = useState('')
     const [items, setItems] = useState<EntityItem[]>([])
     const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(true)
+
+    const debouncedSetIsLoading = useDebounce(setIsLoading, 1000)
 
     const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
     const sortBy = useEntitySortHandler()
@@ -82,8 +85,11 @@ export const EntityPortal = (entityName: string) => {
         <section className="entities-pages--entity-portal__container">
             <MainTitle text={listTitle} Icon={Icon} isSticky={true} additionalCmp={titleAdditionalCmp} />
 
-            <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
-            {isFilterSectionOpen && <FilterbyBuilder filters={filters} setIsLoading={setIsLoading} />}
+            <ActiveFilterList possibleFiilters={filters} debouncedSetIsLoading={debouncedSetIsLoading} />
+            {isFilterSectionOpen && <FilterbyBuilder
+                filters={filters}
+                debouncedSetIsLoading={debouncedSetIsLoading}
+            />}
 
             {items.length
                 ? <EntityList entity={ENTITY} items={items} />

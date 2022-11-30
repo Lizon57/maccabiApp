@@ -67,7 +67,7 @@ export const libraryEntity: Entity = {
                 id: makeId(),
                 type: 'branch_multi_select',
                 key: 'relatedInfo.branchIds',
-                param: 'fbranchIds',
+                param: 'fBranchIds',
                 title: 'בחירת ענפים',
                 activeFilterChip: {
                     type: 'multi_select',
@@ -78,11 +78,11 @@ export const libraryEntity: Entity = {
                 id: makeId(),
                 type: 'multi_range_picker',
                 key: 'entityInfo.item.pageCount',
-                param: 'fbranchIds',
+                param: 'fPageCount',
                 title: 'מס\' עמודים',
                 activeFilterChip: {
-                    type: 'multi_select',
-                    text: 'מס\' עמודים'
+                    type: 'numbers_range',
+                    text: 'בין MIN ל-MAX עמ\''
                 }
             }
         ]

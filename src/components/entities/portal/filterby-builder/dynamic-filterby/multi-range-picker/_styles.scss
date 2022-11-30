@@ -1,0 +1,23 @@
+div.entities-portal--multi-range-picker__thumb-container {
+  span.indicator {
+    position: absolute;
+    top: -5px;
+
+    border-radius: 50vw;
+    background-color: $clr-blue-regular;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+div.entities-portal--multi-range-picker__track-container {
+  display: flex;
+  height: 1rem;
+
+  div.track {
+    align-self: center;
+
+    width: 100%;
+    height: 2px;
+  }
+}

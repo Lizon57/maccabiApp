@@ -1,15 +1,15 @@
 import { useEffect, useRef } from "react"
 
 
-import { cloudinaryService } from "../../../../../services/cloudinary-service"
+// import { cloudinaryService } from "../../../../../services/cloudinary-service"
 import { emptyEntityItemService } from "../../../../../services/entities/empty-entity-item-service"
-import { entityItemService } from "../../../../../services/entities/entity-item-service"
+// import { entityItemService } from "../../../../../services/entities/entity-item-service"
 
-import { IMAGE_DB } from "../../../../../data/entities/image/image-db"
+// import { IMAGE_DB } from "../../../../../data/entities/image/image-db"
 
 import { makeId } from "../../../../../services/util/make-id"
 
-import { ImageEntityItem } from "../../../../../types/entity/entities/image-entity-item"
+import { EntityItem } from "../../../../../types/entity/entities/entity-item"
 
 import { Loader } from "../../../../common/loader/loader"
 
@@ -26,7 +26,7 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
 
             try {
                 setTimeout(async () => {
-                    const image = await emptyEntityItemService.get('image') as ImageEntityItem
+                    const image = await emptyEntityItemService.get('image') as EntityItem
                     image.id = makeId()
                     image.entityInfo.imageUrl = 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666553252/signature/qc8yemagsqd7ojlnxym4.jpg'
                     image.entityInfo.name.display = 'ירון עוז סופרגול'
@@ -65,6 +65,6 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
 type Props = {
     file: File,
     entityName: string,
-    onUploadSuccess: (image: ImageEntityItem, file: File) => void,
+    onUploadSuccess: (image: EntityItem, file: File) => void,
     onUploadFail: (file: File) => void
 }

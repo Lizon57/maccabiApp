@@ -84,11 +84,22 @@ export const signatureEntity: Entity = {
                 id: makeId(),
                 type: 'branch_multi_select',
                 key: 'relatedInfo.branchIds',
-                param: 'fbranchIds',
+                param: 'fBranchIds',
                 title: 'בחירת ענפים',
                 activeFilterChip: {
                     type: 'multi_select',
                     text: 'בתוך AMOUNT ענפים'
+                }
+            },
+            {
+                id: makeId(),
+                type: 'multi_range_picker',
+                key: 'entityInfo.item.pageCount',
+                param: 'fPageCount',
+                title: 'מס\' חתימות',
+                activeFilterChip: {
+                    type: 'numbers_range',
+                    text: 'בין MIN ל-MAX חתימות'
                 }
             }
         ]

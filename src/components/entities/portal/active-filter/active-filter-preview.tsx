@@ -24,6 +24,12 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
             text = filter.activeFilterChip.text.replace('AMOUNT', '' + AMOUNT)
             break
 
+        case 'numbers_range':
+            const NUMBERS = PARAMS.get(filter.param)?.split('|') || []
+            text = filter.activeFilterChip.text.replace('MIN', NUMBERS[0])
+            text = text.replace('MAX', NUMBERS[1])
+            break
+
         default:
             text = 'סנן פעיל'
     }

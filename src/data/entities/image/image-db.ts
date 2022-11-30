@@ -1,9 +1,9 @@
 import { getRandomInt } from "../../../services/util/get-random-int"
 
-import { ImageEntityItem } from "../../../types/entity/entities/image-entity-item"
+import { EntityItem } from "../../../types/entity/entities/entity-item"
 
 
-export const IMAGE_DB: ImageEntityItem[] = [
+export const IMAGE_DB: EntityItem[] = [
     {
         id: 'imageId00001',
 
@@ -227,7 +227,7 @@ export const IMAGE_DB: ImageEntityItem[] = [
             name: {
                 display: 'מכבי תל אביב - אלופים! - כריכה קדמית'
             },
-            imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1669629656/library/%D7%A2%D7%A8%D7%9F_%D7%96%D7%94%D7%91%D7%99_-_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%95_%D7%A9%D7%9C_%D7%95%D7%95%D7%99%D7%A0%D7%A8_-_%D7%9B%D7%A8%D7%99%D7%9B%D7%94_%D7%90%D7%97%D7%95%D7%A8%D7%99%D7%AA_voqp4g.jpg',
+            imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1669756511/library/%D7%9E%D7%9B%D7%91%D7%99_%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91_-_%D7%90%D7%9C%D7%95%D7%A4%D7%99%D7%9D_-_%D7%9B%D7%A8%D7%99%D7%9B%D7%94_%D7%A7%D7%93%D7%9E%D7%99%D7%AA_grgbx3.jpg',
             ctgIds: ['categoryId0006', 'categoryId0021', 'categoryId0025']
         },
 

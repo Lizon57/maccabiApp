@@ -1,10 +1,10 @@
 import { getRandomInt } from "../../../services/util/get-random-int"
 
-import { ProfileEntityItem } from "../../../types/entity/entities/profile-entity-item"
+import { EntityItem } from "../../../types/entity/entities/entity-item"
 
 
 
-export const PROFILE_DB: ProfileEntityItem[] = [
+export const PROFILE_DB: EntityItem[] = [
     {
         id: 'profileId00001',
         relatedInfo: {

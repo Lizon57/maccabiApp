@@ -3,11 +3,11 @@ import { EntityFilterOption } from "../../../../../../types/entity/filter/entity
 import { BranchMultiSelectFilterbyList } from "./branch-multi-select-filterby-list"
 
 
-export const BranchMultiSelectFilterby = ({ filter, setIsLoading }: Props) => {
+export const BranchMultiSelectFilterby = ({ filter, debouncedSetIsLoading }: Props) => {
     return (
         <div className="entities-portal--branch-multi-select-filterby__container">
             <span className="title">{filter.title}</span>
-            <BranchMultiSelectFilterbyList filterParam={filter.param} setIsLoading={setIsLoading} />
+            <BranchMultiSelectFilterbyList filterParam={filter.param} debouncedSetIsLoading={debouncedSetIsLoading} />
         </div>
     )
 }
@@ -15,5 +15,5 @@ export const BranchMultiSelectFilterby = ({ filter, setIsLoading }: Props) => {
 
 type Props = {
     filter: EntityFilterOption,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

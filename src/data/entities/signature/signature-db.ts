@@ -1,10 +1,10 @@
 import { getRandomInt } from "../../../services/util/get-random-int"
 import { makeId } from "../../../services/util/make-id"
 
-import { BasicEntityItem } from "../../../types/entity/basic-entity-item"
+import { EntityItem } from "../../../types/entity/entities/entity-item"
 
 
-export const SIGNATURE_DB: BasicEntityItem[] = [
+export const SIGNATURE_DB: EntityItem[] = [
     {
         id: makeId(),
         relatedInfo: {

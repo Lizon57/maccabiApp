@@ -4,7 +4,6 @@ import { AiOutlineCloudUpload } from "react-icons/ai"
 import { useStoreDispatch } from "../../../../../hooks/store/use-store-dispatch"
 import { useStoreSelector } from "../../../../../hooks/store/use-store-selector"
 
-import { ImageEntityItem } from "../../../../../types/entity/entities/image-entity-item"
 import { EntityItem } from "../../../../../types/entity/entities/entity-item"
 
 import { updateItem } from "../../../../../store/slicer/entity-save-slicer"
@@ -40,7 +39,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
     }
 
 
-    const onUploadSuccess = (image: ImageEntityItem, file: File) => {
+    const onUploadSuccess = (image: EntityItem, file: File) => {
         const editedItem = structuredClone(item)
         if (!editedItem.miniImages?.length) editedItem.miniImages = []
         editedItem.miniImages.push({

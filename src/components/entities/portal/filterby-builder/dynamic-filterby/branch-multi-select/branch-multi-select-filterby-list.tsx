@@ -8,14 +8,12 @@ import { BRANCHES } from "../../../../../../data/app/supports-branches"
 import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby-preview"
 
 
-export const BranchMultiSelectFilterbyList = ({ filterParam, setIsLoading }: Props) => {
+export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoading }: Props) => {
     const { user: { browseableBranchesIds } } = useStoreSelector(state => state.userModule)
     const [isActiveBranches, setIsActiveBranches] = useState(browseableBranchesIds)
 
     const PARAMS = new URL(window.location.href).searchParams
     const NAVIGATE = useNavigate()
-
-    const debouncedIsLoading = useDebounce(setIsLoading, 1000)
 
 
     const getIsActiveBranch = (id: string) => !!isActiveBranches.find(branchId => branchId === id)
@@ -31,7 +29,7 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, setIsLoading }: Pro
 
         setIsActiveBranches(newActiveBranches)
         debouncedNavigateToNewActiveBranches(newActiveBranches)
-        debouncedIsLoading(true)
+        debouncedSetIsLoading(true)
     }
 
     const navigateToNewActiveBranches = (newActiveBranches: string[]) => {
@@ -64,5 +62,5 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, setIsLoading }: Pro
 
 type Props = {
     filterParam: string,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

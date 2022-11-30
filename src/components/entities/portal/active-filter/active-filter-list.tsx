@@ -7,7 +7,7 @@ import { EntityFilterOption } from "../../../../types/entity/filter/entity-filte
 import { ActiveFilterPreview } from "./active-filter-preview"
 
 
-export const ActiveFilterList = ({ possibleFiilters, setIsLoading }: Props) => {
+export const ActiveFilterList = ({ possibleFiilters, debouncedSetIsLoading }: Props) => {
     const [activeFilters, setActiveFilters] = useState<EntityFilterOption[]>()
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export const ActiveFilterList = ({ possibleFiilters, setIsLoading }: Props) => {
                     {activeFilters.map(activeFilter => <ActiveFilterPreview
                         key={activeFilter.id}
                         filter={activeFilter}
-                        setIsLoading={setIsLoading}
+                        setIsLoading={debouncedSetIsLoading}
                     />)}
                 </div>
             </div>
@@ -34,5 +34,5 @@ export const ActiveFilterList = ({ possibleFiilters, setIsLoading }: Props) => {
 
 type Props = {
     possibleFiilters: EntityFilterOption[],
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

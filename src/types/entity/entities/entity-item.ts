@@ -1,6 +1,79 @@
-import { ImageEntityItem } from "./image-entity-item"
-import { LibraryEntityItem } from "./library-entity-item"
-import { ProfileEntityItem } from "./profile-entity-item"
+import { MiniPageCategory } from "../../page-category"
 
 
-export type EntityItem = ImageEntityItem | ProfileEntityItem | LibraryEntityItem
+export interface EntityItem {
+    id: string,
+
+    relatedInfo?: {
+        profileImageId?: string,
+        miniProfile?: {
+            profileId: string,
+            displayName: string,
+            profileImageUrl: string
+        },
+        branchIds: string[],
+    },
+
+    entityInfo: {
+        name: {
+            display: string
+            he?: {
+                private?: string,
+                middle?: string,
+                family?: string,
+                nickname?: string
+            }
+        },
+        ctgIds: string[],
+        miniCategories?: MiniPageCategory[],
+        item?: {
+            writers?: string[],
+            publishers?: string[],
+            pageCount?: number,
+            publishYear?: number,
+        },
+        imageUrl?: string,
+        lifetime?: {
+            born?: {
+                date?: Date,
+
+                uncomplete?: {
+                    year?: number,
+                    month?: number,
+                    day?: number,
+                }
+            },
+
+            died?: {
+                date?: Date,
+
+                uncomplete?: {
+                    year?: number,
+                    month?: number,
+                    day?: number,
+                }
+            },
+
+            bornLocation?: {
+                city?: string,
+                reguion?: string,
+                country?: string
+            }
+        },
+    },
+
+    itemInfo: {
+        view: number,
+        rate: {
+            avg: number,
+            raterCount: number
+        },
+        editHistory: {
+            total: number,
+            lastEditDate: Date
+        }
+    }
+
+    images?: string[],
+    miniImages?: { id: string, name: string, imageUrl: string }[]
+}
