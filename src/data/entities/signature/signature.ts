@@ -94,12 +94,17 @@ export const signatureEntity: Entity = {
             {
                 id: makeId(),
                 type: 'multi_range_picker',
-                key: 'entityInfo.item.pageCount',
-                param: 'fPageCount',
+                key: 'miniImages',
+                param: 'fItemImages',
                 title: 'מס\' חתימות',
                 activeFilterChip: {
                     type: 'numbers_range',
                     text: 'בין MIN ל-MAX חתימות'
+                },
+                option: {
+                    isLengthProp: true,
+                    min: 0,
+                    max: 10
                 }
             }
         ]

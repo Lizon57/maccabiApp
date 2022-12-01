@@ -1,19 +1,41 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { useDebounce } from "../../../../../../hooks/use-debounce"
 import { Range } from "react-range"
-import { EntityFilterOption } from "../../../../../types/entity/filter/entity-filter-option"
-import { Thumb } from "./multi-range-picker/thumb"
-import { Track } from "./multi-range-picker/track"
+
+import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
+
+import { Thumb } from "./thumb"
+import { Track } from "./track"
 
 
 export const MultiRangePicker = ({ filter, debouncedSetIsLoading }: Props) => {
-    const [values, setValues] = useState([20, 80])
+    const PARAMS = new URL(window.location.href).searchParams
+    const [values, setValues] = useState([filter.option?.min || 0, filter.option?.max || 100])
+
+    const NAVIGATE = useNavigate()
+
+    const navigateToNewActiveRange = (values: number[]) => {
+        const activeValues = values.join('|')
+        PARAMS.set(filter.param, activeValues)
+        NAVIGATE({ search: PARAMS.toString() })
+    }
+    const debouncedNavigateToNewActiveRange = useDebounce(navigateToNewActiveRange, 1000)
 
 
     const onChangeValues = (values: number[]) => {
         setValues(values)
+        debouncedNavigateToNewActiveRange(values)
         debouncedSetIsLoading(true)
-        console.log(values)
     }
+
+
+    useEffect(() => {
+        if (PARAMS.get(filter.param)) {
+            const newValues = PARAMS.get(filter.param)?.split('|').map(value => +value)
+            setValues(newValues || [])
+        }
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
@@ -23,7 +45,7 @@ export const MultiRangePicker = ({ filter, debouncedSetIsLoading }: Props) => {
                 <Range
                     values={values}
                     step={1}
-                    min={0}
+                    min={filter.option?.min || 0}
                     max={100}
                     rtl={true}
                     onChange={(values) => onChangeValues(values)}

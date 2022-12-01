@@ -8,5 +8,11 @@ export type EntityFilterOption = {
     activeFilterChip: {
         type: string,
         text: string
+    },
+
+    option?: {
+        isLengthProp?: boolean,
+        min?: number,
+        max?: number
     }
 }

@@ -85,7 +85,7 @@ export const EntityPortal = (entityName: string) => {
         <section className="entities-pages--entity-portal__container">
             <MainTitle text={listTitle} Icon={Icon} isSticky={true} additionalCmp={titleAdditionalCmp} />
 
-            <ActiveFilterList possibleFiilters={filters} debouncedSetIsLoading={debouncedSetIsLoading} />
+            <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
             {isFilterSectionOpen && <FilterbyBuilder
                 filters={filters}
                 debouncedSetIsLoading={debouncedSetIsLoading}

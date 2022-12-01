@@ -47,14 +47,29 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 if (!selectBranches?.length) break
                 filteredItems = filteredItems.filter(item => {
                     let shouldFilterOut = true
-                    const opptionalBranchesIds = _getValueOfDynamicKey(item, filter.key) as string[]
-                    opptionalBranchesIds.forEach(branchId => {
+                    const optionalBranchesIds = _getValueOfDynamicKey(item, filter.key) as string[]
+                    optionalBranchesIds.forEach(branchId => {
                         if (selectBranches.includes(branchId)) shouldFilterOut = false
                     })
 
                     if (shouldFilterOut) return 0
                     else return 1
                 })
+                break
+
+            case 'multi_range_picker':
+                const ranges = PARAMS.get(filter.param)?.split('|') || [-Infinity, Infinity]
+                filteredItems = filteredItems.filter(item => {
+                    const actualKeyValue = _getValueOfDynamicKey(item, filter.key)
+                    if (filter.option?.isLengthProp) {
+                        if (actualKeyValue.length < ranges[0] || actualKeyValue.length > ranges[1]) return false
+                        else return true
+                    }
+
+                    if (actualKeyValue < ranges[0] || actualKeyValue > ranges[1]) return false
+                    return true
+                })
+                break
         }
     })
 
