@@ -2,7 +2,7 @@ export const Thumb = ({ index, props, isDragged, values }: Props) => {
     return (
         <div
             {...props}
-            className="entities-portal--multi-range-picker__thumb-container"
+            className="entities-portal--number-picker__thumb-container"
             style={{ ...props.style }}
         >
             <span className="indicator"></span>

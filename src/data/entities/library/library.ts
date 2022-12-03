@@ -76,13 +76,32 @@ export const libraryEntity: Entity = {
             },
             {
                 id: makeId(),
-                type: 'multi_range_picker',
+                type: 'multi_number_picker',
                 key: 'entityInfo.item.pageCount',
                 param: 'fPageCount',
                 title: 'מס\' עמודים',
                 activeFilterChip: {
                     type: 'numbers_range',
                     text: 'בין MIN ל-MAX עמ\''
+                },
+                option: {
+                    min: 150,
+                    max: 370,
+                }
+            },
+            {
+                id: makeId(),
+                type: 'multi_number_picker',
+                key: 'entityInfo.item.publishYear',
+                param: 'fPublishYear',
+                title: 'שנת הוצאה',
+                activeFilterChip: {
+                    type: 'numbers_range',
+                    text: 'יצא לאור בין MIN ל-MAX'
+                },
+                option: {
+                    min: 1906,
+                    max: new Date().getFullYear(),
                 }
             }
         ]

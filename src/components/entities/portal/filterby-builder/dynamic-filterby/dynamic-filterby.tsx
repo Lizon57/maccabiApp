@@ -1,7 +1,7 @@
 import { EntityFilterOption } from "../../../../../types/entity/filter/entity-filter-option"
 
 import { BranchMultiSelectFilterby } from "./branch-multi-select/branch-multi-select-filterby"
-import { MultiRangePicker } from "./multi-range-picker/multi-range-picker"
+import { NumberPicker } from "./range-picker/number-picker"
 
 
 export const DynamicFilterby = ({ filter, debouncedSetIsLoading }: Props) => {
@@ -12,8 +12,8 @@ export const DynamicFilterby = ({ filter, debouncedSetIsLoading }: Props) => {
                 debouncedSetIsLoading={debouncedSetIsLoading}
             />
 
-        case 'multi_range_picker':
-            return <MultiRangePicker
+        case 'multi_number_picker':
+            return <NumberPicker
                 filter={filter}
                 debouncedSetIsLoading={debouncedSetIsLoading}
             />

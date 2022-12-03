@@ -16,7 +16,7 @@ export const Dropdown = ({ controllerText, controllerIcon: Icon, title, children
     return (
         <div className="common-cmp--dropdown__container" ref={EL_DROPDOWN_CONTAINER}>
             <div className="toggler" title={title} onClick={toggleDropdown}>
-                {controllerText && controllerText}
+                {controllerText && <span>{controllerText}</span>}
                 {Icon && <Icon />}
             </div>
 

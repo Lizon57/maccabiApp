@@ -57,7 +57,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 })
                 break
 
-            case 'multi_range_picker':
+            case 'multi_number_picker':
                 const ranges = PARAMS.get(filter.param)?.split('|') || [-Infinity, Infinity]
                 filteredItems = filteredItems.filter(item => {
                     const actualKeyValue = _getValueOfDynamicKey(item, filter.key)

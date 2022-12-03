@@ -93,7 +93,7 @@ export const signatureEntity: Entity = {
             },
             {
                 id: makeId(),
-                type: 'multi_range_picker',
+                type: 'multi_number_picker',
                 key: 'miniImages',
                 param: 'fItemImages',
                 title: 'מס\' חתימות',
