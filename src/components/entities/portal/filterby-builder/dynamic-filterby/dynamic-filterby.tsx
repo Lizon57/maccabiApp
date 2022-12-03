@@ -1,7 +1,7 @@
 import { EntityFilterOption } from "../../../../../types/entity/filter/entity-filter-option"
 
 import { BranchMultiSelectFilterby } from "./branch-multi-select/branch-multi-select-filterby"
-import { NumberPicker } from "./range-picker/number-picker"
+import { NumberPicker } from "./number-picker/number-picker"
 
 
 export const DynamicFilterby = ({ filter, debouncedSetIsLoading }: Props) => {

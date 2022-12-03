@@ -1,7 +1,6 @@
 import { getTrackBackground } from "react-range"
 
 
-
 export const Track = ({ props, children, values, min, max, type }: Props) => {
     const getColors = () => {
         switch (type) {
