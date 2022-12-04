@@ -30,6 +30,11 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
             text = text.replace('MAX', NUMBERS[1])
             break
 
+        case 'text_filter':
+            const TEXT = PARAMS.get(filter.param) || ''
+            text = filter.activeFilterChip.text.replace('TERM', TEXT)
+            break
+
         default:
             text = 'סנן פעיל'
     }
@@ -37,6 +42,12 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
     const onRemoveFilter = () => {
         PARAMS.delete(filter.param)
+        
+        if (filter.activeFilterChip.type === 'numbers_range'
+        || filter.activeFilterChip.type === 'text_filter') {
+            PARAMS.delete(filter.param + 'Type')
+        }
+
         NAVIGATE({ search: PARAMS.toString().replaceAll('%2C', ',') })
         window.scrollTo({ top: 0 })
         setIsLoading(true)

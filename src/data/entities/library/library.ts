@@ -111,7 +111,7 @@ export const libraryEntity: Entity = {
                 param: 'fWriters',
                 title: 'כותבים',
                 activeFilterChip: {
-                    type: 'text',
+                    type: 'text_filter',
                     text: '"TERM" בין הכותבים'
                 },
             },
@@ -122,7 +122,7 @@ export const libraryEntity: Entity = {
                 param: 'fPublishers',
                 title: 'מוציאים לאור',
                 activeFilterChip: {
-                    type: 'text',
+                    type: 'text_filter',
                     text: '"TERM" בין המוציאים לאור'
                 },
             }
