@@ -1,0 +1,54 @@
+div.entities-portal--text-filter__container {
+  @include squarePicker;
+  min-width: 250px;
+
+  div.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-inline-xxxSmall-rem;
+
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+
+    input {
+      outline: 0;
+      border: 0;
+      border-block-end: 1px solid $clr-black-lightest;
+      background-color: transparent;
+      font-size: $font-size-xSmall-rem;
+    }
+
+    div.common-cmp--dropdown__container {
+      flex-basis: 30%;
+      max-width: max-content;
+
+      div.toggler {
+        display: flex;
+        align-items: center;
+        gap: $space-inline-xxxSmall-rem;
+
+        cursor: pointer;
+        font-size: $font-size-xSmall-rem;
+      }
+
+      div.options-container {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: $space-inline-xxxSmall-rem;
+        column-gap: 6px;
+
+        div.type-option {
+          min-width: calc(50% - 3px);
+
+          &:hover {
+            cursor: pointer;
+            color: $clr-blue-darker;
+          }
+        }
+      }
+    }
+  }
+}

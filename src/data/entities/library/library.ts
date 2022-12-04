@@ -103,6 +103,28 @@ export const libraryEntity: Entity = {
                     min: 1906,
                     max: new Date().getFullYear(),
                 }
+            },
+            {
+                id: makeId(),
+                type: 'text_filter',
+                key: 'entityInfo.item.writers',
+                param: 'fWriters',
+                title: 'כותבים',
+                activeFilterChip: {
+                    type: 'text',
+                    text: '"TERM" בין הכותבים'
+                },
+            },
+            {
+                id: makeId(),
+                type: 'text_filter',
+                key: 'entityInfo.item.publishers',
+                param: 'fPublishers',
+                title: 'מוציאים לאור',
+                activeFilterChip: {
+                    type: 'text',
+                    text: '"TERM" בין המוציאים לאור'
+                },
             }
         ]
     },

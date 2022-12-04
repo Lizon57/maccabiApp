@@ -2,21 +2,21 @@ import { EntityFilterOption } from "../../../../../types/entity/filter/entity-fi
 
 import { BranchMultiSelectFilterby } from "./branch-multi-select/branch-multi-select-filterby"
 import { NumberPicker } from "./number-picker/number-picker"
+import { TextFilter } from "./text-filter/text-filter"
 
 
 export const DynamicFilterby = ({ filter, debouncedSetIsLoading }: Props) => {
+    const basicProps = { filter, debouncedSetIsLoading }
+
     switch (filter.type) {
         case 'branch_multi_select':
-            return <BranchMultiSelectFilterby
-                filter={filter}
-                debouncedSetIsLoading={debouncedSetIsLoading}
-            />
+            return <BranchMultiSelectFilterby {...basicProps} />
 
         case 'multi_number_picker':
-            return <NumberPicker
-                filter={filter}
-                debouncedSetIsLoading={debouncedSetIsLoading}
-            />
+            return <NumberPicker {...basicProps} />
+
+        case 'text_filter':
+            return <TextFilter {...basicProps} />
 
         default:
             return null
