@@ -31,8 +31,8 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
             break
 
         case 'text_filter':
-            const TEXT = PARAMS.get(filter.param) || ''
-            text = filter.activeFilterChip.text.replace('TERM', TEXT)
+            const term = PARAMS.get(filter.param)?.split(',').map(t => `"${t}"`)
+            text = filter.activeFilterChip.text.replace('TERM', term + '')
             break
 
         default:
@@ -42,9 +42,9 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
     const onRemoveFilter = () => {
         PARAMS.delete(filter.param)
-        
+
         if (filter.activeFilterChip.type === 'numbers_range'
-        || filter.activeFilterChip.type === 'text_filter') {
+            || filter.activeFilterChip.type === 'text_filter') {
             PARAMS.delete(filter.param + 'Type')
         }
 

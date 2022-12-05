@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { useDebounce } from "../../../../../../hooks/use-debounce"
 
 import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
 
@@ -18,17 +19,18 @@ export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
     const NAVIGATE = useNavigate()
 
 
-    const navigateNewPick = (value: string) => {
+    const navigateNewSearch = (value: string) => {
         PARAMS.set(filter.param, value)
         PARAMS.set(filter.param + 'Type', type + '')
         NAVIGATE({ search: PARAMS.toString() })
     }
+    const debouncedNavigateNewSearch = useDebounce(navigateNewSearch, 1000)
 
 
     const onSetValue = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
         const { value: newValue } = target
         setValue(newValue)
-        navigateNewPick(newValue)
+        debouncedNavigateNewSearch(newValue)
         debouncedSetIsLoading(true)
     }
 

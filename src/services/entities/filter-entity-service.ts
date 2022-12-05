@@ -70,6 +70,25 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                     return true
                 })
                 break
+
+            case 'text_filter':
+                const type = PARAMS.get(filter.param + 'Type') || ''
+                const term = PARAMS.get(filter.param) || ''
+                if (!type || !term) break
+
+                filteredItems = filteredItems.filter(item => {
+                    const actualKeyValue = _getValueOfDynamicKey(item, filter.key)
+                    if (type === '0') {
+                        return actualKeyValue.some((str: string) => str.substring(0, term.length) === term)
+                    } else if (type === '1') {
+                        return actualKeyValue.some((str: string) => str.substring(str.length, str.length - term.length) === term)
+                    } else if (type === '2') {
+                        return actualKeyValue.some((str: string) => str.match(term))
+                    }
+
+                    return false
+                })
+                break
         }
     })
 

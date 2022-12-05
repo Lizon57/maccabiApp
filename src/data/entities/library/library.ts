@@ -112,7 +112,7 @@ export const libraryEntity: Entity = {
                 title: 'כותבים',
                 activeFilterChip: {
                     type: 'text_filter',
-                    text: '"TERM" בין הכותבים'
+                    text: 'TERM בין הכותבים'
                 },
             },
             {
@@ -123,7 +123,7 @@ export const libraryEntity: Entity = {
                 title: 'מוציאים לאור',
                 activeFilterChip: {
                     type: 'text_filter',
-                    text: '"TERM" בין המוציאים לאור'
+                    text: 'TERM בין המוציאים לאור'
                 },
             }
         ]
