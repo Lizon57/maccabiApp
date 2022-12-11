@@ -46,6 +46,20 @@ export const libraryEntity: Entity = {
                     type: 'page-title',
                     title: '"PAGE_NAME" BY_WRITERS',
                     Icon: RiBookOpenFill
+                },
+                {
+                    type: 'simple-info-list',
+
+                    infos: [
+                        {
+                            title: 'הוצאה לאור',
+                            value: 'entityInfo.item.writers'
+                        },
+                        {
+                            title: 'שנת הוצאה',
+                            value: 'entityInfo.item.publishYear'
+                        }
+                    ]
                 }
             ],
             additional: [

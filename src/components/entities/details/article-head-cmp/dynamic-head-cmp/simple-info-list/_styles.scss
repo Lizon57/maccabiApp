@@ -1,0 +1,18 @@
+div.entity-details--simple-info-list-list__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxxSmall-rem;
+}
+
+div.entity-details--simple-info-list-preview__container {
+    font-size: $font-size-small-rem;
+
+    span.title{
+        font-family: $typography-emphasis;
+        margin-inline-end: $space-inline-xxxSmall-rem;
+
+        &::after{
+            content: ":";
+        }
+    }
+}

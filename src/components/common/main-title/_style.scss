@@ -4,6 +4,7 @@ h2.common-cmp--main-title {
   gap: $space-block-regular-rem;
 
   margin: 0;
+  margin-block-end: $space-block-xxxSmall-rem;
 
   @include viewport-wide-start-from($viewport-regular) {
     display: grid;
@@ -35,7 +36,6 @@ h2.common-cmp--main-title {
       font-weight: 500;
       word-break: break-all;
       word-wrap: break-word;
-  
     }
   }
 }
