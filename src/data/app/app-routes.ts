@@ -2,8 +2,10 @@ import { makeId } from "../../services/util/make-id"
 
 import { EntityPortal } from "../../pages/entities/entity-portal"
 import { EntityDetails } from "../../pages/entities/entity-details"
-import { signatureEntity } from "../entities/signature/signature"
 import { EntitySave } from "../../pages/entities/entity-save"
+
+import { signatureEntity } from "../entities/signature/signature"
+import { libraryEntity } from "../entities/library/library"
 
 
 export const ROUTES = [
@@ -37,7 +39,7 @@ export const ROUTES = [
     {
         id: makeId(),
         path: 'library/:id',
-        element: () => EntityDetails(signatureEntity)
+        element: () => EntityDetails(libraryEntity)
     },
     {
         id: makeId(),

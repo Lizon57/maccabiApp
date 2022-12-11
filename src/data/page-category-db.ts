@@ -182,4 +182,20 @@ export const PAGE_CATEGORY_DB = [
             display: 'ספרי כדורסל'
         }
     },
+
+    {
+        id: 'categoryId0024',
+
+        name: {
+            display: 'ערן זהבי - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0025',
+
+        name: {
+            display: 'ספרי כדורגל'
+        }
+    },
 ]

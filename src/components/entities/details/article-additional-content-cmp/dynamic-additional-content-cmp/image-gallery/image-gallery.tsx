@@ -10,6 +10,7 @@ export const ImageGallery = ({ cmp }: Props) => {
     const { item } = useStoreSelector(state => state.displayEntityModule)
 
     cmp.title = cmp.title.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
+    cmp.title = cmp.title.replace('PAGE_NAME', (item.entityInfo.name.display || ''))
 
     return (
         <>

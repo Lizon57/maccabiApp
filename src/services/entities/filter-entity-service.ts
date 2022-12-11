@@ -78,10 +78,11 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
 
                 filteredItems = filteredItems.filter(item => {
                     const actualKeyValue = _getValueOfDynamicKey(item, filter.key)
+                    if (!actualKeyValue) return false
                     if (type === '0') {
-                        return actualKeyValue.some((str: string) => str.substring(0, term.length) === term)
+                        return actualKeyValue.some((str: string) => str.startsWith(term))
                     } else if (type === '1') {
-                        return actualKeyValue.some((str: string) => str.substring(str.length, str.length - term.length) === term)
+                        return actualKeyValue.some((str: string) => str.endsWith(term))
                     } else if (type === '2') {
                         return actualKeyValue.some((str: string) => str.match(term))
                     }

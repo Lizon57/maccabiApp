@@ -4,6 +4,8 @@ import { Entity } from "../../../types/entity/entity"
 import { LIBRARY_DB } from "./library-db"
 
 import { RiBookOpenFill } from "react-icons/ri"
+import { FaSignature, FaUpload } from "react-icons/fa"
+import { BiBrain } from "react-icons/bi"
 
 
 export const libraryEntity: Entity = {
@@ -37,6 +39,22 @@ export const libraryEntity: Entity = {
 
     detailsPageInfo: {
         type: 'article',
+
+        structure: {
+            head: [
+                {
+                    type: 'page-title',
+                    title: '"PAGE_NAME" BY_WRITERS',
+                    Icon: RiBookOpenFill
+                }
+            ],
+            additional: [
+                {
+                    type: 'image-gallery',
+                    title: 'תמונות מתוך PAGE_NAME'
+                }
+            ]
+        }
     },
 
     listPageInfo: {
@@ -131,6 +149,32 @@ export const libraryEntity: Entity = {
 
     saveItemPage: {
         stages: [
+            {
+                title: 'העלאת תמונות',
+                icon: FaUpload,
+                type: 'image-upload',
+                isRequire: false,
+            },
+
+            {
+                title: 'שיוך הספר',
+                icon: BiBrain,
+                type: 'associate-related-data',
+                isRequire: true,
+
+                option: {
+                    relateds: [
+                        {
+                            type: 'profile',
+                            isRequire: false
+                        },
+                        {
+                            type: 'branch',
+                            isRequire: true
+                        }
+                    ]
+                }
+            },
         ]
     }
 }

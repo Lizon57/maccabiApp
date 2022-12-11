@@ -112,7 +112,7 @@ export const LIBRARY_DB: EntityItem[] = [
             },
             ctgIds: ['categoryId0021', 'categoryId0025'],
             item: {
-                writers: ['משה לרר'],
+                writers: ['משה לרר', 'משה אופניק'],
                 publishYear: 1956
             }
         },
