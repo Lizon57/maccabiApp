@@ -1,7 +1,11 @@
 div.entities-portal--number-picker__container {
   @include squarePicker;
-  min-width: 300px;
   padding-inline: $space-inline-regular-rem;
+  width: 100%;
+
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    max-width: 300px;
+  }
 
   div.content-container {
     width: 100%;

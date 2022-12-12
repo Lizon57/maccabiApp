@@ -1,6 +1,10 @@
 div.entities-portal--text-filter__container {
   @include squarePicker;
-  min-width: 250px;
+  width: 100%;
+
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    max-width: 300px;
+  }
 
   div.content-container {
     display: flex;

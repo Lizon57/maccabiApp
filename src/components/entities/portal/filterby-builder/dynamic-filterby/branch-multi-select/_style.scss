@@ -1,5 +1,10 @@
 div.entities-portal--branch-multi-select-filterby__container {
   @include squarePicker;
+  width: 100%;
+
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    max-width: 300px;
+  }
 }
 
 div.entities-portal--branch-multi-select-list__container {
@@ -31,7 +36,7 @@ div.entities-portal--branch-multi-select-filterby-preview__container {
     background-color: transparent;
     color: $clr-black-regular;
 
-    &:hover{
+    &:hover {
       border-color: $clr-blue-regular;
       color: $clr-blue-regular;
     }

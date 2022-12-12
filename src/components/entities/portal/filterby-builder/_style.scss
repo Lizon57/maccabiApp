@@ -1,6 +1,10 @@
 div.entity-portal--filterby-builder__container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: $space-block-small-rem;
+
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    flex-direction: row;
+  }
 }
