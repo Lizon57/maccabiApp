@@ -18,16 +18,12 @@ h2.common-cmp--main-title {
   }
 
   div.title-container {
-    display: flex;
-    align-items: center;
-    word-break: break-all;
-    word-wrap: break-word;
-
     color: $clr-blue-darker;
 
     span.icon {
+      float: right;
+
       margin-inline-end: $space-inline-xxxSmall-rem;
-      align-self: stretch;
     }
 
     span.text {
