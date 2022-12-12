@@ -1,6 +1,7 @@
 div.app-header--side-menu__container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   position: fixed;
   top: $up-to-laptop-wide-header-total-height;
@@ -23,5 +24,6 @@ div.app-header--side-menu__container {
 
   div.branch-chip-list-container{
     margin-block-start: $space-block-xxxxLarge-rem;
+    margin-block-end: $space-block-regular-rem;
   }
 }
