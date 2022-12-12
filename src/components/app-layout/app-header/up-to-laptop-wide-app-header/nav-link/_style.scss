@@ -60,8 +60,29 @@ li.app-header--side-menu__drop-down {
       }
 
       a {
+        position: relative;
+        display: block;
+
         color: $clr-black-regular;
         text-decoration: none;
+        width: 100%;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+
+          width: 100%;
+          height: $space-block-xxSmall-rem;
+        }
+
+        &::before {
+          top: -$space-block-xxSmall-rem;
+        }
+
+        &::after {
+          bottom: -$space-block-xxSmall-rem;
+        }
       }
     }
   }
