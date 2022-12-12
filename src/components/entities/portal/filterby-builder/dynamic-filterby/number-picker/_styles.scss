@@ -8,7 +8,14 @@ div.entities-portal--number-picker__container {
   }
 
   div.content-container {
+    display: flex;
+    flex-direction: column-reverse;
+
     width: 100%;
+
+    @include viewport-wide-start-from-exclusive($viewport-regular) {
+      flex-direction: column;
+    }
 
     div.additional-content-container {
       display: flex;
