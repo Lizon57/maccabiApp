@@ -30,6 +30,11 @@ div.entities-portal--branch-multi-select-filterby-preview__container {
   &.inactive {
     background-color: transparent;
     color: $clr-black-regular;
+
+    &:hover{
+      border-color: $clr-blue-regular;
+      color: $clr-blue-regular;
+    }
   }
 
   img.symbol {

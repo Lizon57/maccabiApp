@@ -77,6 +77,11 @@ div.app-header--branch-chip__preview-container {
   &.inactive {
     background-color: transparent;
     color: $clr-white-darker;
+
+    &:hover {
+      border-color: $clr-yellow-regular;
+      color: $clr-yellow-regular;
+    }
   }
 
   img.symbol {
