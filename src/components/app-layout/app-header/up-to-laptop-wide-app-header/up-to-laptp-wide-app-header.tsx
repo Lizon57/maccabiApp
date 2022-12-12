@@ -24,17 +24,14 @@ export const UpToLaptopWideAppHeader = () => {
         dispatch(setAppScreenZIndex(499))
     }
 
-    const onCloseMenu = () => {
-        setIsNavOpen(false)
-        dispatch(setAppScreenZIndex(0))
-    }
+    const onCloseMenu = () => setIsNavOpen(false)
+    useOnClickOutside(EL_MENU_CONTAINER, onCloseMenu)
 
     const toggleMenuOpen = () => {
         if (isNavOpen) onCloseMenu()
         else onOpenMenu()
     }
 
-    useOnClickOutside(EL_MENU_CONTAINER, onCloseMenu)
 
 
     return (

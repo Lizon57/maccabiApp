@@ -5,11 +5,11 @@ div.app-layout--app-screen__container {
   right: 0;
   left: 0;
 
+  background-color: $clr-black-regular;
   transition: $transition-regular;
   transform: translateY(-100vh);
   
   &.active {
     transform: translateY(0);
-    background-color: $clr-black-regular;
   }
 }

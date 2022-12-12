@@ -18,12 +18,11 @@ export const AppOptionBar = () => {
     const onCloseOption = () => {
         if (WINDOW_WIDTH > 550) return
         setSelectOption('')
-        dispatch(setAppScreenZIndex(0))
     }
 
     const onOpenOption = (option: string) => {
         setSelectOption(option)
-        dispatch(setAppScreenZIndex(500))
+        dispatch(setAppScreenZIndex(499))
     }
 
     const onIconClick = (option: string) => {
