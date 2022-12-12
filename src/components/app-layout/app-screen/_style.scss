@@ -7,17 +7,7 @@ div.app-layout--app-screen__container {
 
   transition: $transition-regular;
 
-  background-color: $clr-black-regular;
-
-  animation: screen-enable 0.3s linear;
-  animation-fill-mode: forwards;
-
-  @keyframes screen-enable {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0.95;
-    }
+  &.active {
+    background-color: $clr-black-regular;
   }
 }
