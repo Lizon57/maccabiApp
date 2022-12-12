@@ -5,6 +5,8 @@ import { EntityItem } from "../../types/entity/entities/entity-item"
 import { entityService } from "../../services/entities/entity-service"
 
 import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
+import { useDebounce } from "../../hooks/use-debounce"
+import { useOnWindowResize } from "../../hooks/use-on-window-resize"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
@@ -14,7 +16,6 @@ import { OptionsList } from "../../components/entities/portal/options-list/optio
 import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 import { MainTitle } from "../../components/common/main-title/main-title"
-import { useDebounce } from "../../hooks/use-debounce"
 
 
 export const EntityPortal = (entityName: string) => {
@@ -23,11 +24,20 @@ export const EntityPortal = (entityName: string) => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState('')
     const [items, setItems] = useState<EntityItem[]>([])
-    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(true)
+    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState((window.innerWidth > 700) ? true : false)
 
     const debouncedSetIsLoading = useDebounce(setIsLoading, 1000)
 
+
+    const changeFilterSectionOpenOnWindowResize = () => {
+        const { innerWidth } = window
+        if (innerWidth < 700 && isFilterSectionOpen) setIsFilterSectionOpen(false)
+        else if (innerWidth > 700 && !isFilterSectionOpen) setIsFilterSectionOpen(true)
+    }
+    useOnWindowResize(changeFilterSectionOpenOnWindowResize)
+
     const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
+
     const sortBy = useEntitySortHandler()
 
 
