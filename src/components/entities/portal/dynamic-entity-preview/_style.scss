@@ -82,7 +82,12 @@ div.dynamic-entity-preview--square-entity-preview__container {
 
       div.views,
       div.rate {
+        display: flex;
+
         span.icon {
+          display: flex;
+          align-items: center;
+
           margin-inline-end: 5px;
         }
       }
@@ -104,7 +109,11 @@ div.dynamic-entity-preview--square-entity-preview__container {
     }
 
     div.last-edit-date {
+      display: flex;
+
       span.icon {
+        display: flex;
+        align-items: center;
         margin-inline-end: 5px;
       }
     }
