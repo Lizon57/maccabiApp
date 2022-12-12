@@ -13,8 +13,10 @@ div.common-cmp--search-input__container {
     width: 10rem;
     transition: $transition-regular;
 
-    &:focus-within {
-      width: 15rem;
+    @include viewport-wide-start-from-exclusive($viewport-small) {
+      &:focus-within {
+        width: 15rem;
+      }
     }
   }
 
