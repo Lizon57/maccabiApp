@@ -1,6 +1,7 @@
 div.entities-portal--active-filter-list__container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: $space-inline-xxxSmall-rem;
 
   user-select: none;
@@ -16,6 +17,7 @@ div.entities-portal--active-filter-list__container {
 
   div.list-container {
     display: flex;
+    flex-wrap: wrap;
     gap: $space-inline-xxSmall-rem;
   }
 }

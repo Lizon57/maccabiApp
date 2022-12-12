@@ -4,9 +4,10 @@ div.entity-portal--entitiy-list__container {
   grid-auto-rows: minmax(220px, auto);
   justify-content: center;
   gap: $space-inline-xxSmall-rem;
-
+  
   @include viewport-wide-start-from-exclusive($viewport-regular) {
     justify-content: unset;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
     gap: $space-inline-small-rem;
 
     &:not(.short-list) {
