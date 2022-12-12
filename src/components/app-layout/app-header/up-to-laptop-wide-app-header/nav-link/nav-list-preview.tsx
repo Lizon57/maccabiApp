@@ -4,6 +4,12 @@ import { FiTriangle } from "react-icons/fi"
 
 
 export const NavListPreview = ({ category, currentCategoryOpen, onCloseMenu, setCurrentCategoryOpen }: Props) => {
+    const resetMenu = () =>{
+        setCurrentCategoryOpen('')
+        onCloseMenu()
+    }
+
+
     return (
         <li className="app-header--side-menu__drop-down">
             <div
@@ -16,7 +22,7 @@ export const NavListPreview = ({ category, currentCategoryOpen, onCloseMenu, set
             </div>
 
             <ul className={'drop-down-container' + (currentCategoryOpen === category.id ? ' open' : '')}>
-                {category.childrens.map(link => <li key={link.id} onClick={onCloseMenu}>
+                {category.childrens.map(link => <li key={link.id} onClick={resetMenu}>
                     <Link to={link.path}>{link.title}</Link>
                 </li>)}
             </ul>

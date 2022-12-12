@@ -15,11 +15,14 @@ import { SideMenu } from "./side-menu/side-menu"
 
 export const UpToLaptopWideAppHeader = () => {
     const [isNavOpen, setIsNavOpen] = useState(false)
+    const [currentCategoryOpen, setCurrentCategoryOpen] = useState('')
+
     const EL_MENU_CONTAINER = useRef<HTMLDivElement>(null)
     const dispatch = useStoreDispatch()
 
 
     const onOpenMenu = () => {
+        setCurrentCategoryOpen('')
         setIsNavOpen(true)
         dispatch(setAppScreenZIndex(499))
     }
@@ -34,7 +37,6 @@ export const UpToLaptopWideAppHeader = () => {
         if (isNavOpen) onCloseMenu()
         else onOpenMenu()
     }
-
 
 
     return (
@@ -57,7 +59,12 @@ export const UpToLaptopWideAppHeader = () => {
                 </div>
             </div>
 
-            <SideMenu isNavOpen={isNavOpen} onCloseMenu={onCloseMenu} />
+            <SideMenu
+                isNavOpen={isNavOpen}
+                currentCategoryOpen={currentCategoryOpen}
+                setCurrentCategoryOpen={setCurrentCategoryOpen}
+                onCloseMenu={onCloseMenu}
+            />
         </header>
     )
 }
