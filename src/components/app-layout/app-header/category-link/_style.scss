@@ -21,7 +21,10 @@ ul.app-header--category-link__container {
 
   &.left-sided {
     div.drop-down-container {
+      position: absolute;
       left: 0;
+
+      min-width: max-content;
     }
   }
 
@@ -70,8 +73,7 @@ li.app-header--category-link__preview-container {
     grid-template-columns: repeat(2, 1fr);
     gap: $space-block-xxSmall-rem;
 
-    position: absolute;
-    top: 100%;
+    position: fixed;
 
     border-radius: $border-radius-regular-rem;
     background-color: $clr-white-regular;
@@ -81,7 +83,7 @@ li.app-header--category-link__preview-container {
     line-height: 1.15;
     margin-block-start: $space-block-xxSmall-rem;
     padding-inline: $space-inline-xSmall-rem;
-    width: max-content;
+    max-width: 70%;
     max-height: 0;
     overflow: hidden;
 

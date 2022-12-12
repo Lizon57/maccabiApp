@@ -4,7 +4,7 @@ import { Entity } from "../../../types/entity/entity"
 import { LIBRARY_DB } from "./library-db"
 
 import { RiBookOpenFill } from "react-icons/ri"
-import { FaSignature, FaUpload } from "react-icons/fa"
+import { FaUpload } from "react-icons/fa"
 import { BiBrain } from "react-icons/bi"
 
 
