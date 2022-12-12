@@ -1,8 +1,9 @@
-import { FiTriangle } from "react-icons/fi"
 import { Link } from "react-router-dom"
 
+import { FiTriangle } from "react-icons/fi"
 
-export const NavListPreview = ({ category, currentCategoryOpen, setCurrentCategoryOpen }: Props) => {
+
+export const NavListPreview = ({ category, currentCategoryOpen, onCloseMenu, setCurrentCategoryOpen }: Props) => {
     return (
         <li className="app-header--side-menu__drop-down">
             <div
@@ -15,7 +16,7 @@ export const NavListPreview = ({ category, currentCategoryOpen, setCurrentCatego
             </div>
 
             <ul className={'drop-down-container' + (currentCategoryOpen === category.id ? ' open' : '')}>
-                {category.childrens.map(link => <li key={link.id}>
+                {category.childrens.map(link => <li key={link.id} onClick={onCloseMenu}>
                     <Link to={link.path}>{link.title}</Link>
                 </li>)}
             </ul>
@@ -31,6 +32,7 @@ type Props = {
         childrens: navLink[]
     },
     currentCategoryOpen: string,
+    onCloseMenu: () => void,
     setCurrentCategoryOpen: React.Dispatch<React.SetStateAction<string>>
 }
 

@@ -4,7 +4,7 @@ import { CATEGORY_LINKS } from "../../../../../data/app/app-header-category-link
 import { NavListPreview } from "./nav-list-preview"
 
 
-export const NavLinkList = () => {
+export const NavLinkList = ({ onCloseMenu }: Props) => {
     const [currentCategoryOpen, setCurrentCategoryOpen] = useState('')
 
     return (
@@ -13,7 +13,14 @@ export const NavLinkList = () => {
                 key={category.id}
                 category={category}
                 currentCategoryOpen={currentCategoryOpen}
-                setCurrentCategoryOpen={setCurrentCategoryOpen} />)}
+                setCurrentCategoryOpen={setCurrentCategoryOpen} 
+                onCloseMenu={onCloseMenu}
+                />)}
         </ul>
     )
+}
+
+
+type Props = {
+    onCloseMenu: () => void
 }

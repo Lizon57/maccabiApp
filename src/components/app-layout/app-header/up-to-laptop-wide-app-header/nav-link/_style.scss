@@ -36,13 +36,13 @@ li.app-header--side-menu__drop-down {
   }
 
   ul.drop-down-container {
-    display: none;
-
     @include clean-list-style;
+    overflow: hidden;
     background-color: $clr-white-regular;
-
+    height: 0;
+    
     &.open {
-      display: block;
+      height: 100%;
     }
 
     li {

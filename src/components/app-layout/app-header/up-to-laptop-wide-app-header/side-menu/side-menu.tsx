@@ -1,10 +1,10 @@
 import { BranchChipList } from "../../branch-chip/branch-chip-list"
 import { NavLinkList } from "../nav-link/nav-link-list"
 
-export const SideMenu = ({ isNavOpen }: Props) => {
+export const SideMenu = ({ isNavOpen, onCloseMenu }: Props) => {
     return (
         <div className={'app-header--side-menu__container' + (isNavOpen ? ' open' : '')}>
-            <NavLinkList />
+            <NavLinkList onCloseMenu={onCloseMenu} />
 
             <div className="branch-chip-list-container">
                 <BranchChipList />
@@ -14,5 +14,6 @@ export const SideMenu = ({ isNavOpen }: Props) => {
 }
 
 type Props = {
-    isNavOpen: boolean
+    isNavOpen: boolean,
+    onCloseMenu: () => void
 }
