@@ -6,8 +6,10 @@ div.app-layout--app-screen__container {
   left: 0;
 
   transition: $transition-regular;
-
+  transform: translateY(-100vh);
+  
   &.active {
+    transform: translateY(0);
     background-color: $clr-black-regular;
   }
 }
