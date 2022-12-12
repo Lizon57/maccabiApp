@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # development
-todo.txt
+todos.txt
 category_map.txt
