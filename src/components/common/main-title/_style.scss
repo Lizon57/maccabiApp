@@ -2,10 +2,20 @@ h2.common-cmp--main-title {
   display: flex;
   flex-direction: column;
   gap: $space-block-regular-rem;
-
+  
   background-color: $clr-white-regular;
   margin: 0;
   margin-block-end: $space-block-xxxSmall-rem;
+  
+  @include viewport-wide-start-from($viewport-small) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include viewport-wide-start-from($viewport-regular) {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+  }
 
   @include viewport-wide-start-from($viewport-regular) {
     display: grid;
@@ -28,9 +38,13 @@ h2.common-cmp--main-title {
     }
 
     span.text {
+      display: flex;
+      align-items: center;
+
       font-size: $font-size-xLarge-rem;
       font-family: $typography-emphasis;
       font-weight: 500;
+      height: 100%;
       word-break: break-all;
       word-wrap: break-word;
     }
