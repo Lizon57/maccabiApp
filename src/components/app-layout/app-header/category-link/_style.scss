@@ -59,8 +59,9 @@ li.app-header--category-link__preview-container {
     color: $clr-yellow-regular;
 
     div.drop-down-container {
-      opacity: 1;
-      visibility: visible;
+      padding-block: $space-block-xxSmall-rem;
+      max-height: 100vmax;
+      box-shadow: 0 0 5px 1px $clr-white-darkest;
     }
   }
 
@@ -72,9 +73,6 @@ li.app-header--category-link__preview-container {
     position: absolute;
     top: 100%;
 
-    opacity: 0;
-    visibility: hidden;
-
     border-radius: $border-radius-regular-rem;
     background-color: $clr-white-regular;
     font-size: $font-size-regular-rem;
@@ -83,10 +81,10 @@ li.app-header--category-link__preview-container {
     line-height: 1.15;
     margin-block-start: $space-block-xxSmall-rem;
     padding-inline: $space-inline-xSmall-rem;
-    padding-block: $space-block-xxSmall-rem;
     width: max-content;
+    max-height: 0;
+    overflow: hidden;
 
-    box-shadow: 0 0 5px 1px $clr-white-darkest;
     transition: $transition-regular;
 
     &::before {

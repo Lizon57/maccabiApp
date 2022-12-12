@@ -39,10 +39,11 @@ li.app-header--side-menu__drop-down {
     @include clean-list-style;
     overflow: hidden;
     background-color: $clr-white-regular;
-    height: 0;
+    max-height: 0;
+    transition: $transition-regular;
     
     &.open {
-      height: 100%;
+      max-height: 100vmax;
     }
 
     li {
