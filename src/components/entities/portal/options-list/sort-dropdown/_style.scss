@@ -16,14 +16,8 @@ div.options-list--sort-dropdown__container {
   }
 
   div.sorts-container {
-    display: flex;
-    flex-direction: column;
-    gap: $space-block-xxxSmall-rem;
-
-    @include viewport-wide-start-from($viewport-small) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     div.sort-option {
       cursor: pointer;
