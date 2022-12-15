@@ -16,6 +16,11 @@ export const OPTION_BAR: option[] = [
                 id: makeId(),
                 text: 'שינויים אחרונים',
                 path: '/מעקב: שינויים אחרונים',
+            },
+            {
+                id: makeId(),
+                text: 'העלאת תמונות',
+                path: '/העלאת תמונות',
             }
         ]
     },
@@ -38,11 +43,6 @@ export const OPTION_BAR: option[] = [
                 id: makeId(),
                 text: 'גרסאות קודמות',
                 path: 'יומן גרסאות',
-            },
-            {
-                id: makeId(),
-                text: 'העברה',
-                path: 'העברה',
             },
             {
                 id: makeId(),

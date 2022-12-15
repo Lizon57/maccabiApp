@@ -1,4 +1,5 @@
 import { useStoreSelector } from "../../../../../hooks/store/use-store-selector"
+import { getFormatedList } from "../../../../../services/util/get-formated-list"
 
 import { EntityDetailsStuctureCmp } from "../../../../../types/entity/details/entity-details-structure-cmp"
 
@@ -11,7 +12,7 @@ export const ItemTitle = ({ cmp }: Props) => {
 
     cmp.title = cmp.title?.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
     cmp.title = cmp.title?.replace('PAGE_NAME', (item.entityInfo.name.display || ''))
-    cmp.title = cmp.title?.replace('BY_WRITERS', (item.entityInfo.item?.writers?.toString() || ''))
+    cmp.title = cmp.title?.replace('BY_WRITERS', (getFormatedList(item.entityInfo.item?.writers|| [])))
 
 
     return (

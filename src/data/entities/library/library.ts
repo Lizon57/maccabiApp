@@ -44,7 +44,7 @@ export const libraryEntity: Entity = {
             head: [
                 {
                     type: 'page-title',
-                    title: '"PAGE_NAME" BY_WRITERS',
+                    title: '"PAGE_NAME" מאת BY_WRITERS',
                     Icon: RiBookOpenFill
                 },
                 {
