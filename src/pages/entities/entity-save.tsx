@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { useStoreDispatch } from "../../hooks/store/use-store-dispatch"
 import { useStoreSelector } from "../../hooks/store/use-store-selector"
 import { setEmptyItem, updateItem } from "../../store/slicer/entity-save-slicer"
+import { useAppMessage } from "../../hooks/store/actions/use-app-message"
 
 import { entityService } from "../../services/entities/entity-service"
 import { entityItemService } from "../../services/entities/entity-item-service"
@@ -24,6 +25,7 @@ export const EntitySave = (entityName: string) => {
     const ENTITY = entityService.getEntityByName(entityName)
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.entitySaveModule)
+    const addAppMessage = useAppMessage()
 
     const [currStageIdx, setCurrStageIdx] = useState(0)
     const [stagesStatus, setStagesStatus] = useState<boolean[]>(getInitStagesStatus(ENTITY?.saveItemPage.stages || []))
@@ -83,7 +85,7 @@ export const EntitySave = (entityName: string) => {
                 case 'image-upload':
                     if ((item.miniImages?.length || 0) < (stage.option?.minImageCount || 0)
                         || (item.miniImages?.length || 0) > (stage.option?.maxImageCount || Infinity)
-                    ) { console.log('fails'); isFilled = false }
+                    ) isFilled = false
             }
 
             return isFilled
@@ -109,9 +111,15 @@ export const EntitySave = (entityName: string) => {
 
         try {
             await entityItemService.save(editedItem, ENTITY?.dbInfo.name, ENTITY?.dbInfo.fallbackDB)
-            navigate(location.pathname.replace('/save', ''))
+            addAppMessage(
+                { text: `עריכת הדף ${editedItem.entityInfo.name.display} בוצעה בהצלחה`, title: 'עריכה בוצעה בהצלחה', type: 'success' }
+            )
         } catch (err) {
-            console.log(err)
+            addAppMessage(
+                { text: `עריכת הדף ${editedItem.entityInfo.name.display} נכשלה`, title: 'עריכה נכשלה', type: 'fail' }
+            )
+        } finally {
+            navigate(location.pathname.replace('/save', ''))
         }
     }
 

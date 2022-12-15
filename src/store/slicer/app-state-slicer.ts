@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { appMessageType } from "../../types/app-message"
+import { AppMessage } from "../../types/app-message"
 
 
 interface AppState {
-    appMessages: appMessageType[]
+    appMessages: AppMessage[]
 }
 
 
@@ -16,11 +16,11 @@ export const appStateSlicer = createSlice({
     name: 'app-state-slicer',
     initialState,
     reducers: {
-        insertAppMessage: (state, action: PayloadAction<appMessageType>) => {
+        insertAppMessage: (state, action: PayloadAction<AppMessage>) => {
             state.appMessages.push(action.payload)
         },
 
-        deleteAppMessage: (state, action: PayloadAction<string>) => {
+        deleteAppMessage: (state, action: PayloadAction<string | undefined>) => {
             state.appMessages = state.appMessages.filter(message => message.id !== action.payload)
         }
     }

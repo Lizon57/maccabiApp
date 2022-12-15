@@ -26,6 +26,7 @@
   top: calc(
     #{$up-to-laptop-wide-header-total-height} + #{$space-block-xSmall-rem}
   );
+  z-index: 10;
 
   margin-inline: $space-inline-large-rem;
   margin-block: $space-block-xSmall-rem;
@@ -70,7 +71,9 @@
 
     &.block-end-container {
       justify-self: flex-start;
-      width: calc(100% - #{$space-inline-xxxxLarge-rem} - #{$space-inline-xxxxLarge-rem});
+      width: calc(
+        100% - #{$space-inline-xxxxLarge-rem} - #{$space-inline-xxxxLarge-rem}
+      );
     }
   }
 

@@ -2,7 +2,7 @@ import { BsEmojiSmile } from "react-icons/bs"
 import { BsEmojiFrown } from "react-icons/bs"
 import { FaHandPointLeft } from "react-icons/fa"
 
-import { appMessageProps } from "../../../../types/app-message"
+import { AppMessage } from "../../../../types/app-message"
 
 
 const getIcon = (type: string) => {
@@ -21,7 +21,7 @@ const getIcon = (type: string) => {
 }
 
 
-export const AppMessagePreview = ({ message }: appMessageProps) => {
+export const AppMessagePreview = ({ message }: Props) => {
     return (
         <div className="app-data--message__preview-container">
             <div className={"preview-title " + message.type}>
@@ -31,4 +31,9 @@ export const AppMessagePreview = ({ message }: appMessageProps) => {
             <div className="preview-text">{message.text}</div>
         </div>
     )
+}
+
+
+type Props = {
+    message: AppMessage,
 }
