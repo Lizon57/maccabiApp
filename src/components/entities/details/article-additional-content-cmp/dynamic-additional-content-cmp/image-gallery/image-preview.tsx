@@ -1,8 +1,8 @@
 export const ImagePreview = ({ miniImage }: Props) => {
     return (
-        <div className="entity-details--image-gallery-cmp__preview-container">
+        <div className="entity-details--image-gallery-cmp__preview-container" title={miniImage.name}>
             <img src={miniImage.imageUrl} alt={miniImage.name} />
-            <div className="name" title={miniImage.name}>{miniImage.name}</div>
+            <div className="name">{miniImage.name}</div>
         </div>
     )
 }
