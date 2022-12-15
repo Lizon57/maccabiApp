@@ -1,13 +1,11 @@
 div.entity-details--image-gallery-cmp__gallery-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: $space-inline-regular-rem;
 }
 
 div.entity-details--image-gallery-cmp__preview-container {
   position: relative;
-
-  flex-grow: 1;
 
   border-radius: $border-radius-regular-rem;
   overflow: hidden;
