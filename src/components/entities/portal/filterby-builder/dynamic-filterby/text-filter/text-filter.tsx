@@ -56,7 +56,7 @@ export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
             <div className="content-container">
                 <input
                     type="text"
-                    placeholder="חיפוש (ניתן להפריד בפסיק)"
+                    placeholder={"חיפוש" + ((type === 2) ? '  (ניתן להפריד בפסיק)' : '')}
                     value={value}
                     onChange={(ev) => onSetValue(ev)}
                 />
