@@ -1,5 +1,5 @@
 import { useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 import { useStoreDispatch } from "../../../hooks/store/use-store-dispatch"
 import { useOnClickOutside } from "../../../hooks/use-on-click-outside"
@@ -13,6 +13,7 @@ export const AppOptionBar = () => {
     const [selectOption, setSelectOption] = useState('')
     const dispatch = useStoreDispatch()
     const optionBarRef = useRef<HTMLDivElement>(null)
+    const location = useLocation()
     const WINDOW_WIDTH = useWindowSize().width
 
     const onCloseOption = () => {
@@ -47,7 +48,12 @@ export const AppOptionBar = () => {
                                 {option.childrens.map(link => {
                                     return (
                                         <li key={link.id} className="link-container">
-                                            <Link to={link.path} onClick={onCloseOption}>{link.text}</Link>
+                                            <Link
+                                                to={link.isRelative ? location.pathname + link.path : link.path}
+                                                onClick={onCloseOption}
+                                            >
+                                                {link.text}
+                                            </Link>
                                         </li>
                                     )
                                 })}

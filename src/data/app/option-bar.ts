@@ -16,11 +16,13 @@ export const OPTION_BAR: option[] = [
                 id: makeId(),
                 text: 'שינויים אחרונים',
                 path: '/מעקב: שינויים אחרונים',
+                isRelative: false
             },
             {
                 id: makeId(),
                 text: 'העלאת תמונות',
                 path: '/העלאת תמונות',
+                isRelative: false
             }
         ]
     },
@@ -33,26 +35,31 @@ export const OPTION_BAR: option[] = [
                 id: makeId(),
                 text: 'עריכה',
                 path: '/save',
+                isRelative: true
             },
             {
                 id: makeId(),
                 text: 'שיחה',
                 path: 'שיחה',
+                isRelative: true
             },
             {
                 id: makeId(),
                 text: 'גרסאות קודמות',
                 path: 'יומן גרסאות',
+                isRelative: false
             },
             {
                 id: makeId(),
                 text: 'הגנה',
-                path: 'הגנה',
+                path: '/permissions',
+                isRelative: true
             },
             {
                 id: makeId(),
                 text: 'מחיקה',
-                path: 'מחיקה',
+                path: '/remove',
+                isRelative: true
             },
         ]
     },
@@ -65,21 +72,25 @@ export const OPTION_BAR: option[] = [
                 id: makeId(),
                 text: 'אורן המתעפץ',
                 path: '/משתמש/אורן המתעפץ',
+                isRelative: false
             },
             {
                 id: makeId(),
                 text: 'הודעות פרטיות',
                 path: '/משתמש/אורן המתעפץ/הודעות פרטיות',
+                isRelative: false
             },
             {
                 id: makeId(),
                 text: 'הגדרות',
                 path: '/משתמש/אורן המתעפץ/הגדרות',
+                isRelative: false
             },
             {
                 id: makeId(),
                 text: 'התנתק',
                 path: '/התנתקות',
+                isRelative: false
             },
         ]
     }
@@ -98,5 +109,6 @@ type link = {
     id: string,
     text: string,
     path: string,
+    isRelative: boolean
     restrictions?: string[]
 }
