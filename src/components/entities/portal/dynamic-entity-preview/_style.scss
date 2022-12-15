@@ -5,116 +5,124 @@ div.dynamic-entity-preview--square-entity-preview__container {
     color: $clr-yellow-regular;
   }
 
-  a {
-    color: $clr-black-regular;
+  a.details-anchor {
+    display: flex;
+    flex-direction: column;
+
     text-decoration: none;
-  }
+    height: 100%;
 
-  div.title {
-    border-start-start-radius: $border-radius-regular-rem;
-    border-start-end-radius: $border-radius-regular-rem;
-    background-color: $clr-blue-regular;
-    color: $clr-white-regular;
-    font-family: $typography-emphasis;
-    padding-inline: $space-inline-xxxSmall-rem;
-    padding-block: $space-block-xxxSmall-rem;
+    div.title {
+      border-start-start-radius: $border-radius-regular-rem;
+      border-start-end-radius: $border-radius-regular-rem;
+      background-color: $clr-blue-regular;
+      color: $clr-white-regular;
+      font-family: $typography-emphasis;
+      padding-inline: $space-inline-xxxSmall-rem;
+      padding-block: $space-block-xxxSmall-rem;
 
-    span.branch-icon {
-      float: right;
+      span.branch-icon {
+        float: right;
 
-      user-select: none;
-      border-radius: 50vw;
-      background-color: white;
-      margin-inline-end: $space-inline-xxxSmall-rem;
-      height: 16px;
-    }
-  }
-
-  div.image-container {
-    position: relative;
-
-    span.like-icon {
-      position: absolute;
-      top: $space-block-xxxSmall-rem;
-      right: $space-inline-xxxSmall-rem;
-      z-index: 5;
-
-      cursor: pointer;
-      transition: $transition-regular;
-
-      &.active {
-        color: $clr-yellow-regular;
+        user-select: none;
+        border-radius: 50vw;
+        background-color: white;
+        margin-inline-end: $space-inline-xxxSmall-rem;
+        height: 16px;
       }
     }
 
-    span.image-counter {
+    div.image-container {
+      flex-grow: 1;
+      position: relative;
+
+      span.like-icon {
+        position: absolute;
+        top: $space-block-xxxSmall-rem;
+        right: $space-inline-xxxSmall-rem;
+        z-index: 5;
+
+        cursor: pointer;
+        transition: $transition-regular;
+
+        &.active {
+          color: $clr-yellow-regular;
+        }
+      }
+
+      span.image-counter {
+        position: absolute;
+        top: $space-block-xxxSmall-rem;
+        left: $space-inline-xxxSmall-rem;
+        z-index: 5;
+
+        user-select: none;
+        border-radius: 0.2rem;
+        background-color: $clr-white-darkest;
+        font-size: $font-size-xxSmall-rem;
+        padding-inline: 3px;
+        padding-block: 3px;
+      }
+    }
+
+    div.additional-info {
       position: absolute;
-      top: $space-block-xxxSmall-rem;
-      left: $space-inline-xxxSmall-rem;
-      z-index: 5;
+      bottom: 0;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       user-select: none;
-      border-radius: 0.2rem;
-      background-color: $clr-white-darkest;
+      background-color: $clr-blue-darkest;
+      border-end-start-radius: $border-radius-regular-rem;
+      border-end-end-radius: $border-radius-regular-rem;
+      color: $clr-white-darkest;
       font-size: $font-size-xxSmall-rem;
-      padding-inline: 3px;
-      padding-block: 3px;
-    }
-  }
+      padding-inline: $space-inline-xxxSmall-rem;
+      padding-block: $space-block-xxxSmall-rem;
+      width: 100%;
 
-  div.additional-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      div.views-and-rate {
+        display: flex;
+        gap: $space-inline-regular-rem;
 
-    user-select: none;
-    background-color: $clr-blue-darkest;
-    border-end-start-radius: $border-radius-regular-rem;
-    border-end-end-radius: $border-radius-regular-rem;
-    color: $clr-white-darkest;
-    font-size: $font-size-xxSmall-rem;
-    padding-inline: $space-inline-xxxSmall-rem;
-    padding-block: $space-block-xxxSmall-rem;
+        div.views,
+        div.rate {
+          display: flex;
 
-    div.views-and-rate {
-      display: flex;
-      gap: $space-inline-regular-rem;
+          span.icon {
+            display: flex;
+            align-items: center;
 
-      div.views,
-      div.rate {
+            margin-inline-end: 5px;
+          }
+        }
+
+        div.rate {
+          position: relative;
+
+          &::before {
+            position: absolute;
+            right: -$space-inline-xxSmall-rem;
+
+            opacity: 0.4;
+            content: "";
+            background-color: $clr-white-darkest;
+            height: 100%;
+            width: 1px;
+          }
+        }
+      }
+
+      div.last-edit-date {
         display: flex;
 
         span.icon {
           display: flex;
           align-items: center;
-
           margin-inline-end: 5px;
         }
-      }
-
-      div.rate {
-        position: relative;
-
-        &::before {
-          position: absolute;
-          right: -$space-inline-xxSmall-rem;
-
-          opacity: 0.4;
-          content: "";
-          background-color: $clr-white-darkest;
-          height: 100%;
-          width: 1px;
-        }
-      }
-    }
-
-    div.last-edit-date {
-      display: flex;
-
-      span.icon {
-        display: flex;
-        align-items: center;
-        margin-inline-end: 5px;
       }
     }
   }

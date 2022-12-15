@@ -9,7 +9,7 @@ import { DynamicEntityPreview } from "../dynamic-entity-preview/dynamic-entity-p
 
 export const EntityList = ({ entity, items }: Props) => {
     return (
-        <div className={"entity-portal--entitiy-list__container" + (items.length < 4 ? ' short-list' : '')}>
+        <div className="entity-portal--entity-list__container">
             {items.map(item => <DynamicEntityPreview
                 key={item.id}
                 item={item}

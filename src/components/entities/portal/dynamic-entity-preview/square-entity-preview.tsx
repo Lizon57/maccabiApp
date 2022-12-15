@@ -26,7 +26,7 @@ export const SquareEntityPreview = ({ item }: Props) => {
 
     return (
         <div className="dynamic-entity-preview--square-entity-preview__container">
-            <Link to={item.id}>
+            <Link to={item.id} className="details-anchor">
                 <div className="title">
                     {relatedInfo?.branchIds && <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>}
                     <span className="title">{entityInfo.name.display}</span>
