@@ -5,13 +5,12 @@ export const ImageSlider = ({ images }: Props) => {
     const SETTING = {
         dots: true,
         speed: 300,
-        rtl: true,
     }
 
     return (
         <div className="entities-portal-cmp--image-carousel__container">
             <Slider {...SETTING}>
-                {images.reverse().map(image => <img
+                {images.map(image => <img
                     key={image.id}
                     src={image.imageUrl}
                     alt={image.name}

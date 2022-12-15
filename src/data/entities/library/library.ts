@@ -73,7 +73,7 @@ export const libraryEntity: Entity = {
             additional: [
                 {
                     type: 'image-gallery',
-                    title: 'תמונות מתוך PAGE_NAME'
+                    title: 'תמונות מתוך "PAGE_NAME"'
                 }
             ]
         }
