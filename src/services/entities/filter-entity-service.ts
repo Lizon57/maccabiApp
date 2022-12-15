@@ -1,5 +1,6 @@
 import { EntityFilterOption } from "../../types/entity/filter/entity-filter-option"
 import { EntityItem } from "../../types/entity/entities/entity-item"
+import { getValueByDynamicKey } from "../util/get-value-by-dynamic-key"
 
 
 const getEntityById = (items: EntityItem[], id: string) => {
@@ -34,7 +35,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 if (!paramValue) break
                 const regex = new RegExp(paramValue, 'gi')
                 filteredItems = filteredItems.filter(item => {
-                    const opptionalValue = _getValueOfDynamicKey(item, primaryFilter.key)
+                    const opptionalValue = getValueByDynamicKey(primaryFilter.key, item)
                     return (regex.test(opptionalValue))
                 })
         }
@@ -47,7 +48,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 if (!selectBranches?.length) break
                 filteredItems = filteredItems.filter(item => {
                     let shouldFilterOut = true
-                    const optionalBranchesIds = _getValueOfDynamicKey(item, filter.key) as string[]
+                    const optionalBranchesIds = getValueByDynamicKey(filter.key, item) as string[]
                     optionalBranchesIds.forEach(branchId => {
                         if (selectBranches.includes(branchId)) shouldFilterOut = false
                     })
@@ -60,7 +61,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
             case 'multi_number_picker':
                 const ranges = PARAMS.get(filter.param)?.split('|') || [-Infinity, Infinity]
                 filteredItems = filteredItems.filter(item => {
-                    const actualKeyValue = _getValueOfDynamicKey(item, filter.key)
+                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
                     if (filter.option?.isLengthProp) {
                         if (actualKeyValue.length < ranges[0] || actualKeyValue.length > ranges[1]) return false
                         else return true
@@ -77,7 +78,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 if (!type || !term) break
 
                 filteredItems = filteredItems.filter(item => {
-                    const actualKeyValue = _getValueOfDynamicKey(item, filter.key)
+                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
                     if (!actualKeyValue) return false
                     if (type === '0') {
                         return actualKeyValue.some((str: string) => str.startsWith(term))
@@ -96,17 +97,6 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
     return filteredItems
 }
 
-
-const _getValueOfDynamicKey = (item: EntityItem, dynamicKey: string) => {
-    const KEY_PATH = dynamicKey.split('.')
-    let actualValue: any = item
-
-    for (let key of KEY_PATH) {
-        actualValue = actualValue[key as any]
-    }
-
-    return actualValue
-}
 
 
 export const filterEntityService = {
