@@ -86,6 +86,18 @@ const get = (type: string) => {
             }
             break
 
+        case 'library':
+            ITEM.entityInfo = {
+                ...ITEM.entityInfo,
+                item: {
+                    writers: [],
+                    publishers: [],
+                    pageCount: undefined,
+                    publishYear: undefined,
+                }
+            }
+            break
+
         case 'default':
     }
 

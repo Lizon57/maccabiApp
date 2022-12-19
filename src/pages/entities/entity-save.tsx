@@ -8,6 +8,7 @@ import { useAppMessage } from "../../hooks/store/actions/use-app-message"
 
 import { entityService } from "../../services/entities/entity-service"
 import { entityItemService } from "../../services/entities/entity-item-service"
+import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
 
 import { EntitySaveItemStage } from "../../types/entity/save/entity-save-item-stage"
 
@@ -46,7 +47,13 @@ export const EntitySave = (entityName: string) => {
 
     useEffect(() => {
         if ((id && !isLoading) || !ENTITY) return
-        if (!id) return setIsLoading(false)
+
+        if (!id) {
+            const emptyItem = emptyEntityItemService.get(ENTITY.name)
+            dispatch(updateItem(emptyItem))
+            setIsLoading(false)
+            return
+        }
 
         const loadItem = async () => {
             try {
