@@ -85,6 +85,10 @@ div.entity-save-cmp--up-to-tablet-wide-stage-stepper__container {
 
   user-select: none;
 
+  div.common-cmp--dropdown__container {
+    cursor: pointer;
+  }
+
   button {
     border-radius: $border-radius-regular-rem;
     background-color: transparent;
