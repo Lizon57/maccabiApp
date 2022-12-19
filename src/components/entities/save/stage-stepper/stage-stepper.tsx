@@ -6,7 +6,7 @@ import { TabletWidePlusStageStepper } from "./tablet-wide-plus-stage-stepper"
 import { UpToTabletWideStageStepper } from "./up-to-tablet-wide-stage-stepper"
 
 
-export const StageStepper = ({ stages, stagesStatus, currStageIdx, changeCurrStageIdx }: Props) => {
+export const StageStepper = ({ stages, stagesStatus, currStageIdx, changeCurrStageIdx, saveItem }: Props) => {
     return (
         <section className="entity-save-cmp--stage-stepper__container">
             <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
@@ -15,6 +15,7 @@ export const StageStepper = ({ stages, stagesStatus, currStageIdx, changeCurrSta
                     stagesStatus={stagesStatus}
                     currStageIdx={currStageIdx}
                     changeCurrStageIdx={changeCurrStageIdx}
+                    saveItem={saveItem}
                 />
             </RenderByDeviceWidth>
 
@@ -35,5 +36,6 @@ type Props = {
     stages: EntitySaveItemStage[],
     stagesStatus: boolean[],
     currStageIdx: number,
-    changeCurrStageIdx: (idx: number) => void
+    changeCurrStageIdx: (idx: number) => void,
+    saveItem: () => Promise<void>
 }

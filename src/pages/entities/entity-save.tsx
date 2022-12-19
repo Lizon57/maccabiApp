@@ -148,6 +148,7 @@ export const EntitySave = (entityName: string) => {
                 stagesStatus={stagesStatus}
                 currStageIdx={currStageIdx}
                 changeCurrStageIdx={changeCurrStageIdx}
+                saveItem={saveItem}
             />
 
             <MainTitle

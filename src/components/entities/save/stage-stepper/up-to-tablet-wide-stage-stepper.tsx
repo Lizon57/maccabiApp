@@ -3,7 +3,7 @@ import { EntitySaveItemStage } from "../../../../types/entity/save/entity-save-i
 import { Dropdown } from "../../../common/dropdown/dropdown"
 
 
-export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx, changeCurrStageIdx }: Props) => {
+export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx, changeCurrStageIdx, saveItem }: Props) => {
     const getIsSaveable = () => {
         const saveableIdx = stagesStatus.findIndex(status => status === false)
         return (saveableIdx === -1) ? true : false
@@ -64,7 +64,7 @@ export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx,
             < span className="stage-title" > {stages[currStageIdx].title}</span >
 
             {getIsSaveable() &&
-                <button className="save" title="שמור">שמור</button>
+                <button className="save" title="שמור" onClick={saveItem}>שמור</button>
             }
         </div >
     )
@@ -75,5 +75,6 @@ type Props = {
     stages: EntitySaveItemStage[],
     stagesStatus: boolean[],
     currStageIdx: number,
-    changeCurrStageIdx: (idx: number) => void
+    changeCurrStageIdx: (idx: number) => void,
+    saveItem: () => Promise<void>
 }
