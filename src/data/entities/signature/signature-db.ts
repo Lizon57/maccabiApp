@@ -10,7 +10,7 @@ export const SIGNATURE_DB: EntityItem[] = [
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00001',
-                displayName: 'מיקי ברקוביץ',
+                displayName: 'מיקי ברקוביץ\'',
                 profileImageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785409/profile/%D7%9E%D7%99%D7%A7%D7%99_vo8kjw.jpg'
             },
             branchIds: ['branchId00001', 'branchId00002'],
