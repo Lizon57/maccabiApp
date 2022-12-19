@@ -11,6 +11,7 @@ import { useDebounce } from "../../../../../../hooks/use-debounce"
 import { entityItemService } from "../../../../../../services/entities/entity-item-service"
 
 import { RelatedProfileOptionPreview } from "./related-profile-option-preview"
+import { FaTimes } from "react-icons/fa"
 
 
 export const RelatedProfilePicker = ({ isRequire }: Props) => {
@@ -18,6 +19,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
     const { item } = useStoreSelector(state => state.entitySaveModule)
 
     const [value, setValue] = useState<SingleValue<ProfileOption>>()
+    const [isClearable, setIsClearable] = useState<boolean>(false)
     const [isFail, setIsFail] = useState(false)
 
 
@@ -33,6 +35,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
                 }
             }
             setValue(value)
+            setIsClearable(true)
         }
     }, [item])
 
@@ -79,6 +82,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
         editedItem.entityInfo.name.display = option?.value.name
         editedItem.relatedInfo.branchIds = option?.value.branchIds
         setValue(editedItem.relatedInfo)
+        setIsClearable(true)
         dispatch(updateItem(editedItem))
         setIsFail(false)
     }
@@ -89,6 +93,11 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
 
         if (!item?.relatedInfo?.miniProfile?.profileId) setIsFail(true)
         else setIsFail(false)
+    }
+
+    const onClearValue = () => {
+        setValue(null)
+        setIsClearable(false)
     }
 
 
@@ -115,10 +124,10 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
                         value={value}
                         cacheOptions
                     />
+
+                    {isClearable && <span className="clear-icon" onClick={onClearValue}><FaTimes /></span>}
                 </div>
             </div>
-
-            {!!isFail && <div className="msg">חובה לשייך פרופיל</div>}
         </div>
     )
 }

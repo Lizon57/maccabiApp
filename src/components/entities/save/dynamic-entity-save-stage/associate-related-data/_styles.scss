@@ -30,6 +30,19 @@ div.entity-save-cmp--related-branch-picker__container {
   }
 }
 
+div.entity-save-cmp--related-profile-picker__container {
+  position: relative;
+
+  span.clear-icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-25%);
+
+    background-color: $clr-white-regular;
+  }
+}
+
 div.entity-save-cmp--related-profile-option-preview__container {
   @include reactSelectAsyncDefaultValue;
 }
