@@ -114,16 +114,21 @@ export const EntitySave = (entityName: string) => {
     const saveItem = async () => {
         if (!getIsSaveable() || !ENTITY) return
         const editedItem = structuredClone(item) as EntityItem
+        const isEdited = !!editedItem.id
         if (id) editedItem.id = id
 
         try {
             await entityItemService.save(editedItem, ENTITY?.dbInfo.name, ENTITY?.dbInfo.fallbackDB)
             addAppMessage(
-                { text: `עריכת הדף ${editedItem.entityInfo.name.display} בוצעה בהצלחה`, title: 'עריכה בוצעה בהצלחה', type: 'success' }
+                isEdited
+                    ? { text: `עריכת הדף ${editedItem.entityInfo.name.display} בוצעה בהצלחה`, title: 'עריכה בוצעה בהצלחה', type: 'success' }
+                    : { text: `הוספת הדף ${editedItem.entityInfo.name.display} בוצעה בהצלחה`, title: 'הוספה בוצעה בהצלחה', type: 'success' }
             )
         } catch (err) {
             addAppMessage(
-                { text: `עריכת הדף ${editedItem.entityInfo.name.display} נכשלה`, title: 'עריכה נכשלה', type: 'fail' }
+                isEdited
+                    ? { text: `עריכת הדף ${editedItem.entityInfo.name.display} נכשלה`, title: 'עריכה נכשלה', type: 'fail' }
+                    : { text: `הוספת הדף ${editedItem.entityInfo.name.display} נכשלה`, title: 'הוספה נכשלה', type: 'fail' }
             )
         } finally {
             navigate(location.pathname.replace('/save', ''))
