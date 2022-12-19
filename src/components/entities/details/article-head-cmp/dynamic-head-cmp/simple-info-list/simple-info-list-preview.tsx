@@ -2,11 +2,12 @@ import { EntityItem } from "../../../../../../types/entity/entities/entity-item"
 
 import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
 import { getFormatedList } from "../../../../../../services/util/get-formated-list"
+import { shouldDisplayValue } from "../../../../../../services/util/should-display-value"
 
 
 export const SimpleInfoListPreview = ({ info, item }: Props) => {
     let value = getValueByDynamicKey(info.value, item)
-    if (!value || !value.length) return <></>
+    if (!shouldDisplayValue(value)) return <></>
 
 
     if (Array.isArray(value) && value.length > 1) {
