@@ -13,6 +13,7 @@ export const ItemTitle = ({ cmp }: Props) => {
 
     title = title?.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
     title = title?.replace('PAGE_NAME', (item.entityInfo.name.display || ''))
+    if (!item.entityInfo.item?.writers?.length) title = title?.replace('מאת BY_WRITERS', '')
     title = title?.replace('BY_WRITERS', (getFormatedList(item.entityInfo.item?.writers || [])))
 
 

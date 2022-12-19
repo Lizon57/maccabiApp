@@ -6,7 +6,7 @@ import { getFormatedList } from "../../../../../../services/util/get-formated-li
 
 export const SimpleInfoListPreview = ({ info, item }: Props) => {
     let value = getValueByDynamicKey(info.value, item)
-    if (!value) return <></>
+    if (!value || !value.length) return <></>
 
 
     if (Array.isArray(value) && value.length > 1) {
