@@ -1,0 +1,48 @@
+div.entities-portal--checkbox-filter__container {
+  @include squarePicker;
+  width: 100%;
+
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    max-width: 300px;
+  }
+
+  div.content-container {
+    display: flex;
+    justify-content: space-between;
+
+    user-select: none;
+    font-size: $font-size-xSmall-rem;
+    width: 100%;
+
+    span.options-container {
+      display: flex;
+      gap: $space-inline-xSmall-rem;
+
+      span.option,
+      span.param {
+        color: $clr-white-darkest;
+
+        &.active {
+          color: unset;
+        }
+      }
+
+      span.option {
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+    }
+
+    span.clear {
+      color: $clr-white-darkest;
+
+      &.clickable {
+        cursor: pointer;
+        color: unset;
+      }
+    }
+  }
+}

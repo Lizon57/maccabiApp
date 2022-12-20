@@ -165,6 +165,17 @@ export const libraryEntity: Entity = {
                     type: 'text_filter',
                     text: 'TERM בין המוציאים לאור'
                 },
+            },
+            {
+                id: makeId(),
+                type: 'checkbox_filter',
+                key: 'entityInfo.item.isBiography',
+                param: 'fBiography',
+                title: 'ביוגרפיות',
+                activeFilterChip: {
+                    type: 'checkbox_filter',
+                    text: 'CHOOSE_OPTION ביוגרפיות'
+                },
             }
         ]
     },

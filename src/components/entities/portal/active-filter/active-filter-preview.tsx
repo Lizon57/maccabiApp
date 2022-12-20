@@ -16,23 +16,28 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
             break
 
         case 'multi_select':
-            const AMOUNT = PARAMS.get(filter.param)?.split(',').length
-            if (!AMOUNT) {
+            const amount = PARAMS.get(filter.param)?.split(',').length
+            if (!amount) {
                 text = 'סנן פעיל'
                 break
             }
-            text = filter.activeFilterChip.text.replace('AMOUNT', '' + AMOUNT)
+            text = filter.activeFilterChip.text.replace('AMOUNT', '' + amount)
             break
 
         case 'numbers_range':
-            const NUMBERS = PARAMS.get(filter.param)?.split('|') || []
-            text = filter.activeFilterChip.text.replace('MIN', NUMBERS[0])
-            text = text.replace('MAX', NUMBERS[1])
+            const numbers = PARAMS.get(filter.param)?.split('|') || []
+            text = filter.activeFilterChip.text.replace('MIN', numbers[0])
+            text = text.replace('MAX', numbers[1])
             break
 
         case 'text_filter':
             const term = PARAMS.get(filter.param)?.split(',').map(t => `"${t}"`)
             text = filter.activeFilterChip.text.replace('TERM', term + '')
+            break
+
+        case 'checkbox_filter':
+            const isChosen = JSON.parse(PARAMS.get(filter.param) || '')
+            text = filter.activeFilterChip.text.replace('CHOOSE_OPTION', isChosen ? 'רק' : 'ללא')
             break
 
         default:

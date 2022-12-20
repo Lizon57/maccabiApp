@@ -91,6 +91,19 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                     return false
                 })
                 break
+
+            case 'checkbox_filter':
+                let isChosen = PARAMS.get(filter.param)
+                if (!isChosen) break
+                isChosen = JSON.parse(isChosen)
+                if (typeof isChosen !== 'boolean') break
+
+                filteredItems = filteredItems.filter(item => {
+                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
+
+                    return (isChosen === actualKeyValue)
+                })
+                break
         }
     })
 

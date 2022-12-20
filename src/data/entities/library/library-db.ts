@@ -25,7 +25,8 @@ export const LIBRARY_DB: EntityItem[] = [
                 writers: ['יחיאל ארזי'],
                 publishers: ['משכל'],
                 pageCount: 237,
-                publishYear: 2004
+                publishYear: 2004,
+                isBiography: true,
             }
         },
 
@@ -70,7 +71,8 @@ export const LIBRARY_DB: EntityItem[] = [
                 writers: ['אורן יוסיפוביץ\''],
                 publishers: ['ידיעות אחרונות', 'ספרי חמד'],
                 pageCount: 360,
-                publishYear: 2017
+                publishYear: 2017,
+                isBiography: true,
             }
         },
 
@@ -113,7 +115,8 @@ export const LIBRARY_DB: EntityItem[] = [
             ctgIds: ['categoryId0021', 'categoryId0025'],
             item: {
                 writers: ['משה לרר', 'משה אופניק'],
-                publishYear: 1956
+                publishYear: 1956,
+                isBiography: false,
             }
         },
 
@@ -153,7 +156,8 @@ export const LIBRARY_DB: EntityItem[] = [
                 writers: ['דני דבורין'],
                 publishers: ['אורבך'],
                 pageCount: 151,
-                publishYear: 1988
+                publishYear: 1988,
+                isBiography: false,
             }
         },
 

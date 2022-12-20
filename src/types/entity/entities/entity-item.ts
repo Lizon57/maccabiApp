@@ -31,6 +31,7 @@ export interface EntityItem {
             publishers?: string[],
             pageCount?: number,
             publishYear?: number,
+            isBiography?: boolean,
         },
         imageUrl?: string,
         lifetime?: {

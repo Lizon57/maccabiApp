@@ -94,6 +94,7 @@ const get = (type: string) => {
                     publishers: [],
                     pageCount: undefined,
                     publishYear: undefined,
+                    isBiography: undefined,
                 }
             }
             break
