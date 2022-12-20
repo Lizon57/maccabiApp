@@ -15,7 +15,7 @@ export const ImageGallery = ({ cmp }: Props) => {
 
 
     return (
-        <>
+        <div>
             <MainTitle text={cmp.title || ''} Icon={cmp.Icon} />
 
             <div className="entity-details--image-gallery-cmp__gallery-container">
@@ -24,7 +24,7 @@ export const ImageGallery = ({ cmp }: Props) => {
                     miniImage={miniImage}
                 />)}
             </div>
-        </>
+        </div>
     )
 }
 

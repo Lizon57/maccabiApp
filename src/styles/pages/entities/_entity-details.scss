@@ -2,4 +2,10 @@ section.entities-pages--entity-display__container {
   display: grid;
   grid-template-rows: 1fr max-content;
   height: 100%;
+
+  div.additional-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-block-regular-rem;
+  }
 }

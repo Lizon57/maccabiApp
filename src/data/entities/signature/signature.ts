@@ -51,6 +51,10 @@ export const signatureEntity: Entity = {
                 {
                     type: 'image-gallery',
                     title: 'חתימות של RELATED_PROFILE_NAME'
+                },
+                {
+                    type: 'category-list',
+                    title: 'קטגוריות'
                 }
             ]
         }

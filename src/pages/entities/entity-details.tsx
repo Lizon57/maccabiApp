@@ -12,7 +12,6 @@ import { EntityItem } from "../../types/entity/entities/entity-item"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
-// import { UnitAdditionalContent } from "../../components/units/additional-content/additional-content"
 import { ArticleHeadCmpList } from "../../components/entities/details/article-head-cmp/article-head-cmp-list"
 import { ArticleAdditionalContentCmpList } from "../../components/entities/details/article-additional-content-cmp/article-additional-content-cmp-list"
 
@@ -66,7 +65,6 @@ export const EntityDetails = (entity: Entity) => {
             {!!entity.detailsPageInfo.structure?.additional?.length &&
                 <div className="additional-content">
                     <ArticleAdditionalContentCmpList cmps={entity.detailsPageInfo.structure?.additional} />
-                    {/* <UnitAdditionalContent miniCategories={item.entityInfo.miniCategories || []} /> */}
                 </div>}
         </section>
     )

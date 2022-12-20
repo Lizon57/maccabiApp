@@ -74,6 +74,10 @@ export const libraryEntity: Entity = {
                 {
                     type: 'image-gallery',
                     title: 'תמונות מתוך "PAGE_NAME"'
+                },
+                {
+                    type: 'category-list',
+                    title: 'קטגוריות'
                 }
             ]
         }
