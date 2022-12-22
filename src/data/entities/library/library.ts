@@ -65,7 +65,7 @@ export const libraryEntity: Entity = {
                             value: 'entityInfo.item.pageCount'
                         },
                         {
-                            title: 'הוצאה לאור',
+                            title: 'מוציאים לאור',
                             value: 'entityInfo.item.publishers'
                         },
                     ]
@@ -188,6 +188,73 @@ export const libraryEntity: Entity = {
     saveItemPage: {
         stages: [
             {
+                title: 'פרטי הספר',
+                icon: RiBookOpenFill,
+                type: 'profile-filler',
+                isRequire: false,
+
+                option: {
+                    infos: [
+                        {
+                            type: 'symobl-seperate-list',
+                            key: 'entityInfo.item.writers',
+                            title: 'כותבים',
+                            isRequire: false,
+
+                            option: {
+                                delimiter: ','
+                            }
+                        },
+                        {
+                            type: 'symobl-seperate-list',
+                            key: 'entityInfo.item.publishers',
+                            title: 'מוציאים לאור',
+                            isRequire: false,
+
+                            option: {
+                                delimiter: ','
+                            }
+                        },
+                        {
+                            type: 'number-picker',
+                            key: 'entityInfo.item.pageCount',
+                            title: 'מס\' עמודים',
+                            isRequire: false,
+
+                            option: {
+                                min: 0,
+                                max: 600
+                            }
+                        },
+                        {
+                            type: 'number-picker',
+                            key: 'entityInfo.item.publishYear',
+                            title: 'שנת הוצאה',
+                            isRequire: false,
+
+                            option: {
+                                min: 1906,
+                                max: new Date().getFullYear()
+                            }
+                        },
+                        {
+                            type: 'binary-picker',
+                            key: 'entityInfo.item.isBiography',
+                            title: 'ביוגרפיה',
+                            isRequire: false
+                        }
+                    ]
+                }
+            },
+
+            {
+                title: 'פרטי עמוד',
+                icon: BsPencil,
+                type: 'page-details',
+                isRequire: true,
+            },
+
+            {
                 title: 'העלאת תמונות',
                 icon: FaUpload,
                 type: 'image-upload',
@@ -212,13 +279,6 @@ export const libraryEntity: Entity = {
                         }
                     ]
                 }
-            },
-
-            {
-                title: 'פרטי עמוד',
-                icon: BsPencil,
-                type: 'page-details',
-                isRequire: true,
             },
         ]
     }

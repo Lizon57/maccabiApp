@@ -1,0 +1,109 @@
+div.entity-save-cmp--profile-filler__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxxSmall-rem;
+}
+
+div.entity-save-cmp--profile-filler-binary-picker__container,
+div.entity-save-cmp--profile-filler-number-picker__container,
+div.entity-save-cmp--profile-filler-sybol-seperate-list__container {
+  display: flex;
+  align-items: center;
+  gap: $space-inline-xxxSmall-rem;
+
+  span.title {
+    font-family: $typography-emphasis;
+
+    &::after {
+      content: ":";
+    }
+  }
+}
+
+div.entity-save-cmp--profile-filler-binary-picker__container {
+  span.options {
+    display: flex;
+    gap: $space-inline-xxSmall-rem;
+
+    font-size: $font-size-small-rem;
+    color: $clr-white-darkest;
+
+    :not(:last-child) {
+      border-inline-end: 1px solid $clr-white-darker;
+      padding-inline-end: $space-inline-xxSmall-rem;
+    }
+
+    span.option {
+      transition: $transition-regular;
+      cursor: pointer;
+
+      &:hover {
+        color: $clr-blue-regular;
+      }
+
+      &.active {
+        color: $clr-black-regular;
+      }
+    }
+  }
+}
+
+div.entity-save-cmp--profile-filler-number-picker__container {
+  span.unknown-number,
+  span.picker {
+    font-size: $font-size-small-rem;
+  }
+
+  span.picker {
+    input[type="number"] {
+      outline: 0;
+      border: 0;
+      background-color: transparent;
+      margin-inline-end: $space-inline-xSmall-rem;
+      max-width: 8rem;
+
+      &::placeholder {
+        font-size: $font-size-xSmall-rem;
+      }
+    }
+  }
+
+  span.unknown-number {
+    color: $clr-white-darkest;
+
+    cursor: pointer;
+    transition: $transition-regular;
+
+    &:hover {
+      color: $clr-blue-regular;
+    }
+
+    &.active {
+      color: $clr-black-regular;
+    }
+  }
+}
+
+div.entity-save-cmp--profile-filler-sybol-seperate-list__container {
+  input[type="text"] {
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    font-size: $font-size-small-rem;
+  }
+
+  span.unknown-list {
+    cursor: pointer;
+    color: $clr-white-darkest;
+    font-size: $font-size-small-rem;
+    transition: $transition-regular;
+
+    &:hover {
+      color: $clr-blue-regular;
+    }
+
+    &.active {
+      color: $clr-black-regular;
+    }
+  }
+}

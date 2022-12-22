@@ -7,16 +7,34 @@ export type EntitySaveItemStage = {
     type: string,
     isRequire: boolean,
 
-    option?: PhotoUploadOption & AssociateRelatedDataOption
+    option?: PhotoUploadOption & AssociateRelatedDataOption & ProfileFillerOption
 }
 
 
-export type PhotoUploadOption = {
+type PhotoUploadOption = {
     minImageCount?: number,
     maxImageCount?: number,
 }
 
 
-export type AssociateRelatedDataOption = {
-    relateds?: { type: string, isRequire: boolean }[]
+type AssociateRelatedDataOption = {
+    relateds?: {
+        type: string,
+        isRequire: boolean
+    }[]
+}
+
+type ProfileFillerOption = {
+    infos?: {
+        type: string,
+        key: string,
+        title: string,
+        isRequire: boolean,
+
+        option?: {
+            delimiter?: string,
+            min?: number,
+            max?: number
+        }
+    }[]
 }

@@ -5,6 +5,7 @@ import { SIGNATURE_DB } from "./signature-db"
 
 import { BiBrain } from "react-icons/bi"
 import { FaSignature, FaUpload } from "react-icons/fa"
+import { BsPencil } from "react-icons/bs"
 
 
 export const signatureEntity: Entity = {
@@ -116,6 +117,13 @@ export const signatureEntity: Entity = {
 
     saveItemPage: {
         stages: [
+            {
+                title: 'פרטי עמוד',
+                icon: BsPencil,
+                type: 'page-details',
+                isRequire: true,
+            },
+
             {
                 title: 'העלאת תמונות',
                 icon: FaUpload,
