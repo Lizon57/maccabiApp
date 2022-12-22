@@ -20,7 +20,6 @@ div.entity-save-cmp--page-details__container {
 
         outline: 0;
         border: 0;
-        border-bottom: 1px solid $clr-black-regular;
         background-color: transparent;
         font-size: $font-size-small-rem;
 
@@ -39,7 +38,9 @@ div.entity-save-cmp--page-details__container {
         left: 0;
         transform: translateY(-50%);
 
+        background-color: $clr-white-regular;
         color: $clr-white-darkest;
+        padding-inline-start: $space-inline-xxxSmall-rem;
         transition: $transition-regular;
 
         &:hover {
