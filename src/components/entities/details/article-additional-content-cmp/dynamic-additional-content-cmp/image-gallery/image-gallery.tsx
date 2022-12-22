@@ -11,8 +11,8 @@ export const ImageGallery = ({ cmp }: Props) => {
 
     let title = cmp.title
 
-    title = cmp.title?.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
-    title = cmp.title?.replace('PAGE_NAME', (item.entityInfo.name.display || ''))
+    title = title?.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
+    title = title?.replace('PAGE_NAME', (item.entityInfo.name.display || ''))
 
 
     return (
