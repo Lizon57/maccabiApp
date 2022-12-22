@@ -6,6 +6,7 @@ import { LIBRARY_DB } from "./library-db"
 import { RiBookOpenFill } from "react-icons/ri"
 import { FaUpload } from "react-icons/fa"
 import { BiBrain } from "react-icons/bi"
+import { BsPencil } from "react-icons/bs"
 
 
 export const libraryEntity: Entity = {
@@ -211,6 +212,13 @@ export const libraryEntity: Entity = {
                         }
                     ]
                 }
+            },
+
+            {
+                title: 'פרטי עמוד',
+                icon: BsPencil,
+                type: 'page-details',
+                isRequire: true,
             },
         ]
     }

@@ -1,0 +1,52 @@
+div.entity-save-cmp--page-details__container {
+  div.option {
+    display: flex;
+    align-items: center;
+    gap: $space-inline-xxSmall-rem;
+
+    span.name {
+      font-family: $typography-emphasis;
+
+      &::after {
+        content: ":";
+      }
+    }
+
+    span.input-wrapper {
+      position: relative;
+
+      input[type="text"] {
+        flex-grow: 1;
+
+        outline: 0;
+        border: 0;
+        border-bottom: 1px solid $clr-black-regular;
+        background-color: transparent;
+        font-size: $font-size-small-rem;
+
+        @include viewport-wide-start-from-exclusive($viewport-small) {
+          max-width: 70%;
+        }
+
+        @include viewport-wide-start-from-exclusive($viewport-regular) {
+          max-width: 20rem;
+        }
+      }
+
+      span.clear-icon {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+
+        color: $clr-white-darkest;
+        transition: $transition-regular;
+
+        &:hover {
+          cursor: pointer;
+          color: $clr-black-lightest;
+        }
+      }
+    }
+  }
+}

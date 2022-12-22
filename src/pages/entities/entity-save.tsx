@@ -75,6 +75,10 @@ export const EntitySave = (entityName: string) => {
             if (!stage.isRequire) return true
             let isFilled = true
             switch (stage.type) {
+                case 'page-details':
+                    if (!item.entityInfo.name.display) isFilled = false
+                    break
+
                 case 'associate-related-data':
                     stage.option?.relateds?.forEach(related => {
                         switch (related.type) {
