@@ -4,6 +4,9 @@ import { Entity } from "../../../types/entity/entity"
 import { CROWD_ORGANIZATION_DB } from "./crowd-organization-db"
 
 import { AiFillFlag } from "react-icons/ai"
+import { BsPencil } from "react-icons/bs"
+import { FaUpload } from "react-icons/fa"
+import { BiBrain } from "react-icons/bi"
 
 
 export const crowdOrganizationEntity: Entity = {
@@ -37,6 +40,27 @@ export const crowdOrganizationEntity: Entity = {
 
     detailsPageInfo: {
         type: 'article',
+
+        structure: {
+            head: [
+                {
+                    type: 'page-title',
+                    title: 'ארגון PAGE_NAME',
+                    Icon: AiFillFlag
+                },
+
+                {
+                    type: 'simple-info-list',
+
+                    infos: [
+                        {
+                            title: 'פעילות בשער',
+                            value: 'entityInfo.item.activeGate'
+                        },
+                    ]
+                }
+            ]
+        }
     },
 
     listPageInfo: {
@@ -74,11 +98,66 @@ export const crowdOrganizationEntity: Entity = {
                     text: 'בתוך AMOUNT ענפים'
                 }
             },
+            {
+                id: makeId(),
+                type: 'multi_number_picker',
+                key: 'entityInfo.item.activeGate',
+                param: 'fActiveGate',
+                title: 'פעילות בשער',
+                activeFilterChip: {
+                    type: 'numbers_range',
+                    text: 'פעיל בשערים בין MIN ל-MAX'
+                },
+                option: {
+                    min: 1,
+                    max: 12,
+                }
+            },
+            {
+                id: makeId(),
+                type: 'checkbox_filter',
+                key: 'entityInfo.item.dateOfActivity.isActive',
+                param: 'fIsActive',
+                title: 'ארגון פעיל',
+                activeFilterChip: {
+                    type: 'checkbox_filter',
+                    text: 'CHOOSE_OPTION פעיל'
+                },
+            }
         ]
     },
 
     saveItemPage: {
         stages: [
+            {
+                title: 'פרטי עמוד',
+                icon: BsPencil,
+                type: 'page-details',
+                isRequire: true,
+            },
+
+            {
+                title: 'העלאת תמונות',
+                icon: FaUpload,
+                type: 'image-upload',
+                isRequire: false,
+            },
+
+            {
+                title: 'שיוך ארגון',
+                icon: BiBrain,
+                type: 'associate-related-data',
+                isRequire: true,
+
+                option: {
+                    relateds: [
+                        {
+                            type: 'branch',
+                            isRequire: true
+                        }
+                    ]
+                }
+            },
         ]
     }
 }
