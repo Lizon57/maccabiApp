@@ -72,6 +72,11 @@ export const libraryEntity: Entity = {
                             title: 'מוציאים לאור',
                             value: 'entityInfo.item.publishers'
                         },
+                        {
+                            type: 'boolean',
+                            title: 'ספר אוטוביוגרפי',
+                            value: 'entityInfo.item.isBiography'
+                        },
                     ]
                 }
             ],

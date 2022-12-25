@@ -54,6 +54,11 @@ export const crowdOrganizationEntity: Entity = {
 
                     infos: [
                         {
+                            type: 'boolean',
+                            title: 'ארגון פעיל',
+                            value: 'entityInfo.item.dateOfActivity.isActive'
+                        },
+                        {
                             type: 'date',
                             title: 'תחילת פעילות',
                             value: 'entityInfo.item.dateOfActivity.start'

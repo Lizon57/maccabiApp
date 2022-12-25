@@ -24,6 +24,12 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
         }
     }
 
+    if (info.type === 'boolean' && value) return (
+        <div className="entity-details--simple-info-list-preview__container">
+            <span className="value-driven">{info.title}</span>
+        </div>
+    )
+
 
     return (
         <div className="entity-details--simple-info-list-preview__container">

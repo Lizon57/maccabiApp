@@ -5,14 +5,18 @@ div.entity-details--simple-info-list-list__container {
 }
 
 div.entity-details--simple-info-list-preview__container {
-    font-size: $font-size-small-rem;
+  font-size: $font-size-small-rem;
 
-    span.title{
-        font-family: $typography-emphasis;
-        margin-inline-end: $space-inline-xxxSmall-rem;
+  span.value-driven,
+  span.title {
+    font-family: $typography-emphasis;
+  }
 
-        &::after{
-            content: ":";
-        }
+  span.title {
+    margin-inline-end: $space-inline-xxxSmall-rem;
+
+    &::after {
+      content: ":";
     }
+  }
 }
