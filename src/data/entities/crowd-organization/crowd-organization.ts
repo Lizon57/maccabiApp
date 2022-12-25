@@ -54,6 +54,17 @@ export const crowdOrganizationEntity: Entity = {
 
                     infos: [
                         {
+                            type: 'date',
+                            title: 'תחילת פעילות',
+                            value: 'entityInfo.item.dateOfActivity.start'
+                        },
+                        {
+                            type: 'date',
+                            title: 'סיום פעילות',
+                            value: 'entityInfo.item.dateOfActivity.end'
+                        },
+                        {
+                            type: 'number',
                             title: 'פעילות בשער',
                             value: 'entityInfo.item.activeGate'
                         },

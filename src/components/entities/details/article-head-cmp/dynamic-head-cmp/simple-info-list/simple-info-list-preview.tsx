@@ -3,23 +3,32 @@ import { EntityItem } from "../../../../../../types/entity/entities/entity-item"
 import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
 import { getFormatedList } from "../../../../../../services/util/get-formated-list"
 import { shouldDisplayValue } from "../../../../../../services/util/should-display-value"
+import { getFormatedDate } from "../../../../../../services/util/get-formated-date"
 
 
 export const SimpleInfoListPreview = ({ info, item }: Props) => {
     let value = getValueByDynamicKey(info.value, item)
-    if (!shouldDisplayValue(value)) return <></>
+    if (!shouldDisplayValue(value) || !value) return <></>
 
+    const getFormatedText = () => {
+        switch (info.type) {
+            case 'number':
+                return value
 
-    if (Array.isArray(value) && value.length > 1) {
-        value = getFormatedList(value)
+            case 'list':
+                if (Array.isArray(value) && value.length) return getFormatedList(value)
+                break
+
+            case 'date':
+                return getFormatedDate(value, false, false)
+        }
     }
-
 
 
     return (
         <div className="entity-details--simple-info-list-preview__container">
             <span className="title">{info.title}</span>
-            <span className="value">{value}</span>
+            <span className="value">{getFormatedText()}</span>
         </div>
     )
 }
@@ -27,6 +36,7 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
 
 type Props = {
     info: {
+        type: string,
         title: string,
         value: string
     },

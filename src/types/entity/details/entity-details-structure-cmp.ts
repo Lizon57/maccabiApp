@@ -7,6 +7,7 @@ export type EntityDetailsStuctureCmp = {
     Icon?: IconType,
 
     infos?: {
+        type: string,
         title: string,
         value: string
     }[]

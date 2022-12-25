@@ -53,18 +53,22 @@ export const libraryEntity: Entity = {
 
                     infos: [
                         {
+                            type: 'list',
                             title: 'כותבים',
                             value: 'entityInfo.item.writers'
                         },
                         {
+                            type: 'number',
                             title: 'שנת הוצאה',
                             value: 'entityInfo.item.publishYear'
                         },
                         {
+                            type: 'number',
                             title: 'מס\' עמודים',
                             value: 'entityInfo.item.pageCount'
                         },
                         {
+                            type: 'list',
                             title: 'מוציאים לאור',
                             value: 'entityInfo.item.publishers'
                         },

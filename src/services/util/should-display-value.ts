@@ -1,10 +1,10 @@
 export const shouldDisplayValue = (value: any) => {
     switch (typeof value) {
-        case 'boolean':
         case 'function':
         case 'undefined':
             return false
 
+        case 'boolean':
         case 'number':
         case 'string':
             return true

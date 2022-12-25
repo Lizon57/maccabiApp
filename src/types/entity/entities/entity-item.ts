@@ -44,12 +44,14 @@ export interface EntityItem {
                 start?: {
                     day?: number,
                     month?: number,
-                    year?: number
+                    year?: number,
+                    timestamp?: number
                 },
                 end?: {
                     day?: number,
                     month?: number,
-                    year?: number
+                    year?: number,
+                    timestamp?: number
                 }
             },
 
