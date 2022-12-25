@@ -9,6 +9,8 @@ import { ImagePreview } from "./image-preview"
 export const ImageGallery = ({ cmp }: Props) => {
     const { item } = useStoreSelector(state => state.displayEntityModule)
 
+    if (!item.miniImages || !item.miniImages.length) return <></>
+
     let title = cmp.title
 
     title = title?.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
@@ -20,7 +22,7 @@ export const ImageGallery = ({ cmp }: Props) => {
             <MainTitle text={title || ''} Icon={cmp.Icon} />
 
             <div className="entity-details--image-gallery-cmp__gallery-container">
-                {item.miniImages?.map(miniImage => <ImagePreview
+                {item.miniImages.map(miniImage => <ImagePreview
                     key={miniImage.id}
                     miniImage={miniImage}
                 />)}
