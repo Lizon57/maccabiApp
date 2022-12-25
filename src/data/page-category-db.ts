@@ -198,4 +198,44 @@ export const PAGE_CATEGORY_DB = [
             display: 'ספרי כדורגל'
         }
     },
+
+    {
+        id: 'categoryId0026',
+
+        name: {
+            display: 'ארגוני אוהדים'
+        }
+    },
+
+    {
+        id: 'categoryId0027',
+
+        name: {
+            display: 'ארגוני אוהדים - כדורגל'
+        }
+    },
+
+    {
+        id: 'categoryId0028',
+
+        name: {
+            display: 'ארגוני אוהדים - כדורסל'
+        }
+    },
+
+    {
+        id: 'categoryId0029',
+
+        name: {
+            display: 'ארגוני אוהדים פעילים'
+        }
+    },
+
+    {
+        id: 'categoryId0030',
+
+        name: {
+            display: 'ארגוני אוהדים לא פעילים'
+        }
+    },
 ]

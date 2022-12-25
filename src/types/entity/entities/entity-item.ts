@@ -9,9 +9,15 @@ export interface EntityItem {
         miniProfile?: {
             profileId: string,
             displayName: string,
-            profileImageUrl: string
+            profileImageUrl?: string
         },
         branchIds: string[],
+        miniPreviousOrganizations?:
+        {
+            name: string,
+            id: string,
+            imageUrl?: string
+        }[]
     },
 
     entityInfo: {
@@ -32,6 +38,22 @@ export interface EntityItem {
             pageCount?: number,
             publishYear?: number,
             isBiography?: boolean,
+
+            dateOfActivity?: {
+                isActive?: boolean,
+                start?: {
+                    day?: number,
+                    month?: number,
+                    year?: number
+                },
+                end?: {
+                    day?: number,
+                    month?: number,
+                    year?: number
+                }
+            },
+
+            activeGate?: number | string | number[] | string[]
         },
         imageUrl?: string,
         lifetime?: {

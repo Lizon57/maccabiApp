@@ -6,6 +6,7 @@ import { EntitySave } from "../../pages/entities/entity-save"
 
 import { signatureEntity } from "../entities/signature/signature"
 import { libraryEntity } from "../entities/library/library"
+import { crowdOrganizationEntity } from "../entities/crowd-organization/crowd-organization"
 
 
 export const ROUTES = [
@@ -50,5 +51,26 @@ export const ROUTES = [
         id: makeId(),
         path: 'library/save',
         element: () => EntitySave('library')
+    },
+
+    {
+        id: makeId(),
+        path: 'crowd-organization',
+        element: () => EntityPortal('crowd-organization')
+    },
+    {
+        id: makeId(),
+        path: 'crowd-organization/:id',
+        element: () => EntityDetails(crowdOrganizationEntity)
+    },
+    {
+        id: makeId(),
+        path: 'crowd-organization/:id/save',
+        element: () => EntitySave('crowd-organization')
+    },
+    {
+        id: makeId(),
+        path: 'crowd-organization/save',
+        element: () => EntitySave('crowd-organization')
     }
 ]

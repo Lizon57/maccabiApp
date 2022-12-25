@@ -112,8 +112,8 @@ export const CATEGORY_LINKS = [
                 id: makeId(),
                 title: 'ארגונים',
                 description: 'הארגונים שאחראיים על הצבע, השירים והסדר ביציע',
-                path: '#',
-                img: 'cnc-organization.png'
+                path: 'crowd-organization',
+                img: 'cnc-crowd-organization.png'
             },
             {
                 id: makeId(),
