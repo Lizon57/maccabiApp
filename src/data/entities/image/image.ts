@@ -27,7 +27,7 @@ export const imageEntity: Entity = {
         },
         image: {
             thumbnail: {
-                path: 'mm-image.png',
+                path: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672041587/entity-default/mm-image_e3s8ef.png',
                 title: 'תמונות'
             },
             imagePath: 'images',

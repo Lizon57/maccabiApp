@@ -30,7 +30,7 @@ export const libraryEntity: Entity = {
         },
         image: {
             thumbnail: {
-                path: 'cnc-book.png',
+                path: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672041586/entity-default/cnc-book_javm5g.png',
                 title: 'ספרייה'
             },
             imagePath: 'library',
@@ -94,7 +94,7 @@ export const libraryEntity: Entity = {
     },
 
     listPageInfo: {
-        previewType: 'detailed-square',
+        previewType: 'square',
 
         sorts: [
             { id: makeId(), title: 'כותרת (א-ת)', key: 'entityInfo.name.display', order: 'asc' },

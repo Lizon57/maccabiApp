@@ -29,7 +29,7 @@ export const signatureEntity: Entity = {
         },
         image: {
             thumbnail: {
-                path: 'cnc-signature.png',
+                path: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672041587/entity-default/cnc-signature_w5br83.png',
                 title: 'אוסף החתימות'
             },
             imagePath: 'signatures',

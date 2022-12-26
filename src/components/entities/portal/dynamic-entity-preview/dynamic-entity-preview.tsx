@@ -3,13 +3,10 @@ import { EntityItem } from "../../../../types/entity/entities/entity-item"
 import { SquareEntityPreview } from "./square-entity-preview"
 
 
-export const DynamicEntityPreview = ({ item, type }: Props) => {
+export const DynamicEntityPreview = ({ item, type, fallbackImgUrl }: Props) => {
     switch (type) {
         case 'square':
-            return <SquareEntityPreview item={item} />
-
-        case 'detailed-square':
-            return <SquareEntityPreview item={item} />
+            return <SquareEntityPreview item={item} fallbackImgUrl={fallbackImgUrl} />
 
         default:
             return null
@@ -20,4 +17,5 @@ export const DynamicEntityPreview = ({ item, type }: Props) => {
 type Props = {
     item: EntityItem,
     type: string,
+    fallbackImgUrl: string
 }

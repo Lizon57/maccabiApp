@@ -14,6 +14,7 @@ export const EntityList = ({ entity, items }: Props) => {
                 key={item.id}
                 item={item}
                 type={entity.listPageInfo.previewType}
+                fallbackImgUrl={entity.entityInfo.image.thumbnail.path}
             />)}
 
             <div className="add-entity-container" title="הוסף פריט">

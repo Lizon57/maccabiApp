@@ -12,7 +12,7 @@ import { DisplayBranchesIconByIds } from "../../../common/branch-icon/display-br
 import { ImageSlider } from "../image-slider/image-slider"
 
 
-export const SquareEntityPreview = ({ item }: Props) => {
+export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
     const [isLike, setIsLike] = useState(false)
     const toggleIsLike = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         ev.preventDefault()
@@ -42,7 +42,7 @@ export const SquareEntityPreview = ({ item }: Props) => {
 
                     {TOTAL_IMAGE > 1 && <span className="image-counter" title={`${TOTAL_IMAGE} תמונות תצוגה`}>{TOTAL_IMAGE}</span>}
 
-                    {item?.miniImages?.length && <ImageSlider images={item.miniImages} />}
+                    <ImageSlider images={item.miniImages || []} fallbackImgUrl={fallbackImgUrl} />
 
                     <div className="additional-info">
                         <div className="views-and-rate">
@@ -75,5 +75,6 @@ export const SquareEntityPreview = ({ item }: Props) => {
 
 type Props = {
     item: EntityItem,
+    fallbackImgUrl: string
 }
 

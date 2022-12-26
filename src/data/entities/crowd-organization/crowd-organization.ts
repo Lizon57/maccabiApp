@@ -30,7 +30,7 @@ export const crowdOrganizationEntity: Entity = {
         },
         image: {
             thumbnail: {
-                path: 'cnc-crowd-organization.png',
+                path: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672041586/entity-default/cnc-crowd-organization_rjfp5v.png',
                 title: 'ארגוני אוהדים'
             },
             imagePath: 'crowd-organization',
