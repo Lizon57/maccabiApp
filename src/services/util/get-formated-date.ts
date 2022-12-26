@@ -14,19 +14,18 @@ export const getFormatedDate = (
     if (date.day) {
         value += date.day
         if (typeof date.month === 'number') {
-            value += ' '
-            value += 'ב' + getMonthName(date.month, isZeroIndex)
-
+            value += ' ב' + getMonthName(date.month, isZeroIndex)
+            value += ' ' + (getYear(date.year) || 'בשנה לא ידועה')
+        } else {
+            value += ' (חודש לא ידוע) ב-' + (getYear(date.year) || 'בשנה לא ידועה')
         }
-
-        value += ' ' + getYear(date.year)
         return value
     }
 
     if (typeof date.month === 'number') {
         value += getMonthName(date.month, isZeroIndex)
 
-        value += getYear(date.year)
+        value += ' ' + getYear(date.year)
         return value
     }
 
