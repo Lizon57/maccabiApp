@@ -128,7 +128,7 @@ export const crowdOrganizationEntity: Entity = {
                 title: 'ארגון פעיל',
                 activeFilterChip: {
                     type: 'checkbox_filter',
-                    text: 'CHOOSE_OPTION פעיל'
+                    text: 'CHOOSE_OPTION ארגונים פעילים'
                 },
             }
         ]

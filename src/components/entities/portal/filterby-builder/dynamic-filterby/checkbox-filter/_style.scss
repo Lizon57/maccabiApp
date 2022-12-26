@@ -41,6 +41,9 @@ div.entities-portal--checkbox-filter__container {
 
       &.clickable {
         cursor: pointer;
+      }
+
+      &.active {
         color: unset;
       }
     }

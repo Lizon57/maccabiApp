@@ -76,7 +76,7 @@ export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
                 </span>
 
                 <span
-                    className={"clear" + ((typeof value === 'boolean') ? ' clickable' : '')}
+                    className={"clear" + ((typeof value === 'boolean') ? ' clickable' : ' active')}
                     onClick={() => onSetValue(undefined)}
                 >לא משנה לי</span>
             </div>
