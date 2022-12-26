@@ -28,7 +28,6 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                         year: 2012
                     }
                 },
-                activeGate: 11
             }
         },
 
@@ -71,7 +70,6 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                         year: 2012
                     }
                 },
-                activeGate: 11
             }
         },
 
@@ -114,7 +112,6 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                         year: 1996
                     }
                 },
-                activeGate: 11
             }
         },
 
@@ -209,7 +206,6 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                         year: 2017
                     },
                 },
-                activeGate: 11
             }
         },
 
@@ -252,7 +248,6 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                         year: 2017
                     }
                 },
-                activeGate: 11
             }
         },
 
@@ -290,7 +285,6 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                         year: 2017
                     }
                 },
-                activeGate: 7
             }
         },
 

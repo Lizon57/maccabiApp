@@ -1,4 +1,5 @@
 import { BinaryPicker } from "./pickers/binary-picker"
+import { DatePicker } from "./pickers/date-picker"
 import { NumberPicker } from "./pickers/number-picker"
 import { SymbolSeperateList } from "./pickers/symbol-seperate-list"
 
@@ -10,6 +11,9 @@ export const ProfileFiller = ({ infos }: Props) => {
 
             case 'binary-picker':
                 return <BinaryPicker key={info.key} pickerInfo={info} />
+
+            case 'date-picker':
+                return <DatePicker key={info.key} pickerInfo={info} />
 
             case 'symobl-seperate-list':
                 return <SymbolSeperateList key={info.key} pickerInfo={info} />

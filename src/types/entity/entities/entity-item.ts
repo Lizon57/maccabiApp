@@ -12,8 +12,7 @@ export interface EntityItem {
             profileImageUrl?: string
         },
         branchIds: string[],
-        miniPreviousOrganizations?:
-        {
+        miniPreviousOrganizations?: {
             name: string,
             id: string,
             imageUrl?: string
@@ -45,17 +44,13 @@ export interface EntityItem {
                     day?: number,
                     month?: number,
                     year?: number,
-                    timestamp?: number
                 },
                 end?: {
                     day?: number,
                     month?: number,
                     year?: number,
-                    timestamp?: number
                 }
             },
-
-            activeGate?: number | string | number[] | string[]
         },
         imageUrl?: string,
         lifetime?: {

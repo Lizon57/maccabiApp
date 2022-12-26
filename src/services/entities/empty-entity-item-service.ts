@@ -99,6 +99,30 @@ const get = (type: string) => {
             }
             break
 
+        case 'crowd-organization':
+            ITEM.relatedInfo = {
+                ...ITEM.relatedInfo,
+                miniPreviousOrganizations: []
+            }
+
+            ITEM.entityInfo.item = {
+                ...ITEM.entityInfo.item,
+                dateOfActivity: {
+                    isActive: undefined,
+                    start: {
+                        day: undefined,
+                        month: undefined,
+                        year: undefined,
+                    },
+                    end: {
+                        day: undefined,
+                        month: undefined,
+                        year: undefined,
+                    }
+                },
+            }
+            break
+
         case 'default':
     }
 

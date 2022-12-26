@@ -68,11 +68,6 @@ export const crowdOrganizationEntity: Entity = {
                             title: 'סיום פעילות',
                             value: 'entityInfo.item.dateOfActivity.end'
                         },
-                        {
-                            type: 'number',
-                            title: 'פעילות בשער',
-                            value: 'entityInfo.item.activeGate'
-                        },
                     ]
                 }
             ],
@@ -127,21 +122,6 @@ export const crowdOrganizationEntity: Entity = {
             },
             {
                 id: makeId(),
-                type: 'multi_number_picker',
-                key: 'entityInfo.item.activeGate',
-                param: 'fActiveGate',
-                title: 'פעילות בשער',
-                activeFilterChip: {
-                    type: 'numbers_range',
-                    text: 'פעיל בשערים בין MIN ל-MAX'
-                },
-                option: {
-                    min: 1,
-                    max: 12,
-                }
-            },
-            {
-                id: makeId(),
                 type: 'checkbox_filter',
                 key: 'entityInfo.item.dateOfActivity.isActive',
                 param: 'fIsActive',
@@ -156,6 +136,36 @@ export const crowdOrganizationEntity: Entity = {
 
     saveItemPage: {
         stages: [
+            {
+                title: 'פרטי הארגון',
+                icon: AiFillFlag,
+                type: 'profile-filler',
+                isRequire: false,
+
+                option: {
+                    infos: [
+                        {
+                            type: 'date-picker',
+                            key: 'entityInfo.item.dateOfActivity.start',
+                            title: 'תחילת פעילות',
+                            isRequire: false
+                        },
+                        {
+                            type: 'date-picker',
+                            key: 'entityInfo.item.dateOfActivity.end',
+                            title: 'סוף פעילות',
+                            isRequire: false
+                        },
+                        {
+                            type: 'binary-picker',
+                            key: 'entityInfo.item.dateOfActivity.isActive',
+                            title: 'ארגון פעיל',
+                            isRequire: false
+                        },
+                    ]
+                }
+            },
+
             {
                 title: 'פרטי עמוד',
                 icon: BsPencil,

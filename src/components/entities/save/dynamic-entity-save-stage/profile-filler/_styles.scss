@@ -6,6 +6,7 @@ div.entity-save-cmp--profile-filler__container {
 
 div.entity-save-cmp--profile-filler-binary-picker__container,
 div.entity-save-cmp--profile-filler-number-picker__container,
+div.entity-save-cmp--profile-filler-date-picker__container,
 div.entity-save-cmp--profile-filler-sybol-seperate-list__container {
   display: flex;
   align-items: center;
@@ -104,6 +105,28 @@ div.entity-save-cmp--profile-filler-sybol-seperate-list__container {
 
     &.active {
       color: $clr-black-regular;
+    }
+  }
+}
+
+div.entity-save-cmp--profile-filler-date-picker__container {
+  span.picker {
+    display: flex;
+    gap: $space-inline-xxSmall-rem;
+
+    font-size: $font-size-small-rem;
+
+    select {
+      cursor: pointer;
+      outline: 0;
+      border: 0;
+      background-color: transparent;
+      min-width: 5rem;
+
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%23d4d4d4' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position-y: 50%;
     }
   }
 }
