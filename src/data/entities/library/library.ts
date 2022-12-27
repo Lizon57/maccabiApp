@@ -53,6 +53,11 @@ export const libraryEntity: Entity = {
 
                     infos: [
                         {
+                            type: 'boolean',
+                            title: 'ספר אוטוביוגרפי',
+                            value: 'entityInfo.item.isBiography'
+                        },
+                        {
                             type: 'list',
                             title: 'כותבים',
                             value: 'entityInfo.item.writers'
@@ -71,11 +76,6 @@ export const libraryEntity: Entity = {
                             type: 'list',
                             title: 'מוציאים לאור',
                             value: 'entityInfo.item.publishers'
-                        },
-                        {
-                            type: 'boolean',
-                            title: 'ספר אוטוביוגרפי',
-                            value: 'entityInfo.item.isBiography'
                         },
                     ]
                 }
