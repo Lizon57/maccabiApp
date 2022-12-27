@@ -130,7 +130,7 @@ export const libraryEntity: Entity = {
             },
             {
                 id: makeId(),
-                type: 'multi_number_picker',
+                type: 'multi_number_filter',
                 key: 'entityInfo.item.pageCount',
                 param: 'fPageCount',
                 title: 'מס\' עמודים',
@@ -145,7 +145,7 @@ export const libraryEntity: Entity = {
             },
             {
                 id: makeId(),
-                type: 'multi_number_picker',
+                type: 'multi_number_filter',
                 key: 'entityInfo.item.publishYear',
                 param: 'fPublishYear',
                 title: 'שנת הוצאה',

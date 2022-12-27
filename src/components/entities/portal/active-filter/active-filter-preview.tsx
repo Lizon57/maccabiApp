@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { FiXCircle } from "react-icons/fi"
 
 import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
+import { getFormatedDate } from "../../../../services/util/get-formated-date"
 
 
 export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
@@ -40,6 +41,14 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
             text = filter.activeFilterChip.text.replace('CHOOSE_OPTION', isChosen ? 'רק' : 'ללא')
             break
 
+        case 'date_filter':
+            let date: string | string[] | (number | undefined)[] = PARAMS.get(filter.param) || ''
+            date = date.split('-')
+            date = date.map(part => (part === 'undefined' || !part) ? undefined : +part)
+            text = filter.activeFilterChip.text
+            text = text.replace('CHOOSE_OPTION', getFormatedDate({ day: date[0], month: date[1], year: date[2] }, false, false) + '')
+            break
+
         default:
             text = 'סנן פעיל'
     }
@@ -49,7 +58,8 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
         PARAMS.delete(filter.param)
 
         if (filter.activeFilterChip.type === 'numbers_range'
-            || filter.activeFilterChip.type === 'text_filter') {
+            || filter.activeFilterChip.type === 'text_filter'
+            || filter.activeFilterChip.type === 'date_filter') {
             PARAMS.delete(filter.param + 'Type')
         }
 

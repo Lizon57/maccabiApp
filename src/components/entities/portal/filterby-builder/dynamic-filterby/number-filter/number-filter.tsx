@@ -13,7 +13,7 @@ import { AiFillCaretDown } from "react-icons/ai"
 const TYPE_NAMES = ['החל מ', 'עד ל', 'החל מ ועד ל']
 
 
-export const NumberPicker = ({ filter, debouncedSetIsLoading }: Props) => {
+export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
     const [type, setType] = useState(2)
 
     const MIN = filter.option?.min || 0
@@ -65,9 +65,7 @@ export const NumberPicker = ({ filter, debouncedSetIsLoading }: Props) => {
         if (!PARAMS.get(filter.param)) return
 
         let type: string | number | null = PARAMS.get(filter.param + 'Type') || 2
-        if (type === '0') type = 0
-        else if (type === '1') type = 1
-        else type = 2
+        type = +type
         setType(type)
 
         let newValues = PARAMS.get(filter.param)?.split('|').map(value => +value) || []

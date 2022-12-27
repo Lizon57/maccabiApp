@@ -1,0 +1,78 @@
+div.entities-portal--date-filter__container {
+  @include squarePicker;
+  width: 100%;
+
+  @include viewport-wide-start-from-exclusive($viewport-small) {
+    max-width: 300px;
+  }
+
+  div.content-container {
+    font-size: $font-size-xSmall-rem;
+    width: 100%;
+
+    div.date-picker {
+      display: flex;
+      gap: $space-inline-xxxSmall-rem;
+
+      margin-block-end: $space-block-xxxSmall-rem;
+
+      select {
+        cursor: pointer;
+        outline: 0;
+        border: 0;
+        background-color: transparent;
+        min-width: 5rem;
+
+        appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='%23434343' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: -5px;
+        background-position-y: 50%;
+
+        &.month {
+          flex-grow: 1;
+        }
+
+        &.year.error {
+          outline: 1px solid $clr-red-regular;
+        }
+      }
+    }
+  }
+
+  div.additional-content-container {
+    display: flex;
+    justify-content: space-between;
+
+    div.type-toggler {
+      flex-basis: 30%;
+
+      font-size: $font-size-xSmall-rem;
+
+      div.toggler {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        cursor: pointer;
+        font-size: $font-size-xSmall-rem;
+      }
+
+      div.options-container {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: $space-inline-xxxSmall-rem;
+        column-gap: 6px;
+
+        div.type-option {
+          min-width: calc(50% - 3px);
+
+          &:hover {
+            cursor: pointer;
+            color: $clr-blue-darker;
+          }
+        }
+      }
+    }
+  }
+}

@@ -58,7 +58,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 })
                 break
 
-            case 'multi_number_picker':
+            case 'multi_number_filter':
                 const ranges = PARAMS.get(filter.param)?.split('|') || [-Infinity, Infinity]
                 filteredItems = filteredItems.filter(item => {
                     const actualKeyValue = getValueByDynamicKey(filter.key, item)
@@ -73,18 +73,18 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 break
 
             case 'text_filter':
-                const type = PARAMS.get(filter.param + 'Type') || ''
+                const textFilterType = PARAMS.get(filter.param + 'Type') || ''
                 const term = PARAMS.get(filter.param) || ''
-                if (!type || !term) break
+                if (!textFilterType.length || !term) break
 
                 filteredItems = filteredItems.filter(item => {
                     const actualKeyValue = getValueByDynamicKey(filter.key, item)
                     if (!actualKeyValue) return false
-                    if (type === '0') {
+                    if (textFilterType === '0') {
                         return actualKeyValue.some((str: string) => str.startsWith(term))
-                    } else if (type === '1') {
+                    } else if (textFilterType === '1') {
                         return actualKeyValue.some((str: string) => str.endsWith(term))
-                    } else if (type === '2') {
+                    } else if (textFilterType === '2') {
                         return actualKeyValue.some((str: string) => str.match(term))
                     }
 
@@ -102,6 +102,58 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                     const actualKeyValue = getValueByDynamicKey(filter.key, item)
 
                     return (isChosen === actualKeyValue)
+                })
+                break
+
+            case 'date_filter':
+                let date: string | string[] | (number | undefined)[] = PARAMS.get(filter.param) || ''
+                const dateFilterType = PARAMS.get(filter.param + 'Type') || ''
+                if (!date || !dateFilterType) break
+                date = date.split('-')
+                date = date.map(part => (part === 'undefined' || !part) ? undefined : +part)
+
+                if (!date[2]) break
+
+                filteredItems = filteredItems.filter(item => {
+                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
+                    if (!actualKeyValue) return false
+
+                    let isFilterPass = false
+                    const conditions = {
+                        greaterYear: actualKeyValue.year > (date[2] || ''),
+                        lowerYear: actualKeyValue.year < (date[2] || ''),
+                        equalYear: actualKeyValue.year === (date[2] || ''),
+                        equalMonth: actualKeyValue.month === (date[1] || '')
+                    }
+
+
+
+                    if (!date[0] && !date[1]) {
+                        if (dateFilterType === '0') isFilterPass = conditions.greaterYear
+                        if (dateFilterType === '1') isFilterPass = conditions.lowerYear
+                        if (dateFilterType === '2') isFilterPass = conditions.equalYear
+                    }
+
+                    else if (!date[0]) {
+                        if (dateFilterType === '0') isFilterPass = ((conditions.greaterYear)
+                            || (actualKeyValue.year === date[2] && actualKeyValue.month >= (date[1] || '')))
+                        if (dateFilterType === '1') isFilterPass = ((conditions.lowerYear)
+                            || (actualKeyValue.year === date[2] && actualKeyValue.month <= (date[1] || '')))
+                        if (dateFilterType === '2') isFilterPass = (conditions.equalYear && conditions.equalMonth)
+                    }
+
+                    else {
+                        if (dateFilterType === '0') isFilterPass = ((conditions.greaterYear)
+                            || (actualKeyValue.year === date[2] && actualKeyValue.month > (date[1] || ''))
+                            || (actualKeyValue.year === date[2] && conditions.equalMonth && actualKeyValue.day >= (date[0] || '')))
+                        if (dateFilterType === '1') isFilterPass = ((conditions.lowerYear)
+                            || (actualKeyValue.year === date[2] && actualKeyValue.month < (date[1] || ''))
+                            || (actualKeyValue.year === date[2] && conditions.equalMonth && actualKeyValue.day <= (date[0] || '')))
+                        if (dateFilterType === '2') isFilterPass = (conditions.equalYear && conditions.equalMonth && actualKeyValue.day === (date[0] || ''))
+                    }
+
+
+                    return isFilterPass
                 })
                 break
         }

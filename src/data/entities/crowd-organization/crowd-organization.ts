@@ -122,6 +122,28 @@ export const crowdOrganizationEntity: Entity = {
             },
             {
                 id: makeId(),
+                type: 'date_filter',
+                key: 'entityInfo.item.dateOfActivity.start',
+                param: 'fDateOfActivityStart',
+                title: 'התחילו לפעול',
+                activeFilterChip: {
+                    type: 'date_filter',
+                    text: 'פעילים החל מ-CHOOSE_OPTION'
+                },
+            },
+            {
+                id: makeId(),
+                type: 'date_filter',
+                key: 'entityInfo.item.dateOfActivity.end',
+                param: 'fDateOfActivityEnd',
+                title: 'הפסיקו לפעול',
+                activeFilterChip: {
+                    type: 'date_filter',
+                    text: 'פעילים עד ל-CHOOSE_OPTION'
+                },
+            },
+            {
+                id: makeId(),
                 type: 'checkbox_filter',
                 key: 'entityInfo.item.dateOfActivity.isActive',
                 param: 'fIsActive',
