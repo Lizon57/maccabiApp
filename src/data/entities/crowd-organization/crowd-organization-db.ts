@@ -182,16 +182,6 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         id: makeId(),
         relatedInfo: {
             branchIds: ['branchId00002'],
-            miniPreviousOrganizations: [
-                {
-                    name: 'Gate 11',
-                    id: '',
-                },
-                {
-                    name: 'Gate 7',
-                    id: '',
-                },
-            ]
         },
 
         entityInfo: {

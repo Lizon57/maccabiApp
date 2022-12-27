@@ -12,11 +12,6 @@ export interface EntityItem {
             profileImageUrl?: string
         },
         branchIds: string[],
-        miniPreviousOrganizations?: {
-            name: string,
-            id: string,
-            imageUrl?: string
-        }[]
     },
 
     entityInfo: {

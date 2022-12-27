@@ -100,11 +100,6 @@ const get = (type: string) => {
             break
 
         case 'crowd-organization':
-            ITEM.relatedInfo = {
-                ...ITEM.relatedInfo,
-                miniPreviousOrganizations: []
-            }
-
             ITEM.entityInfo.item = {
                 ...ITEM.entityInfo.item,
                 dateOfActivity: {
@@ -122,8 +117,6 @@ const get = (type: string) => {
                 },
             }
             break
-
-        case 'default':
     }
 
     return ITEM
