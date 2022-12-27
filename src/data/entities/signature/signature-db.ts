@@ -119,11 +119,6 @@ export const SIGNATURE_DB: EntityItem[] = [
                 name: 'חתימה של מיקי ברקוביץ\'',
                 imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
             },
-            {
-                id: 'imageId00001',
-                name: 'חתימה של מיקי ברקוביץ\'',
-                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
-            },
         ]
     },
 
@@ -158,16 +153,6 @@ export const SIGNATURE_DB: EntityItem[] = [
         },
 
         miniImages: [
-            {
-                id: 'imageId00001',
-                name: 'חתימה של מיקי ברקוביץ\'',
-                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
-            },
-            {
-                id: 'imageId00001',
-                name: 'חתימה של מיקי ברקוביץ\'',
-                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
-            },
             {
                 id: 'imageId00001',
                 name: 'חתימה של מיקי ברקוביץ\'',
