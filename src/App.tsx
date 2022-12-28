@@ -13,9 +13,13 @@ import { AppScreen } from "./components/app-layout/app-screen/app-screen"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
 
 import { ROUTES } from "./data/app/app-routes"
+import { entityService } from "./services/entities/entity-service"
+import { IMAGE_DB } from "./data/entities/image/image-db"
 
 
 export const App = () => {
+    entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB)
+
     return (
         <Provider store={store}>
             <Router>
