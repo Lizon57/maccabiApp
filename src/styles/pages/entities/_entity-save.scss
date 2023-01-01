@@ -3,9 +3,42 @@ main.entities-pages--entity-save__container {
   flex-direction: column;
   gap: $space-block-regular-rem;
 
-  div.stage-navigation {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  div.save-stages-navigation {
+    display: flex;
+    align-items: center;
+    gap: $space-inline-large-rem;
+
+    div.stages {
+      flex-grow: 1;
+
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+
+      button {
+        &.disable {
+          border: 1px solid $clr-black-regular;
+          color: $clr-black-regular;
+        }
+
+        &.prev {
+          grid-column: 1/2;
+          justify-self: flex-start;
+        }
+
+        &.next {
+          grid-column: 2/3;
+          justify-self: flex-end;
+
+          transition: $transition-regular;
+
+          &:hover {
+            background-color: $clr-blue-regular;
+            color: $clr-white-regular;
+          }
+        }
+      }
+    }
 
     button {
       border-radius: $border-radius-regular-rem;
@@ -14,49 +47,31 @@ main.entities-pages--entity-save__container {
       padding: 5px;
       width: max-content;
 
-      &.disable {
-        border: 1px solid $clr-black-regular;
-        color: $clr-black-regular;
-      }
-
       &:not(.disable) {
         cursor: pointer;
         border: 1px solid $clr-blue-regular;
         color: $clr-blue-regular;
       }
+    }
 
-      &.prev {
-        grid-column: 1/2;
-        justify-self: flex-start;
-      }
-
-      &.next {
-        grid-column: 2/3;
-        justify-self: flex-end;
-
+    div.save {
+      button {
+        background-color: $clr-blue-regular;
+        color: $clr-white-regular;
+        padding-inline: $space-inline-xLarge-rem;
         transition: $transition-regular;
 
         &:hover {
-          background-color: $clr-blue-regular;
-          color: $clr-white-regular;
+          color: $clr-yellow-regular;
         }
       }
     }
 
-    button.save {
-      grid-column: -1/-2;
-      justify-self: flex-end;
-      align-self: center;
+    // button.save {
+    //   grid-column: -1/-2;
+    //   justify-self: flex-end;
+    //   align-self: center;
 
-      background-color: $clr-blue-regular;
-      color: $clr-white-regular;
-      padding-inline: $space-inline-xLarge-rem;
-      margin-block-start: $space-block-xxSmall-rem;
-      transition: $transition-regular;
-
-      &:hover {
-        color: $clr-yellow-regular;
-      }
-    }
+    // }
   }
 }

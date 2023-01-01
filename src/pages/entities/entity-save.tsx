@@ -165,22 +165,22 @@ export const EntitySave = (entityName: string) => {
                 entityName={ENTITY.name}
             />
 
-            <div className="stage-navigation">
-                {!!currStageIdx &&
-                    <button className="prev" onClick={() => changeCurrStageIdx(currStageIdx - 1)}>שלב קודם</button>
-                }
+            <div className="save-stages-navigation">
+                <div className="stages">
+                    {!!currStageIdx &&
+                        <button className="prev" onClick={() => changeCurrStageIdx(currStageIdx - 1)}>שלב קודם</button>
+                    }
 
-                {(stagesStatus[currStageIdx] && !(currStageIdx === stages.length - 1)) &&
-                    !(currStageIdx + 1 === stagesStatus.length) &&
-                    <button className="next" onClick={() => changeCurrStageIdx(currStageIdx + 1)}>שלב הבא</button>
-                }
+                    {(stagesStatus[currStageIdx] && !(currStageIdx === stages.length - 1)) &&
+                        !(currStageIdx + 1 === stagesStatus.length) &&
+                        <button className="next" onClick={() => changeCurrStageIdx(currStageIdx + 1)}>שלב הבא</button>
+                    }
+                </div>
 
                 {getIsSaveable() &&
-                    <button
-                        title="שמור"
-                        className="save"
-                        onClick={saveItem}
-                    >שמור</button>
+                    <div className="save">
+                        <button title="שמור" onClick={saveItem}>שמור</button>
+                    </div>
                 }
             </div>
         </main >
