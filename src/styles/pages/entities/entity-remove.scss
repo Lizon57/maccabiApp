@@ -1,0 +1,44 @@
+main.entities-pages--entity-remove__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-regular-rem;
+
+  p.action-text {
+    font-family: $typography-emphasis;
+    font-weight: unset;
+    margin: 0;
+  }
+
+  div.buttons-container {
+    display: flex;
+    gap: $space-inline-regular-rem;
+
+    button {
+      cursor: pointer;
+      border-radius: $border-radius-regular-rem;
+      font-size: $font-size-small-rem;
+      padding: 3px $space-inline-small-rem;
+      transition: $transition-regular;
+    }
+
+    button.cancel {
+      border: 1px solid $clr-white-darkest;
+      background-color: $clr-blue-regular;
+      color: $clr-white-regular;
+
+      &:hover {
+        background-color: $clr-blue-darker;
+      }
+    }
+
+    button.approve {
+      border: 1px solid $clr-white-darkest;
+      background-color: $clr-white-regular;
+      color: $clr-black-regular;
+
+      &:hover {
+        background-color: $clr-white-darkest;
+      }
+    }
+  }
+}

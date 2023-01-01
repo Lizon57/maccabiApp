@@ -3,6 +3,7 @@ import { makeId } from "../../services/util/make-id"
 import { EntityPortal } from "../../pages/entities/entity-portal"
 import { EntityDetails } from "../../pages/entities/entity-details"
 import { EntitySave } from "../../pages/entities/entity-save"
+import { EntityRemove } from "../../pages/entities/entity-remove"
 
 import { signatureEntity } from "../entities/signature/signature"
 import { libraryEntity } from "../entities/library/library"
@@ -30,6 +31,11 @@ export const ROUTES = [
         path: 'signature/save',
         element: () => EntitySave('signature')
     },
+    {
+        id: makeId(),
+        path: 'signature/:id/remove',
+        element: () => EntityRemove(signatureEntity)
+    },
 
 
     {
@@ -52,6 +58,11 @@ export const ROUTES = [
         path: 'library/save',
         element: () => EntitySave('library')
     },
+    {
+        id: makeId(),
+        path: 'library/:id/remove',
+        element: () => EntityRemove(libraryEntity)
+    },
 
     {
         id: makeId(),
@@ -72,5 +83,10 @@ export const ROUTES = [
         id: makeId(),
         path: 'crowd-organization/save',
         element: () => EntitySave('crowd-organization')
-    }
+    },
+    {
+        id: makeId(),
+        path: 'crowd-organization/:id/remove',
+        element: () => EntityRemove(crowdOrganizationEntity)
+    },
 ]

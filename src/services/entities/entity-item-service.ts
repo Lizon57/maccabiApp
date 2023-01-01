@@ -62,8 +62,18 @@ const save = async (item: EntityItem, dbName: string, fallBackDB: unknown[]) => 
 }
 
 
+const remove = async (itemId: string, dbName: string, fallBackDB: unknown[]) => {
+    try {
+        await asyncLocalStorageService.removeItem(itemId, dbName, fallBackDB)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
 export const entityItemService = {
     getMiniProfileById,
     getMiniProfilesByPharse,
-    save
+    save,
+    remove
 }

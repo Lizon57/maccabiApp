@@ -45,6 +45,15 @@ const replaceEntityItem = async (newItem: EntityItem, dbName: string, fallBackDB
 }
 
 
+const removeEntityItem = async<T>(itemId: string, dbName: string, fallBackDB: T[]) => {
+    let db = await query(dbName, fallBackDB) as EntityItem[]
+
+    db = db.filter(item => item.id !== itemId)
+    const items = JSON.stringify(db)
+    localStorage.setItem(dbName, items)
+    return
+}
+
 
 const _createDB = <T>(entityName: string, DB: T[]) => {
     localStorage.setItem(entityName, JSON.stringify(DB))
@@ -54,5 +63,6 @@ const _createDB = <T>(entityName: string, DB: T[]) => {
 export const asyncLocalStorageService = {
     query,
     save,
-    replaceEntityItem
+    replaceEntityItem,
+    removeItem: removeEntityItem
 }
