@@ -37,7 +37,6 @@ li.app-header--category-link__preview-container {
   position: relative;
 
   flex-grow: 1;
-
   color: $clr-white-regular;
   font-size: $font-size-regular-rem;
   font-family: $typography-emphasis;
@@ -106,14 +105,26 @@ li.app-header--category-link__preview-container {
 
       border-radius: $border-radius-regular-rem;
       border: 1px solid $clr-white-darker;
-      color: $clr-black-regular;
       padding-inline: $space-inline-xxxSmall-rem;
       padding-block: $space-block-xxxSmall-rem;
       text-decoration: none;
       transition: $transition-regular;
 
-      &:hover {
-        background-color: $clr-white-darker;
+      &.disabled {
+        cursor: not-allowed;
+        color: $clr-grey-regular;
+
+        img {
+          filter: grayscale(100%);
+        }
+      }
+
+      &:not(.disabled) {
+        color: $clr-black-regular;
+
+        &:hover {
+          background-color: $clr-white-darker;
+        }
       }
 
       img {

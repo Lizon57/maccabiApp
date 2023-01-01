@@ -6,7 +6,7 @@ export const CategoryLinkPreview = ({ child }: Props) => {
             {child.text}
             {child?.childrens?.length && <div className="drop-down-container">
                 {child.childrens.map(link =>
-                    <Link key={link.id} to={link.path} className="link-container">
+                    <Link key={link.id} to={link.path} className={"link-container" + (link.isDisabled ? ' disabled' : '')}>
                         <img src={link.img && require(`../../../../assets/images/navbar/${link.img}`)} alt={link.title} />
                         <span className="title">{link.title}</span>
                         <span className="description">{link.description}</span>
@@ -30,5 +30,6 @@ type childrenType = {
     title: string,
     description: string,
     path: string,
-    img: string
+    img: string,
+    isDisabled?: boolean
 }
