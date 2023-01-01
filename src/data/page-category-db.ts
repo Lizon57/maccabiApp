@@ -238,4 +238,52 @@ export const PAGE_CATEGORY_DB = [
             display: 'ארגוני אוהדים לא פעילים'
         }
     },
+
+    {
+        id: 'categoryId0031',
+
+        name: {
+            display: 'יוסף גולדשטיין - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0032',
+
+        name: {
+            display: 'אבי כהן - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0033',
+
+        name: {
+            display: 'ג\'רי בית הלוי - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0034',
+
+        name: {
+            display: 'שורה אובארוב - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0035',
+
+        name: {
+            display: 'אלי פוקס - תמונות'
+        }
+    },
+
+    {
+        id: 'categoryId0036',
+
+        name: {
+            display: 'אגון פולק - תמונות'
+        }
+    },
 ]

@@ -76,9 +76,9 @@ export const SIGNATURE_DB: EntityItem[] = [
 
         miniImages: [
             {
-                id: 'imageId00001',
-                name: 'חתימה של מיקי ברקוביץ\'',
-                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
+                id: 'imageId00032',
+                name: 'חתימה של אבי נמני',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672584918/signature/signature_2_lodmji.png'
             }
         ]
     },
@@ -115,9 +115,9 @@ export const SIGNATURE_DB: EntityItem[] = [
 
         miniImages: [
             {
-                id: 'imageId00001',
-                name: 'חתימה של מיקי ברקוביץ\'',
-                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
+                id: 'imageId00033',
+                name: 'חתימה של עומר דבדה',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672585017/signature/signature_3_f9ggdu.png'
             },
         ]
     },
@@ -154,9 +154,14 @@ export const SIGNATURE_DB: EntityItem[] = [
 
         miniImages: [
             {
-                id: 'imageId00001',
-                name: 'חתימה של מיקי ברקוביץ\'',
-                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666785525/signature/signature_1_h8yitn.png'
+                id: 'imageId00034',
+                name: 'חתימה של אריאל כצנלסון',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672585154/signature/signature_4_zd54hc.png'
+            },
+            {
+                id: 'imageId00035',
+                name: 'חתימה של אריאל כצנלסון',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1672585183/signature/signature_5_olcscp.png'
             },
         ]
     },

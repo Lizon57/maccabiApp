@@ -8,7 +8,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     {
         id: makeId(),
         relatedInfo: {
-            branchIds: ['branchId00001'],
+            branchIds: ['branchId00001', 'branchId00002', 'branchId00003', 'branchId00004'],
         },
 
         entityInfo: {
@@ -67,7 +67,9 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                 dateOfActivity: {
                     isActive: true,
                     start: {
-                        year: 2012
+                        day: 31,
+                        month: 12,
+                        year: 2012,
                     }
                 },
             }
@@ -97,6 +99,48 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     {
         id: makeId(),
         relatedInfo: {
+            branchIds: ['branchId00002'],
+        },
+
+        entityInfo: {
+            name: {
+                display: 'אולטראס מכבי 96'
+            },
+            ctgIds: ['categoryId0026', 'categoryId0027', 'categoryId0029'],
+            item: {
+                dateOfActivity: {
+                    isActive: true,
+                    start: {
+                        year: 1996
+                    },
+                },
+            }
+        },
+
+        itemInfo: {
+            view: getRandomInt(40, 1000000),
+            rate: {
+                avg: getRandomInt(0, 5),
+                raterCount: getRandomInt(0, 1000000)
+            },
+            editHistory: {
+                total: getRandomInt(0, 20),
+                lastEditDate: new Date()
+            }
+        },
+
+        miniImages: [
+            {
+                id: 'imageId00013',
+                name: 'אולטראס מכבי 96 - סמל',
+                imageUrl: 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1671985838/crowd-organization/%D7%90%D7%95%D7%9C%D7%98%D7%A8%D7%90%D7%A1_%D7%9E%D7%9B%D7%91%D7%99_96_-_%D7%A1%D7%9E%D7%9C_hiaydd.jpg'
+            },
+        ]
+    },
+
+    {
+        id: makeId(),
+        relatedInfo: {
             branchIds: ['branchId00001'],
         },
 
@@ -110,6 +154,9 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
                     isActive: false,
                     start: {
                         year: 1996
+                    },
+                    end: {
+                        year: 2013
                     }
                 },
             }
@@ -271,6 +318,9 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
             item: {
                 dateOfActivity: {
                     isActive: false,
+                    start: {
+                        year: 2005
+                    },
                     end: {
                         year: 2017
                     }
