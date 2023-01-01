@@ -21,7 +21,7 @@ div.entities-portal--branch-multi-select-filterby-preview__container {
   user-select: none;
   cursor: pointer;
   border-radius: $border-radius-regular-em;
-  border: 1px solid $clr-black-lightest;
+  border: 1px solid $clr-blue-regular;
   font-size: $font-size-xSmall-rem;
   padding-inline: $space-inline-xxSmall-em;
   padding-block: $space-inline-xxxSmall-em;
@@ -34,11 +34,11 @@ div.entities-portal--branch-multi-select-filterby-preview__container {
 
   &.inactive {
     background-color: transparent;
-    color: $clr-black-regular;
+    color: $clr-blue-regular;
 
     &:hover {
-      border-color: $clr-blue-regular;
-      color: $clr-blue-regular;
+      border-color: $clr-blue-darkest;
+      color: $clr-blue-darkest;
     }
   }
 
