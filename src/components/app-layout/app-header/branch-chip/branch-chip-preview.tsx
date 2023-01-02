@@ -9,13 +9,12 @@ export const BranchChipPreview = ({ branch }: BranchProp) => {
     const dispatch = useStoreDispatch()
     const { user } = useStoreSelector(state => state.userModule)
 
-    const getIsActiveBranch = () => user.browseableBranchesIds.includes(branch._id) ? true : false
+    const isActiveBranch = user.browseableBranchesIds.includes(branch._id)
 
     const onBranchClick = () => {
-        let { browseableBranchesIds: activeBranchesIds } = user
+        let activeBranchesIds = user.browseableBranchesIds
         activeBranchesIds = activeBranchesIds.slice()
-        const isActive = getIsActiveBranch()
-        if (isActive) {
+        if (isActiveBranch) {
             activeBranchesIds = activeBranchesIds.filter(branchId => branchId !== branch._id)
         }
         else activeBranchesIds.push(branch._id)
@@ -23,12 +22,12 @@ export const BranchChipPreview = ({ branch }: BranchProp) => {
         dispatch(setActiveBranchesIds(activeBranchesIds))
     }
 
-    const { name: { display: displayName }, asset: { symbol } } = branch
 
+    const { name: { display: displayName }, asset: { symbol } } = branch
 
     return (
         <div
-            className={'app-header--branch-chip__preview-container' + (getIsActiveBranch() ? ' active' : ' inactive')}
+            className={'app-header--branch-chip__preview-container' + (isActiveBranch ? ' active' : ' inactive')}
             onClick={onBranchClick}
             title={`סנן ענף (${displayName})`}>
             <img src={require(`../../../../assets/images/branch-symbol/${symbol}`)} alt={displayName} className="symbol" />
