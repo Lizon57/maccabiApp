@@ -34,6 +34,21 @@ footer.app-layout--app-footer {
         padding-inline: $space-inline-xSmall-rem;
         transition: $transition-regular;
 
+        &:not(:last-of-type) {
+          position: relative;
+
+          &::after {
+            position: absolute;
+            top: 0;
+            // left: -$space-inline-xSmall-rem;
+            left: -9px;
+            content: "";
+            background-color: $clr-white-regular;
+            width: 1px;
+            height: 100%;
+          }
+        }
+
         &:hover {
           color: $clr-yellow-regular;
         }

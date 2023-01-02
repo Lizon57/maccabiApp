@@ -1,12 +1,15 @@
 # AppFooter cmp
 
+![AppFooter example (viewport is smaller than extra small)](https://i.ibb.co/xM9T0VD/Screenshot-2023-01-02-at-17-44-00.png)
+![AppFooter example (viewport is wider than extra small)](https://i.ibb.co/ZhbtpKQ/Screenshot-2023-01-02-at-17-42-43.png)
+
 ## Motivation & Context
 
-AppFooter cmp will provide additional information which is important enought to be in each line, but isn't important enought to bee on AppHeader cmp.
+AppFooter cmp will provide additional information which is important enought to be in each page, but isn't important enought to be on AppHeader cmp.
 
 ## In app use:
 
-Currently, AppFooter should be render only once, as it's fixed element which sticks to app's buttom.
+Currently, AppFooter should be render only once, as it's part of app layout grid.
 
 ## Contains:
 
@@ -14,9 +17,9 @@ AppFooter contains 2 sections:
 
 1.  **Internal app links** - Provides user links to important pages of the app itself:
 
-- Donate money for us.
-- Become an editor.
 - Who are we?
+- Join or donate to maccabipedia.
+- Report a bug.
 
 2.  **Social networks links** - Provides user links to our social networks pages:
 
