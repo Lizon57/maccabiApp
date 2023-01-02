@@ -9,9 +9,9 @@ The container takes the sides of content place, and grows / shrink according to 
 
 Currently, AppAditionalContent renders twice:
 
-- At block-start with some page data (TOC, for example)
-- At block-end with some app data (Scroll to top btn, for example)
+- At block-start (at Hebrew - right sided).
+- At block-end (at Hebrew - left sided).
 
-## Contains:
+## Props:
 
-AppAditionalContent accept JSX element as a props.child, which will be render whitin the container
+AppAditionalContent accept JSX element as a props.child, which will be render whitin the container.

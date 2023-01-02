@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-
 import { useStoreSelector } from "../../../hooks/store/use-store-selector"
 import { useWindowSize } from "../../../hooks/use-window-size"
 import { useWindowScrollY } from "../../../hooks/use-window-scroll-y"
@@ -8,20 +7,17 @@ import { useWindowScrollY } from "../../../hooks/use-window-scroll-y"
 export const AppAdditionalContent = ({ isBlockEnd = false, children }: Props) => {
     const { appFooterClientHeight } = useStoreSelector(state => state.appLayout)
     const scrollY = useWindowScrollY()
-    const WINDOW_HEIGHT = useWindowSize().height
-    const CONTENT_HEIGHT = document.body.offsetHeight
+    const windowHeight = useWindowSize().height
+    const contentHeight = document.body.offsetHeight
 
     useEffect(() => {
-        let appFooterPixelsInViewPort = 0
+        let appFooterPixelsInViewPort = contentHeight - windowHeight - scrollY - appFooterClientHeight
 
-        if (((CONTENT_HEIGHT - WINDOW_HEIGHT - scrollY - appFooterClientHeight) * -1) <= 0) {
-            appFooterPixelsInViewPort = 0;
-        } else {
-            appFooterPixelsInViewPort = (CONTENT_HEIGHT - WINDOW_HEIGHT - scrollY - appFooterClientHeight) * -1
-        }
+        if ((appFooterPixelsInViewPort * -1) < 0) appFooterPixelsInViewPort = 0
+        else appFooterPixelsInViewPort *= -1
 
         document.documentElement.style.setProperty('--app-additional-content-app-footer-in-view', `${appFooterPixelsInViewPort}px`)
-    }, [scrollY, WINDOW_HEIGHT, CONTENT_HEIGHT, appFooterClientHeight])
+    }, [scrollY, windowHeight, contentHeight, appFooterClientHeight])
 
 
     return (
