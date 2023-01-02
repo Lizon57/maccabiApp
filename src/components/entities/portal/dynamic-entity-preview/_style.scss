@@ -1,5 +1,7 @@
 div.dynamic-entity-preview--square-entity-preview__container {
   overflow: hidden;
+  border-radius: $border-radius-regular-rem;
+  border: 1px solid $clr-white-darkest;
 
   &:hover div.image-container span.like-icon {
     color: $clr-yellow-regular;
@@ -35,6 +37,7 @@ div.dynamic-entity-preview--square-entity-preview__container {
     div.image-container {
       flex-grow: 1;
       position: relative;
+      justify-self: center;
 
       span.like-icon {
         position: absolute;
