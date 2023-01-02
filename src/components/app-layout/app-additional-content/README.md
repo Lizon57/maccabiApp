@@ -1,4 +1,4 @@
-# AppAditionalContent cmp
+# AppAdditionalContent cmp
 
 ## Motivation & Context
 
