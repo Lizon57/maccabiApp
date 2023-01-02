@@ -1,4 +1,4 @@
-div.app-data--message__list-container {
+section.app-data--message__list-container {
   display: flex;
   flex-direction: column;
 
@@ -24,7 +24,7 @@ div.app-data--message__list-container {
   }
 }
 
-div.app-data--message__preview-container {
+article.app-data--message__preview-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;

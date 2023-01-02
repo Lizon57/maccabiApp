@@ -5,35 +5,33 @@ import { FaHandPointLeft } from "react-icons/fa"
 import { AppMessage } from "../../../../types/app-message"
 
 
-const getIcon = (type: string) => {
-    switch (type) {
-        case 'success':
-            return <BsEmojiSmile />
-
-        case 'fail':
-            return <BsEmojiFrown />
-
-        case 'message':
-            return <FaHandPointLeft />
-
-        default: return
-    }
+const ICON_BY_TYPE_MAP: IconMap = {
+    success: <BsEmojiSmile />,
+    fail: <BsEmojiFrown />,
+    message: <FaHandPointLeft />
 }
 
 
 export const AppMessagePreview = ({ message }: Props) => {
+    const { type, title, text } = message
+    const icon = ICON_BY_TYPE_MAP[type]
+
     return (
-        <div className="app-data--message__preview-container">
-            <div className={"preview-title " + message.type}>
-                <span className="type-icon">{getIcon(message.type)}</span>
-                <span className="title">{message.title}</span>
+        <article className="app-data--message__preview-container">
+            <div className={'preview-title ' + type}>
+                <span className="type-icon">{icon}</span>
+                <span className="title">{title}</span>
             </div>
-            <div className="preview-text">{message.text}</div>
-        </div>
+            <div className="preview-text">{text}</div>
+        </article>
     )
 }
 
 
 type Props = {
     message: AppMessage
+}
+
+type IconMap = {
+    [key: string]: JSX.Element
 }

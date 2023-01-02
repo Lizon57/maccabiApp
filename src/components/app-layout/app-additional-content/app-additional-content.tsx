@@ -13,10 +13,9 @@ export const AppAdditionalContent = ({ isBlockEnd = false, children }: Props) =>
     useEffect(() => {
         let appFooterPixelsInViewPort = contentHeight - windowHeight - scrollY - appFooterClientHeight
 
-        if ((appFooterPixelsInViewPort * -1) < 0) appFooterPixelsInViewPort = 0
-        else appFooterPixelsInViewPort *= -1
+        appFooterPixelsInViewPort *= (appFooterPixelsInViewPort * -1 < 0) ? 0 : -1
 
-        document.documentElement.style.setProperty('--app-additional-content-app-footer-in-view', `${appFooterPixelsInViewPort}px`)
+        document.documentElement.style.setProperty('--app-additional-content-app-footer-in-view', appFooterPixelsInViewPort + 'px')
     }, [scrollY, windowHeight, contentHeight, appFooterClientHeight])
 
 
