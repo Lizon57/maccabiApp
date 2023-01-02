@@ -19,17 +19,17 @@ export const CategoryLinkPreview = ({ child }: Props) => {
 
 type Props = {
     child: {
-        id: string,
-        text: string,
+        id: string
+        text: string
         childrens: childrenType[]
     }
 }
 
 type childrenType = {
-    id?: string,
-    title: string,
-    description: string,
-    path: string,
-    img: string,
+    id?: string
+    title: string
+    description: string
+    path: string
+    img: string
     isDisabled?: boolean
 }

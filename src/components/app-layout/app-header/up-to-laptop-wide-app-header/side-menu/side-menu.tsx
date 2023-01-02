@@ -18,8 +18,8 @@ export const SideMenu = ({ isNavOpen, currentCategoryOpen, setCurrentCategoryOpe
 }
 
 type Props = {
-    isNavOpen: boolean,
-    currentCategoryOpen: string,
-    setCurrentCategoryOpen: React.Dispatch<React.SetStateAction<string>>,
+    isNavOpen: boolean
+    currentCategoryOpen: string
+    setCurrentCategoryOpen: React.Dispatch<React.SetStateAction<string>>
     onCloseMenu: () => void
 }

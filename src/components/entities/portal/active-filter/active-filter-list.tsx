@@ -33,6 +33,6 @@ export const ActiveFilterList = ({ possibleFiilters, setIsLoading }: Props) => {
 
 
 type Props = {
-    possibleFiilters: EntityFilterOption[],
+    possibleFiilters: EntityFilterOption[]
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

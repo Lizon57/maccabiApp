@@ -60,13 +60,13 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
 
 type Props = {
     pickerInfo: {
-        type: string,
+        type: string
         title: string
-        key: string,
-        isRequire: boolean,
+        key: string
+        isRequire: boolean
 
         option?: {
-            min?: number,
+            min?: number
             max?: number
         }
     }

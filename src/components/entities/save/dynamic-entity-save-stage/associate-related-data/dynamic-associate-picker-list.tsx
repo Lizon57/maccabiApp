@@ -30,11 +30,11 @@ export const DynamicAssociatePickerList = ({ relateds }: Props) => {
 
 
 type Related = {
-    type: string,
+    type: string
     isRequire: boolean
 }
 
 
 type Props = {
-    relateds: Related[],
+    relateds: Related[]
 }

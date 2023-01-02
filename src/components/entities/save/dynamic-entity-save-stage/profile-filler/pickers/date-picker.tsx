@@ -92,8 +92,8 @@ type Props = {
 
 
 type PickerInfo = {
-    type: string,
+    type: string
     title: string
-    key: string,
+    key: string
     isRequire: boolean
 }

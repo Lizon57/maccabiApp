@@ -1,4 +1,4 @@
 export type EntitySortParam = {
-    sKey?: string,
+    sKey?: string
     sOrder?: string
 }

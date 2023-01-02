@@ -16,5 +16,5 @@ export const DynamicFilterConstructor = ({ toggleIsFilterSectionOpen }: Props) =
 
 
 type Props = {
-    toggleIsFilterSectionOpen: () => void,
+    toggleIsFilterSectionOpen: () => void
 }

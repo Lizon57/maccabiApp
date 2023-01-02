@@ -37,9 +37,9 @@ export const Slider = ({ min, max, values, type, setValue }: Props) => {
 
 
 type Props = {
-    min: number,
-    max: number,
-    values: number[],
-    type: number,
+    min: number
+    max: number
+    values: number[]
+    type: number
     setValue: (values: number[]) => void
 }

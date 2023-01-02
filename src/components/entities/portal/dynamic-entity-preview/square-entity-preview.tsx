@@ -74,7 +74,7 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
 
 
 type Props = {
-    item: EntityItem,
+    item: EntityItem
     fallbackImgUrl: string
 }
 

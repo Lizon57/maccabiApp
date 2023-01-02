@@ -72,9 +72,9 @@ export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx,
 
 
 type Props = {
-    stages: EntitySaveItemStage[],
-    stagesStatus: boolean[],
-    currStageIdx: number,
-    changeCurrStageIdx: (idx: number) => void,
+    stages: EntitySaveItemStage[]
+    stagesStatus: boolean[]
+    currStageIdx: number
+    changeCurrStageIdx: (idx: number) => void
     saveItem: () => Promise<void>
 }

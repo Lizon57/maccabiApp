@@ -42,10 +42,10 @@ export const Track = ({ props, children, values, min, max, type }: Props) => {
 
 
 type Props = {
-    props: any,
-    values: number[],
-    min: number,
+    props: any
+    values: number[]
+    min: number
     max: number
-    type: number,
-    children: React.ReactNode,
+    type: number
+    children: React.ReactNode
 }

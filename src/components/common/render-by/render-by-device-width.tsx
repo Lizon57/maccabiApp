@@ -68,9 +68,9 @@ export const RenderByDeviceWidth = ({ children, minDeviceWide, maxDeviceWide, is
 
 
 type Props = {
-    minDeviceWide?: device,
-    maxDeviceWide?: device,
-    isInclusive?: boolean,
+    minDeviceWide?: device
+    maxDeviceWide?: device
+    isInclusive?: boolean
     children: JSX.Element
 }
 

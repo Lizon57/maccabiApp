@@ -53,10 +53,10 @@ export const SymbolSeperateList = ({ pickerInfo }: Props) => {
 
 type Props = {
     pickerInfo: {
-        type: string,
+        type: string
         title: string
-        key: string,
-        isRequire: boolean,
+        key: string
+        isRequire: boolean
 
         option?: {
             delimiter?: string

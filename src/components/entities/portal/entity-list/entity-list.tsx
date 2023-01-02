@@ -29,6 +29,6 @@ export const EntityList = ({ entity, items }: Props) => {
 
 
 type Props = {
-    entity: Entity,
-    items: EntityItem[],
+    entity: Entity
+    items: EntityItem[]
 }

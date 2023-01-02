@@ -14,6 +14,6 @@ export const BranchMultiSelectFilterby = ({ filter, debouncedSetIsLoading }: Pro
 
 
 type Props = {
-    filter: EntityFilterOption,
+    filter: EntityFilterOption
     debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

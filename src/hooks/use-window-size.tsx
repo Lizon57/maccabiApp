@@ -23,6 +23,6 @@ export const useWindowSize = (): viewportSize => {
 
 
 type viewportSize = {
-    width: number,
+    width: number
     height: number
 }

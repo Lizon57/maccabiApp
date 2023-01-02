@@ -1,6 +1,6 @@
 export type AppMessage = {
-    id?: string,
-    type: string,
-    title: string,
+    id?: string
+    type: string
+    title: string
     text: string
 }

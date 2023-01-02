@@ -17,9 +17,9 @@ export const UploadedImagePreview = ({ image, onRemoveImage }: Props) => {
 
 type Props = {
     image: {
-        id: string,
-        name: string,
+        id: string
+        name: string
         imageUrl: string
     }
-    onRemoveImage: (id: string) => void,
+    onRemoveImage: (id: string) => void
 }

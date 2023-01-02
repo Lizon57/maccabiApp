@@ -79,6 +79,6 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
 
 type Props = {
-    filter: EntityFilterOption,
+    filter: EntityFilterOption
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

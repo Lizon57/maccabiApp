@@ -63,6 +63,6 @@ export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
 
 
 type Props = {
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
     sorts: EntitySortOption[]
 }

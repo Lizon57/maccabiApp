@@ -1,8 +1,8 @@
 export type BranchType = {
-    _id: string,
+    _id: string
     name: {
         display: string
-    },
+    }
     asset: {
         symbol: string
     }

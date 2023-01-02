@@ -34,6 +34,6 @@ export const DynamicEntitySaveStage = ({ stage, entityName }: Props) => {
 
 
 type Props = {
-    stage: EntitySaveItemStage,
+    stage: EntitySaveItemStage
     entityName: string
 }

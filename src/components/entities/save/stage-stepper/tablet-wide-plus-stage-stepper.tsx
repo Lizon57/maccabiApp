@@ -32,8 +32,8 @@ export const TabletWidePlusStageStepper = ({ stages, stagesStatus, currStageIdx,
 
 
 type Props = {
-    stages: EntitySaveItemStage[],
-    stagesStatus: boolean[],
-    currStageIdx: number,
+    stages: EntitySaveItemStage[]
+    stagesStatus: boolean[]
+    currStageIdx: number
     changeCurrStageIdx: (idx: number) => void
 }

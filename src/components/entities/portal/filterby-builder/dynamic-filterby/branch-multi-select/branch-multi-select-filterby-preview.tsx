@@ -15,7 +15,7 @@ export const BranchMultiSelectFilterbyPreview = ({ branch, isActive, toggleActiv
 }
 
 type Props = {
-    branch: BranchType,
-    isActive: boolean,
+    branch: BranchType
+    isActive: boolean
     toggleActiveBranch: (id: string) => void
 }

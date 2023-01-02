@@ -33,19 +33,19 @@ export const NavListPreview = ({ category, currentCategoryOpen, onCloseMenu, set
 
 type Props = {
     category: {
-        id: string,
-        text: string,
+        id: string
+        text: string
         childrens: navLink[]
     },
-    currentCategoryOpen: string,
-    onCloseMenu: () => void,
+    currentCategoryOpen: string
+    onCloseMenu: () => void
     setCurrentCategoryOpen: React.Dispatch<React.SetStateAction<string>>
 }
 
 type navLink = {
-    id: string,
-    title: string,
-    description: string,
-    path: string,
+    id: string
+    title: string
+    description: string
+    path: string
     img: string
 }

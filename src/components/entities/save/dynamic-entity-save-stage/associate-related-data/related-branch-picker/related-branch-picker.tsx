@@ -127,10 +127,10 @@ type Props = {
 
 
 type Option = {
-    label: string,
+    label: string
     value: {
-        id: string,
-        name: string,
+        id: string
+        name: string
         img: string
     }
 }

@@ -30,8 +30,8 @@ export const Dropdown = ({ controllerText, controllerIcon: Icon, title, children
 
 
 type Props = {
-    controllerText?: string,
-    controllerIcon?: IconType,
-    title?: string,
-    children: JSX.Element,
+    controllerText?: string
+    controllerIcon?: IconType
+    title?: string
+    children: JSX.Element
 }

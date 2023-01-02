@@ -1,18 +1,18 @@
 export type EntityFilterOption = {
-    id: string,
-    type: string,
-    key: string,
-    param: string,
-    title: string,
+    id: string
+    type: string
+    key: string
+    param: string
+    title: string
 
     activeFilterChip: {
-        type: string,
+        type: string
         text: string
-    },
+    }
 
     option?: {
-        isLengthProp?: boolean,
-        min?: number,
+        isLengthProp?: boolean
+        min?: number
         max?: number
     }
 }

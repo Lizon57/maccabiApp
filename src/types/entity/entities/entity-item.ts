@@ -2,93 +2,93 @@ import { MiniPageCategory } from "../../page-category"
 
 
 export interface EntityItem {
-    id: string,
+    id: string
 
     relatedInfo?: {
-        profileImageId?: string,
+        profileImageId?: string
         miniProfile?: {
-            profileId: string,
-            displayName: string,
+            profileId: string
+            displayName: string
             profileImageUrl?: string
         },
-        branchIds: string[],
+        branchIds: string[]
     },
 
     entityInfo: {
         name: {
             display: string
             he?: {
-                private?: string,
-                middle?: string,
-                family?: string,
+                private?: string
+                middle?: string
+                family?: string
                 nickname?: string
             }
-        },
-        ctgIds: string[],
-        miniCategories?: MiniPageCategory[],
+        }
+        ctgIds: string[]
+        miniCategories?: MiniPageCategory[]
         item?: {
-            writers?: string[],
-            publishers?: string[],
-            pageCount?: number,
-            publishYear?: number,
-            isBiography?: boolean,
+            writers?: string[]
+            publishers?: string[]
+            pageCount?: number
+            publishYear?: number
+            isBiography?: boolean
 
             dateOfActivity?: {
-                isActive?: boolean,
+                isActive?: boolean
                 start?: {
-                    day?: number,
-                    month?: number,
-                    year?: number,
+                    day?: number
+                    month?: number
+                    year?: number
                 },
                 end?: {
-                    day?: number,
-                    month?: number,
-                    year?: number,
+                    day?: number
+                    month?: number
+                    year?: number
                 }
-            },
-        },
-        imageUrl?: string,
+            }
+        }
+        imageUrl?: string
         lifetime?: {
             born?: {
-                date?: Date,
+                date?: Date
 
                 uncomplete?: {
-                    year?: number,
-                    month?: number,
-                    day?: number,
+                    year?: number
+                    month?: number
+                    day?: number
                 }
             },
 
             died?: {
-                date?: Date,
+                date?: Date
 
                 uncomplete?: {
-                    year?: number,
-                    month?: number,
-                    day?: number,
+                    year?: number
+                    month?: number
+                    day?: number
                 }
             },
 
             bornLocation?: {
-                city?: string,
-                reguion?: string,
+                city?: string
+                reguion?: string
                 country?: string
             }
-        },
-    },
+        }
+    }
 
     itemInfo: {
-        view: number,
+        view: number
         rate: {
-            avg: number,
+            avg: number
             raterCount: number
         },
         editHistory: {
-            total: number,
+            total: number
             lastEditDate: Date
         }
     }
 
-    images?: string[],
+    images?: string[]
     miniImages?: { id: string, name: string, imageUrl: string }[]
 }

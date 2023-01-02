@@ -39,9 +39,9 @@ export const ImageSlider = ({ images, fallbackImgUrl }: Props) => {
 
 type Props = {
     images: {
-        id: string,
-        name: string,
-        imageUrl: string,
-    }[],
+        id: string
+        name: string
+        imageUrl: string
+    }[]
     fallbackImgUrl?: string
 }

@@ -8,48 +8,48 @@ import { EntityItem } from "./entities/entity-item"
 
 
 export type Entity = {
-    id: string,
+    id: string
 
-    name: string,
+    name: string
 
     dbInfo: {
-        name: string,
+        name: string
         fallbackDB: EntityItem[]
-    },
+    }
 
     entityInfo: {
         name: {
-            display: string,
+            display: string
             listTitle: string
         },
         description: {
-            short: string,
+            short: string
             full: string
         },
         image: {
             thumbnail: {
-                path: string,
+                path: string
                 title: string
             },
-            imagePath: string,
+            imagePath: string
             icon: IconType
         }
-    },
+    }
 
     detailsPageInfo: {
-        type: string,
+        type: string
 
         structure?: {
-            head?: EntityDetailsStuctureCmp[],
+            head?: EntityDetailsStuctureCmp[]
             additional?: EntityDetailsStuctureCmp[]
         }
-    },
+    }
 
     listPageInfo: {
-        previewType: string,
-        sorts: EntitySortOption[],
+        previewType: string
+        sorts: EntitySortOption[]
         filters: EntityFilterOption[]
-    },
+    }
 
     saveItemPage: {
         stages: EntitySaveItemStage[]

@@ -173,6 +173,6 @@ export const filterEntityService = {
 
 
 type OptionalFilter = {
-    primaryFilter?: EntityFilterOption | undefined,
+    primaryFilter?: EntityFilterOption | undefined
     filters?: EntityFilterOption[] | undefined
 }

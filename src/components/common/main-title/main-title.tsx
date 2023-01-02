@@ -15,8 +15,8 @@ export const MainTitle = ({ text, isSticky = false, Icon, additionalCmp }: Props
 
 
 type Props = {
-    text: string,
-    isSticky?: boolean,
-    Icon?: IconType,
+    text: string
+    isSticky?: boolean
+    Icon?: IconType
     additionalCmp?: JSX.Element
 }

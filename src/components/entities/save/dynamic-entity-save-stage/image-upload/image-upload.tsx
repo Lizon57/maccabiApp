@@ -139,7 +139,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
 
 
 type Props = {
-    entityName: string,
-    minImageCount?: number,
+    entityName: string
+    minImageCount?: number
     maxImageCount?: number
 }

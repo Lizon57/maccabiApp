@@ -1,5 +1,5 @@
 export type PageCategory = {
-    id: string,
+    id: string
 
     name: {
         display: string
@@ -8,7 +8,7 @@ export type PageCategory = {
 
 
 export type MiniPageCategory = {
-    id: string,
+    id: string
 
     name: {
         display: string

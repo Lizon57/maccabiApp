@@ -175,11 +175,11 @@ type Props = {
 
 
 type ProfileOption = {
-    label: string,
+    label: string
     value: {
-        id: string,
-        name: string,
-        branchIds: string[],
+        id: string
+        name: string
+        branchIds: string[]
         profileImageUrl: string
     }
 }

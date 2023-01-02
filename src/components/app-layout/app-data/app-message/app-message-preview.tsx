@@ -35,5 +35,5 @@ export const AppMessagePreview = ({ message }: Props) => {
 
 
 type Props = {
-    message: AppMessage,
+    message: AppMessage
 }

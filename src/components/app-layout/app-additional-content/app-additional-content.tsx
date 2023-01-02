@@ -35,6 +35,6 @@ export const AppAdditionalContent = ({ isBlockEnd = false, children }: Props) =>
 
 
 type Props = {
-    isBlockEnd?: boolean,
-    children: JSX.Element,
+    isBlockEnd?: boolean
+    children: JSX.Element
 }

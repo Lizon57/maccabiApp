@@ -26,6 +26,6 @@ export const DisplayBranchesIconByIds = ({ ids, className }: Props) => {
 
 
 type Props = {
-    ids: string[],
+    ids: string[]
     className?: string
 }

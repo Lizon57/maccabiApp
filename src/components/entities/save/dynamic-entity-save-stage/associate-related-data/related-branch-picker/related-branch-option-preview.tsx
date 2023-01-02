@@ -10,7 +10,7 @@ export const RelatedBranchOptionPreview = ({ option }: Props) => {
 
 type Props = {
     option: {
-        name: string,
+        name: string
         img: string
     }
 }

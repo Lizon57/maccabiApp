@@ -10,8 +10,8 @@ export const ImagePreview = ({ miniImage }: Props) => {
 
 type Props = {
     miniImage: {
-        id: string,
-        name: string,
+        id: string
+        name: string
         imageUrl: string
     }
 }

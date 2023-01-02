@@ -28,9 +28,9 @@ export const RelatedProfileOptionPreview = ({ option }: Props) => {
 
 type Props = {
     option: {
-        id: string,
-        name: string,
-        branchIds: string[],
+        id: string
+        name: string
+        branchIds: string[]
         profileImageUrl: string
     }
 }

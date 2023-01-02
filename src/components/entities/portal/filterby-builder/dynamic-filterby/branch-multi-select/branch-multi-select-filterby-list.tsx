@@ -61,6 +61,6 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
 
 
 type Props = {
-    filterParam: string,
+    filterParam: string
     debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

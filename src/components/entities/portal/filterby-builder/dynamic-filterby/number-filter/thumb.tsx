@@ -12,8 +12,8 @@ export const Thumb = ({ index, props, isDragged, values }: Props) => {
 
 
 type Props = {
-    index: number,
-    props: any,
+    index: number
+    props: any
     isDragged: boolean
     values: number[]
 }

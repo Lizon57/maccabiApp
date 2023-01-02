@@ -31,19 +31,19 @@ export const ProfileFiller = ({ infos }: Props) => {
 
 
 type Info = {
-    type: string,
+    type: string
     title: string
-    key: string,
-    isRequire: boolean,
+    key: string
+    isRequire: boolean
 
     option?: {
-        delimiter?: string,
-        min?: number,
+        delimiter?: string
+        min?: number
         max?: number
     }
 }
 
 
 type Props = {
-    infos: Info[],
+    infos: Info[]
 }

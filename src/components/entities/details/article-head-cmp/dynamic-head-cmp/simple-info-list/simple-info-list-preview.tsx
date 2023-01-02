@@ -42,9 +42,9 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
 
 type Props = {
     info: {
-        type: string,
-        title: string,
+        type: string
+        title: string
         value: string
-    },
+    }
     item: EntityItem
 }

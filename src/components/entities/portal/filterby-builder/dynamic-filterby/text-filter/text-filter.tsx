@@ -77,6 +77,6 @@ export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
 type Props = {
-    filter: EntityFilterOption,
+    filter: EntityFilterOption
     debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

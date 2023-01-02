@@ -15,7 +15,7 @@ export const DynamicEntityPreview = ({ item, type, fallbackImgUrl }: Props) => {
 
 
 type Props = {
-    item: EntityItem,
-    type: string,
+    item: EntityItem
+    type: string
     fallbackImgUrl: string
 }

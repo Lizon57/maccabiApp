@@ -51,9 +51,9 @@ export const OptionsList = ({ sorts, filters, isFilterSectionOpen, setIsLoading,
 
 
 type Props = {
-    sorts: EntitySortOption[],
-    filters: EntityFilterOption[],
-    isFilterSectionOpen: boolean,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-    toggleIsFilterSectionOpen: () => void,
+    sorts: EntitySortOption[]
+    filters: EntityFilterOption[]
+    isFilterSectionOpen: boolean
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    toggleIsFilterSectionOpen: () => void
 }

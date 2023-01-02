@@ -142,9 +142,13 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
 type Props = {
-    filter: EntityFilterOption,
+    filter: EntityFilterOption
     debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
-type PossibleValue = { day: number | undefined, month: number | undefined, year: number | undefined }
+type PossibleValue = {
+    day: number | undefined
+    month: number | undefined
+    year: number | undefined
+}

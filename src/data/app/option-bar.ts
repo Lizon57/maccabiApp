@@ -99,16 +99,16 @@ export const OPTION_BAR: option[] = [
 
 type option = {
     id: string,
-    icon: IconType,
-    title: string,
+    icon: IconType
+    title: string
     childrens: link[]
 }
 
 
 type link = {
-    id: string,
-    text: string,
-    path: string,
+    id: string
+    text: string
+    path: string
     isRelative: boolean
     restrictions?: string[]
 }

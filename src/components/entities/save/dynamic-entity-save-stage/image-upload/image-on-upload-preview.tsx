@@ -63,8 +63,8 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
 
 
 type Props = {
-    file: File,
-    entityName: string,
-    onUploadSuccess: (image: EntityItem, file: File) => void,
+    file: File
+    entityName: string
+    onUploadSuccess: (image: EntityItem, file: File) => void
     onUploadFail: (file: File) => void
 }

@@ -38,7 +38,7 @@ export const SearchInput = ({ placeholder, title, initialValue, searchCallback }
 
 type Props = {
     placeholder?: string
-    title: string,
-    initialValue?: string,
+    title: string
+    initialValue?: string
     searchCallback?: (str: string) => void
 }

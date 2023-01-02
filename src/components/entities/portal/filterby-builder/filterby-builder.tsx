@@ -19,6 +19,6 @@ export const FilterbyBuilder = ({ filters, debouncedSetIsLoading }: Props) => {
 
 
 type Props = {
-    filters: EntityFilterOption[],
+    filters: EntityFilterOption[]
     debouncedSetIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

@@ -16,6 +16,6 @@ export const CategoryLinkList = ({ relevant, isLeftSided }: Props) => {
 
 
 type Props = {
-    relevant: number[],
+    relevant: number[]
     isLeftSided?: boolean
 }

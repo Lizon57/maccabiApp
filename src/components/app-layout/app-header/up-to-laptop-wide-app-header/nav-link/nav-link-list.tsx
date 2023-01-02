@@ -19,7 +19,7 @@ export const NavLinkList = ({ currentCategoryOpen, setCurrentCategoryOpen, onClo
 
 
 type Props = {
-    currentCategoryOpen: string,
-    setCurrentCategoryOpen: React.Dispatch<React.SetStateAction<string>>,
+    currentCategoryOpen: string
+    setCurrentCategoryOpen: React.Dispatch<React.SetStateAction<string>>
     onCloseMenu: () => void
 }
