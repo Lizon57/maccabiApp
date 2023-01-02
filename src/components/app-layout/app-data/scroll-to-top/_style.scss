@@ -31,8 +31,8 @@ div.app-data--scrol-to-top__container {
     color: $clr-yellow-regular;
   }
 
-  &.deactive {
-    transform: translate(-100vh);
+  &.hide {
+    transform: translate(-50vmax);
   }
 
   svg {

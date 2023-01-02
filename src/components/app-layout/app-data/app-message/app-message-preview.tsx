@@ -17,7 +17,7 @@ export const AppMessagePreview = ({ message }: Props) => {
     const icon = ICON_BY_TYPE_MAP[type]
 
     return (
-        <article className="app-data--message__preview-container">
+        <article className="app-data--message__preview-container" title={title}>
             <div className={'preview-title ' + type}>
                 <span className="type-icon">{icon}</span>
                 <span className="title">{title}</span>
