@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { AppMessage } from "../../types/app-message"
+import { AppMessage } from "../../types/app/app-message"
 
 
 interface AppState {

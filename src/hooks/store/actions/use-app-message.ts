@@ -1,7 +1,7 @@
 import { useStoreDispatch } from "../use-store-dispatch"
 import { deleteAppMessage, insertAppMessage } from "../../../store/slicer/app-state-slicer"
 
-import { AppMessage } from "../../../types/app-message"
+import { AppMessage } from "../../../types/app/app-message"
 
 import { makeId } from "../../../services/util/make-id"
 

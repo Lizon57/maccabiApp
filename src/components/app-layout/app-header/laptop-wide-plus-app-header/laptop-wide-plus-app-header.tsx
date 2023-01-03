@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import squareLogo from "../../../../assets/images/square-logo.png"
 import { AppOptionBar } from "../../app-option-bar/app-option-bar"
 import { BranchChipList } from "../branch-chip/branch-chip-list"
-import { CategoryLinkList } from "../category-link/category-link-list"
+import { CategoryLinkList } from "./category-link/category-link-list"
 import { AppSearch } from "../app-search/app-search"
 
 

@@ -7,31 +7,7 @@ import { setAppFooterClientHeight } from "../../../store/slicer/app-layout-slice
 
 import { useOnWindowResize } from "../../../hooks/use-on-window-resize"
 
-import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
-
-
-const SOCIAL_NETWORKS = [
-    {
-        name: 'פייסבוק',
-        icon: FaFacebookSquare,
-        path: 'https://www.facebook.com/MaccabiPedia'
-    },
-    {
-        name: 'טוויטר',
-        icon: FaTwitterSquare,
-        path: 'https://twitter.com/MaccabiPedia'
-    },
-    {
-        name: 'אינסטגרם',
-        icon: FaInstagramSquare,
-        path: 'https://www.instagram.com/maccabipedia/'
-    },
-    {
-        name: 'יוטיוב',
-        icon: FaYoutubeSquare,
-        path: 'https://www.youtube.com/channel/UCxnAYpW-2OJUXbrSil5EeQQ'
-    },
-]
+import { SOCIAL_NETWORKS } from "../../../constans/social-networks"
 
 
 export const AppFooter = () => {

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 
+import { CategoryLink } from "../../../../../types/app/app-category-links"
+
 import { FiTriangle } from "react-icons/fi"
 
 
@@ -32,20 +34,8 @@ export const NavListPreview = ({ category, currentCategoryOpen, onCloseMenu, set
 
 
 type Props = {
-    category: {
-        id: string
-        text: string
-        childrens: navLink[]
-    },
+    category: CategoryLink
     currentCategoryOpen: string
     onCloseMenu: () => void
     setCurrentCategoryOpen: React.Dispatch<React.SetStateAction<string>>
-}
-
-type navLink = {
-    id: string
-    title: string
-    description: string
-    path: string
-    img: string
 }

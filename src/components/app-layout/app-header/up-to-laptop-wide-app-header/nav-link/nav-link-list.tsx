@@ -1,5 +1,4 @@
-
-import { CATEGORY_LINKS } from "../../../../../data/app/app-header-category-links"
+import { CATEGORY_LINKS } from "../../../../../constans/app-category-links"
 import { NavListPreview } from "./nav-list-preview"
 
 

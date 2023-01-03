@@ -2,7 +2,7 @@ import { BsEmojiSmile } from "react-icons/bs"
 import { BsEmojiFrown } from "react-icons/bs"
 import { FaHandPointLeft } from "react-icons/fa"
 
-import { AppMessage } from "../../../../types/app-message"
+import { AppMessage } from "../../../../types/app/app-message"
 
 
 const ICON_BY_TYPE_MAP: IconMap = {
