@@ -2,24 +2,25 @@ import { branchService } from "../../../services/app/branch-service"
 
 
 export const DisplayBranchesIconByIds = ({ ids, className }: Props) => {
-    const BRANCHES = branchService.getByIds(ids)
-    const primaryBranch = BRANCHES[0]
-    const shouldRenderAdditionalBranchList = (BRANCHES.length >= 2 ? true : false)
+    const branches = branchService.getByIds(ids)
+    const { asset: { symbol: primaryBranchSymbol }, name: { display: primaryBranchDisplayName } } = branches[0]
+    const shouldRenderAdditionalBranchList = (branches.length >= 2) ? true : false
 
     const formatter = new Intl.ListFormat('he', { style: 'long', type: 'conjunction' })
-    const branchesNameList = formatter.format(BRANCHES.map(branch => branch.name.display))
+    const branchesNameList = formatter.format(branches.map(branch => branch.name.display))
 
 
     return (
         <div
             className={'branch-icon--display-branch-icon-by-id ' + className}
-            title={`מתוך ${branchesNameList}`}>
+            title={`מתוך ${branchesNameList}`}
+        >
             <img
-                src={require(`../../../assets/images/branch-symbol/${primaryBranch.asset.symbol}`)}
-                alt={primaryBranch.name.display}
+                src={require(`../../../assets/images/branch-symbol/${primaryBranchSymbol}`)}
+                alt={primaryBranchDisplayName}
             />
 
-            {shouldRenderAdditionalBranchList && <span className="additional-branch">{BRANCHES.length - 1}</span>}
+            {shouldRenderAdditionalBranchList && <span className="additional-branch">{branches.length - 1}</span>}
         </div>
     )
 }
