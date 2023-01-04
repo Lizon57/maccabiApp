@@ -12,13 +12,16 @@ import { OPTION_BAR } from "../../../data/app/option-bar"
 export const AppOptionBar = () => {
     const [selectOption, setSelectOption] = useState('')
     const dispatch = useStoreDispatch()
-    const optionBarRef = useRef<HTMLDivElement>(null)
+
+    const elOptionBar = useRef<HTMLDivElement>(null)
     const location = useLocation()
-    const WINDOW_WIDTH = useWindowSize().width
+    const { width: windowWidth } = useWindowSize()
+
+    const isLargeScreen = (windowWidth > 550)
+
 
     const onCloseOption = () => {
-        if (WINDOW_WIDTH > 550) return
-        setSelectOption('')
+        if (!isLargeScreen) setSelectOption('')
     }
 
     const onOpenOption = (option: string) => {
@@ -27,32 +30,35 @@ export const AppOptionBar = () => {
     }
 
     const onIconClick = (option: string) => {
-        if (WINDOW_WIDTH > 550) return
+        if (isLargeScreen) return
         selectOption === option ? onCloseOption() : onOpenOption(option)
     }
 
-    useOnClickOutside(optionBarRef, onCloseOption)
+    useOnClickOutside(elOptionBar, onCloseOption)
+
 
     return (
-        <div className="app-layout--app-option-bar__container" ref={optionBarRef}>
+        <div className="app-layout--app-option-bar__container" ref={elOptionBar}>
             <ul className="options-list-container">
                 {OPTION_BAR.map(option => {
+                    const { id, title, icon: Icon } = option
                     return (
-                        <li key={option.id} className="category-container">
+                        <li key={id} className="category-container">
                             <span className="icon-wrapper">
-                                <option.icon onClick={() => onIconClick(option.title)} />
+                                <Icon onClick={() => onIconClick(title)} />
                             </span>
                             <ul
-                                className={'links-list-container' + (selectOption === option.title ? ' open' : '')}
+                                className={'links-list-container' + (selectOption === title ? ' open' : '')}
                             >
                                 {option.childrens.map(link => {
+                                    const { isRelative, path, text } = link
                                     return (
                                         <li key={link.id} className="link-container">
                                             <Link
-                                                to={link.isRelative ? location.pathname + link.path : link.path}
+                                                to={isRelative ? location.pathname + path : path}
                                                 onClick={onCloseOption}
                                             >
-                                                {link.text}
+                                                {text}
                                             </Link>
                                         </li>
                                     )
@@ -62,6 +68,6 @@ export const AppOptionBar = () => {
                     )
                 })}
             </ul>
-        </div >
+        </div>
     )
 }

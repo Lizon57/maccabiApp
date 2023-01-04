@@ -9,7 +9,7 @@ AppOptionBar cmp will provide links for important pages or related-sub-pages.
 Currently, AppOptionBar renders twice:
 
 1. **Up to laptop wide** - Will render as fixed bar at page (absolute) bottom.
-2. **From lap top wide** - As part of LaptopWidePlusAppHeader cmp, just before search cmp.
+2. **From laptop wide** - As part of LaptopWidePlusAppHeader cmp, just before search cmp.
 
 ## Contains
 
