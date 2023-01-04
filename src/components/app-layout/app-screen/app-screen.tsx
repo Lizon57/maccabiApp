@@ -9,10 +9,7 @@ export const AppScreen = () => {
 
     const style = { zIndex: appScreenZIndex }
 
-
-    const onCloseScreen = () => {
-        dispatch(setAppScreenZIndex(0))
-    }
+    const onCloseScreen = () => dispatch(setAppScreenZIndex(0))
 
 
     return (
