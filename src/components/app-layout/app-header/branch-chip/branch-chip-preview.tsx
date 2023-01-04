@@ -9,11 +9,12 @@ export const BranchChipPreview = ({ branch }: BranchProp) => {
     const dispatch = useStoreDispatch()
     const { user } = useStoreSelector(state => state.userModule)
 
-    const isActiveBranch = user.browseableBranchesIds.includes(branch._id)
+    const { browseableBranchesIds } = user
+
+    const isActiveBranch = browseableBranchesIds.includes(branch._id)
 
     const onBranchClick = () => {
-        let activeBranchesIds = user.browseableBranchesIds
-        activeBranchesIds = activeBranchesIds.slice()
+        let activeBranchesIds = browseableBranchesIds.slice()
         if (isActiveBranch) {
             activeBranchesIds = activeBranchesIds.filter(branchId => branchId !== branch._id)
         }

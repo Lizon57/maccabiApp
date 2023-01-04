@@ -10,17 +10,19 @@ export const CategoryLinkPreview = ({ child }: Props) => {
         <li className="app-header--category-link__preview-container" title={text}>
             {text}
             {childrens?.length && <div className="drop-down-container">
-                {child.childrens.map(link =>
-                    <Link
-                        key={link.id}
-                        to={link.path}
-                        className={'link-container' + (link.isDisabled ? ' disabled' : '')}
-                        title={'עמוד ' + link.title}
+                {child.childrens.map(link => {
+                    const { id, path, isDisabled, title, img, description } = link
+                    return (<Link
+                        key={id}
+                        to={path}
+                        className={'link-container' + (isDisabled ? ' disabled' : '')}
+                        title={'עמוד ' + title}
                     >
-                        {link.img && <img src={require(`../../../../../assets/images/navbar/${link.img}`)} alt={link.title} />}
-                        <span className="title">{link.title}</span>
-                        <span className="description">{link.description}</span>
-                    </Link>)}
+                        {img && <img src={require(`../../../../../assets/images/navbar/${img}`)} alt={title} />}
+                        <span className="title">{title}</span>
+                        <span className="description">{description}</span>
+                    </Link>)
+                })}
             </div>}
         </li>
     )

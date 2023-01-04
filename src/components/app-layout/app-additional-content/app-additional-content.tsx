@@ -7,16 +7,16 @@ import { useWindowScrollY } from "../../../hooks/use-window-scroll-y"
 export const AppAdditionalContent = ({ isBlockEnd = false, children }: Props) => {
     const { appFooterClientHeight } = useStoreSelector(state => state.appLayout)
     const scrollY = useWindowScrollY()
-    const windowHeight = useWindowSize().height
-    const contentHeight = document.body.offsetHeight
+    const { height: windowHeight } = useWindowSize()
+    const { offsetHeight } = document.body
 
     useEffect(() => {
-        let appFooterPixelsInViewPort = contentHeight - windowHeight - scrollY - appFooterClientHeight
+        let appFooterPixelsInViewPort = offsetHeight - windowHeight - scrollY - appFooterClientHeight
 
         appFooterPixelsInViewPort *= (appFooterPixelsInViewPort * -1 < 0) ? 0 : -1
 
         document.documentElement.style.setProperty('--app-additional-content-app-footer-in-view', appFooterPixelsInViewPort + 'px')
-    }, [scrollY, windowHeight, contentHeight, appFooterClientHeight])
+    }, [scrollY, windowHeight, offsetHeight, appFooterClientHeight])
 
 
     return (

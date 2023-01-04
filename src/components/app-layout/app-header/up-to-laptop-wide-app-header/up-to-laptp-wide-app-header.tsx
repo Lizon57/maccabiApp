@@ -17,42 +17,30 @@ export const UpToLaptopWideAppHeader = () => {
     const [isNavOpen, setIsNavOpen] = useState(false)
     const [currentCategoryOpen, setCurrentCategoryOpen] = useState('')
 
-    const EL_MENU_CONTAINER = useRef<HTMLDivElement>(null)
+    const elMenu = useRef<HTMLDivElement>(null)
     const dispatch = useStoreDispatch()
 
 
-    const onOpenMenu = () => {
+    const toggleMenu = (shouldOpen: boolean) => {
         setCurrentCategoryOpen('')
-        setIsNavOpen(true)
-        dispatch(setAppScreenZIndex(499))
+        setIsNavOpen(shouldOpen)
+        shouldOpen ? dispatch(setAppScreenZIndex(499)) : dispatch(setAppScreenZIndex(0))
     }
 
-    const onCloseMenu = () => {
-        setIsNavOpen(false)
-        dispatch(setAppScreenZIndex(0))
-    }
-    useOnClickOutside(EL_MENU_CONTAINER, onCloseMenu)
-
-    const toggleMenuOpen = () => {
-        if (isNavOpen) onCloseMenu()
-        else onOpenMenu()
-    }
+    useOnClickOutside(elMenu, () => toggleMenu(false))
 
 
     return (
-        <header className="app-layout--app-header__up-to-laptop-wide" ref={EL_MENU_CONTAINER}>
+        <header className="app-layout--app-header__up-to-laptop-wide" ref={elMenu}>
             <div className="content">
                 <div className="navigator-container">
-                    <span className="icon-wrapper" onClick={toggleMenuOpen}><FaBars /></span>
+                    <span className="icon-wrapper" onClick={() => toggleMenu(!isNavOpen)}><FaBars /></span>
                     <Link to="./">
-                        <img src={wideLogo}
-                            alt="עמוד ראשי"
-                            title="עמוד ראשי"
-                            className="brand-logo" />
+                        <img src={wideLogo} alt="עמוד ראשי" title="עמוד ראשי" className="brand-logo" />
                     </Link>
                 </div>
                 <div className="options-container">
-                    <RenderByDeviceWidth minDeviceWide="mobile" maxDeviceWide="tablet" isInclusive={true}>
+                    <RenderByDeviceWidth minDeviceWide="mobile" maxDeviceWide="tablet" isInclusive>
                         <AppOptionBar />
                     </RenderByDeviceWidth>
                     <AppSearch />
@@ -63,7 +51,7 @@ export const UpToLaptopWideAppHeader = () => {
                 isNavOpen={isNavOpen}
                 currentCategoryOpen={currentCategoryOpen}
                 setCurrentCategoryOpen={setCurrentCategoryOpen}
-                onCloseMenu={onCloseMenu}
+                onCloseMenu={() => toggleMenu(false)}
             />
         </header>
     )
