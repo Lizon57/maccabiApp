@@ -21,7 +21,7 @@ export const UpToLaptopWideAppHeader = () => {
     const dispatch = useStoreDispatch()
 
 
-    const toggleMenu = (shouldOpen: boolean) => {
+    const toggleMenu = (shouldOpen = false) => {
         setCurrentCategoryOpen('')
         setIsNavOpen(shouldOpen)
         shouldOpen ? dispatch(setAppScreenZIndex(499)) : dispatch(setAppScreenZIndex(0))
@@ -29,6 +29,7 @@ export const UpToLaptopWideAppHeader = () => {
 
     useOnClickOutside(elMenu, () => toggleMenu(false))
 
+    const sideMenuProps = { isNavOpen, currentCategoryOpen, setCurrentCategoryOpen }
 
     return (
         <header className="app-layout--app-header__up-to-laptop-wide" ref={elMenu}>
@@ -47,11 +48,7 @@ export const UpToLaptopWideAppHeader = () => {
                 </div>
             </div>
 
-            <SideMenu
-                isNavOpen={isNavOpen}
-                currentCategoryOpen={currentCategoryOpen}
-                setCurrentCategoryOpen={setCurrentCategoryOpen}
-                onCloseMenu={() => toggleMenu(false)}
+            <SideMenu {...sideMenuProps} onCloseMenu={toggleMenu}
             />
         </header>
     )
