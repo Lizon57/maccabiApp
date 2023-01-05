@@ -89,6 +89,7 @@ export const EntityRemove = (entity: Entity) => {
 
             <SeoImplement
                 appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display}) - הסרה`}
+                noIndex
             />
         </>
     )

@@ -187,6 +187,7 @@ export const EntitySave = (entityName: string) => {
 
             <SeoImplement
                 appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display}) - שמירה`}
+                noIndex
             />
         </>
     )
