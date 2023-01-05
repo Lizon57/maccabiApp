@@ -284,7 +284,7 @@ export const libraryEntity: Entity = {
                         },
                         {
                             type: 'branch',
-                            isRequire: true
+                            isRequire: false
                         }
                     ]
                 }

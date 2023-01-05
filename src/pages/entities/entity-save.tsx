@@ -81,6 +81,7 @@ export const EntitySave = (entityName: string) => {
                     break
 
                 case 'associate-related-data':
+                    const isNoneRequire = option?.relateds?.every(related => !related.isRequire)
                     option?.relateds?.forEach(related => {
                         switch (related.type) {
                             case 'profile':
@@ -91,6 +92,8 @@ export const EntitySave = (entityName: string) => {
                                 if (related.isRequire && !relatedInfo?.branchIds.length) isFilled = false
                                 break
                         }
+
+                        if (isNoneRequire && !relatedInfo?.branchIds.length && !relatedInfo?.miniProfile?.profileId) isFilled = false
                     })
                     break
 
@@ -104,7 +107,7 @@ export const EntitySave = (entityName: string) => {
         })
 
         setStagesStatus(stagesStatus)
-    }, [entity, item]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [entity, item, currStageIdx]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     const changeCurrStageIdx = (idx: number) => setCurrStageIdx(idx)

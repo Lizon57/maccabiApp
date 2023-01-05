@@ -71,7 +71,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
     const setProfile = (option: SingleValue<ProfileOption>) => {
         const editedItem = structuredClone(item)
         if (!editedItem.relatedInfo) editedItem.relatedInfo = {}
-        
+
         editedItem.relatedInfo.miniProfile = {
             profileId: option?.value.id,
             displayName: option?.value.name,
@@ -94,6 +94,10 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
     }
 
     const onClearValue = () => {
+        const editedItem = structuredClone(item)
+        editedItem.relatedInfo.miniProfile = {}
+
+        dispatch(updateItem(editedItem))
         setValue(null)
         setIsClearable(false)
     }

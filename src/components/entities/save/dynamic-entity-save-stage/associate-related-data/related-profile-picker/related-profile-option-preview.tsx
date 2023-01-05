@@ -2,7 +2,7 @@ import { branchService } from "../../../../../../services/app/branch-service"
 
 
 export const RelatedProfileOptionPreview = ({ option }: Props) => {
-    if (!option) return null
+    if (!option?.id) return null
     const { branchIds, name, profileImageUrl } = option
 
     const branchNames = branchService.getByIds(branchIds).map(branch => branch.name.display)
