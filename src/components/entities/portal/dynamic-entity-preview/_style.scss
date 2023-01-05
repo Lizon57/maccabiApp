@@ -4,6 +4,7 @@ div.dynamic-entity-preview--square-entity-preview__container {
   border: 1px solid $clr-white-darkest;
 
   &:hover div.image-container span.like-icon {
+    display: flex !important;
     color: $clr-yellow-regular;
   }
 
@@ -40,13 +41,26 @@ div.dynamic-entity-preview--square-entity-preview__container {
       justify-self: center;
 
       span.like-icon {
+        display: flex;
+        align-items: center;
+
         position: absolute;
         top: $space-block-xxxSmall-rem;
         right: $space-inline-xxxSmall-rem;
         z-index: 5;
 
         cursor: pointer;
+        border-radius: $border-radius-large-rem;
+        border: 1px solid $clr-white-darkest;
+        background-color: $clr-blue-darkest;
+        color: $clr-white-darkest;
+        font-size: $font-size-xxSmall-rem;
+        padding: 5px;
         transition: $transition-regular;
+
+        @include viewport-wide-start-from-exclusive($viewport-regular) {
+          display: none;
+        }
 
         &.active {
           color: $clr-yellow-regular;
@@ -60,11 +74,12 @@ div.dynamic-entity-preview--square-entity-preview__container {
         z-index: 5;
 
         user-select: none;
+        border: 1px solid $clr-white-darkest;
         border-radius: 0.2rem;
-        background-color: $clr-white-darkest;
+        background-color: $clr-blue-darkest;
+        color: $clr-white-darkest;
         font-size: $font-size-xxSmall-rem;
-        padding-inline: 3px;
-        padding-block: 3px;
+        padding: 3px;
       }
     }
 
