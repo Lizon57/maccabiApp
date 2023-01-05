@@ -15,6 +15,7 @@ import { RenderByDeviceWidth } from "./components/common/render-by/render-by-dev
 import { ROUTES } from "./data/app/app-routes"
 import { entityService } from "./services/entities/entity-service"
 import { IMAGE_DB } from "./data/entities/image/image-db"
+import { SeoImplement } from "./components/common/seo-implement"
 
 
 export const App = () => {
@@ -57,6 +58,8 @@ export const App = () => {
 
                 <AppScreen />
             </Router>
+
+            <SeoImplement />
         </Provider>
     )
 }

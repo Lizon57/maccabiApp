@@ -18,6 +18,7 @@ import { DynamicEntitySaveStage } from "../../components/entities/save/dynamic-e
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { StageStepper } from "../../components/entities/save/stage-stepper/stage-stepper"
 import { EntityItem } from "../../types/entity/entities/entity-item"
+import { SeoImplement } from "../../components/common/seo-implement"
 
 
 const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.length).fill(false)
@@ -150,37 +151,43 @@ export const EntitySave = (entityName: string) => {
     const stageStepperProps = { stages, stagesStatus, currStageIdx, changeCurrStageIdx, saveItem }
 
     return (
-        <main className="entities-pages--entity-save__container">
-            <StageStepper {...stageStepperProps} />
+        <>
+            <main className="entities-pages--entity-save__container">
+                <StageStepper {...stageStepperProps} />
 
-            <MainTitle
-                text={stages[currStageIdx].title}
-                Icon={stages[currStageIdx].icon}
-            />
+                <MainTitle
+                    text={stages[currStageIdx].title}
+                    Icon={stages[currStageIdx].icon}
+                />
 
-            <DynamicEntitySaveStage
-                stage={stages[currStageIdx]}
-                entityName={entity.name}
-            />
+                <DynamicEntitySaveStage
+                    stage={stages[currStageIdx]}
+                    entityName={entity.name}
+                />
 
-            <div className="save-stages-navigation">
-                <div className="stages">
-                    {!!currStageIdx &&
-                        <button className="prev" onClick={() => changeCurrStageIdx(currStageIdx - 1)}>שלב קודם</button>
-                    }
+                <div className="save-stages-navigation">
+                    <div className="stages">
+                        {!!currStageIdx &&
+                            <button className="prev" onClick={() => changeCurrStageIdx(currStageIdx - 1)}>שלב קודם</button>
+                        }
 
-                    {(stagesStatus[currStageIdx] && !(currStageIdx === stages.length - 1)) &&
-                        !(currStageIdx + 1 === stagesStatus.length) &&
-                        <button className="next" onClick={() => changeCurrStageIdx(currStageIdx + 1)}>שלב הבא</button>
+                        {(stagesStatus[currStageIdx] && !(currStageIdx === stages.length - 1)) &&
+                            !(currStageIdx + 1 === stagesStatus.length) &&
+                            <button className="next" onClick={() => changeCurrStageIdx(currStageIdx + 1)}>שלב הבא</button>
+                        }
+                    </div>
+
+                    {getIsSaveable() &&
+                        <div className="save">
+                            <button title="שמור" onClick={saveItem}>שמור</button>
+                        </div>
                     }
                 </div>
+            </main>
 
-                {getIsSaveable() &&
-                    <div className="save">
-                        <button title="שמור" onClick={saveItem}>שמור</button>
-                    </div>
-                }
-            </div>
-        </main >
+            <SeoImplement
+                appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display}) - שמירה`}
+            />
+        </>
     )
 }

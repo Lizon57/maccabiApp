@@ -14,6 +14,7 @@ import { ErrorMessage } from "../../components/common/error-message/error-messag
 import { Loader } from "../../components/common/loader/loader"
 import { ArticleHeadCmpList } from "../../components/entities/details/article-head-cmp/article-head-cmp-list"
 import { ArticleAdditionalContentCmpList } from "../../components/entities/details/article-additional-content-cmp/article-additional-content-cmp-list"
+import { SeoImplement } from "../../components/common/seo-implement"
 
 
 export const EntityDetails = (entity: Entity) => {
@@ -57,17 +58,23 @@ export const EntityDetails = (entity: Entity) => {
     const { structure } = entity.detailsPageInfo
 
     return (
-        <section className="entities-pages--entity-display__container">
-            {!!structure?.head?.length &&
-                <div className="primary-content">
-                    <ArticleHeadCmpList cmps={structure?.head} />
-                </div>
-            }
+        <>
+            <section className="entities-pages--entity-display__container">
+                {!!structure?.head?.length &&
+                    <div className="primary-content">
+                        <ArticleHeadCmpList cmps={structure?.head} />
+                    </div>
+                }
 
-            {!!structure?.additional?.length &&
-                <div className="additional-content">
-                    <ArticleAdditionalContentCmpList cmps={structure?.additional} />
-                </div>}
-        </section>
+                {!!structure?.additional?.length &&
+                    <div className="additional-content">
+                        <ArticleAdditionalContentCmpList cmps={structure?.additional} />
+                    </div>}
+            </section>
+
+            <SeoImplement
+                appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display})`}
+            />
+        </>
     )
 }

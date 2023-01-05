@@ -16,6 +16,7 @@ import { OptionsList } from "../../components/entities/portal/options-list/optio
 import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 import { MainTitle } from "../../components/common/main-title/main-title"
+import { SeoImplement } from "../../components/common/seo-implement"
 
 
 export const EntityPortal = (entityName: string) => {
@@ -95,15 +96,22 @@ export const EntityPortal = (entityName: string) => {
     const FilterbyBuilderProps = { filters, debouncedSetIsLoading }
 
     return (
-        <section className="entities-pages--entity-portal__container">
-            <MainTitle text={listTitle} Icon={Icon} isSticky additionalCmp={titleAdditionalCmp} />
+        <>
+            <section className="entities-pages--entity-portal__container">
+                <MainTitle text={listTitle} Icon={Icon} isSticky additionalCmp={titleAdditionalCmp} />
 
-            <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
-            {isFilterSectionOpen && <FilterbyBuilder {...FilterbyBuilderProps} />}
+                <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
+                {isFilterSectionOpen && <FilterbyBuilder {...FilterbyBuilderProps} />}
 
-            {items?.length
-                ? <EntityList entity={ENTITY} items={items} />
-                : <ErrorMessage message="לא נמצאו פריטים להצגה" />}
-        </section>
+                {items?.length
+                    ? <EntityList entity={ENTITY} items={items} />
+                    : <ErrorMessage message="לא נמצאו פריטים להצגה" />}
+            </section>
+
+            <SeoImplement
+                appTitle={ENTITY.entityInfo.name.display}
+                pageDescription={ENTITY.entityInfo.description.short}
+            />
+        </>
     )
 }

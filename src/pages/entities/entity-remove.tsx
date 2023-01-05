@@ -3,15 +3,17 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useAppMessage } from "../../hooks/store/actions/use-app-message"
 
 import { entityService } from "../../services/entities/entity-service"
+import { entityItemService } from "../../services/entities/entity-item-service"
 
 import { Entity } from "../../types/entity/entity"
 import { EntityItem } from "../../types/entity/entities/entity-item"
 
+import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
+
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
-import { entityItemService } from "../../services/entities/entity-item-service"
-import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
+import { SeoImplement } from "../../components/common/seo-implement"
 
 
 export const EntityRemove = (entity: Entity) => {
@@ -71,17 +73,23 @@ export const EntityRemove = (entity: Entity) => {
     const Icon = ICON_TYPE_MAP.remove.trash
 
     return (
-        <main className="entities-pages--entity-remove__container">
-            <MainTitle text="מחיקת ערך" Icon={Icon} />
+        <>
+            <main className="entities-pages--entity-remove__container">
+                <MainTitle text="מחיקת ערך" Icon={Icon} />
 
-            <p className="action-text">
-                האם אתה בטוח שברצונך למחוק את הערך {displayName}?
-            </p>
+                <p className="action-text">
+                    האם אתה בטוח שברצונך למחוק את הערך {displayName}?
+                </p>
 
-            <div className="buttons-container">
-                <button className="cancel" title="בטל מחיקה" onClick={onCancel}>לא</button>
-                <button className="approve" title="אשר מחיקה" onClick={onApprove}>כן</button>
-            </div>
-        </main>
+                <div className="buttons-container">
+                    <button className="cancel" title="בטל מחיקה" onClick={onCancel}>לא</button>
+                    <button className="approve" title="אשר מחיקה" onClick={onApprove}>כן</button>
+                </div>
+            </main>
+
+            <SeoImplement
+                appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display}) - הסרה`}
+            />
+        </>
     )
 }
