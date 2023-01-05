@@ -5,17 +5,17 @@ import { EntityDetailsStuctureCmp } from "../../../../../../types/entity/details
 import { MainTitle } from "../../../../../common/main-title/main-title"
 
 
-export const CategoryListList = ({ cmp }: Props) => {
-    const { item } = useStoreSelector(state => state.displayEntityModule)
+export const CategoryList = ({ cmp }: Props) => {
+    const { miniCategories } = useStoreSelector(state => state.displayEntityModule.item.entityInfo)
 
-    if (!item.entityInfo.miniCategories || !item.entityInfo.miniCategories) return <></>
+    if (!miniCategories?.length) return null
 
     return (
         <div>
             <MainTitle text={cmp.title || 'קטגוריות'} Icon={cmp.Icon} />
 
             <div className="entity-details--category-list-cmp__container">
-                {item.entityInfo.miniCategories.map(miniCategory => <div
+                {miniCategories.map(miniCategory => <div
                     key={miniCategory.id}
                     className="category-preview"
                 >

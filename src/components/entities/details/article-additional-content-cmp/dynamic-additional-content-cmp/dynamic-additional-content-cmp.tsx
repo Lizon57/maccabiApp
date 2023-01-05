@@ -1,24 +1,25 @@
-import { BiCategory } from "react-icons/bi"
-import { BsImages } from "react-icons/bs"
+import { ICON_TYPE_MAP } from "../../../../../constans/icon-type-map"
 
 import { EntityDetailsStuctureCmp } from "../../../../../types/entity/details/entity-details-structure-cmp"
-import { CategoryListList } from "./category-list/category-list-list"
+import { CategoryList } from "./category-list/category-list"
 
-import { ImageGallery } from "./image-gallery/image-gallery"
+import { ImageGalleryList } from "./image-gallery/image-gallery-list"
 
 
 export const DynamicAdditionalContentCmp = ({ cmp }: Props) => {
+    const icons = ICON_TYPE_MAP.entityItemDefault
+
     switch (cmp.type) {
         case 'image-gallery':
-            cmp.Icon = BsImages
-            return <ImageGallery cmp={cmp} />
+            cmp.Icon = icons.imageGallery
+            return <ImageGalleryList cmp={cmp} />
 
         case 'category-list':
-            cmp.Icon = BiCategory
-            return <CategoryListList cmp={cmp} />
+            cmp.Icon = icons.categoryList
+            return <CategoryList cmp={cmp} />
 
         default:
-            return <></>
+            return null
     }
 }
 

@@ -16,7 +16,7 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
                 return value
 
             case 'list':
-                if (Array.isArray(value) && value.length) return getFormatedList(value)
+                if (value.length) return getFormatedList(value)
                 break
 
             case 'date':

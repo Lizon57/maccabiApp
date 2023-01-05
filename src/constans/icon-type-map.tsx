@@ -1,7 +1,7 @@
 import { IconType } from "react-icons"
-import { BsEmojiFrown, BsEmojiSmile } from "react-icons/bs"
+import { BsEmojiFrown, BsEmojiSmile, BsImages } from "react-icons/bs"
 import { FaHandPointLeft, FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
-import { BiSearch } from "react-icons/bi"
+import { BiCategory, BiSearch } from "react-icons/bi"
 import { FiXCircle } from "react-icons/fi"
 
 
@@ -21,6 +21,10 @@ export const ICON_TYPE_MAP: IconMap = {
     search: {
         search: FiXCircle,
         clear: BiSearch,
+    },
+    entityItemDefault: {
+        imageGallery: BsImages,
+        categoryList: BiCategory
     }
 }
 
