@@ -6,7 +6,7 @@ import { GoGear } from "react-icons/go"
 import { makeId } from "../../services/util/make-id"
 
 
-export const OPTION_BAR: option[] = [
+export const OPTION_BAR: Option[] = [
     {
         id: makeId(),
         icon: GoGear,
@@ -97,15 +97,15 @@ export const OPTION_BAR: option[] = [
 ]
 
 
-type option = {
+type Option = {
     id: string,
     icon: IconType
     title: string
-    childrens: link[]
+    childrens: Link[]
 }
 
 
-type link = {
+type Link = {
     id: string
     text: string
     path: string

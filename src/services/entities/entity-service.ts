@@ -1,4 +1,4 @@
-import { ENTITIES_LIST } from "../../data/entities/entities-list"
+import { ENTITIES_LIST } from "../../constans/entities-list"
 
 import { asyncLocalStorageService } from "../async-local-storage-service"
 import { sortEntityService } from "./sort-entity-service"
