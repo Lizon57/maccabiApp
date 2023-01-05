@@ -56,13 +56,14 @@ export const EntityDetails = (entity: Entity) => {
 
 
     const { structure } = entity.detailsPageInfo
+    const { display: entityName } = entity.entityInfo.name
 
     return (
         <>
             <section className="entities-pages--entity-display__container">
                 {!!structure?.head?.length &&
                     <div className="primary-content">
-                        <ArticleHeadCmpList cmps={structure?.head} />
+                        <ArticleHeadCmpList cmps={structure?.head} entityName={entityName} />
                     </div>
                 }
 
@@ -73,7 +74,7 @@ export const EntityDetails = (entity: Entity) => {
             </section>
 
             <SeoImplement
-                appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display})`}
+                appTitle={`${item.entityInfo.name.display} (${entityName})`}
             />
         </>
     )

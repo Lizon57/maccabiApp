@@ -5,12 +5,12 @@ import { EntityDetailsStuctureCmp } from "../../../../types/entity/details/entit
 import { DynamicHeadCmp } from "./dynamic-head-cmp/dynamic-head-cmp"
 
 
-export const ArticleHeadCmpList = ({ cmps }: Props) => {
+export const ArticleHeadCmpList = ({ cmps, entityName }: Props) => {
     if (!cmps?.length) return null
 
     return (
         <>
-            {cmps.map(cmp => <DynamicHeadCmp key={makeId()} cmp={cmp} />)}
+            {cmps.map(cmp => <DynamicHeadCmp key={makeId()} cmp={cmp} entityName={entityName} />)}
         </>
     )
 }
@@ -18,4 +18,5 @@ export const ArticleHeadCmpList = ({ cmps }: Props) => {
 
 type Props = {
     cmps?: EntityDetailsStuctureCmp[]
+    entityName: string
 }

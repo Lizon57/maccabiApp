@@ -44,6 +44,9 @@ export const crowdOrganizationEntity: Entity = {
         structure: {
             head: [
                 {
+                    type: 'bread-crumbs'
+                },
+                {
                     type: 'page-title',
                     title: 'ארגון PAGE_NAME',
                     Icon: AiFillFlag

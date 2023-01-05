@@ -44,6 +44,9 @@ export const libraryEntity: Entity = {
         structure: {
             head: [
                 {
+                    type: 'bread-crumbs'
+                },
+                {
                     type: 'page-title',
                     title: '"PAGE_NAME" מאת BY_WRITERS',
                     Icon: RiBookOpenFill

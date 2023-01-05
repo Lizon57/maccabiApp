@@ -1,0 +1,30 @@
+section.common-cmp--bread-crumbs__container {
+  display: flex;
+  align-items: center;
+  gap: $space-inline-xxxSmall-rem;
+
+  user-select: none;
+  font-size: $font-size-xSmall-rem;
+  color: $clr-grey-regular;
+  margin-block-end: $space-block-xxxSmall-rem;
+
+  a {
+    color: $clr-grey-regular;
+    text-decoration: none;
+  }
+
+  span.wrapper {
+    display: flex;
+    align-items: center;
+
+    &:last-of-type {
+      font-weight: 600;
+    }
+
+    svg {
+      position: relative;
+      top: 2px;
+      right: 3px;
+    }
+  }
+}
