@@ -1,11 +1,11 @@
 import { BsFilter } from "react-icons/bs"
 
-export const DynamicFilterConstructor = ({ toggleIsFilterSectionOpen }: Props) => {
+
+export const FilterSectionToggler = ({ toggleIsFilterSectionOpen }: Props) => {
     const onToggleFillter = () => {
-        window.scrollTo({ top: 0 })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         toggleIsFilterSectionOpen()
     }
-
 
     return (
         <div className="entities-portal--dynamic-filter__icon-wrapper" title="סנן פריטים" onClick={onToggleFillter}>

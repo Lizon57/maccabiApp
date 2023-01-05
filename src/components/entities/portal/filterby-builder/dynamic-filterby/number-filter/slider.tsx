@@ -6,29 +6,26 @@ import { Track } from "./track"
 export const Slider = ({ min, max, values, type, setValue }: Props) => {
     const manipulatedValues = (values.length === 2) ? values : [values[0]]
 
+    const rangeProps = { min, max }
+
     return (
         <div>
             <Range
                 values={manipulatedValues}
                 step={1}
-                min={min}
-                max={max}
-                rtl={true}
-                onChange={(values) => setValue(values)}
+                rtl
+                {...rangeProps}
+                onChange={setValue}
                 renderTrack={({ props, children }) => <Track
                     props={props}
                     values={manipulatedValues}
-                    min={min}
-                    max={max}
+                    {...rangeProps}
                     type={type}
                     children={children}
                 />}
                 renderThumb={({ index, props, isDragged }) => <Thumb
                     key={index}
-                    index={index}
                     props={props}
-                    isDragged={isDragged}
-                    values={manipulatedValues}
                 />}
             />
         </div>

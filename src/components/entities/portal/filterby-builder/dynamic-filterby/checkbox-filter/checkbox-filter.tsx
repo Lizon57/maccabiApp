@@ -8,15 +8,15 @@ import { EntityFilterOption } from "../../../../../../types/entity/filter/entity
 export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
     const [value, setValue] = useState<boolean | undefined>()
 
-    const PARAMS = new URL(window.location.href).searchParams
-    const NAVIGATE = useNavigate()
+    const { searchParams: params } = new URL(window.location.href)
+    const navigate = useNavigate()
 
 
     const navigateNewSearch = (newValue: boolean | undefined) => {
-        if (typeof newValue === 'boolean') PARAMS.set(filter.param, newValue.toString())
-        else PARAMS.delete(filter.param)
+        if (typeof newValue === 'boolean') params.set(filter.param, newValue.toString())
+        else params.delete(filter.param)
 
-        NAVIGATE({ search: PARAMS.toString() })
+        navigate({ search: params.toString() })
     }
     const debouncedNavigateNewSearch = useDebounce(navigateNewSearch, 1000)
 
@@ -29,7 +29,7 @@ export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
-        const newValue = PARAMS.get(filter.param)
+        const newValue = params.get(filter.param)
         if (!newValue) return
 
         setValue(JSON.parse(newValue))

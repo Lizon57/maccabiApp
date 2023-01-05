@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
 import { useNavigate } from "react-router-dom"
+
+import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
 import { useDebounce } from "../../../../../../hooks/use-debounce"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
@@ -9,11 +10,11 @@ import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby
 
 
 export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoading }: Props) => {
-    const { user: { browseableBranchesIds } } = useStoreSelector(state => state.userModule)
+    const { browseableBranchesIds } = useStoreSelector(state => state.userModule.user)
     const [isActiveBranches, setIsActiveBranches] = useState(browseableBranchesIds)
 
-    const PARAMS = new URL(window.location.href).searchParams
-    const NAVIGATE = useNavigate()
+    const { searchParams: params } = new URL(window.location.href)
+    const navigate = useNavigate()
 
 
     const getIsActiveBranch = (id: string) => !!isActiveBranches.find(branchId => branchId === id)
@@ -22,9 +23,7 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
         const isActive = getIsActiveBranch(id)
 
         let newActiveBranches = isActiveBranches.slice()
-        if (isActive) {
-            newActiveBranches = newActiveBranches.filter(branchId => branchId !== id)
-        }
+        if (isActive) newActiveBranches = newActiveBranches.filter(branchId => branchId !== id)
         else newActiveBranches.push(id)
 
         setIsActiveBranches(newActiveBranches)
@@ -34,16 +33,14 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
 
     const navigateToNewActiveBranches = (newActiveBranches: string[]) => {
         const initialFilterParam = newActiveBranches.join()
-        PARAMS.set(filterParam, initialFilterParam)
-        NAVIGATE({ search: PARAMS.toString().replaceAll('%2C', ',') })
+        params.set(filterParam, initialFilterParam)
+        navigate({ search: params.toString().replaceAll('%2C', ',') })
     }
     const debouncedNavigateToNewActiveBranches = useDebounce(navigateToNewActiveBranches, 1000)
 
 
     useEffect(() => {
-        if (PARAMS.get(filterParam)) {
-            setIsActiveBranches(PARAMS.get(filterParam)?.split(',') || [])
-        }
+        if (params.get(filterParam)) setIsActiveBranches(params.get(filterParam)?.split(',') || [])
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

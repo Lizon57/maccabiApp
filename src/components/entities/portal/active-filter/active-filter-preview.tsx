@@ -7,45 +7,45 @@ import { getFormatedDate } from "../../../../services/util/get-formated-date"
 
 
 export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
-    const PARAMS = new URL(window.location.href).searchParams
-    const NAVIGATE = useNavigate()
+    const { searchParams: params } = new URL(window.location.href)
+    const navigate = useNavigate()
+    const activeFilterText = filter.activeFilterChip.text
     let text: string
 
     switch (filter.activeFilterChip.type) {
         case 'text':
-            text = `${filter.activeFilterChip.text}: "${PARAMS.get(filter.param)}"`
+            text = `${activeFilterText}: "${params.get(filter.param)}"`
             break
 
         case 'multi_select':
-            const amount = PARAMS.get(filter.param)?.split(',').length
+            const amount = params.get(filter.param)?.split(',').length
             if (!amount) {
                 text = 'סנן פעיל'
                 break
             }
-            text = filter.activeFilterChip.text.replace('AMOUNT', '' + amount)
+            text = activeFilterText.replace('AMOUNT', '' + amount)
             break
 
         case 'numbers_range':
-            const numbers = PARAMS.get(filter.param)?.split('|') || []
-            text = filter.activeFilterChip.text.replace('MIN', numbers[0])
+            const numbers = params.get(filter.param)?.split('|') || []
+            text = activeFilterText.replace('MIN', numbers[0])
             text = text.replace('MAX', numbers[1])
             break
 
         case 'text_filter':
-            const term = PARAMS.get(filter.param)?.split(',').map(t => `"${t}"`)
-            text = filter.activeFilterChip.text.replace('TERM', term + '')
+            const term = params.get(filter.param)?.split(',').map(t => `"${t}"`)
+            text = activeFilterText.replace('TERM', term + '')
             break
 
         case 'checkbox_filter':
-            const isChosen = JSON.parse(PARAMS.get(filter.param) || '')
-            text = filter.activeFilterChip.text.replace('CHOOSE_OPTION', isChosen ? 'רק' : 'ללא')
+            const isChosen = JSON.parse(params.get(filter.param) || '')
+            text = activeFilterText.replace('CHOOSE_OPTION', isChosen ? 'רק' : 'ללא')
             break
 
         case 'date_filter':
-            let date: string | string[] | (number | undefined)[] = PARAMS.get(filter.param) || ''
-            date = date.split('-')
-            date = date.map(part => (part === 'undefined' || !part) ? undefined : +part)
-            text = filter.activeFilterChip.text
+            let date: string | string[] | (number | undefined)[] = params.get(filter.param) || ''
+            date = date.split('-').map(part => (part === 'undefined' || !part) ? undefined : +part)
+            text = activeFilterText
             text = text.replace('CHOOSE_OPTION', getFormatedDate({ day: date[0], month: date[1], year: date[2] }, false, false) + '')
             break
 
@@ -55,16 +55,13 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
 
     const onRemoveFilter = () => {
-        PARAMS.delete(filter.param)
+        params.delete(filter.param)
+        const type = filter.activeFilterChip.type
 
-        if (filter.activeFilterChip.type === 'numbers_range'
-            || filter.activeFilterChip.type === 'text_filter'
-            || filter.activeFilterChip.type === 'date_filter') {
-            PARAMS.delete(filter.param + 'Type')
-        }
+        if (type === 'numbers_range' || type === 'text_filter' || type === 'date_filter') params.delete(filter.param + 'Type')
 
-        NAVIGATE({ search: PARAMS.toString().replaceAll('%2C', ',') })
-        window.scrollTo({ top: 0 })
+        navigate({ search: params.toString().replaceAll('%2C', ',') })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         setIsLoading(true)
     }
 

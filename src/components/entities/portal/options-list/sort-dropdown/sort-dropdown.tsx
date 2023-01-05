@@ -9,30 +9,33 @@ import { Dropdown } from "../../../../common/dropdown/dropdown"
 
 
 export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
+    const { searchParams: params } = new URL(window.location.href)
     const navigate = useNavigate()
-    const PARAMS = new URL(window.location.href).searchParams
 
 
-    const onSelectSort = ({ key, order }: EntitySortOption) => {
-        PARAMS.set('sKey', key)
-        PARAMS.set('sOrder', order)
-        navigate({ search: PARAMS.toString().replaceAll('%2C', ',') })
-        window.scrollTo({ top: 0 })
+    const navigateNewSort = () => {
+        navigate({ search: params.toString().replaceAll('%2C', ',') })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         setIsLoading(true)
     }
 
 
-    const getIsSortOptionActive = ({ key, order }: EntitySortOption) => {
-        return ((key === PARAMS.get('sKey')) && (order === PARAMS.get('sOrder'))) ? true : false
+    const onSelectSort = ({ key, order }: EntitySortOption) => {
+        params.set('sKey', key)
+        params.set('sOrder', order)
+        navigateNewSort()
     }
 
 
     const onClearSort = () => {
-        PARAMS.delete('sKey')
-        PARAMS.delete('sOrder')
-        navigate({ search: PARAMS.toString().replaceAll('%2C', ',') })
-        window.scrollTo({ top: 0 })
-        setIsLoading(true)
+        params.delete('sKey')
+        params.delete('sOrder')
+        navigateNewSort()
+    }
+
+
+    const getIsSortOptionActive = ({ key, order }: EntitySortOption) => {
+        return ((key === params.get('sKey')) && (order === params.get('sOrder')))
     }
 
 

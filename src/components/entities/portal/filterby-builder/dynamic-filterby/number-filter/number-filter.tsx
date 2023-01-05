@@ -14,23 +14,24 @@ const TYPE_NAMES = ['החל מ', 'עד ל', 'החל מ ועד ל']
 
 
 export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
+    const { param, option, title } = filter
     const [type, setType] = useState(2)
 
-    const MIN = filter.option?.min || 0
-    const MAX = filter.option?.max || 100
-    const [values, setValues] = useState([MIN, MAX])
+    const min = option?.min || 0
+    const max = option?.max || 100
+    const [values, setValues] = useState([min, max])
 
-    const PARAMS = new URL(window.location.href).searchParams
-    const NAVIGATE = useNavigate()
+    const { searchParams: params } = new URL(window.location.href)
+    const navigate = useNavigate()
 
     const navigateNewPick = (values: number[]) => {
         let activeValues: number[] | string = values
-        if (type === 0) activeValues = [values[0], MAX]
-        else if (type === 1) activeValues = [MIN, values[0]]
+        if (type === 0) activeValues = [values[0], max]
+        else if (type === 1) activeValues = [min, values[0]]
         activeValues = activeValues.join('|')
-        PARAMS.set(filter.param, activeValues)
-        PARAMS.set(filter.param + 'Type', type + '')
-        NAVIGATE({ search: PARAMS.toString() })
+        params.set(param, activeValues)
+        params.set(param + 'Type', type + '')
+        navigate({ search: params.toString() })
     }
     const debouncedNavigateToNewActiveRange = useDebounce(navigateNewPick, 1000)
 
@@ -46,7 +47,7 @@ export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
                 break
 
             case 2:
-                setValues([MIN, MAX])
+                setValues([min, max])
                 break
 
         }
@@ -62,13 +63,13 @@ export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
-        if (!PARAMS.get(filter.param)) return
+        if (!params.get(param)) return
 
-        let type: string | number | null = PARAMS.get(filter.param + 'Type') || 2
+        let type: string | number | null = params.get(param + 'Type') || 2
         type = +type
         setType(type)
 
-        let newValues = PARAMS.get(filter.param)?.split('|').map(value => +value) || []
+        let newValues = params.get(param)?.split('|').map(value => +value) || []
         if (type === 0) newValues = [newValues[0]]
         else if (type === 1) newValues = [newValues[1]]
         setValues(newValues)
@@ -78,12 +79,12 @@ export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
     return (
         <div className="entities-portal--number-picker__container">
-            <span className="title">{filter.title}</span>
+            <span className="title">{title}</span>
             <div className="content-container">
                 <>
                     <Slider
-                        min={MIN}
-                        max={MAX}
+                        min={min}
+                        max={max}
                         values={values}
                         type={type}
                         setValue={onSetValues}

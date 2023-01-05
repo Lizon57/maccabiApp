@@ -16,19 +16,20 @@ export const ActiveFilterList = ({ possibleFiilters, setIsLoading }: Props) => {
     }, [possibleFiilters])
 
 
-    return activeFilters?.length
-        ? (
-            <div className="entities-portal--active-filter-list__container">
-                <span className="title">סננים פעילים</span>
-                <div className="list-container">
-                    {activeFilters.map(activeFilter => <ActiveFilterPreview
-                        key={activeFilter.id}
-                        filter={activeFilter}
-                        setIsLoading={setIsLoading}
-                    />)}
-                </div>
+    if (!activeFilters?.length) return null
+
+    return (
+        <div className="entities-portal--active-filter-list__container">
+            <span className="title">סננים פעילים</span>
+            <div className="list-container">
+                {activeFilters.map(activeFilter => <ActiveFilterPreview
+                    key={activeFilter.id}
+                    filter={activeFilter}
+                    setIsLoading={setIsLoading}
+                />)}
             </div>
-        ) : null
+        </div>
+    )
 }
 
 

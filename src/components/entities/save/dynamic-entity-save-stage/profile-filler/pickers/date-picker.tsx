@@ -4,9 +4,9 @@ import { updateItem } from "../../../../../../store/slicer/entity-save-slicer"
 
 import { recursiveValueSetterByKey } from "../../../../../../services/util/recursive-value-setter-by-key"
 
+import { NON_ZERO_DAYS } from "../../../../../../constans/days"
+import { NON_ZERO_MONTHS } from "../../../../../../constans/months"
 
-const DAYS = [undefined, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
-const MONTHS = [undefined, 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
 
 const YEARS: (number | undefined)[] = [undefined]
 for (let i = 1850; i <= new Date().getFullYear(); i++) {
@@ -52,7 +52,7 @@ export const DatePicker = ({ pickerInfo }: Props) => {
             <span className="title">{pickerInfo.title}</span>
             <span className="picker">
                 <select defaultValue={defaultDay} onChange={({ currentTarget: { value } }) => { onPickOption(value, 'day') }}>
-                    {DAYS.map(day => <option
+                    {NON_ZERO_DAYS.map(day => <option
                         key={day ? day : 'unknown'}
                         value={day ? day : undefined}
                     >
@@ -62,7 +62,7 @@ export const DatePicker = ({ pickerInfo }: Props) => {
                 </select>
 
                 <select defaultValue={defaultMonth} onChange={({ currentTarget: { value } }) => { onPickOption(value, 'month') }}>
-                    {MONTHS.map((month, idx) => <option
+                    {NON_ZERO_MONTHS.map((month, idx) => <option
                         key={month ? month : 'unknown'}
                         value={idx ? idx : undefined}
                     >

@@ -12,17 +12,18 @@ import { AiFillCaretDown } from "react-icons/ai"
 const TYPE_NAMES = ['מתחיל ב', 'נגמר ב', 'כולל את']
 
 export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
+    const { param, title } = filter
     const [type, setType] = useState(2)
     const [value, setValue] = useState('')
 
-    const PARAMS = new URL(window.location.href).searchParams
-    const NAVIGATE = useNavigate()
+    const { searchParams: params } = new URL(window.location.href)
+    const navigate = useNavigate()
 
 
     const navigateNewSearch = (value: string) => {
-        PARAMS.set(filter.param, value)
-        PARAMS.set(filter.param + 'Type', type + '')
-        NAVIGATE({ search: PARAMS.toString() })
+        params.set(param, value)
+        params.set(param + 'Type', type + '')
+        navigate({ search: params.toString() })
     }
     const debouncedNavigateNewSearch = useDebounce(navigateNewSearch, 1000)
 
@@ -36,12 +37,12 @@ export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
-        const newValue = PARAMS.get(filter.param)
+        const newValue = params.get(param)
         if (!newValue) return
 
         setValue(newValue)
 
-        let type: string | number | null = PARAMS.get(filter.param + 'Type') || 2
+        let type: string | number | null = params.get(param + 'Type') || 2
         if (type === '0') type = 0
         else if (type === '1') type = 1
         else type = 2
@@ -51,7 +52,7 @@ export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
     return (
         <div className="entities-portal--text-filter__container">
-            <span className="title">{filter.title}</span>
+            <span className="title">{title}</span>
 
             <div className="content-container">
                 <input

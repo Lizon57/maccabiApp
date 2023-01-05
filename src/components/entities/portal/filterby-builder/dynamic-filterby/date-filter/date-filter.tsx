@@ -5,19 +5,17 @@ import { AiFillCaretDown } from "react-icons/ai"
 
 import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
 
+import { NON_ZERO_DAYS } from "../../../../../../constans/days"
+import { NON_ZERO_MONTHS } from "../../../../../../constans/months"
+
 import { Dropdown } from "../../../../../common/dropdown/dropdown"
 
-
-const DAYS = [undefined, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
-const MONTHS = [undefined, 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
 
 const YEARS: (number | undefined)[] = [undefined]
 for (let i = 1850; i <= new Date().getFullYear(); i++) {
     YEARS.push(i)
 }
-
 const TYPE_NAMES = ['אחרי', 'לפני', 'בדיוק ב']
-
 const INITIAL_VALUE = { day: undefined, month: undefined, year: undefined }
 
 
@@ -25,13 +23,13 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
     const [type, setType] = useState(2)
     const [date, setDate] = useState<PossibleValue>(INITIAL_VALUE)
 
-    const PARAMS = new URL(window.location.href).searchParams
-    const NAVIGATE = useNavigate()
+    const { searchParams: params } = new URL(window.location.href)
+    const navigate = useNavigate()
 
     const navigateNewPick = (activeDate: string) => {
-        PARAMS.set(filter.param, activeDate)
-        PARAMS.set(filter.param + 'Type', type + '')
-        NAVIGATE({ search: PARAMS.toString() })
+        params.set(filter.param, activeDate)
+        params.set(filter.param + 'Type', type + '')
+        navigate({ search: params.toString() })
     }
     const debouncedNavigateToNewPick = useDebounce(navigateNewPick, 1000)
 
@@ -57,13 +55,13 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
-        if (!PARAMS.get(filter.param)) return
+        if (!params.get(filter.param)) return
 
-        let typeFromParam: string | number | null = PARAMS.get(filter.param + 'Type') || 2
+        let typeFromParam: string | number | null = params.get(filter.param + 'Type') || 2
         typeFromParam = +typeFromParam
         setType(typeFromParam)
 
-        let newValue = PARAMS.get(filter.param)?.split('-').map(value => +value || undefined)
+        let newValue = params.get(filter.param)?.split('-').map(value => +value || undefined)
         if (!newValue || newValue.length !== 3) return
         const valueFromParam = {
             day: newValue[0],
@@ -83,7 +81,7 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
                         value={date.day ? date.day : undefined}
                         onChange={(ev) => onSelectDate('day', +ev.target.value || undefined)}
                     >
-                        {DAYS.map(day => <option
+                        {NON_ZERO_DAYS.map(day => <option
                             key={day ? day : 'unknown'}
                             value={day ? day : undefined}
                         >
@@ -97,7 +95,7 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
                         value={date.month ? date.month : undefined}
                         onChange={(ev) => onSelectDate('month', +ev.target.value || undefined)}
                     >
-                        {MONTHS.map((month, idx) => <option
+                        {NON_ZERO_MONTHS.map((month, idx) => <option
                             key={month ? month : 'unknown'}
                             value={idx ? idx : undefined}
                         >

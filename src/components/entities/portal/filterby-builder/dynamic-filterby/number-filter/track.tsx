@@ -21,7 +21,7 @@ export const Track = ({ props, children, values, min, max, type }: Props) => {
     return (
         <div
             className="entities-portal--number-picker__track-container"
-            style={{ ...props.style, }}
+            style={{ ...props.style }}
         >
             <div
                 ref={props.ref}

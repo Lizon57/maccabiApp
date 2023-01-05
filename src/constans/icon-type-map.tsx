@@ -2,7 +2,8 @@ import { IconType } from "react-icons"
 import { BsEmojiFrown, BsEmojiSmile, BsImages } from "react-icons/bs"
 import { FaHandPointLeft, FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
 import { BiCategory, BiSearch } from "react-icons/bi"
-import { FiXCircle } from "react-icons/fi"
+import { FiEdit2, FiXCircle } from "react-icons/fi"
+import { AiFillEye, AiFillHeart, AiFillStar, AiOutlineHeart, AiOutlinePlus } from "react-icons/ai"
 
 
 
@@ -12,19 +13,31 @@ export const ICON_TYPE_MAP: IconMap = {
         fail: BsEmojiFrown,
         message: FaHandPointLeft
     },
+
     socialNetwork: {
         facebook: FaFacebookSquare,
         twitter: FaTwitterSquare,
         instagram: FaInstagramSquare,
         youtube: FaYoutubeSquare,
     },
+
     search: {
         search: FiXCircle,
         clear: BiSearch,
     },
+
     entityItemDefault: {
         imageGallery: BsImages,
         categoryList: BiCategory
+    },
+
+    entityItemPreview: {
+        fillHeart: AiFillHeart,
+        outlineHeart: AiOutlineHeart,
+        view: AiFillEye,
+        rate: AiFillStar,
+        edit: FiEdit2,
+        plus: AiOutlinePlus
     }
 }
 

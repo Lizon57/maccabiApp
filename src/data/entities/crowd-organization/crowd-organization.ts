@@ -4,7 +4,7 @@ import { Entity } from "../../../types/entity/entity"
 import { CROWD_ORGANIZATION_DB } from "./crowd-organization-db"
 
 import { AiFillFlag } from "react-icons/ai"
-import { BsImages, BsPencil } from "react-icons/bs"
+import { BsPencil } from "react-icons/bs"
 import { FaUpload } from "react-icons/fa"
 import { BiBrain } from "react-icons/bi"
 
