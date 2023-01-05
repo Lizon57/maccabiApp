@@ -1,37 +1,42 @@
 import { useRef } from "react"
 import { FileDrop } from "react-file-drop"
 
-import { AiOutlineCloudUpload } from "react-icons/ai"
+import { ICON_TYPE_MAP } from "../../../../../constans/icon-type-map"
 
 import { Loader } from "../../../../common/loader/loader"
 
 
 export const DropableSection = ({ isUploading, onFetchFiles }: Props) => {
-    const EL_INPUT_REF = useRef<HTMLInputElement>(null)
-    const onTargetClick = () => EL_INPUT_REF.current?.click()
+    const elInput = useRef<HTMLInputElement>(null)
+    const onTargetClick = () => elInput.current?.click()
+
+    const fetchFiles = (files: FileList) => {
+        if (!files) return
+        onFetchFiles(files)
+    }
 
 
     const onFileInputChange = ({ target: { files } }: React.ChangeEvent<HTMLInputElement>) => {
-        if (!files) return
-        onFetchFiles(files)
+        files && fetchFiles(files)
     }
 
 
     const onDropFile = (files: FileList | null, ev: React.DragEvent<HTMLDivElement>) => {
         ev.preventDefault()
-        if (!files) return
-        onFetchFiles(files)
+        files && fetchFiles(files)
     }
 
 
     if (isUploading) return <Loader text="מעלה קבצים, אנא המתן..." />
+
+    const UploadIcon = ICON_TYPE_MAP.entitySaveDefault.imageUpload
 
     return (
         <div className="entity-save-cmp--image-uploader-dropable-section__container">
             <input
                 type="file"
                 className="hidden"
-                ref={EL_INPUT_REF}
+                ref={elInput}
                 onChange={onFileInputChange}
                 multiple
             />
@@ -39,10 +44,10 @@ export const DropableSection = ({ isUploading, onFetchFiles }: Props) => {
             <FileDrop
                 draggingOverFrameClassName="dragging-over"
                 onTargetClick={onTargetClick}
-                onDrop={(files, event) => onDropFile(files, event)}
+                onDrop={onDropFile}
             >
                 <div className="dropable-place">
-                    <span className="icon"><AiOutlineCloudUpload size={50} /></span>
+                    <span className="icon"><UploadIcon size={50} /></span>
                     <span className="text">גרור קבצים או לחץ כאן</span>
                 </div>
             </FileDrop>

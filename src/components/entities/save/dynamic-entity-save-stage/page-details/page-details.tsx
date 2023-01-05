@@ -10,7 +10,7 @@ export const PageDetails = () => {
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.entitySaveModule)
 
-    const [value, setValue] = useState<string>(item.entityInfo.name.display || '')
+    const [value, setValue] = useState<string>(item.entityInfo.name.display)
 
 
     useEffect(() => {

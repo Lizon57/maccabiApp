@@ -15,11 +15,11 @@ export const CategoryList = ({ cmp }: Props) => {
             <MainTitle text={cmp.title || 'קטגוריות'} Icon={cmp.Icon} />
 
             <div className="entity-details--category-list-cmp__container">
-                {miniCategories.map(miniCategory => <div
-                    key={miniCategory.id}
+                {miniCategories.map(({ id, name: { display: displayName } }) => <div
+                    key={id}
                     className="category-preview"
                 >
-                    {miniCategory.name.display}
+                    {displayName}
                 </div>)}
             </div>
         </div>

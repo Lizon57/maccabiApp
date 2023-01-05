@@ -24,7 +24,7 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
 
     const { fillHeart: FillHeartIcon, outlineHeart: OutlineHeartIcon, view: ViewIcon,
         rate: RateIcon, edit: EditIcon } = ICON_TYPE_MAP.entityItemPreview
-    const { relatedInfo, entityInfo, itemInfo } = item
+    const { relatedInfo, entityInfo, itemInfo: { view, rate, editHistory } } = item
 
     return (
         <div className="dynamic-entity-preview--square-entity-preview__container">
@@ -48,22 +48,22 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
 
                     <div className="additional-info">
                         <div className="views-and-rate">
-                            <div className="views" title={`${getFormatedNumber(itemInfo.view)} צפיות`}>
+                            <div className="views" title={`${getFormatedNumber(view)} צפיות`}>
                                 <span className="icon"><ViewIcon size={11} /></span>
-                                <span className="text">{itemInfo.view ? getFormatedNumber(itemInfo.view) : 'לא נצפה'}</span>
+                                <span className="text">{view ? getFormatedNumber(view) : 'לא נצפה'}</span>
                             </div>
 
                             <div
                                 className="rate"
-                                title={itemInfo.rate.avg
-                                    ? `${itemInfo.rate.avg} כוכבי דירוג (בידי ${getFormatedNumber(itemInfo.rate.raterCount)} מדרגים)`
+                                title={rate.avg
+                                    ? `${rate.avg} כוכבי דירוג (בידי ${getFormatedNumber(rate.raterCount)} מדרגים)`
                                     : 'טרם דורג'}>
                                 <span className="icon"><RateIcon size={11} /></span>
-                                <span className="text">{itemInfo.rate.avg ? itemInfo.rate.avg : 'ללא דירוג'}</span>
+                                <span className="text">{rate.avg ? rate.avg : 'ללא דירוג'}</span>
                             </div>
                         </div>
 
-                        <div className="last-edit-date" title={`נערך לאחרונה לפני שנתיים. סה"כ נערך ${itemInfo.editHistory.total} פעמים`}>
+                        <div className="last-edit-date" title={`נערך לאחרונה לפני שנתיים. סה"כ נערך ${editHistory.total} פעמים`}>
                             <span className="icon"><EditIcon size={11} /></span>
                             <span className="text">לפני שנתיים</span>
                         </div>

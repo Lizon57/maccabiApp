@@ -4,7 +4,7 @@ import { branchService } from "../../../services/app/branch-service"
 export const DisplayBranchesIconByIds = ({ ids, className }: Props) => {
     const branches = branchService.getByIds(ids)
     const { asset: { symbol: primaryBranchSymbol }, name: { display: primaryBranchDisplayName } } = branches[0]
-    const shouldRenderAdditionalBranchList = (branches.length >= 2) ? true : false
+    const shouldRenderAdditionalBranchList = (branches.length >= 2)
 
     const formatter = new Intl.ListFormat('he', { style: 'long', type: 'conjunction' })
     const branchesNameList = formatter.format(branches.map(branch => branch.name.display))

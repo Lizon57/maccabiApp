@@ -9,15 +9,17 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.entitySaveModule)
 
-    const min = pickerInfo.option?.min || 0
-    const max = pickerInfo.option?.max || 1000000
+    const { option, key: optionKey, title } = pickerInfo
+
+    const min = option?.min || 0
+    const max = option?.max || 1000000
 
 
-    const value = getValueByDynamicKey(pickerInfo.key, item)
+    const value = getValueByDynamicKey(optionKey, item)
 
     const setValue = (value: number | undefined) => {
         const editedItem = structuredClone(item)
-        recursiveValueSetterByKey(value, editedItem, pickerInfo.key)
+        recursiveValueSetterByKey(value, editedItem, optionKey)
         dispatch(updateItem(editedItem))
     }
 
@@ -32,17 +34,17 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
     const clearPick = () => setValue(undefined)
 
 
+    const inputProps = { min, max, value }
+
     return (
         <div className="entity-save-cmp--profile-filler-number-picker__container">
-            <span className="title">{pickerInfo.title}</span>
+            <span className="title">{title}</span>
 
             <span className="picker">
                 <input
                     type="number"
                     placeholder={`בין ${min} ל-${max}`}
-                    value={value || ''}
-                    min={min}
-                    max={max}
+                    {...inputProps}
                     onChange={onPickValue}
                 />
             </span>

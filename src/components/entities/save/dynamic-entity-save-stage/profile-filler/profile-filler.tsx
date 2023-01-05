@@ -5,18 +5,20 @@ import { SymbolSeperateList } from "./pickers/symbol-seperate-list"
 
 export const ProfileFiller = ({ infos }: Props) => {
     const getPickerCmp = (info: Info) => {
+        const basicProps = { key: info.key, pickerInfo: info }
+
         switch (info.type) {
             case 'number-picker':
-                return <NumberPicker key={info.key} pickerInfo={info} />
+                return <NumberPicker {...basicProps} />
 
             case 'binary-picker':
-                return <BinaryPicker key={info.key} pickerInfo={info} />
+                return <BinaryPicker {...basicProps} />
 
             case 'date-picker':
-                return <DatePicker key={info.key} pickerInfo={info} />
+                return <DatePicker {...basicProps} />
 
             case 'symobl-seperate-list':
-                return <SymbolSeperateList key={info.key} pickerInfo={info} />
+                return <SymbolSeperateList {...basicProps} />
 
             default: return null
         }

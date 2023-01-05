@@ -25,13 +25,15 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
 
     useEffect(() => {
         if (item.relatedInfo?.miniProfile) {
+            const { relatedInfo: { miniProfile, branchIds } } = item
+
             const value = {
-                label: item.relatedInfo.miniProfile.displayName || '',
+                label: miniProfile?.displayName || '',
                 value: {
-                    id: item.relatedInfo?.miniProfile?.profileId || '',
-                    name: item.relatedInfo.miniProfile.displayName || '',
-                    branchIds: item.relatedInfo.branchIds || [],
-                    profileImageUrl: item.relatedInfo.miniProfile.profileImageUrl || ''
+                    id: miniProfile?.profileId || '',
+                    name: miniProfile?.displayName || '',
+                    branchIds: branchIds || [],
+                    profileImageUrl: miniProfile?.profileImageUrl || ''
                 }
             }
             setValue(value)
@@ -43,14 +45,9 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
     const getOptions = async (pharse: string) => {
         try {
             const items = await entityItemService.getMiniProfilesByPharse(pharse)
-            const options = items.map(item => ({
-                label: item.name,
-                value: {
-                    id: item.id,
-                    name: item.name,
-                    branchIds: item.branchIds,
-                    profileImageUrl: item.profileImageUrl
-                }
+            const options = items.map(({ name, id, branchIds, profileImageUrl }) => ({
+                label: name,
+                value: { id, name, branchIds, profileImageUrl }
             }))
             return options as ProfileOption[]
         } catch (err) {
@@ -74,6 +71,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
     const setProfile = (option: SingleValue<ProfileOption>) => {
         const editedItem = structuredClone(item)
         if (!editedItem.relatedInfo) editedItem.relatedInfo = {}
+        
         editedItem.relatedInfo.miniProfile = {
             profileId: option?.value.id,
             displayName: option?.value.name,

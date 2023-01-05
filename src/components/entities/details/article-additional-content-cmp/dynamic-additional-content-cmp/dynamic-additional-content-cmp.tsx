@@ -7,15 +7,15 @@ import { ImageGalleryList } from "./image-gallery/image-gallery-list"
 
 
 export const DynamicAdditionalContentCmp = ({ cmp }: Props) => {
-    const icons = ICON_TYPE_MAP.entityItemDefault
+    const iconMap = ICON_TYPE_MAP.entityItemDefault
 
     switch (cmp.type) {
         case 'image-gallery':
-            cmp.Icon = icons.imageGallery
+            cmp.Icon = iconMap.imageGallery
             return <ImageGalleryList cmp={cmp} />
 
         case 'category-list':
-            cmp.Icon = icons.categoryList
+            cmp.Icon = iconMap.categoryList
             return <CategoryList cmp={cmp} />
 
         default:

@@ -14,16 +14,16 @@ for (let i = 1850; i <= new Date().getFullYear(); i++) {
 }
 
 
-
-
 export const DatePicker = ({ pickerInfo }: Props) => {
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.entitySaveModule)
 
+    const { key, title } = pickerInfo
+    const { entityInfo } = item
 
-    const defaultDay = pickerInfo.key.endsWith('start') ? item.entityInfo.item?.dateOfActivity?.start?.day : item.entityInfo.item?.dateOfActivity?.end?.day
-    const defaultMonth = pickerInfo.key.endsWith('start') ? item.entityInfo.item?.dateOfActivity?.start?.month : item.entityInfo.item?.dateOfActivity?.end?.month
-    const defaultYear = pickerInfo.key.endsWith('start') ? item.entityInfo.item?.dateOfActivity?.start?.year : item.entityInfo.item?.dateOfActivity?.end?.year
+    const defaultDay = key.endsWith('start') ? entityInfo.item?.dateOfActivity?.start?.day : entityInfo.item?.dateOfActivity?.end?.day
+    const defaultMonth = key.endsWith('start') ? entityInfo.item?.dateOfActivity?.start?.month : entityInfo.item?.dateOfActivity?.end?.month
+    const defaultYear = key.endsWith('start') ? entityInfo.item?.dateOfActivity?.start?.year : entityInfo.item?.dateOfActivity?.end?.year
 
 
     const onPickOption = (value: string, extendKey: string) => {
@@ -41,7 +41,7 @@ export const DatePicker = ({ pickerInfo }: Props) => {
         }
 
         const editedItem = structuredClone(item)
-        recursiveValueSetterByKey(formattedValue, editedItem, pickerInfo.key + '.' + extendKey)
+        recursiveValueSetterByKey(formattedValue, editedItem, key + '.' + extendKey)
 
         dispatch(updateItem(editedItem))
     }
@@ -49,7 +49,7 @@ export const DatePicker = ({ pickerInfo }: Props) => {
 
     return (
         <div className="entity-save-cmp--profile-filler-date-picker__container">
-            <span className="title">{pickerInfo.title}</span>
+            <span className="title">{title}</span>
             <span className="picker">
                 <select defaultValue={defaultDay} onChange={({ currentTarget: { value } }) => { onPickOption(value, 'day') }}>
                     {NON_ZERO_DAYS.map(day => <option

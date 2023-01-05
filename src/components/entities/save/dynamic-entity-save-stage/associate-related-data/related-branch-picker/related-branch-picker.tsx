@@ -31,10 +31,7 @@ export const RelatedBranchPicker = ({ isRequire }: Props) => {
     useEffect(() => {
         if (!item?.relatedInfo?.branchIds) return
 
-        const filteredOptions = OPTIONS.filter(option => {
-            if (item.relatedInfo?.branchIds.includes(option.value.id)) return true
-            return false
-        })
+        const filteredOptions = OPTIONS.filter(option => item.relatedInfo?.branchIds.includes(option.value.id))
 
         setValues(filteredOptions)
         setIsFail(false)

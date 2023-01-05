@@ -43,8 +43,7 @@ export const AppFooter = () => {
                     <span className="title" title="עקבו אחרי מכביפדיה (גם) ברשתות החברתיות">עקבו אחרינו</span>
 
                     <span className="social-networks-icons-container">
-                        {SOCIAL_NETWORKS.map(network => {
-                            const { path, name, icon: Icon } = network
+                        {SOCIAL_NETWORKS.map(({ path, name, icon: Icon }) => {
                             return (<a key={path} href={path} target="_blank" rel="noreferrer">
                                 <Icon title={`מכביפדיה ב${name}`} />
                             </a>)

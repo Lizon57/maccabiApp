@@ -3,18 +3,14 @@ import { RelatedProfilePicker } from "./related-profile-picker/related-profile-p
 
 export const DynamicAssociatePickerList = ({ relateds }: Props) => {
     const getPickerCmp = (related: Related) => {
+        const basicProps = { key: related.type, isRequire: related.isRequire }
+
         switch (related.type) {
             case 'profile':
-                return <RelatedProfilePicker
-                    key={related.type}
-                    isRequire={related.isRequire}
-                />
+                return <RelatedProfilePicker {...basicProps} />
 
             case 'branch':
-                return <RelatedBranchPicker
-                    key={related.type}
-                    isRequire={related.isRequire}
-                />
+                return <RelatedBranchPicker {...basicProps} />
 
             default: return null
         }
@@ -23,7 +19,7 @@ export const DynamicAssociatePickerList = ({ relateds }: Props) => {
 
     return (
         <div className="entity-save-cmp--associate-related-data__container">
-            {relateds.map(related => getPickerCmp(related))}
+            {relateds.map(getPickerCmp)}
         </div>
     )
 }

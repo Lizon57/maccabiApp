@@ -7,25 +7,19 @@ import { UpToTabletWideStageStepper } from "./up-to-tablet-wide-stage-stepper"
 
 
 export const StageStepper = ({ stages, stagesStatus, currStageIdx, changeCurrStageIdx, saveItem }: Props) => {
+    const basicProps = { stages, stagesStatus, currStageIdx, changeCurrStageIdx }
+
     return (
         <section className="entity-save-cmp--stage-stepper__container">
             <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
                 <UpToTabletWideStageStepper
-                    stages={stages}
-                    stagesStatus={stagesStatus}
-                    currStageIdx={currStageIdx}
-                    changeCurrStageIdx={changeCurrStageIdx}
+                    {...basicProps}
                     saveItem={saveItem}
                 />
             </RenderByDeviceWidth>
 
             <RenderByDeviceWidth minDeviceWide="tablet">
-                <TabletWidePlusStageStepper
-                    stages={stages}
-                    stagesStatus={stagesStatus}
-                    currStageIdx={currStageIdx}
-                    changeCurrStageIdx={changeCurrStageIdx}
-                />
+                <TabletWidePlusStageStepper {...basicProps} />
             </RenderByDeviceWidth>
         </section>
     )

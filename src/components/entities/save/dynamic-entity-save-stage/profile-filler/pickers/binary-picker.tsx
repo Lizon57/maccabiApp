@@ -34,12 +34,12 @@ export const BinaryPicker = ({ pickerInfo }: Props) => {
         <div className="entity-save-cmp--profile-filler-binary-picker__container">
             <span className="title">{pickerInfo.title}</span>
             <span className="options">
-                {OPTIONS.map(option => <span
-                    key={option.title}
-                    className={"option" + ((isActiveOption(option.value, pickerInfo)) ? ' active' : '')}
-                    onClick={() => onPickOption(option.value)}
+                {OPTIONS.map(({ value, title }) => <span
+                    key={title}
+                    className={"option" + ((isActiveOption(value, pickerInfo)) ? ' active' : '')}
+                    onClick={() => onPickOption(value)}
                 >
-                    {option.title}
+                    {title}
                 </span>
                 )}
             </span>

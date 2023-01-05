@@ -22,13 +22,13 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
     const { item } = useStoreSelector(state => state.entitySaveModule)
 
     const [isUploading, setIsUploading] = useState(false)
-    const [imagesOnUpload, setImagesOnUpload] = useState<File[]>([])
-    const [failsUpload, setFailsUpload] = useState<string[]>([])
+    const [imagesOnUpload, setImagesOnUpload] = useState<File[]>()
+    const [failsUpload, setFailsUpload] = useState<string[]>()
 
 
     useEffect(() => {
         if (!isUploading) return
-        else if (!imagesOnUpload.length) setIsUploading(false)
+        !imagesOnUpload?.length && setIsUploading(false)
     }, [isUploading, imagesOnUpload])
 
 
@@ -41,25 +41,27 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
 
     const onUploadSuccess = (image: EntityItem, file: File) => {
         const editedItem = structuredClone(item)
-        if (!editedItem.miniImages?.length) editedItem.miniImages = []
-        editedItem.miniImages.push({
+        let { miniImages } = editedItem
+        if (!miniImages?.length) miniImages = []
+        miniImages.push({
             id: image.id,
             name: image.entityInfo.name.display,
             imageUrl: image.entityInfo.imageUrl
         })
         dispatch(updateItem(editedItem))
 
-        const filteredImagesOnUpload = imagesOnUpload.filter(fileItem => fileItem !== file)
+        const filteredImagesOnUpload = imagesOnUpload?.filter(fileItem => fileItem !== file)
         setImagesOnUpload(filteredImagesOnUpload)
     }
 
 
     const onUploadFail = (file: File) => {
-        const newFailsUpload = failsUpload.slice()
+        const newFailsUpload = failsUpload?.slice()
+        if (!newFailsUpload?.length) return
         newFailsUpload.push(file.name)
         setFailsUpload(newFailsUpload)
 
-        const filteredImagesOnUpload = imagesOnUpload.filter(fileItem => fileItem !== file)
+        const filteredImagesOnUpload = imagesOnUpload?.filter(fileItem => fileItem !== file)
         setImagesOnUpload(filteredImagesOnUpload)
     }
 
@@ -69,7 +71,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
 
         const editedItem: EntityItem = structuredClone(item)
         if (!editedItem.miniImages) return
-        editedItem.miniImages = editedItem?.miniImages.filter(image => image.id !== id)
+        editedItem.miniImages = editedItem.miniImages.filter(image => image.id !== id)
         dispatch(updateItem(editedItem))
     }
 
@@ -81,15 +83,13 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
         if (minImageCount > (item.miniImages?.length || 0)) {
             msg = 'יש להזין '
             if (minImageCount === 1) msg += 'לפחות תמונה אחת'
-            else if (minImageCount === 2) msg += 'לפחות שתי תמונות'
-            else msg += `לפחות ${minImageCount} תמונות `
+            else msg += `לפחות ${(minImageCount === 2) ? 'שתי' : minImageCount} תמונות`
         }
 
         if ((item.miniImages?.length || 0) > (maxImageCount || Infinity)) {
-            msg = 'יש להזין '
-            if (maxImageCount === 1) msg += 'עד תמונה אחת'
-            if (maxImageCount === 2) msg += 'עד שתי'
-            else msg += `עד ${maxImageCount} תמונות`
+            msg = 'יש להזין עד '
+            if (maxImageCount === 1) msg += 'תמונה אחת'
+            else msg += `${(minImageCount === 2) ? 'שתי' : minImageCount} תמונות`
         }
 
         return msg
@@ -97,35 +97,34 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
 
 
 
-    const shouldRenderFilesList = !!item?.miniImages?.length || !!imagesOnUpload.length || !!failsUpload.length
+    const shouldRenderFilesList = !!item?.miniImages?.length || !!imagesOnUpload?.length || !!failsUpload?.length
     const shouldRenderFailMsg = !!getFailMsg()
+
+    const imagesOnUploadPreviewProps = { entityName, onUploadSuccess, onUploadFail }
+    const dropableSectionProps = { isUploading, onFetchFiles }
 
     return (
         <div className="entity-save-cmp--image-upload__container">
-            <div className="file-picker">
-                <DropableSection isUploading={isUploading} onFetchFiles={onFetchFiles} />
-            </div>
+            <div className="file-picker"><DropableSection {...dropableSectionProps} /></div>
 
             {shouldRenderFilesList && <div className="uploaded-files">
                 <MainTitle text="קבצים שעלו" Icon={AiOutlineCloudUpload} />
                 <div
                     className={"files-list-container"
-                        + (((item?.miniImages?.length || 0) + imagesOnUpload.length < 4) ? ' short-list' : '')
+                        + (((item.miniImages?.length || 0) + (imagesOnUpload?.length || 0) < 4) ? ' short-list' : '')
                     }
                 >
-                    {imagesOnUpload.map(file => <ImageOnUploadPreview
+                    {imagesOnUpload?.map(file => <ImageOnUploadPreview
                         key={file.name}
                         file={file}
-                        entityName={entityName}
-                        onUploadSuccess={onUploadSuccess}
-                        onUploadFail={onUploadFail}
+                        {...imagesOnUploadPreviewProps}
                     />)}
                     {item?.miniImages?.map(image => <UploadedImagePreview
                         key={image.id}
                         image={image}
                         onRemoveImage={onRemoveImage}
                     />)}
-                    {failsUpload.map(failUpload => <ErrorMessage
+                    {failsUpload?.map(failUpload => <ErrorMessage
                         key={makeId(5)}
                         message={`העלאת הקובץ ${failUpload} נכשלה. אנא נסה שנית`}
                     />)}

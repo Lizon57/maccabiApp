@@ -5,7 +5,7 @@ import { EntityFilterOption } from "../../../../types/entity/filter/entity-filte
 import { EntitySortOption } from "../../../../types/entity/sort/entity-sort-option"
 
 import { SearchInput } from "../../../common/search-input/search-input"
-import { FilterSectionToggler } from "./filter-section-toggler/filter-section-toggler"
+import { FilterSectionToggler } from "./dynamic-filter-constructor/filter-section-toggler"
 import { SortDropdown } from "./sort-dropdown/sort-dropdown"
 
 

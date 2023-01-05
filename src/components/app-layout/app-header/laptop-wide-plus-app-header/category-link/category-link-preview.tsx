@@ -10,8 +10,7 @@ export const CategoryLinkPreview = ({ child }: Props) => {
         <li className="app-header--category-link__preview-container" title={text}>
             {text}
             {childrens?.length && <div className="drop-down-container">
-                {child.childrens.map(link => {
-                    const { id, path, isDisabled, title, img, description } = link
+                {child.childrens.map(({ id, path, isDisabled, title, img, description }) => {
                     return (<Link
                         key={id}
                         to={path}

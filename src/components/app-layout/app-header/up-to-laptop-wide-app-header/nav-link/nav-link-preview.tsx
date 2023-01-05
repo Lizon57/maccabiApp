@@ -20,8 +20,7 @@ export const NavLinkPreview = ({ category, currentCategoryOpen, onCloseMenu, set
             </div>
 
             <ul className={'drop-down-container' + (isOpenCategory ? ' open' : '')}>
-                {childrens.map(link => {
-                    const { id, path, title } = link
+                {childrens.map(({ id, path, title }) => {
                     return (<li key={id} onClick={onCloseMenu}>
                         <Link to={path} title={title}>{title}</Link>
                     </li>)

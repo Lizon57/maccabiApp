@@ -15,24 +15,27 @@ export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx,
         changeCurrStageIdx(idx)
     }
 
+    const prevStageIdx = currStageIdx - 1
+    const nextStageIdx = currStageIdx + 1
+
 
     return (
         <div className="entity-save-cmp--up-to-tablet-wide-stage-stepper__container">
             {!!currStageIdx && <button
-                title={`שלב קודם (${stages[currStageIdx - 1].title})`}
-                className={"prev" + (stagesStatus[currStageIdx - 1] ? '' : 'fail')}
-                onClick={() => changeCurrStageIdx(currStageIdx - 1)}
+                title={`שלב קודם (${stages[prevStageIdx].title})`}
+                className={"prev" + (stagesStatus[prevStageIdx] ? '' : 'fail')}
+                onClick={() => changeCurrStageIdx(prevStageIdx)}
             >
                 שלב קודם
             </button>}
 
             <Dropdown
-                controllerText={`${currStageIdx + 1}/${stages.length}`}
+                controllerText={`${nextStageIdx}/${stages.length}`}
                 title="ניווט בשלבי הוספה"
             >
                 <div className="dropdown-children-container">
-                    {stages.map((stage, idx) => <div
-                        key={stage.title}
+                    {stages.map(({ title }, idx) => <div
+                        key={title}
                         className={"stage-preview"
                             + (currStageIdx === idx ? ' active' : '')
                             + (stagesStatus[idx] ? ' available' : '')
@@ -47,26 +50,26 @@ export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx,
                                     : `חזור אל ${stages[idx].title}`
                         }
                         onClick={() => onChangeCurrStageIdx(idx)}
-                    > {stage.title}</div>)}
+                    > {title}</div>)}
                 </div>
             </Dropdown >
 
             {
-                stagesStatus[currStageIdx + 1] && (currStageIdx + 1 !== stagesStatus.length) && <button
+                stagesStatus[nextStageIdx] && (nextStageIdx !== stagesStatus.length) && <button
                     className="next"
-                    title={`המשך לשלב הבא (${stages[currStageIdx + 1].title})`}
-                    onClick={() => changeCurrStageIdx(currStageIdx + 1)}
+                    title={`המשך לשלב הבא (${stages[nextStageIdx].title})`}
+                    onClick={() => changeCurrStageIdx(nextStageIdx)}
                 >
-                    {(currStageIdx + 1 === stages.length) ? 'שמור' : 'שלב הבא'}
+                    {(nextStageIdx === stages.length) ? 'שמור' : 'שלב הבא'}
                 </button>
             }
 
-            < span className="stage-title" > {stages[currStageIdx].title}</span >
+            <span className="stage-title" > {stages[currStageIdx].title}</span>
 
             {getIsSaveable() &&
                 <button className="save" title="שמור" onClick={saveItem}>שמור</button>
             }
-        </div >
+        </div>
     )
 }
 

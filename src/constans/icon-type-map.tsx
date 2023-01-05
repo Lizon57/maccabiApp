@@ -3,7 +3,7 @@ import { BsEmojiFrown, BsEmojiSmile, BsImages } from "react-icons/bs"
 import { FaHandPointLeft, FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
 import { BiCategory, BiSearch } from "react-icons/bi"
 import { FiEdit2, FiXCircle } from "react-icons/fi"
-import { AiFillEye, AiFillHeart, AiFillStar, AiOutlineHeart, AiOutlinePlus } from "react-icons/ai"
+import { AiFillEye, AiFillHeart, AiFillStar, AiOutlineCloudUpload, AiOutlineHeart, AiOutlinePlus } from "react-icons/ai"
 
 
 
@@ -38,6 +38,10 @@ export const ICON_TYPE_MAP: IconMap = {
         rate: AiFillStar,
         edit: FiEdit2,
         plus: AiOutlinePlus
+    },
+
+    entitySaveDefault: {
+        imageUpload: AiOutlineCloudUpload
     }
 }
 

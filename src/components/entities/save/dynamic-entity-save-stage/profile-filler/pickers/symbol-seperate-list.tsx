@@ -10,15 +10,17 @@ export const SymbolSeperateList = ({ pickerInfo }: Props) => {
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.entitySaveModule)
 
-    const delimiter = pickerInfo.option?.delimiter
-    const actualValue = getValueByDynamicKey(pickerInfo.key, item)
-    let valueAsStr = getValueByDynamicKey(pickerInfo.key, item) || []
+    const { key, title, option } = pickerInfo
+
+    const delimiter = option?.delimiter
+    const actualValue = getValueByDynamicKey(key, item)
+    let valueAsStr = getValueByDynamicKey(key, item) || []
     valueAsStr = valueAsStr.join(delimiter)
     valueAsStr = valueAsStr.replace(delimiter, delimiter + ' ')
 
     const setValue = (value: string[] | undefined) => {
         const editedItem = structuredClone(item)
-        recursiveValueSetterByKey(value, editedItem, pickerInfo.key)
+        recursiveValueSetterByKey(value, editedItem, key)
         dispatch(updateItem(editedItem))
     }
 
@@ -31,11 +33,11 @@ export const SymbolSeperateList = ({ pickerInfo }: Props) => {
 
     return (
         <div className="entity-save-cmp--profile-filler-sybol-seperate-list__container">
-            <span className="title">{pickerInfo.title}</span>
+            <span className="title">{title}</span>
 
             <input
                 type="text"
-                placeholder={`הזן ${pickerInfo.title} (הפרדה עם ${delimiter})`}
+                placeholder={`הזן ${title} (הפרדה עם ${delimiter})`}
                 value={valueAsStr || ''}
                 onChange={onPickValue}
             />
