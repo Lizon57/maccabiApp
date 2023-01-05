@@ -3,18 +3,18 @@ import { BranchType } from "../../types/branch"
 
 
 const getById = (id: string) => {
-    return BRANCHES.find(branch => branch._id === id)
+    return BRANCHES.find(({ _id }) => _id === id)
 }
 
 
 const getByIds = (ids: string[]) => {
-    const MAPPED_BRANCHES: BranchType[] = []
+    const mappedBranches: BranchType[] = []
     ids.forEach(branchId => {
-        const branch = BRANCHES.find(branch => branch._id === branchId)
-        if (branch) MAPPED_BRANCHES.push(branch)
+        const branch = BRANCHES.find(({ _id }) => _id === branchId)
+        if (branch) mappedBranches.push(branch)
     })
 
-    return MAPPED_BRANCHES
+    return mappedBranches
 }
 
 

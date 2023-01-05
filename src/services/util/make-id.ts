@@ -1,6 +1,6 @@
 import { getRandomInt } from "./get-random-int"
 
-export const makeId = (length = 25) => {
+export const makeId = (length = 10) => {
     const possibleChart = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     let id = ''
 

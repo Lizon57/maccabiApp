@@ -39,11 +39,11 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
         const images = await entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB) as EntityItem[] || []
         if (!items) return []
 
-        const availableOptions = items.map(item => ({
-            id: item.id,
-            name: item.entityInfo.name.display,
-            branchIds: item.relatedInfo?.branchIds || [],
-            profileImageUrl: images.find(image => image.id === item.relatedInfo?.profileImageId)?.entityInfo.imageUrl
+        const availableOptions = items.map(({ id, entityInfo, relatedInfo }) => ({
+            id: id,
+            name: entityInfo.name.display,
+            branchIds: relatedInfo?.branchIds || [],
+            profileImageUrl: images.find(({ id }) => id === relatedInfo?.profileImageId)?.entityInfo.imageUrl
         }))
 
         return availableOptions

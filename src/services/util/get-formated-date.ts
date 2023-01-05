@@ -5,31 +5,31 @@ export const getFormatedDate = (
     isZeroIndex: boolean = true,
     isLinkAble: boolean = false) => {
 
+    const { day, month, year } = date
+
     let value = ''
 
-    if (isLinkAble) {
-        return value
-    }
+    if (isLinkAble) return value
 
-    if (date.day) {
-        value += date.day
-        if (typeof date.month === 'number') {
-            value += ' ב' + getMonthName(date.month, isZeroIndex)
-            value += ' ' + (getYear(date.year) || 'בשנה לא ידועה')
+    if (day) {
+        value += day
+        if (typeof month === 'number') {
+            value += ' ב' + getMonthName(month, isZeroIndex)
+            value += ' ' + (getYear(year) || 'בשנה לא ידועה')
         } else {
-            value += ' (חודש לא ידוע) ב-' + (getYear(date.year) || 'בשנה לא ידועה')
+            value += ' (חודש לא ידוע) ב-' + (getYear(year) || 'בשנה לא ידועה')
         }
         return value
     }
 
-    if (typeof date.month === 'number') {
-        value += getMonthName(date.month, isZeroIndex)
+    if (typeof month === 'number') {
+        value += getMonthName(month, isZeroIndex)
 
-        value += ' ' + getYear(date.year)
+        value += ' ' + getYear(year)
         return value
     }
 
-    else return getYear(date.year)
+    else return getYear(year)
 }
 
 

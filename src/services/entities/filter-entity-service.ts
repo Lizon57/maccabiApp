@@ -9,15 +9,15 @@ const getEntityById = (items: EntityItem[], id: string) => {
 
 
 const filterEntityByTitle = (items: EntityItem[], pharse: string) => {
-    return items.filter(item => item.entityInfo.name.display.includes(pharse))
+    return items.filter(({ entityInfo }) => entityInfo.name.display.includes(pharse))
 }
 
 
 const getActiveFilters = (possibleFilters: EntityFilterOption[]) => {
     const { searchParams: params } = new URL(window.location.href)
 
-    return possibleFilters.filter(possibleFilter => {
-        if (params.get(possibleFilter.param)) return 1
+    return possibleFilters.filter(({ param }) => {
+        if (params.get(param)) return 1
         else return 0
     })
 }
@@ -41,14 +41,14 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
         }
     }
 
-    filters?.forEach((filter) => {
-        switch (filter.type) {
+    filters?.forEach(({ type, param, key, option }) => {
+        switch (type) {
             case 'branch_multi_select':
-                const selectBranches = params.get(filter.param)?.split(',')
+                const selectBranches = params.get(param)?.split(',')
                 if (!selectBranches?.length) break
                 filteredItems = filteredItems.filter(item => {
                     let shouldFilterOut = true
-                    const optionalBranchesIds = getValueByDynamicKey(filter.key, item) as string[]
+                    const optionalBranchesIds = getValueByDynamicKey(key, item) as string[]
                     optionalBranchesIds.forEach(branchId => {
                         if (selectBranches.includes(branchId)) shouldFilterOut = false
                     })
@@ -59,10 +59,10 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 break
 
             case 'multi_number_filter':
-                const ranges = params.get(filter.param)?.split('|') || [-Infinity, Infinity]
+                const ranges = params.get(param)?.split('|') || [-Infinity, Infinity]
                 filteredItems = filteredItems.filter(item => {
-                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
-                    if (filter.option?.isLengthProp) {
+                    const actualKeyValue = getValueByDynamicKey(key, item)
+                    if (option?.isLengthProp) {
                         if (actualKeyValue.length < ranges[0] || actualKeyValue.length > ranges[1]) return false
                         else return true
                     }
@@ -73,12 +73,12 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 break
 
             case 'text_filter':
-                const textFilterType = params.get(filter.param + 'Type') || ''
-                const term = params.get(filter.param) || ''
+                const textFilterType = params.get(param + 'Type') || ''
+                const term = params.get(param) || ''
                 if (!textFilterType.length || !term) break
 
                 filteredItems = filteredItems.filter(item => {
-                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
+                    const actualKeyValue = getValueByDynamicKey(key, item)
                     if (!actualKeyValue) return false
                     if (textFilterType === '0') {
                         return actualKeyValue.some((str: string) => str.startsWith(term))
@@ -93,21 +93,21 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 break
 
             case 'checkbox_filter':
-                let isChosen = params.get(filter.param)
+                let isChosen = params.get(param)
                 if (!isChosen) break
                 isChosen = JSON.parse(isChosen)
                 if (typeof isChosen !== 'boolean') break
 
                 filteredItems = filteredItems.filter(item => {
-                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
+                    const actualKeyValue = getValueByDynamicKey(key, item)
 
                     return (isChosen === actualKeyValue)
                 })
                 break
 
             case 'date_filter':
-                let date: string | string[] | (number | undefined)[] = params.get(filter.param) || ''
-                const dateFilterType = params.get(filter.param + 'Type') || ''
+                let date: string | string[] | (number | undefined)[] = params.get(param) || ''
+                const dateFilterType = params.get(param + 'Type') || ''
                 if (!date || !dateFilterType) break
                 date = date.split('-')
                 date = date.map(part => (part === 'undefined' || !part) ? undefined : +part)
@@ -115,7 +115,7 @@ const dynamicEntityFilterByParams = (items: EntityItem[], optionalFilter: Option
                 if (!date[2]) break
 
                 filteredItems = filteredItems.filter(item => {
-                    const actualKeyValue = getValueByDynamicKey(filter.key, item)
+                    const actualKeyValue = getValueByDynamicKey(key, item)
                     if (!actualKeyValue) return false
 
                     let isFilterPass = false

@@ -21,16 +21,16 @@ const dynamicEntitySort = (entityList: EntityItem[], sortBy: EntitySortParam) =>
 }
 
 
-const _sortEntityByNumberKey = (entityList: EntityItem[], sortBy: EntitySortParam) => {
-    if (!sortBy.sKey) return entityList
+const _sortEntityByNumberKey = (entityList: EntityItem[], { sKey, sOrder }: EntitySortParam) => {
+    if (!sKey) return entityList
 
-    const SORT_KEY_PATH = sortBy.sKey.split('.')
+    const sortKeyPath = sKey.split('.')
     entityList = entityList.slice()
 
     const getActualSortKeyValue = (item: EntityItem) => {
         let actualSortKeyValue: any = item
 
-        for (let key of SORT_KEY_PATH) {
+        for (let key of sortKeyPath) {
             actualSortKeyValue = actualSortKeyValue[key as any]
         }
 
@@ -38,7 +38,7 @@ const _sortEntityByNumberKey = (entityList: EntityItem[], sortBy: EntitySortPara
     }
 
     entityList.sort((a, b) => {
-        if (sortBy.sOrder === 'asc') return getActualSortKeyValue(a) - getActualSortKeyValue(b)
+        if (sOrder === 'asc') return getActualSortKeyValue(a) - getActualSortKeyValue(b)
         else return getActualSortKeyValue(b) - getActualSortKeyValue(a)
     })
 
