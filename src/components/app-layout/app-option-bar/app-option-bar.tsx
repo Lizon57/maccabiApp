@@ -13,7 +13,7 @@ export const AppOptionBar = () => {
     const [selectOption, setSelectOption] = useState('')
     const dispatch = useStoreDispatch()
 
-    const elOptionBar = useRef<HTMLDivElement>(null)
+    const elOptionBar = useRef<HTMLUListElement>(null)
     const location = useLocation()
     const { width: windowWidth } = useWindowSize()
 
@@ -38,8 +38,8 @@ export const AppOptionBar = () => {
 
 
     return (
-        <div className="app-layout--app-option-bar__container" ref={elOptionBar}>
-            <ul className="options-list-container">
+        <div className="app-layout--app-option-bar__container">
+            <ul className="options-list-container" ref={elOptionBar}>
                 {OPTION_BAR.map(option => {
                     const { id, title, icon: Icon } = option
                     return (
@@ -50,10 +50,9 @@ export const AppOptionBar = () => {
                             <ul
                                 className={'links-list-container' + (selectOption === title ? ' open' : '')}
                             >
-                                {option.childrens.map(link => {
-                                    const { isRelative, path, text } = link
+                                {option.childrens.map(({ isRelative, path, text, id }) => {
                                     return (
-                                        <li key={link.id} className="link-container">
+                                        <li key={id} className="link-container">
                                             <Link
                                                 to={isRelative ? location.pathname + path : path}
                                                 onClick={onCloseOption}

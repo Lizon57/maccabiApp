@@ -23,14 +23,13 @@ div.app-layout--app-option-bar__container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
+    gap: $space-inline-xxxLarge-rem;
     @include clean-list-style;
-    width: 100%;
     height: $up-to-laptop-option-bar-total-height;
     max-width: 220px;
 
     @include viewport-wide-start-from-exclusive($viewport-small) {
-      gap: $space-inline-xxxSmall-rem;
+      gap: $space-inline-xSmall-rem;
     }
 
     li.category-container {
