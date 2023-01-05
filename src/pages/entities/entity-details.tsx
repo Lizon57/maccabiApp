@@ -20,7 +20,7 @@ export const EntityDetails = (entity: Entity) => {
     const { id: EntityItemId } = useParams()
 
     const [isLoading, setIsLoading] = useState(true)
-    const [errorMessage, setErrorMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState<string>()
 
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.displayEntityModule)
@@ -54,17 +54,19 @@ export const EntityDetails = (entity: Entity) => {
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
 
+    const { structure } = entity.detailsPageInfo
+
     return (
         <section className="entities-pages--entity-display__container">
-            {!!entity.detailsPageInfo.structure?.head?.length &&
+            {!!structure?.head?.length &&
                 <div className="primary-content">
-                    <ArticleHeadCmpList cmps={entity.detailsPageInfo.structure?.head} />
+                    <ArticleHeadCmpList cmps={structure?.head} />
                 </div>
             }
 
-            {!!entity.detailsPageInfo.structure?.additional?.length &&
+            {!!structure?.additional?.length &&
                 <div className="additional-content">
-                    <ArticleAdditionalContentCmpList cmps={entity.detailsPageInfo.structure?.additional} />
+                    <ArticleAdditionalContentCmpList cmps={structure?.additional} />
                 </div>}
         </section>
     )

@@ -23,13 +23,13 @@ import { EntityItem } from "../../types/entity/entities/entity-item"
 const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.length).fill(false)
 
 export const EntitySave = (entityName: string) => {
-    const ENTITY = entityService.getEntityByName(entityName)
+    const entity = entityService.getEntityByName(entityName)
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.entitySaveModule)
     const addAppMessage = useAppMessage()
 
     const [currStageIdx, setCurrStageIdx] = useState(0)
-    const [stagesStatus, setStagesStatus] = useState<boolean[]>(getInitStagesStatus(ENTITY?.saveItemPage.stages || []))
+    const [stagesStatus, setStagesStatus] = useState<boolean[]>(getInitStagesStatus(entity?.saveItemPage.stages || []))
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -46,10 +46,10 @@ export const EntitySave = (entityName: string) => {
 
 
     useEffect(() => {
-        if ((id && !isLoading) || !ENTITY) return
+        if ((id && !isLoading) || !entity) return
 
         if (!id) {
-            const emptyItem = emptyEntityItemService.get(ENTITY.name)
+            const emptyItem = emptyEntityItemService.get(entity.name)
             dispatch(updateItem(emptyItem))
             setIsLoading(false)
             return
@@ -57,7 +57,7 @@ export const EntitySave = (entityName: string) => {
 
         const loadItem = async () => {
             try {
-                const item = await entityService.getEntityItemById(id, ENTITY) as EntityItem
+                const item = await entityService.getEntityItemById(id, entity) as EntityItem
                 dispatch(updateItem(item))
             } catch (_err) { console.log(_err) }
             finally {
@@ -65,37 +65,38 @@ export const EntitySave = (entityName: string) => {
             }
         }
         loadItem()
-    }, [dispatch, ENTITY, id, isLoading])
+    }, [dispatch, entity, id, isLoading])
 
 
     useEffect(() => {
-        if (!ENTITY) return
+        if (!entity) return
 
-        const stagesStatus = ENTITY.saveItemPage.stages.map(stage => {
-            if (!stage.isRequire) return true
+        const stagesStatus = entity.saveItemPage.stages.map(({ isRequire, type, option }) => {
+            if (!isRequire) return true
+            const { relatedInfo } = item
             let isFilled = true
-            switch (stage.type) {
+            switch (type) {
                 case 'page-details':
                     if (!item.entityInfo.name.display) isFilled = false
                     break
 
                 case 'associate-related-data':
-                    stage.option?.relateds?.forEach(related => {
+                    option?.relateds?.forEach(related => {
                         switch (related.type) {
                             case 'profile':
-                                if (related.isRequire && !item.relatedInfo?.miniProfile?.profileId) isFilled = false
+                                if (related.isRequire && !relatedInfo?.miniProfile?.profileId) isFilled = false
                                 break
 
                             case 'branch':
-                                if (related.isRequire && !item.relatedInfo?.branchIds.length) isFilled = false
+                                if (related.isRequire && !relatedInfo?.branchIds.length) isFilled = false
                                 break
                         }
                     })
                     break
 
                 case 'image-upload':
-                    if ((item.miniImages?.length || 0) < (stage.option?.minImageCount || 0)
-                        || (item.miniImages?.length || 0) > (stage.option?.maxImageCount || Infinity)
+                    if ((item.miniImages?.length || 0) < (option?.minImageCount || 0)
+                        || (item.miniImages?.length || 0) > (option?.maxImageCount || Infinity)
                     ) isFilled = false
             }
 
@@ -103,7 +104,7 @@ export const EntitySave = (entityName: string) => {
         })
 
         setStagesStatus(stagesStatus)
-    }, [ENTITY, item]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [entity, item]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     const changeCurrStageIdx = (idx: number) => setCurrStageIdx(idx)
@@ -111,58 +112,52 @@ export const EntitySave = (entityName: string) => {
 
     const getIsSaveable = () => {
         const saveableIdx = stagesStatus.findIndex(status => status === false)
-        return (saveableIdx === -1) ? true : false
+        return (saveableIdx === -1)
     }
 
 
     const saveItem = async () => {
-        if (!getIsSaveable() || !ENTITY) return
+        if (!getIsSaveable() || !entity) return
         const editedItem = structuredClone(item) as EntityItem
         const isEdited = !!editedItem.id
         if (id) editedItem.id = id
 
+        const { display: displayName } = editedItem.entityInfo.name
+
         try {
-            await entityItemService.save(editedItem, ENTITY?.dbInfo.name, ENTITY?.dbInfo.fallbackDB)
-            addAppMessage(
-                isEdited
-                    ? { text: `עריכת הדף ${editedItem.entityInfo.name.display} בוצעה בהצלחה`, title: 'עריכה בוצעה בהצלחה', type: 'success' }
-                    : { text: `הוספת הדף ${editedItem.entityInfo.name.display} בוצעה בהצלחה`, title: 'הוספה בוצעה בהצלחה', type: 'success' }
-            )
+            await entityItemService.save(editedItem, entity?.dbInfo.name, entity?.dbInfo.fallbackDB)
+            const text = `${isEdited ? 'עריכת' : 'הוספת'} הדף ${displayName} בוצעה בהצלחה`
+            const title = `${isEdited ? 'עריכה' : 'הוספה'} בוצעה בהצלחה`
+            addAppMessage({ text, title, type: 'success' })
         } catch (err) {
-            addAppMessage(
-                isEdited
-                    ? { text: `עריכת הדף ${editedItem.entityInfo.name.display} נכשלה`, title: 'עריכה נכשלה', type: 'fail' }
-                    : { text: `הוספת הדף ${editedItem.entityInfo.name.display} נכשלה`, title: 'הוספה נכשלה', type: 'fail' }
-            )
+            const text = `${isEdited ? 'עריכת' : 'הוספת'} הדף ${displayName} נכשלה`
+            const title = `${isEdited ? 'עריכה' : 'הוספה'} נכשלה`
+            addAppMessage({ text, title, type: 'fail' })
         } finally {
             navigate(location.pathname.replace('/save', ''))
         }
     }
 
 
-    if (!ENTITY) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
+    if (!entity) return <ErrorMessage message="התרחשה שגיאה בטעינת העמוד" />
     if (isLoading) return <Loader />
 
-    const { saveItemPage: { stages } } = ENTITY
+    const { saveItemPage: { stages } } = entity
+
+    const stageStepperProps = { stages, stagesStatus, currStageIdx, changeCurrStageIdx, saveItem }
 
     return (
         <main className="entities-pages--entity-save__container">
-            <StageStepper
-                stages={stages}
-                stagesStatus={stagesStatus}
-                currStageIdx={currStageIdx}
-                changeCurrStageIdx={changeCurrStageIdx}
-                saveItem={saveItem}
-            />
+            <StageStepper {...stageStepperProps} />
 
             <MainTitle
-                text={ENTITY.saveItemPage.stages[currStageIdx].title}
-                Icon={ENTITY.saveItemPage.stages[currStageIdx].icon}
+                text={stages[currStageIdx].title}
+                Icon={stages[currStageIdx].icon}
             />
 
             <DynamicEntitySaveStage
                 stage={stages[currStageIdx]}
-                entityName={ENTITY.name}
+                entityName={entity.name}
             />
 
             <div className="save-stages-navigation">

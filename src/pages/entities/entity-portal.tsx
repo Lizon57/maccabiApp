@@ -24,7 +24,7 @@ export const EntityPortal = (entityName: string) => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState<string>()
     const [items, setItems] = useState<EntityItem[]>()
-    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState((window.innerWidth > 700) ? true : false)
+    const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(window.innerWidth > 700)
 
     const debouncedSetIsLoading = useDebounce(setIsLoading, 1000)
 
@@ -46,9 +46,10 @@ export const EntityPortal = (entityName: string) => {
 
         const loadItems = async () => {
             if (!isLoading) return
+            let { filters } = ENTITY.listPageInfo
 
-            const primaryFilter = ENTITY.listPageInfo.filters.find(filter => filter.type === 'primary_text')
-            const filters = ENTITY.listPageInfo.filters.filter(filter => filter.type !== 'primary_text')
+            const primaryFilter = filters.find(({ type }) => type === 'primary_text')
+            filters = ENTITY.listPageInfo.filters.filter(({ type }) => type !== 'primary_text')
             const optionalFilter = {
                 primaryFilter,
                 filters
@@ -91,15 +92,14 @@ export const EntityPortal = (entityName: string) => {
         toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}
     />
 
+    const FilterbyBuilderProps = { filters, debouncedSetIsLoading }
+
     return (
         <section className="entities-pages--entity-portal__container">
-            <MainTitle text={listTitle} Icon={Icon} isSticky={true} additionalCmp={titleAdditionalCmp} />
+            <MainTitle text={listTitle} Icon={Icon} isSticky additionalCmp={titleAdditionalCmp} />
 
             <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
-            {isFilterSectionOpen && <FilterbyBuilder
-                filters={filters}
-                debouncedSetIsLoading={debouncedSetIsLoading}
-            />}
+            {isFilterSectionOpen && <FilterbyBuilder {...FilterbyBuilderProps} />}
 
             {items?.length
                 ? <EntityList entity={ENTITY} items={items} />

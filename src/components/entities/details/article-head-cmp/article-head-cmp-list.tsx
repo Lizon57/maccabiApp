@@ -6,6 +6,8 @@ import { DynamicHeadCmp } from "./dynamic-head-cmp/dynamic-head-cmp"
 
 
 export const ArticleHeadCmpList = ({ cmps }: Props) => {
+    if (!cmps?.length) return null
+
     return (
         <>
             {cmps.map(cmp => <DynamicHeadCmp key={makeId()} cmp={cmp} />)}
@@ -15,5 +17,5 @@ export const ArticleHeadCmpList = ({ cmps }: Props) => {
 
 
 type Props = {
-    cmps: EntityDetailsStuctureCmp[]
+    cmps?: EntityDetailsStuctureCmp[]
 }

@@ -6,6 +6,8 @@ import { DynamicAdditionalContentCmp } from "./dynamic-additional-content-cmp/dy
 
 
 export const ArticleAdditionalContentCmpList = ({ cmps }: Props) => {
+    if (!cmps?.length) return null
+
     return (
         <>
             {cmps.map(cmp => <DynamicAdditionalContentCmp key={makeId()} cmp={cmp} />)}
@@ -15,5 +17,5 @@ export const ArticleAdditionalContentCmpList = ({ cmps }: Props) => {
 
 
 type Props = {
-    cmps: EntityDetailsStuctureCmp[]
+    cmps?: EntityDetailsStuctureCmp[]
 }

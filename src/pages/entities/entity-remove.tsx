@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { useAppMessage } from "../../hooks/store/actions/use-app-message"
-import { BsFillTrash2Fill } from "react-icons/bs"
 
 import { entityService } from "../../services/entities/entity-service"
 
@@ -12,6 +11,7 @@ import { MainTitle } from "../../components/common/main-title/main-title"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
 import { entityItemService } from "../../services/entities/entity-item-service"
+import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
 
 
 export const EntityRemove = (entity: Entity) => {
@@ -66,12 +66,16 @@ export const EntityRemove = (entity: Entity) => {
     if (isLoading || !EntityItemId || !item) return <Loader />
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
+
+    const { display: displayName } = item.entityInfo.name
+    const Icon = ICON_TYPE_MAP.remove.trash
+
     return (
         <main className="entities-pages--entity-remove__container">
-            <MainTitle text="מחיקת ערך" Icon={BsFillTrash2Fill} />
+            <MainTitle text="מחיקת ערך" Icon={Icon} />
 
             <p className="action-text">
-                האם אתה בטוח שברצונך למחוק את הערך {item.entityInfo.name.display}?
+                האם אתה בטוח שברצונך למחוק את הערך {displayName}?
             </p>
 
             <div className="buttons-container">

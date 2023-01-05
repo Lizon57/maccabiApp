@@ -1,5 +1,5 @@
 import { IconType } from "react-icons"
-import { BsEmojiFrown, BsEmojiSmile, BsImages } from "react-icons/bs"
+import { BsEmojiFrown, BsEmojiSmile, BsFillTrash2Fill, BsImages } from "react-icons/bs"
 import { FaHandPointLeft, FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
 import { BiCategory, BiSearch } from "react-icons/bi"
 import { FiEdit2, FiXCircle } from "react-icons/fi"
@@ -42,6 +42,10 @@ export const ICON_TYPE_MAP: IconMap = {
 
     entitySaveDefault: {
         imageUpload: AiOutlineCloudUpload
+    },
+
+    remove: {
+        trash: BsFillTrash2Fill
     }
 }
 
