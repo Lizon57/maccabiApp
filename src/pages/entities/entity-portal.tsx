@@ -22,8 +22,8 @@ export const EntityPortal = (entityName: string) => {
     const ENTITY = entityService.getEntityByName(entityName)
 
     const [isLoading, setIsLoading] = useState(true)
-    const [errorMessage, setErrorMessage] = useState('')
-    const [items, setItems] = useState<EntityItem[]>([])
+    const [errorMessage, setErrorMessage] = useState<string>()
+    const [items, setItems] = useState<EntityItem[]>()
     const [isFilterSectionOpen, setIsFilterSectionOpen] = useState((window.innerWidth > 700) ? true : false)
 
     const debouncedSetIsLoading = useDebounce(setIsLoading, 1000)
@@ -101,7 +101,7 @@ export const EntityPortal = (entityName: string) => {
                 debouncedSetIsLoading={debouncedSetIsLoading}
             />}
 
-            {items.length
+            {items?.length
                 ? <EntityList entity={ENTITY} items={items} />
                 : <ErrorMessage message="לא נמצאו פריטים להצגה" />}
         </section>

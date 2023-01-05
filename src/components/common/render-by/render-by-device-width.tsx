@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useWindowSize } from "../../../hooks/use-window-size"
 
 
-const POSSIBLE_SIZE = {
+const SIZE_MAP = {
     smallMobile: 350,
     mobile: 550,
     tablet: 900,
@@ -12,55 +12,49 @@ const POSSIBLE_SIZE = {
 
 
 export const RenderByDeviceWidth = ({ children, minDeviceWide, maxDeviceWide, isInclusive }: Props) => {
-    const ACTUAL_DEVICE_SIZE = useWindowSize().width
+    const { width: actualDeviceWidth } = useWindowSize()
     const [shouldRender, setShouldRender] = useState(false)
 
 
     useEffect(() => {
         if (isInclusive) {
             if (minDeviceWide && maxDeviceWide) {
-                if ((ACTUAL_DEVICE_SIZE >= POSSIBLE_SIZE[minDeviceWide]) && (ACTUAL_DEVICE_SIZE <= POSSIBLE_SIZE[maxDeviceWide])) {
-                    if (shouldRender) return
-                    setShouldRender(true)
+                if ((actualDeviceWidth >= SIZE_MAP[minDeviceWide]) && (actualDeviceWidth <= SIZE_MAP[maxDeviceWide])) {
+                    !shouldRender && setShouldRender(true)
                 } else if (shouldRender) setShouldRender(false)
             }
 
             else if (minDeviceWide) {
-                if (ACTUAL_DEVICE_SIZE >= POSSIBLE_SIZE[minDeviceWide]) {
-                    if (shouldRender) return
-                    setShouldRender(true)
+                if (actualDeviceWidth >= SIZE_MAP[minDeviceWide]) {
+                    !shouldRender && setShouldRender(true)
                 } else if (shouldRender) setShouldRender(false)
             }
 
             else if (maxDeviceWide) {
-                if (ACTUAL_DEVICE_SIZE <= POSSIBLE_SIZE[maxDeviceWide]) {
-                    if (shouldRender) return
-                    setShouldRender(true)
+                if (actualDeviceWidth <= SIZE_MAP[maxDeviceWide]) {
+                    !shouldRender && setShouldRender(true)
                 } else if (shouldRender) setShouldRender(false)
             }
         } else {
             if (minDeviceWide && maxDeviceWide) {
-                if ((ACTUAL_DEVICE_SIZE > POSSIBLE_SIZE[minDeviceWide]) && (ACTUAL_DEVICE_SIZE < POSSIBLE_SIZE[maxDeviceWide])) {
-                    if (shouldRender) return
-                    setShouldRender(true)
+                if ((actualDeviceWidth > SIZE_MAP[minDeviceWide]) && (actualDeviceWidth < SIZE_MAP[maxDeviceWide])) {
+                    !shouldRender && setShouldRender(true)
                 } else if (shouldRender) setShouldRender(false)
             }
 
             else if (minDeviceWide) {
-                if (ACTUAL_DEVICE_SIZE > POSSIBLE_SIZE[minDeviceWide]) {
-                    if (shouldRender) return
-                    setShouldRender(true)
+                if (actualDeviceWidth > SIZE_MAP[minDeviceWide]) {
+                    !shouldRender && setShouldRender(true)
                 } else if (shouldRender) setShouldRender(false)
             }
 
             else if (maxDeviceWide) {
-                if (ACTUAL_DEVICE_SIZE < POSSIBLE_SIZE[maxDeviceWide]) {
-                    if (shouldRender) return
-                    setShouldRender(true)
+                if (actualDeviceWidth < SIZE_MAP[maxDeviceWide]) {
+                    !shouldRender && setShouldRender(true)
                 } else if (shouldRender) setShouldRender(false)
             }
         }
-    }, [ACTUAL_DEVICE_SIZE, minDeviceWide, maxDeviceWide, isInclusive, shouldRender])
+    }, [actualDeviceWidth, minDeviceWide, maxDeviceWide, isInclusive, shouldRender])
 
 
     return shouldRender ? <>{children}</> : null
@@ -68,10 +62,10 @@ export const RenderByDeviceWidth = ({ children, minDeviceWide, maxDeviceWide, is
 
 
 type Props = {
-    minDeviceWide?: device
-    maxDeviceWide?: device
+    minDeviceWide?: Device
+    maxDeviceWide?: Device
     isInclusive?: boolean
     children: JSX.Element
 }
 
-type device = 'smallMobile' | 'mobile' | 'tablet' | 'laptop' | 'wide'
+type Device = 'smallMobile' | 'mobile' | 'tablet' | 'laptop' | 'wide'

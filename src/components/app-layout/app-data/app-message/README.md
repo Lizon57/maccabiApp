@@ -3,7 +3,7 @@
 
 ## Motivation & Context
 
-AppMessage cmp will provide a UI for message sent from the app to the client (such as "Edit action succsses").
+AppMessage cmp will provide an UI for message sent from the app to the client (such as "Edit action succsses").
 
 ## In app use
 

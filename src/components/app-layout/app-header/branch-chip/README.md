@@ -8,7 +8,7 @@
 
 ## Motivation & Context
 
-BranchChipList (using BranchChipPreview) cmp will provide client a UI of his active display branches settings.
+BranchChipList (using BranchChipPreview) cmp will provide client an UI of his active display branches settings.
 Using this UI, client can filter (in & out) branches.
 
 ## In app use

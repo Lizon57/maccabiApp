@@ -4,7 +4,7 @@
 
 ## Motivation & Context
 
-CategoryLinkList (using CategoryLinkPreview) will provide the client a UI of all category links on LaptopWidePlusAppHeader.
+CategoryLinkList (using CategoryLinkPreview) will provide the client an UI of all category links on LaptopWidePlusAppHeader.
 
 ## In app use
 

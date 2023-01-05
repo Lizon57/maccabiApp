@@ -9,12 +9,12 @@ export const Dropdown = ({ controllerText, controllerIcon: Icon, title, children
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen)
 
 
-    const EL_DROPDOWN_CONTAINER = useRef<HTMLDivElement>(null)
-    useOnClickOutside(EL_DROPDOWN_CONTAINER, () => setIsDropdownOpen(false))
+    const elDropdown = useRef<HTMLDivElement>(null)
+    useOnClickOutside(elDropdown, () => setIsDropdownOpen(false))
 
 
     return (
-        <div className="common-cmp--dropdown__container" ref={EL_DROPDOWN_CONTAINER}>
+        <div className="common-cmp--dropdown__container" ref={elDropdown}>
             <div className="toggler" title={title} onClick={toggleDropdown}>
                 {controllerText && <span>{controllerText}</span>}
                 {Icon && <Icon />}

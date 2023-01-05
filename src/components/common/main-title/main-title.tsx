@@ -1,5 +1,6 @@
 import { IconType } from "react-icons"
 
+
 export const MainTitle = ({ text, isSticky = false, Icon, additionalCmp }: Props) => {
     return (
         <h2 className={'common-cmp--main-title' + (isSticky ? ' sticky' : '')} title={text}>
