@@ -17,6 +17,7 @@ import { ActiveFilterList } from "../../components/entities/portal/active-filter
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { SeoImplement } from "../../components/common/seo-implement"
+import { usePageDataCmp } from "../../hooks/pages/usePageDataCmp"
 
 
 export const EntityPortal = (entityName: string) => {
@@ -28,6 +29,8 @@ export const EntityPortal = (entityName: string) => {
     const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(window.innerWidth > 700)
 
     const debouncedSetIsLoading = useDebounce(setIsLoading, 1000)
+
+    usePageDataCmp('social-network-preview')
 
 
     const changeFilterSectionOpenOnWindowResize = () => {

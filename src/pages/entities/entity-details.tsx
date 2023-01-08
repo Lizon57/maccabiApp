@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { useStoreDispatch } from "../../hooks/store/use-store-dispatch"
 import { useStoreSelector } from "../../hooks/store/use-store-selector"
 import { clearItem, setItem } from "../../store/slicer/display-entity-slicer"
+import { usePageDataCmp } from "../../hooks/pages/usePageDataCmp"
 
 import { entityService } from "../../services/entities/entity-service"
 
@@ -25,6 +26,8 @@ export const EntityDetails = (entity: Entity) => {
 
     const dispatch = useStoreDispatch()
     const { item } = useStoreSelector(state => state.displayEntityModule)
+
+    usePageDataCmp('entity-item-toc')
 
     useEffect(() => {
         if (!isLoading || !EntityItemId) return
