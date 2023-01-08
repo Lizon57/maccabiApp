@@ -11,10 +11,10 @@ export const CategoryList = ({ cmp }: Props) => {
     if (!miniCategories?.length) return null
 
     return (
-        <div>
+        <section className="entity-details--category-list-cmp__container">
             <MainTitle text={cmp.title || 'קטגוריות'} Icon={cmp.Icon} />
 
-            <div className="entity-details--category-list-cmp__container">
+            <div className="list-container">
                 {miniCategories.map(({ id, name: { display: displayName } }) => <div
                     key={id}
                     className="category-preview"
@@ -22,7 +22,7 @@ export const CategoryList = ({ cmp }: Props) => {
                     {displayName}
                 </div>)}
             </div>
-        </div>
+        </section>
     )
 }
 

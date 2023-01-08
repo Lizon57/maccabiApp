@@ -1,9 +1,9 @@
 import { IconType } from "react-icons"
 
 
-export const MainTitle = ({ text, isSticky = false, Icon, additionalCmp }: Props) => {
+export const MainTitle = ({ text, isSticky = false, Icon, additionalCmp, style }: Props) => {
     return (
-        <h2 className={'common-cmp--main-title' + (isSticky ? ' sticky' : '')} title={text}>
+        <h2 className={'common-cmp--main-title' + (isSticky ? ' sticky' : '')} title={text} style={style}>
             <div className="title-container">
                 {Icon && <span className="icon"><Icon size={18} /></span>}
                 <span className="text">{text}</span>
@@ -19,5 +19,6 @@ type Props = {
     text: string
     isSticky?: boolean
     Icon?: IconType
-    additionalCmp?: JSX.Element
+    additionalCmp?: JSX.Element,
+    style?: { [key: string]: string }
 }

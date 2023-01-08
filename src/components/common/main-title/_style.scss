@@ -5,7 +5,6 @@ h2.common-cmp--main-title {
   
   background-color: $clr-white-regular;
   margin: 0;
-  margin-block-end: $space-block-xxxSmall-rem;
   
   @include viewport-wide-start-from($viewport-small) {
     flex-direction: row;

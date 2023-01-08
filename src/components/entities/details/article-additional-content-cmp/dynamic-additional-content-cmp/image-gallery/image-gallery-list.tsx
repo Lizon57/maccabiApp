@@ -17,16 +17,16 @@ export const ImageGalleryList = ({ cmp }: Props) => {
 
 
     return (
-        <div>
+        <section className="entity-details--image-gallery-cmp__gallery-container">
             <MainTitle text={title || ''} Icon={cmp.Icon} />
 
-            <div className="entity-details--image-gallery-cmp__gallery-container">
+            <div className="gallery-container">
                 {miniImages.map(miniImage => <ImageGalleryPreview
                     key={miniImage.id}
                     miniImage={miniImage}
                 />)}
             </div>
-        </div>
+        </section>
     )
 }
 

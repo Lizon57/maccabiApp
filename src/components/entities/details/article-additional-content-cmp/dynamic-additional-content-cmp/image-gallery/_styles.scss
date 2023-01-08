@@ -1,7 +1,13 @@
-div.entity-details--image-gallery-cmp__gallery-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: $space-inline-regular-rem;
+section.entity-details--image-gallery-cmp__gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxSmall-rem;
+
+  div.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: $space-inline-regular-rem;
+  }
 }
 
 div.entity-details--image-gallery-cmp__preview-container {

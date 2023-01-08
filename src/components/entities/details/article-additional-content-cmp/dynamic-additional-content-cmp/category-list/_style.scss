@@ -1,13 +1,19 @@
-div.entity-details--category-list-cmp__container {
+section.entity-details--category-list-cmp__container {
   display: flex;
-  gap: $space-inline-xSmall-rem;
+  flex-direction: column;
+  gap: $space-block-xxSmall-rem;
 
-  div.category-preview {
-    font-size: $font-size-small-rem;
+  div.list-container {
+    display: flex;
+    gap: $space-inline-xSmall-rem;
 
-    &:not(:last-of-type) {
-      border-inline-end: 1px solid $clr-white-darkest;
-      padding-inline-end: $space-inline-xSmall-rem;
+    div.category-preview {
+      font-size: $font-size-small-rem;
+
+      &:not(:last-of-type) {
+        border-inline-end: 1px solid $clr-white-darkest;
+        padding-inline-end: $space-inline-xSmall-rem;
+      }
     }
   }
 }
