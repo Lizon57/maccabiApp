@@ -42,7 +42,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
     const onUploadSuccess = (image: EntityItem, file: File) => {
         const editedItem = structuredClone(item)
         let { miniImages } = editedItem
-        if (!miniImages?.length) miniImages = []
+        if (!miniImages) miniImages = []
         miniImages.push({
             id: image.id,
             name: image.entityInfo.name.display,
