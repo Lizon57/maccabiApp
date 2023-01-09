@@ -36,10 +36,10 @@ export const App = () => {
 
                     <div className="app-content">
                         <Routes>
-                            {ROUTES.map(route => <Route
-                                key={route.id}
-                                path={route.path}
-                                element={<route.element />} />)}
+                            {ROUTES.map(({ id, path, element: Element }) => <Route
+                                key={id}
+                                path={path}
+                                element={<Element />} />)}
                         </Routes>
                         {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

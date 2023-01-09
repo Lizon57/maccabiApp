@@ -1,12 +1,11 @@
 import { getRandomInt } from "../../../services/util/get-random-int"
-import { makeId } from "../../../services/util/make-id"
 
 import { EntityItem } from "../../../types/entity/entities/entity-item"
 
 
 export const SIGNATURE_DB: EntityItem[] = [
     {
-        id: makeId(),
+        id: 'signatureId00001',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00001',
@@ -45,7 +44,7 @@ export const SIGNATURE_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'signatureId00002',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00002',
@@ -84,7 +83,7 @@ export const SIGNATURE_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'signatureId00003',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00003',
@@ -123,7 +122,7 @@ export const SIGNATURE_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'signatureId00004',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00004',

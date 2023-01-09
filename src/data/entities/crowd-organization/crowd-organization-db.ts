@@ -1,4 +1,3 @@
-import { makeId } from "../../../services/util/make-id"
 import { getRandomInt } from "../../../services/util/get-random-int"
 
 import { EntityItem } from "../../../types/entity/entities/entity-item"
@@ -6,7 +5,7 @@ import { EntityItem } from "../../../types/entity/entities/entity-item"
 
 export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00001',
         relatedInfo: {
             branchIds: ['branchId00001', 'branchId00002', 'branchId00003', 'branchId00004'],
         },
@@ -53,7 +52,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00002',
         relatedInfo: {
             branchIds: ['branchId00001'],
         },
@@ -97,7 +96,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00003',
         relatedInfo: {
             branchIds: ['branchId00002'],
         },
@@ -106,7 +105,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
             name: {
                 display: 'אולטראס מכבי 96'
             },
-            ctgIds: ['categoryId0026', 'categoryId0027', 'categoryId0029'],
+            ctgIds: ['categoryId0026', 'categoryId0028', 'categoryId0029'],
             item: {
                 dateOfActivity: {
                     isActive: true,
@@ -139,7 +138,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00004',
         relatedInfo: {
             branchIds: ['branchId00001'],
         },
@@ -184,7 +183,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00005',
         relatedInfo: {
             branchIds: ['branchId00001', 'branchId00002', 'branchId00003', 'branchId00004'],
         },
@@ -193,7 +192,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
             name: {
                 display: 'אחים לסמל'
             },
-            ctgIds: ['categoryId0026', 'categoryId0027', 'categoryId0029'],
+            ctgIds: ['categoryId0026', 'categoryId0027', 'categoryId0028', 'categoryId0029'],
             item: {
                 dateOfActivity: {
                     isActive: true,
@@ -226,7 +225,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00006',
         relatedInfo: {
             branchIds: ['branchId00002'],
         },
@@ -235,7 +234,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
             name: {
                 display: 'The gate'
             },
-            ctgIds: ['categoryId0026', 'categoryId0027', 'categoryId0029'],
+            ctgIds: ['categoryId0026', 'categoryId0028', 'categoryId0029'],
             item: {
                 dateOfActivity: {
                     isActive: true,
@@ -268,7 +267,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00007',
         relatedInfo: {
             branchIds: ['branchId00002'],
         },
@@ -277,7 +276,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
             name: {
                 display: 'Gate 11'
             },
-            ctgIds: ['categoryId0026', 'categoryId0027', 'categoryId0030'],
+            ctgIds: ['categoryId0026', 'categoryId0028', 'categoryId0030'],
             item: {
                 dateOfActivity: {
                     isActive: false,
@@ -305,7 +304,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'crowdOragnizationId00008',
         relatedInfo: {
             branchIds: ['branchId00002'],
         },
@@ -314,7 +313,7 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
             name: {
                 display: 'Gate 7'
             },
-            ctgIds: ['categoryId0026', 'categoryId0027', 'categoryId0030'],
+            ctgIds: ['categoryId0026', 'categoryId0028', 'categoryId0030'],
             item: {
                 dateOfActivity: {
                     isActive: false,

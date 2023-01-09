@@ -1,12 +1,11 @@
 import { getRandomInt } from "../../../services/util/get-random-int"
-import { makeId } from "../../../services/util/make-id"
 
 import { EntityItem } from "../../../types/entity/entities/entity-item"
 
 
 export const LIBRARY_DB: EntityItem[] = [
     {
-        id: makeId(),
+        id: 'libraryId00001',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00001',
@@ -52,7 +51,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00002',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00006',
@@ -103,7 +102,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00003',
         relatedInfo: {
             branchIds: ['branchId00001'],
         },
@@ -144,7 +143,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00004',
         relatedInfo: {
             branchIds: ['branchId00002'],
         },
@@ -185,7 +184,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00005',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00007',
@@ -231,7 +230,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00006',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00008',
@@ -277,7 +276,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00007',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00009',
@@ -323,7 +322,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00008',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00010',
@@ -369,7 +368,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00009',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00011',
@@ -414,7 +413,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00010',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00012',
@@ -460,7 +459,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00011',
         relatedInfo: {
             miniProfile: {
                 profileId: 'profileId00013',
@@ -505,7 +504,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00012',
         relatedInfo: {
             branchIds: ['branchId00001'],
         },
@@ -546,7 +545,7 @@ export const LIBRARY_DB: EntityItem[] = [
     },
 
     {
-        id: makeId(),
+        id: 'libraryId00013',
         relatedInfo: {
             branchIds: ['branchId00001'],
         },

@@ -7,8 +7,10 @@ section.entity-details--category-list-cmp__container {
     display: flex;
     gap: $space-inline-xSmall-rem;
 
-    div.category-preview {
+    a.category-preview {
+      color: $clr-black-regular;
       font-size: $font-size-small-rem;
+      text-decoration: none;
 
       &:not(:last-of-type) {
         border-inline-end: 1px solid $clr-white-darkest;
