@@ -25,7 +25,6 @@ const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.
 
 export const EntitySave = (entityName: string) => {
     const entity = entityService.getEntityByName(entityName)
-    console.log(entityName)
     const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [currStageIdx, setCurrStageIdx] = useState(0)
