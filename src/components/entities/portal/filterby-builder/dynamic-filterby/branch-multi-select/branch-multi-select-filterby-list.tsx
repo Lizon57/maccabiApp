@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebounce } from "../../../../../../hooks/use-debounce"
-
-import { useSelector } from "react-redux"
-import { RootState } from "../../../../../../store/store"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
 
@@ -11,38 +8,35 @@ import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby
 
 
 export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoading }: Props) => {
-    const { browseableBranchesIds } = useSelector((state: RootState) => state.userStateModule.user)
-    const [activeBranches, setActiveBranches] = useState<string[]>(browseableBranchesIds)
-
     const { searchParams: params } = new URL(window.location.href)
+    const branchesFromParams = (params.get(filterParam)?.split(',') || [])
+    const [activeBranchesIds, setActiveBranchesIds] = useState<string[]>(branchesFromParams)
+
     const navigate = useNavigate()
 
 
-    const getIsActiveBranch = (id: string) => !!activeBranches.find(branchId => branchId === id)
-
-    const onBranchClick = (id: string) => {
-        const isActive = getIsActiveBranch(id)
-
-        let newActiveBranches = activeBranches.slice()
-        if (isActive) newActiveBranches = newActiveBranches.filter(branchId => branchId !== id)
-        else newActiveBranches.push(id)
-
-        setActiveBranches(newActiveBranches)
-        debouncedNavigateToNewActiveBranches(newActiveBranches)
-        debouncedSetIsLoading(true)
-    }
-
     const navigateToNewActiveBranches = (newActiveBranches: string[]) => {
-        const initialFilterParam = newActiveBranches.join()
-        params.set(filterParam, initialFilterParam)
+        const newActiveBranchesForParam = newActiveBranches.join()
+        params.set(filterParam, newActiveBranchesForParam)
         navigate({ search: params.toString().replaceAll('%2C', ',') })
     }
     const debouncedNavigateToNewActiveBranches = useDebounce(navigateToNewActiveBranches, 1000)
 
+    const activeNewBranchesIds = (branchesIds: string[]) => {
+        setActiveBranchesIds(branchesIds)
+        debouncedNavigateToNewActiveBranches(branchesIds)
+        debouncedSetIsLoading(true)
+    }
 
-    useEffect(() => {
-        if (params.get(filterParam)) setActiveBranches(params.get(filterParam)?.split(',') || [])
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    const onBranchClick = (branchId: string) => {
+        const getIsActiveBranch = !!activeBranchesIds.find(activeBranchId => activeBranchId === branchId)
+        let newActiveBranchesIds = activeBranchesIds.slice()
+
+        if (getIsActiveBranch) newActiveBranchesIds = newActiveBranchesIds.filter(activeBranchId => activeBranchId !== branchId)
+        else newActiveBranchesIds.push(branchId)
+
+        activeNewBranchesIds(newActiveBranchesIds)
+    }
 
 
     return (
@@ -50,8 +44,8 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
             {BRANCHES.map(branch => <BranchMultiSelectFilterbyPreview
                 key={branch._id}
                 branch={branch}
-                isActive={getIsActiveBranch(branch._id)}
-                toggleActiveBranch={onBranchClick}
+                isActive={activeBranchesIds.includes(branch._id)}
+                toggleActiveBranch={() => onBranchClick(branch._id)}
             />)}
         </div>
     )
