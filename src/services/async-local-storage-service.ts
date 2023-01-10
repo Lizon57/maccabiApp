@@ -11,6 +11,10 @@ const query = async<T>(dbName: string, fallBackDB: T[]) => {
 
     entities = JSON.parse(entities) as T[]
 
+    // For debugging: delay return value for 1 sec. Comment in sleep function to avoid delay.
+    const sleep = (delay: number) => new Promise(resolve => setTimeout(resolve, delay))
+    await sleep(1000)
+
     return entities
 }
 

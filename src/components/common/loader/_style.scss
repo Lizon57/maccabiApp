@@ -2,34 +2,34 @@ div.common-cmp--loader {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: $space-block-xxxSmall-rem;
   align-items: center;
+
   height: 100%;
 
-  gap: $space-block-xxxSmall-rem;
+  .loader {
+    position: relative;
 
-  div.loader-container {
-    svg {
-      display: block;
+    border: 5px solid $clr-blue-regular;
+    border-block-end: 5px solid $clr-white-darkest;
+    transform: translateZ(0);
 
-      width: 3rem;
-      height: 3rem;
+    animation: load-animation 2s infinite linear;
 
-      circle {
-        stroke-linecap: round;
-        stroke-dasharray: 126;
-        stroke-dashoffset: 0;
-        stroke: $clr-blue-regular;
-        animation: 5s circular-progress ease-out;
-        animation-iteration-count: infinite;
+    &,
+    &::after {
+      border-radius: 50vw;
+      width: 3em;
+      height: 3em;
+    }
+
+    @keyframes load-animation {
+      0% {
+        transform: rotate(0deg);
       }
 
-      @keyframes circular-progress {
-        from {
-          stroke-dasharray: 126;
-        }
-        to {
-          stroke-dashoffset: 0;
-        }
+      100% {
+        transform: rotate(360deg);
       }
     }
   }
