@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
-
 import { useLocation, useNavigate, useParams } from "react-router-dom"
-import { useStoreDispatch } from "../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../hooks/store/use-store-selector"
-import { setEmptyItem, updateItem } from "../../store/slicer/entity-save-slicer"
-import { useAppMessage } from "../../hooks/store/actions/use-app-message"
+
+import { useSelector } from "react-redux"
+import { RootState } from "../../store/store"
+import { setSaveEntityItem } from "../../store/action/save-entity-item-action"
+import { insertAppMessage } from "../../store/action/app-state-action"
 
 import { entityService } from "../../services/entities/entity-service"
 import { entityItemService } from "../../services/entities/entity-item-service"
@@ -25,9 +25,8 @@ const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.
 
 export const EntitySave = (entityName: string) => {
     const entity = entityService.getEntityByName(entityName)
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
-    const addAppMessage = useAppMessage()
+    console.log(entityName)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [currStageIdx, setCurrStageIdx] = useState(0)
     const [stagesStatus, setStagesStatus] = useState<boolean[]>(getInitStagesStatus(entity?.saveItemPage.stages || []))
@@ -40,18 +39,11 @@ export const EntitySave = (entityName: string) => {
 
 
     useEffect(() => {
-        return () => {
-            dispatch(setEmptyItem())
-        }
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-
-    useEffect(() => {
         if ((id && !isLoading) || !entity) return
 
         if (!id) {
             const emptyItem = emptyEntityItemService.get(entity.name)
-            dispatch(updateItem(emptyItem))
+            setSaveEntityItem(emptyItem)
             setIsLoading(false)
             return
         }
@@ -59,14 +51,14 @@ export const EntitySave = (entityName: string) => {
         const loadItem = async () => {
             try {
                 const item = await entityService.getEntityItemById(id, entity) as EntityItem
-                dispatch(updateItem(item))
+                setSaveEntityItem(item)
             } catch (_err) { console.log(_err) }
             finally {
                 setIsLoading(false)
             }
         }
         loadItem()
-    }, [dispatch, entity, id, isLoading])
+    }, [entity, id, isLoading])
 
 
     useEffect(() => {
@@ -132,11 +124,11 @@ export const EntitySave = (entityName: string) => {
             await entityItemService.save(editedItem, entity?.dbInfo.name, entity?.dbInfo.fallbackDB)
             const text = `${isEdited ? 'עריכת' : 'הוספת'} הדף ${displayName} בוצעה בהצלחה`
             const title = `${isEdited ? 'עריכה' : 'הוספה'} בוצעה בהצלחה`
-            addAppMessage({ text, title, type: 'success' })
+            insertAppMessage({ text, title, type: 'success' })
         } catch (err) {
             const text = `${isEdited ? 'עריכת' : 'הוספת'} הדף ${displayName} נכשלה`
             const title = `${isEdited ? 'עריכה' : 'הוספה'} נכשלה`
-            addAppMessage({ text, title, type: 'fail' })
+            insertAppMessage({ text, title, type: 'fail' })
         } finally {
             navigate(location.pathname.replace('/save', ''))
         }

@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react"
 import { FaTimes } from "react-icons/fa"
 
-import { useStoreSelector } from "../../../../../hooks/store/use-store-selector"
-import { useStoreDispatch } from "../../../../../hooks/store/use-store-dispatch"
-import { updateItem } from "../../../../../store/slicer/entity-save-slicer"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../store/store"
+import { setSaveEntityItem } from "../../../../../store/action/save-entity-item-action"
 
 
 export const PageDetails = () => {
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [value, setValue] = useState<string>(item.entityInfo.name.display)
 
@@ -17,8 +16,8 @@ export const PageDetails = () => {
         const editedItem = structuredClone(item)
         editedItem.entityInfo.name.display = value
 
-        dispatch(updateItem(editedItem))
-    }, [value, dispatch]) // eslint-disable-line react-hooks/exhaustive-deps
+        setSaveEntityItem(editedItem)
+    }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (

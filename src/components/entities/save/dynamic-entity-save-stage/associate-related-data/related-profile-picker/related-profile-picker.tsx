@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
+import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
+
 import AsyncSelect from "react-select/async"
 import { SingleValue } from "react-select"
 
-import { updateItem } from "../../../../../../store/slicer/entity-save-slicer"
-import { useStoreDispatch } from "../../../../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
 import { useDebounce } from "../../../../../../hooks/use-debounce"
 
 import { entityItemService } from "../../../../../../services/entities/entity-item-service"
@@ -15,8 +16,7 @@ import { FaTimes } from "react-icons/fa"
 
 
 export const RelatedProfilePicker = ({ isRequire }: Props) => {
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [value, setValue] = useState<SingleValue<ProfileOption>>()
     const [isClearable, setIsClearable] = useState<boolean>(false)
@@ -81,7 +81,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
         editedItem.relatedInfo.branchIds = option?.value.branchIds
         setValue(editedItem.relatedInfo)
         setIsClearable(true)
-        dispatch(updateItem(editedItem))
+        setSaveEntityItem(editedItem)
         setIsFail(false)
     }
 
@@ -97,7 +97,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
         const editedItem = structuredClone(item)
         editedItem.relatedInfo.miniProfile = {}
 
-        dispatch(updateItem(editedItem))
+        setSaveEntityItem(editedItem)
         setValue(null)
         setIsClearable(false)
     }

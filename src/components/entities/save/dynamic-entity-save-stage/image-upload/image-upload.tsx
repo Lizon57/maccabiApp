@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
 import { AiOutlineCloudUpload } from "react-icons/ai"
 
-import { useStoreDispatch } from "../../../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../../../hooks/store/use-store-selector"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../store/store"
+import { setSaveEntityItem } from "../../../../../store/action/save-entity-item-action"
 
 import { EntityItem } from "../../../../../types/entity/entities/entity-item"
-
-import { updateItem } from "../../../../../store/slicer/entity-save-slicer"
 
 import { makeId } from "../../../../../services/util/make-id"
 
@@ -17,9 +16,9 @@ import { MainTitle } from "../../../../common/main-title/main-title"
 import { ErrorMessage } from "../../../../common/error-message/error-message"
 
 
+
 export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props) => {
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [isUploading, setIsUploading] = useState(false)
     const [imagesOnUpload, setImagesOnUpload] = useState<File[]>()
@@ -48,7 +47,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
             name: image.entityInfo.name.display,
             imageUrl: image.entityInfo.imageUrl
         })
-        dispatch(updateItem(editedItem))
+        setSaveEntityItem(editedItem)
 
         const filteredImagesOnUpload = imagesOnUpload?.filter(fileItem => fileItem !== file)
         setImagesOnUpload(filteredImagesOnUpload)
@@ -72,7 +71,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
         const editedItem: EntityItem = structuredClone(item)
         if (!editedItem.miniImages) return
         editedItem.miniImages = editedItem.miniImages.filter(image => image.id !== id)
-        dispatch(updateItem(editedItem))
+        setSaveEntityItem(editedItem)
     }
 
 
@@ -119,7 +118,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
                         file={file}
                         {...imagesOnUploadPreviewProps}
                     />)}
-                    {item?.miniImages?.map(image => <UploadedImagePreview
+                    {(item.miniImages as MiniImages).map(image => <UploadedImagePreview
                         key={image.id}
                         image={image}
                         onRemoveImage={onRemoveImage}
@@ -142,3 +141,10 @@ type Props = {
     minImageCount?: number
     maxImageCount?: number
 }
+
+
+type MiniImages = {
+    id: string
+    name: string
+    imageUrl: string
+}[]

@@ -1,4 +1,5 @@
-import { useStoreSelector } from "../../../hooks/store/use-store-selector"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../store/store"
 
 import { RenderByDeviceWidth } from "../../common/render-by/render-by-device-width"
 import { AppAdditionalContent } from "../app-additional-content/app-additional-content"
@@ -6,7 +7,7 @@ import { DynamicPageDataCmp } from "./dynamic-page-data-cmp/dynamic-page-data-cm
 
 
 export const PageRelatedData = () => {
-    const { pageDataCmpType } = useStoreSelector(state => state.appLayout)
+    const { pageDataCmpType } = useSelector((state: RootState) => state.appLayoutModule)
 
     return (
         <AppAdditionalContent>

@@ -1,17 +1,16 @@
-import { useStoreDispatch } from "../../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../../hooks/store/use-store-selector"
-import { setActiveBranchesIds } from "../../../../store/slicer/user-slicer"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../store/store"
+import { setActiveBranchesIds } from "../../../../store/action/user-action"
 
+import { User } from "../../../../types/user"
 import { BranchProp } from "../../../../types/branch"
 
 
 export const BranchChipPreview = ({ branch }: BranchProp) => {
-    const dispatch = useStoreDispatch()
-    const { user } = useStoreSelector(state => state.userModule)
-
-    const { browseableBranchesIds } = user
-
+    const { user } = useSelector((state: RootState) => state.userStateModule)
+    const { browseableBranchesIds } = user as User
     const isActiveBranch = browseableBranchesIds.includes(branch._id)
+
 
     const onBranchClick = () => {
         let activeBranchesIds = browseableBranchesIds.slice()
@@ -20,7 +19,7 @@ export const BranchChipPreview = ({ branch }: BranchProp) => {
         }
         else activeBranchesIds.push(branch._id)
 
-        dispatch(setActiveBranchesIds(activeBranchesIds))
+        setActiveBranchesIds(activeBranchesIds)
     }
 
 

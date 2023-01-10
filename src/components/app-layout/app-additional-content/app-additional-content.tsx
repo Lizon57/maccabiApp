@@ -1,11 +1,13 @@
 import { useEffect } from "react"
-import { useStoreSelector } from "../../../hooks/store/use-store-selector"
 import { useWindowSize } from "../../../hooks/use-window-size"
 import { useWindowScrollY } from "../../../hooks/use-window-scroll-y"
 
+import { useSelector } from "react-redux"
+import { RootState } from "../../../store/store"
+
 
 export const AppAdditionalContent = ({ isBlockEnd = false, children }: Props) => {
-    const { appFooterClientHeight } = useStoreSelector(state => state.appLayout)
+    const { appFooterClientHeight } = useSelector((state: RootState) => state.appLayoutModule)
     const scrollY = useWindowScrollY()
     const { height: windowHeight } = useWindowSize()
     const { offsetHeight } = document.body

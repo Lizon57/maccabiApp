@@ -1,4 +1,5 @@
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
 
 import { EntityDetailsStuctureCmp } from "../../../../../../types/entity/details/entity-details-structure-cmp"
 
@@ -6,7 +7,7 @@ import { SimpleInfoListPreview } from "./simple-info-list-preview"
 
 
 export const SimpleInfoListList = ({ cmp }: Props) => {
-    const { item } = useStoreSelector(state => state.displayEntityModule)
+    const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
 
 
     if (!cmp.infos?.length) return <></>

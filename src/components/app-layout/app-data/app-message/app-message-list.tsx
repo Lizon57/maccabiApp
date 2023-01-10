@@ -1,12 +1,13 @@
-import { useStoreSelector } from "../../../../hooks/store/use-store-selector"
+import { useSelector } from "react-redux"
 
 import { RenderByDeviceWidth } from "../../../common/render-by/render-by-device-width"
 import { MainTitle } from "../../../common/main-title/main-title"
 import { AppMessagePreview } from "./app-message-preview"
+import { RootState } from "../../../../store/store"
 
 
 export const AppMessageList = () => {
-    const { appMessages } = useStoreSelector(state => state.appState)
+    const { appMessages } = useSelector((state: RootState) => state.appStateModule)
 
 
     if (!appMessages.length) return null

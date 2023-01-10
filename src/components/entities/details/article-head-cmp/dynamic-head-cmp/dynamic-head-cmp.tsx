@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom"
-import { useStoreSelector } from "../../../../../hooks/store/use-store-selector"
+
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../store/store"
 
 import { EntityDetailsStuctureCmp } from "../../../../../types/entity/details/entity-details-structure-cmp"
 
@@ -9,7 +11,7 @@ import { BreadCrumbs } from "../../../../common/bread-crumbs/bread-crumbs"
 
 
 export const DynamicHeadCmp = ({ cmp, entityName }: Props) => {
-    const itemName = useStoreSelector(state => state.displayEntityModule).item.entityInfo.name.display
+    const { display: itemName } = useSelector((state: RootState) => state.displayEntityItemModule.item.entityInfo.name)
     const path = useLocation().pathname.split('/')[1] || ''
 
     switch (cmp.type) {

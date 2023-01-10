@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom"
 
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
 
 import { EntityDetailsStuctureCmp } from "../../../../../../types/entity/details/entity-details-structure-cmp"
 
 import { MainTitle } from "../../../../../common/main-title/main-title"
+import { MiniPageCategory } from "../../../../../../types/page-category"
 
 
 export const CategoryList = ({ cmp }: Props) => {
-    const { miniCategories } = useStoreSelector(state => state.displayEntityModule.item.entityInfo)
+    const miniCategories = useSelector((state: RootState) => state.displayEntityItemModule.item.entityInfo.miniCategories) as MiniPageCategory[]
+
 
     if (!miniCategories?.length) return null
 

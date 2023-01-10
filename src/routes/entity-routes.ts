@@ -43,14 +43,14 @@ export const createEntityRoutes = () => {
         routes.push({
             id: makeId(),
             path: `${kababCaseKey}/:id/save`,
-            element: () => EntitySave(key)
+            element: () => EntitySave(kababCaseKey)
         })
 
         // Item create route
         routes.push({
             id: makeId(),
             path: `${kababCaseKey}/save`,
-            element: () => EntitySave(key)
+            element: () => EntitySave(kababCaseKey)
         })
 
         // Item remove route

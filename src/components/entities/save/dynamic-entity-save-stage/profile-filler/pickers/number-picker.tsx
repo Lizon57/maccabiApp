@@ -1,13 +1,13 @@
-import { useStoreDispatch } from "../../../../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
-import { updateItem } from "../../../../../../store/slicer/entity-save-slicer"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
+import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
 
 import { recursiveValueSetterByKey } from "../../../../../../services/util/recursive-value-setter-by-key"
 import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
 
+
 export const NumberPicker = ({ pickerInfo }: Props) => {
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const { option, key: optionKey, title } = pickerInfo
 
@@ -20,7 +20,7 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
     const setValue = (value: number | undefined) => {
         const editedItem = structuredClone(item)
         recursiveValueSetterByKey(value, editedItem, optionKey)
-        dispatch(updateItem(editedItem))
+        setSaveEntityItem(editedItem)
     }
 
     const onPickValue = ({ currentTarget: { value } }: React.FormEvent<HTMLInputElement>) => {

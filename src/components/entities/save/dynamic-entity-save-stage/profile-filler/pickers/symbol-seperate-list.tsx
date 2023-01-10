@@ -1,14 +1,13 @@
-import { useStoreDispatch } from "../../../../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
-import { updateItem } from "../../../../../../store/slicer/entity-save-slicer"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
+import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
 
 import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
 import { recursiveValueSetterByKey } from "../../../../../../services/util/recursive-value-setter-by-key"
 
 
 export const SymbolSeperateList = ({ pickerInfo }: Props) => {
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const { key, title, option } = pickerInfo
 
@@ -21,7 +20,7 @@ export const SymbolSeperateList = ({ pickerInfo }: Props) => {
     const setValue = (value: string[] | undefined) => {
         const editedItem = structuredClone(item)
         recursiveValueSetterByKey(value, editedItem, key)
-        dispatch(updateItem(editedItem))
+        setSaveEntityItem(editedItem)
     }
 
 

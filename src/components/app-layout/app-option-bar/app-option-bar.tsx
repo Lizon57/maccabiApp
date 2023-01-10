@@ -1,17 +1,16 @@
 import { useRef, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 
-import { useStoreDispatch } from "../../../hooks/store/use-store-dispatch"
+import { setAppScreenZIndex } from "../../../store/action/app-layout-action"
+
 import { useOnClickOutside } from "../../../hooks/use-on-click-outside"
 import { useWindowSize } from "../../../hooks/use-window-size"
-import { setAppScreenZIndex } from "../../../store/slicer/app-layout-slicer"
 
 import { OPTION_BAR } from "../../../data/app/option-bar"
 
 
 export const AppOptionBar = () => {
     const [selectOption, setSelectOption] = useState('')
-    const dispatch = useStoreDispatch()
 
     const elOptionBar = useRef<HTMLUListElement>(null)
     const location = useLocation()
@@ -26,7 +25,7 @@ export const AppOptionBar = () => {
 
     const onOpenOption = (option: string) => {
         setSelectOption(option)
-        dispatch(setAppScreenZIndex(499))
+        setAppScreenZIndex(499)
     }
 
     const onIconClick = (option: string) => {
@@ -47,9 +46,8 @@ export const AppOptionBar = () => {
                             <span className="icon-wrapper">
                                 <Icon onClick={() => onIconClick(title)} />
                             </span>
-                            <ul
-                                className={'links-list-container' + (selectOption === title ? ' open' : '')}
-                            >
+
+                            <ul className={'links-list-container' + (selectOption === title ? ' open' : '')}>
                                 {option.childrens.map(({ isRelative, path, text, id }) => {
                                     return (
                                         <li key={id} className="link-container">

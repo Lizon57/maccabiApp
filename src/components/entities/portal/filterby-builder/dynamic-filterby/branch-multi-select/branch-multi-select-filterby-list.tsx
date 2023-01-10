@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
 import { useDebounce } from "../../../../../../hooks/use-debounce"
+
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
 
@@ -10,23 +11,23 @@ import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby
 
 
 export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoading }: Props) => {
-    const { browseableBranchesIds } = useStoreSelector(state => state.userModule.user)
-    const [isActiveBranches, setIsActiveBranches] = useState(browseableBranchesIds)
+    const { browseableBranchesIds } = useSelector((state: RootState) => state.userStateModule.user)
+    const [activeBranches, setActiveBranches] = useState<string[]>(browseableBranchesIds)
 
     const { searchParams: params } = new URL(window.location.href)
     const navigate = useNavigate()
 
 
-    const getIsActiveBranch = (id: string) => !!isActiveBranches.find(branchId => branchId === id)
+    const getIsActiveBranch = (id: string) => !!activeBranches.find(branchId => branchId === id)
 
     const onBranchClick = (id: string) => {
         const isActive = getIsActiveBranch(id)
 
-        let newActiveBranches = isActiveBranches.slice()
+        let newActiveBranches = activeBranches.slice()
         if (isActive) newActiveBranches = newActiveBranches.filter(branchId => branchId !== id)
         else newActiveBranches.push(id)
 
-        setIsActiveBranches(newActiveBranches)
+        setActiveBranches(newActiveBranches)
         debouncedNavigateToNewActiveBranches(newActiveBranches)
         debouncedSetIsLoading(true)
     }
@@ -40,7 +41,7 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
 
 
     useEffect(() => {
-        if (params.get(filterParam)) setIsActiveBranches(params.get(filterParam)?.split(',') || [])
+        if (params.get(filterParam)) setActiveBranches(params.get(filterParam)?.split(',') || [])
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

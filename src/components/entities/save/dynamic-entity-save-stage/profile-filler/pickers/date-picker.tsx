@@ -1,6 +1,6 @@
-import { useStoreDispatch } from "../../../../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
-import { updateItem } from "../../../../../../store/slicer/entity-save-slicer"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
+import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
 
 import { recursiveValueSetterByKey } from "../../../../../../services/util/recursive-value-setter-by-key"
 
@@ -15,8 +15,7 @@ for (let i = 1850; i <= new Date().getFullYear(); i++) {
 
 
 export const DatePicker = ({ pickerInfo }: Props) => {
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const { key, title } = pickerInfo
     const { entityInfo } = item
@@ -43,7 +42,7 @@ export const DatePicker = ({ pickerInfo }: Props) => {
         const editedItem = structuredClone(item)
         recursiveValueSetterByKey(formattedValue, editedItem, key + '.' + extendKey)
 
-        dispatch(updateItem(editedItem))
+        setSaveEntityItem(editedItem)
     }
 
 

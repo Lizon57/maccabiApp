@@ -1,4 +1,6 @@
-import { useStoreSelector } from "../../../../../hooks/store/use-store-selector"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../store/store"
+
 import { getFormatedList } from "../../../../../services/util/get-formated-list"
 
 import { EntityDetailsStuctureCmp } from "../../../../../types/entity/details/entity-details-structure-cmp"
@@ -7,7 +9,8 @@ import { MainTitle } from "../../../../common/main-title/main-title"
 
 
 export const ItemTitle = ({ cmp }: Props) => {
-    const { item } = useStoreSelector(state => state.displayEntityModule)
+    const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
+
 
     let title = cmp.title
     title = title?.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
@@ -17,7 +20,7 @@ export const ItemTitle = ({ cmp }: Props) => {
 
 
     return (
-        <MainTitle text={title || ''} isSticky={true} Icon={cmp.Icon} />
+        <MainTitle text={title || ''} Icon={cmp.Icon} isSticky />
     )
 }
 

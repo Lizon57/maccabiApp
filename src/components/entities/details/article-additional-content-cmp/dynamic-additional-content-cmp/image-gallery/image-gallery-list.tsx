@@ -1,4 +1,5 @@
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
 
 import { EntityDetailsStuctureCmp } from "../../../../../../types/entity/details/entity-details-structure-cmp"
 
@@ -7,9 +8,9 @@ import { ImageGalleryPreview } from "./image-gallery-preview"
 
 
 export const ImageGalleryList = ({ cmp }: Props) => {
-    const { relatedInfo, entityInfo, miniImages } = useStoreSelector(state => state.displayEntityModule.item)
-
+    let { relatedInfo, entityInfo, miniImages } = useSelector((state: RootState) => state.displayEntityItemModule.item)
     if (!miniImages?.length) return <></>
+
 
     let title = cmp.title
     title = title?.replace('RELATED_PROFILE_NAME', (relatedInfo?.miniProfile?.displayName || ''))
@@ -21,7 +22,7 @@ export const ImageGalleryList = ({ cmp }: Props) => {
             <MainTitle text={title || ''} Icon={cmp.Icon} />
 
             <div className="gallery-container">
-                {miniImages.map(miniImage => <ImageGalleryPreview
+                {(miniImages as MiniImages).map(miniImage => <ImageGalleryPreview
                     key={miniImage.id}
                     miniImage={miniImage}
                 />)}
@@ -34,3 +35,10 @@ export const ImageGalleryList = ({ cmp }: Props) => {
 type Props = {
     cmp: EntityDetailsStuctureCmp
 }
+
+
+type MiniImages = {
+    id: string
+    name: string
+    imageUrl: string
+}[]

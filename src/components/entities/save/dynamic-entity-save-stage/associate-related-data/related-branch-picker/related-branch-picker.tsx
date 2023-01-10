@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react"
 import Select from 'react-select'
 
-import { BRANCHES } from '../../../../../../data/app/supports-branches'
-
-import { useStoreDispatch } from "../../../../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../../../../hooks/store/use-store-selector"
-import { updateItem } from "../../../../../../store/slicer/entity-save-slicer"
-
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
 import { RelatedBranchOptionPreview } from "./related-branch-option-preview"
+
+import { BRANCHES } from '../../../../../../data/app/supports-branches'
+import { updateDisplayEntityItem } from "../../../../../../store/action/display-entity-item-action"
 
 
 const OPTIONS = BRANCHES.map(branch => ({
@@ -21,8 +20,7 @@ const OPTIONS = BRANCHES.map(branch => ({
 
 
 export const RelatedBranchPicker = ({ isRequire }: Props) => {
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.entitySaveModule)
+    const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
 
     const [values, setValues] = useState<Option[]>([])
     const [isFail, setIsFail] = useState(false)
@@ -45,7 +43,7 @@ export const RelatedBranchPicker = ({ isRequire }: Props) => {
         editedItem.relatedInfo.branchIds = branchIds
         setValues(values)
         setIsFail(false)
-        dispatch(updateItem(editedItem))
+        updateDisplayEntityItem(editedItem)
     }
 
 
@@ -82,8 +80,6 @@ export const RelatedBranchPicker = ({ isRequire }: Props) => {
         </div>
     )
 }
-
-
 
 
 const customStyles = {

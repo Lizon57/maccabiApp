@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { useAppMessage } from "../../hooks/store/actions/use-app-message"
+
+import { insertAppMessage } from "../../store/action/app-state-action"
 
 import { entityService } from "../../services/entities/entity-service"
 import { entityItemService } from "../../services/entities/entity-item-service"
@@ -23,7 +24,6 @@ export const EntityRemove = (entity: Entity) => {
 
     const { id: EntityItemId } = useParams()
     const navigate = useNavigate()
-    const addAppMessage = useAppMessage()
 
 
     useEffect(() => {
@@ -52,11 +52,11 @@ export const EntityRemove = (entity: Entity) => {
         if (!EntityItemId) return
         try {
             await entityItemService.remove(EntityItemId, entity?.dbInfo.name, entity.dbInfo.fallbackDB)
-            addAppMessage(
+            insertAppMessage(
                 { text: `מחיקת הדף ${item?.entityInfo.name.display} בוצעה בהצלחה`, title: 'מחיקה בוצעה בהצלחה', type: 'success' }
             )
         } catch (err) {
-            addAppMessage(
+            insertAppMessage(
                 { text: `מחיקת הדף ${item?.entityInfo.name.display} נכשלה`, title: 'מחיקה נכשלה', type: 'fail' }
             )
         } finally {

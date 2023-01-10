@@ -17,7 +17,7 @@ import { ActiveFilterList } from "../../components/entities/portal/active-filter
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { SeoImplement } from "../../components/common/seo-implement"
-import { usePageDataCmp } from "../../hooks/pages/usePageDataCmp"
+import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
 
 
 export const EntityPortal = (entityName: string) => {

@@ -1,15 +1,14 @@
-import { useStoreSelector } from "../../../hooks/store/use-store-selector"
-import { useStoreDispatch } from "../../../hooks/store/use-store-dispatch"
-import { setAppScreenZIndex } from "../../../store/slicer/app-layout-slicer"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../store/store"
+import { setAppScreenZIndex } from "../../../store/action/app-layout-action"
 
 
 export const AppScreen = () => {
-    const { appScreenZIndex } = useStoreSelector(state => state.appLayout)
-    const dispatch = useStoreDispatch()
+    const { appScreenZIndex } = useSelector((state: RootState) => state.appLayoutModule)
+
+    const onCloseScreen = () => setAppScreenZIndex(0)
 
     const style = { zIndex: appScreenZIndex }
-
-    const onCloseScreen = () => dispatch(setAppScreenZIndex(0))
 
 
     return (

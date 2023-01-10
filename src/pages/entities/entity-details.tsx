@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
-import { useStoreDispatch } from "../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../hooks/store/use-store-selector"
-import { clearItem, setItem } from "../../store/slicer/display-entity-slicer"
-import { usePageDataCmp } from "../../hooks/pages/usePageDataCmp"
+import { useSelector } from "react-redux"
+import { RootState } from "../../store/store"
+import { updateDisplayEntityItem } from "../../store/action/display-entity-item-action"
+
+import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
 
 import { entityService } from "../../services/entities/entity-service"
+import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
 
 import { Entity } from "../../types/entity/entity"
 import { EntityItem } from "../../types/entity/entities/entity-item"
@@ -24,8 +26,7 @@ export const EntityDetails = (entity: Entity) => {
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState<string>()
 
-    const dispatch = useStoreDispatch()
-    const { item } = useStoreSelector(state => state.displayEntityModule)
+    const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
 
     usePageDataCmp('entity-item-toc')
 
@@ -36,7 +37,7 @@ export const EntityDetails = (entity: Entity) => {
             if (!isLoading) return
             try {
                 const item = await entityService.getEntityItemById(EntityItemId, entity) as EntityItem
-                dispatch(setItem(item))
+                updateDisplayEntityItem(item)
             } catch ({ message }) {
                 setErrorMessage(message as string)
             }
@@ -45,11 +46,11 @@ export const EntityDetails = (entity: Entity) => {
             }
         }
         loadItem()
-    }, [isLoading, entity, EntityItemId, dispatch])
+    }, [isLoading, entity, EntityItemId])
 
     useEffect(() => {
         return () => {
-            dispatch(clearItem())
+            updateDisplayEntityItem(emptyEntityItemService.get(''))
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

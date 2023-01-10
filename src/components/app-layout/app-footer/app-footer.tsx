@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 
-import { useStoreDispatch } from "../../../hooks/store/use-store-dispatch"
-import { useStoreSelector } from "../../../hooks/store/use-store-selector"
-import { setAppFooterClientHeight } from "../../../store/slicer/app-layout-slicer"
+import { useSelector } from "react-redux"
+import { setAppFooterClientHeight } from "../../../store/action/app-layout-action"
+import { RootState } from "../../../store/store"
 
 import { useOnWindowResize } from "../../../hooks/use-on-window-resize"
 
@@ -11,8 +11,7 @@ import { SOCIAL_NETWORKS } from "../../../constans/social-networks"
 
 
 export const AppFooter = () => {
-    const dispatch = useStoreDispatch()
-    const { appFooterClientHeight } = useStoreSelector(state => state.appLayout)
+    const { appFooterClientHeight } = useSelector((state: RootState) => state.appLayoutModule)
     const elAppFooter = useRef<HTMLDivElement>(null)
 
 
@@ -20,12 +19,14 @@ export const AppFooter = () => {
         const footerClientHeight = elAppFooter.current?.clientHeight || 0
 
         if (!elAppFooter.current || (footerClientHeight === appFooterClientHeight)) return
-        dispatch(setAppFooterClientHeight(footerClientHeight))
-    }, [dispatch, appFooterClientHeight])
+        setAppFooterClientHeight(footerClientHeight)
+    }, [appFooterClientHeight])
+
 
     useEffect(() => {
         handleAppFooterRefUpdate()
     }, [elAppFooter, handleAppFooterRefUpdate])
+
 
     useOnWindowResize(handleAppFooterRefUpdate)
 
