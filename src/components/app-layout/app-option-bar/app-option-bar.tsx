@@ -7,9 +7,13 @@ import { useOnClickOutside } from "../../../hooks/use-on-click-outside"
 import { useWindowSize } from "../../../hooks/use-window-size"
 
 import { OPTION_BAR } from "../../../data/app/option-bar"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../store/store"
 
 
 export const AppOptionBar = () => {
+    const { pageType } = useSelector((state: RootState) => state.appLayoutModule)
+    console.log(pageType)
     const [selectOption, setSelectOption] = useState('')
 
     const elOptionBar = useRef<HTMLUListElement>(null)
@@ -48,8 +52,9 @@ export const AppOptionBar = () => {
                             </span>
 
                             <ul className={'links-list-container' + (selectOption === title ? ' open' : '')}>
-                                {option.childrens.map(({ isRelative, path, text, id }) => {
-                                    return (
+                                {option.childrens.map(({ isRelative, path, text, id, pageTypesRestriction }) => {
+                                    const shouldRender = pageTypesRestriction?.find(restriction => (restriction === pageType))
+                                    if (!pageTypesRestriction?.length || shouldRender) return (
                                         <li key={id} className="link-container">
                                             <Link
                                                 to={isRelative ? location.pathname + path : path}
@@ -59,6 +64,7 @@ export const AppOptionBar = () => {
                                             </Link>
                                         </li>
                                     )
+                                    return null
                                 })}
                             </ul>
                         </li>

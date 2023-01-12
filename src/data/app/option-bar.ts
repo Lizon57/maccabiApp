@@ -1,15 +1,14 @@
-import { IconType } from "react-icons"
-import { AiOutlineUser } from "react-icons/ai"
-import { FiEdit2 } from "react-icons/fi"
-import { GoGear } from "react-icons/go"
+import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
+
+import { AppOptionLinksListCategory } from "../../models/interfaces/app/app-option-links-list-category"
 
 import { makeId } from "../../services/util/make-id"
 
 
-export const OPTION_BAR: Option[] = [
+export const OPTION_BAR: AppOptionLinksListCategory[] = [
     {
         id: makeId(),
-        icon: GoGear,
+        icon: ICON_TYPE_MAP.appHeaderOptionLink.helpful,
         title: 'אפשרויות',
         childrens: [
             {
@@ -28,14 +27,22 @@ export const OPTION_BAR: Option[] = [
     },
     {
         id: makeId(),
-        icon: FiEdit2,
+        icon: ICON_TYPE_MAP.appHeaderOptionLink.action,
         title: 'עריכה',
         childrens: [
             {
                 id: makeId(),
                 text: 'עריכה',
                 path: '/save',
-                isRelative: true
+                isRelative: true,
+                pageTypesRestriction: ['entity-item-details']
+            },
+            {
+                id: makeId(),
+                text: 'הוספה',
+                path: '/save',
+                isRelative: true,
+                pageTypesRestriction: ['entity-item-portal']
             },
             {
                 id: makeId(),
@@ -51,21 +58,16 @@ export const OPTION_BAR: Option[] = [
             },
             {
                 id: makeId(),
-                text: 'הגנה',
-                path: '/permissions',
-                isRelative: true
-            },
-            {
-                id: makeId(),
                 text: 'מחיקה',
                 path: '/remove',
-                isRelative: true
+                isRelative: true,
+                pageTypesRestriction: ['entity-item-details']
             },
         ]
     },
     {
         id: makeId(),
-        icon: AiOutlineUser,
+        icon: ICON_TYPE_MAP.appHeaderOptionLink.user,
         title: 'משתמש',
         childrens: [
             {
@@ -95,20 +97,3 @@ export const OPTION_BAR: Option[] = [
         ]
     }
 ]
-
-
-type Option = {
-    id: string,
-    icon: IconType
-    title: string
-    childrens: Link[]
-}
-
-
-type Link = {
-    id: string
-    text: string
-    path: string
-    isRelative: boolean
-    restrictions?: string[]
-}

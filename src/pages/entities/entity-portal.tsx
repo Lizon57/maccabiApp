@@ -12,6 +12,7 @@ import { entityService } from "../../services/entities/entity-service"
 import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
 import { useOnWindowResize } from "../../hooks/use-on-window-resize"
 import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
+import { usePageType } from "../../hooks/pages/use-page-type"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
@@ -38,6 +39,7 @@ export const EntityPortal = (entityName: string) => {
     const debouncedSetIsLoading = useDebouncedCallback(setIsLoading, 1000)
 
     usePageDataCmp('social-network-preview')
+    usePageType('entity-item-portal')
 
 
     const changeFilterSectionOpenOnWindowResize = () => {

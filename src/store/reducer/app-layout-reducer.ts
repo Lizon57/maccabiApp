@@ -1,7 +1,8 @@
 const initialState: AppLayoutReducer = {
     appFooterClientHeight: 0,
     appScreenZIndex: 0,
-    pageDataCmpType: 'social-network-preview'
+    pageDataCmpType: 'social-network-preview',
+    pageType: null
 }
 
 
@@ -16,6 +17,9 @@ export const appLayoutReducer = (state = initialState, action: Action) => {
         case 'setPageDataCmpType':
             return { ...state, pageDataCmpType: action.pageDataCmpType }
 
+        case 'setPageType':
+            return { ...state, pageType: action.pageType }
+
         default:
             return state
     }
@@ -26,6 +30,7 @@ export type AppLayoutReducer = {
     appFooterClientHeight: number
     appScreenZIndex: number
     pageDataCmpType: string
+    pageType: string | null
 }
 
 

@@ -14,3 +14,8 @@ export const setAppScreenZIndex = (zIndex: number) => {
 export const setPageDataCmpType = (pageDataCmpType: string) => {
     store.dispatch({ type: 'setPageDataCmpType', pageDataCmpType })
 }
+
+
+export const setPageType = (pageType: string | null) => {
+    store.dispatch({ type: 'setPageType', pageType })
+}

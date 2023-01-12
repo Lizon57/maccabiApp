@@ -6,6 +6,7 @@ import { RootState } from "../../store/store"
 import { updateDisplayEntityItem } from "../../store/action/display-entity-item-action"
 
 import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
+import { usePageType } from "../../hooks/pages/use-page-type"
 
 import { entityService } from "../../services/entities/entity-service"
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
@@ -29,6 +30,8 @@ export const EntityDetails = (entity: Entity) => {
     const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
 
     usePageDataCmp('entity-item-toc')
+    usePageType('entity-item-details')
+
 
     useEffect(() => {
         if (!isLoading || !EntityItemId) return

@@ -3,11 +3,18 @@ import { BsEmojiFrown, BsEmojiSmile, BsFillTrash2Fill, BsImages } from "react-ic
 import { FaHandPointLeft, FaFacebookSquare, FaInstagramSquare, FaTwitterSquare, FaYoutubeSquare } from "react-icons/fa"
 import { BiCategory, BiSearch } from "react-icons/bi"
 import { FiEdit2, FiXCircle } from "react-icons/fi"
-import { AiFillEye, AiFillHeart, AiFillStar, AiOutlineCloudUpload, AiOutlineHeart, AiOutlinePlus } from "react-icons/ai"
+import { AiFillEye, AiFillHeart, AiFillStar, AiOutlineCloudUpload, AiOutlineHeart, AiOutlinePlus, AiOutlineUser } from "react-icons/ai"
+import { GoGear } from "react-icons/go"
 
 
 
 export const ICON_TYPE_MAP: IconMap = {
+    appHeaderOptionLink: {
+        helpful: GoGear,
+        action: FiEdit2,
+        user: AiOutlineUser
+    },
+
     appMessage: {
         success: BsEmojiSmile,
         fail: BsEmojiFrown,
