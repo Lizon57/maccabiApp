@@ -80,6 +80,11 @@ export const libraryEntity: Entity = {
                             title: 'מוציאים לאור',
                             value: 'entityInfo.item.publishers'
                         },
+                        {
+                            type: 'boolean',
+                            title: 'ספר מתורגם',
+                            value: 'entityInfo.item.isTranslated'
+                        },
                     ]
                 }
             ],
@@ -192,6 +197,17 @@ export const libraryEntity: Entity = {
                 activeFilterChip: {
                     type: 'checkbox_filter',
                     text: 'CHOOSE_OPTION ביוגרפיות'
+                },
+            },
+            {
+                id: makeId(),
+                type: 'checkbox_filter',
+                key: 'entityInfo.item.isTranslted',
+                param: 'fBiography',
+                title: 'מתורגמים',
+                activeFilterChip: {
+                    type: 'checkbox_filter',
+                    text: 'CHOOSE_OPTION מתורגמים'
                 },
             }
         ]

@@ -32,6 +32,7 @@ export interface EntityItem {
             pageCount?: number
             publishYear?: number
             isBiography?: boolean
+            isTranslated?: boolean
 
             dateOfActivity?: {
                 isActive?: boolean

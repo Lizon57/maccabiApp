@@ -26,6 +26,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 237,
                 publishYear: 1997,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -72,6 +73,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 360,
                 publishYear: 2017,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -118,6 +120,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 publishers: ['פרסומי ספורט'],
                 pageCount: 33,
                 isBiography: false,
+                isTranslated: false,
             }
         },
 
@@ -159,6 +162,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 151,
                 publishYear: 1988,
                 isBiography: false,
+                isTranslated: false,
             }
         },
 
@@ -205,6 +209,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 245,
                 publishYear: 2020,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -251,6 +256,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 450,
                 publishYear: 2021,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -297,6 +303,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 190,
                 publishYear: 1992,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -343,6 +350,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 127,
                 publishYear: 2004,
                 isBiography: true,
+                isTranslated: true,
             }
         },
 
@@ -388,6 +396,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 54,
                 publishYear: 1957,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -434,6 +443,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 128,
                 publishYear: 1976,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -479,6 +489,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 pageCount: 66,
                 publishYear: 1958,
                 isBiography: true,
+                isTranslated: false,
             }
         },
 
@@ -520,6 +531,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 publishers: ['הוצאת מדיה'],
                 pageCount: 275,
                 isBiography: false,
+                isTranslated: false,
             }
         },
 
@@ -561,6 +573,7 @@ export const LIBRARY_DB: EntityItem[] = [
                 publishers: ['הוצאת מדיה'],
                 pageCount: 276,
                 isBiography: false,
+                isTranslated: false,
             }
         },
 
