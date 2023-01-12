@@ -64,6 +64,7 @@ export const EntityDetails = (entity: Entity) => {
 
     const { structure } = entity.detailsPageInfo
     const { display: entityName } = entity.entityInfo.name
+    const { display: itemName } = item.entityInfo.name
 
     return (
         <>
@@ -81,7 +82,10 @@ export const EntityDetails = (entity: Entity) => {
             </section>
 
             <SeoImplement
-                appTitle={`${item.entityInfo.name.display} (${entityName})`}
+                appTitle={itemName}
+                openGraphTitle={itemName}
+                openGraphDescription="כל מה שאוהד מכבי צריך לדעת"
+                openGraphImage={item?.miniImages[0]?.imageUrl || ''}
             />
         </>
     )

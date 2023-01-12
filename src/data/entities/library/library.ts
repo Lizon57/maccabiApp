@@ -22,6 +22,7 @@ export const libraryEntity: Entity = {
     entityInfo: {
         name: {
             display: 'ספרייה',
+            openGraph: 'כל הספרים שנכתבו על מכבי תל אביב',
             listTitle: 'ספרייה'
         },
         description: {

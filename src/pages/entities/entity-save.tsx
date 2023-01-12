@@ -140,6 +140,7 @@ export const EntitySave = (entityName: string) => {
     const { saveItemPage: { stages } } = entity
 
     const stageStepperProps = { stages, stagesStatus, currStageIdx, changeCurrStageIdx, saveItem }
+    const { display: itemName } = item.entityInfo.name
 
     return (
         <>
@@ -177,7 +178,10 @@ export const EntitySave = (entityName: string) => {
             </main>
 
             <SeoImplement
-                appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display}) - שמירה`}
+                appTitle={`${itemName} (${entity.entityInfo.name.display}) - שמירה`}
+                openGraphTitle="הוזמנת לערוך באתר מכביפדיה"
+                openGraphDescription={`ערוך את הדף של ${itemName}`}
+                openGraphImage={item?.miniImages[0]?.imageUrl || ''}
                 noIndex
             />
         </>

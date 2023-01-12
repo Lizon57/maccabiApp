@@ -13,7 +13,6 @@ import { RootState } from "../../../store/store"
 
 export const AppOptionBar = () => {
     const { pageType } = useSelector((state: RootState) => state.appLayoutModule)
-    console.log(pageType)
     const [selectOption, setSelectOption] = useState('')
 
     const elOptionBar = useRef<HTMLUListElement>(null)

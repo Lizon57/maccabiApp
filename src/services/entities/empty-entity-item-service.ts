@@ -16,7 +16,9 @@ const _BASIC_EMPTY_ENTITY_ITEM = {
             total: 0,
             lastEditDate: new Date()
         }
-    }
+    },
+
+    miniImages: []
 }
 
 const get = (type: string) => {

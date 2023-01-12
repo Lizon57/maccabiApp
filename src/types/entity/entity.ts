@@ -20,6 +20,7 @@ export type Entity = {
     entityInfo: {
         name: {
             display: string
+            openGraph?: string
             listTitle: string
         },
         description: {

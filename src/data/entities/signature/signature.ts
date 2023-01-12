@@ -21,6 +21,7 @@ export const signatureEntity: Entity = {
     entityInfo: {
         name: {
             display: 'חתימות',
+            openGraph: 'כל החתימות של אנשי מכבי תל אביב',
             listTitle: 'אוסף החתימות'
         },
         description: {

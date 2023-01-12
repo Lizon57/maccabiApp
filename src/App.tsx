@@ -59,7 +59,7 @@ export const App = () => {
                 <AppScreen />
             </Router>
 
-            <SeoImplement />
+            <SeoImplement openGraphTitle="מכביפדיה" />
         </Provider>
     )
 }

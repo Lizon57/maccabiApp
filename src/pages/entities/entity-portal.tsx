@@ -120,6 +120,7 @@ export const EntityPortal = (entityName: string) => {
     />
 
     const FilterbyBuilderProps = { filters, debouncedSetIsLoading }
+    const { display: entityDisplayName, openGraph } = ENTITY.entityInfo.name
 
     return (
         <>
@@ -135,8 +136,10 @@ export const EntityPortal = (entityName: string) => {
             </section>
 
             <SeoImplement
-                appTitle={ENTITY.entityInfo.name.display}
+                appTitle={entityDisplayName}
+                openGraphTitle={openGraph}
                 pageDescription={ENTITY.entityInfo.description.short}
+                openGraphDescription={ENTITY.entityInfo.description.short}
             />
         </>
     )

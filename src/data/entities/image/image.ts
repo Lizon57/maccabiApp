@@ -19,6 +19,7 @@ export const imageEntity: Entity = {
     entityInfo: {
         name: {
             display: 'תמונות',
+            openGraph: 'כל התמונות של מכבי תל אביב',
             listTitle: 'תמונות'
         },
         description: {

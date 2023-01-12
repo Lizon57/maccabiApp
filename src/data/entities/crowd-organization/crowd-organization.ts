@@ -22,6 +22,7 @@ export const crowdOrganizationEntity: Entity = {
     entityInfo: {
         name: {
             display: 'ארגוני אוהדים',
+            openGraph: 'כל ארגוני האוהדים של מכבי תל אביב',
             listTitle: 'ארגוני אוהדים'
         },
         description: {
