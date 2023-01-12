@@ -100,8 +100,8 @@ div.app-layout--app-option-bar__container {
 
         li.link-container {
           border-radius: 0.2rem;
-          padding-inline: $space-inline-xxxSmall-rem;
-          padding-block: $space-block-xxxSmall-rem;
+          padding-inline: $space-inline-xSmall-rem;
+          padding-block: $space-block-xxSmall-rem;
           transition: $transition-regular;
 
           &:not(:last-of-type) {
