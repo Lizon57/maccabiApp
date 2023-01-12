@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useDebouncedCallback } from "use-debounce"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../store/store"
@@ -9,7 +10,6 @@ import { EntityItem } from "../../types/entity/entities/entity-item"
 import { entityService } from "../../services/entities/entity-service"
 
 import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
-import { useDebounce } from "../../hooks/use-debounce"
 import { useOnWindowResize } from "../../hooks/use-on-window-resize"
 import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
 
@@ -35,7 +35,7 @@ export const EntityPortal = (entityName: string) => {
     const { searchParams: params } = new URL(window.location.href)
     const navigate = useNavigate()
 
-    const debouncedSetIsLoading = useDebounce(setIsLoading, 1000)
+    const debouncedSetIsLoading = useDebouncedCallback(setIsLoading, 1000)
 
     usePageDataCmp('social-network-preview')
 

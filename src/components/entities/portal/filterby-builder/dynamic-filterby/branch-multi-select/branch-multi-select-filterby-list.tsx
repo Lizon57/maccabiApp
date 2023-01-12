@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDebounce } from "../../../../../../hooks/use-debounce"
+import { useDebouncedCallback } from "use-debounce"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
 
@@ -20,7 +20,7 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
         params.set(filterParam, newActiveBranchesForParam)
         navigate({ search: params.toString().replaceAll('%2C', ',') })
     }
-    const debouncedNavigateToNewActiveBranches = useDebounce(navigateToNewActiveBranches, 1000)
+    const debouncedNavigateToNewActiveBranches = useDebouncedCallback(navigateToNewActiveBranches, 1000)
 
     const activeNewBranchesIds = (branchesIds: string[]) => {
         setActiveBranchesIds(branchesIds)

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useDebounce } from "./use-debounce"
+import { useDebouncedCallback } from "use-debounce"
 
 
 export const useWindowSize = (): viewportSize => {
@@ -9,7 +9,7 @@ export const useWindowSize = (): viewportSize => {
     })
 
     const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight })
-    const debouncedHandleResize = useDebounce(handleResize, 100)
+    const debouncedHandleResize = useDebouncedCallback(handleResize, 100)
 
     useEffect(() => {
         window.addEventListener('resize', debouncedHandleResize)

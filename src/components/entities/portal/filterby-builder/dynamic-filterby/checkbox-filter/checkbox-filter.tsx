@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDebounce } from "../../../../../../hooks/use-debounce"
+import { useDebouncedCallback } from "use-debounce"
 
 import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
 
@@ -18,7 +18,7 @@ export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
         navigate({ search: params.toString() })
     }
-    const debouncedNavigateNewSearch = useDebounce(navigateNewSearch, 1000)
+    const debouncedNavigateNewSearch = useDebouncedCallback(navigateNewSearch, 1000)
 
 
     const onSetValue = (newValue: boolean | undefined) => {

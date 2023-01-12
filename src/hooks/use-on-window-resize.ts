@@ -1,9 +1,10 @@
 import { useEffect } from "react"
-import { useDebounce } from "./use-debounce"
+import { useDebouncedCallback } from "use-debounce"
+
 
 export const useOnWindowResize = (cb: () => void) => {
     const handleResize = () => cb()
-    const debouncedHandleResize = useDebounce(handleResize, 100)
+    const debouncedHandleResize = useDebouncedCallback(handleResize, 100)
 
     useEffect(() => {
         window.addEventListener('resize', debouncedHandleResize)

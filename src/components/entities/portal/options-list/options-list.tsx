@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useDebounce } from "../../../../hooks/use-debounce"
+import { useDebouncedCallback } from "use-debounce"
 
 import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
 import { EntitySortOption } from "../../../../types/entity/sort/entity-sort-option"
@@ -26,7 +26,7 @@ export const OptionsList = ({ sorts, filters, isFilterSectionOpen, setIsLoading,
         navigate({ search: params.toString().replaceAll('%2C', ',') })
         setIsLoading(true)
     }
-    const debouncedPrimarySearchCallback = useDebounce(primarySearchCallback, 700)
+    const debouncedPrimarySearchCallback = useDebouncedCallback(primarySearchCallback, 700)
 
 
     return (

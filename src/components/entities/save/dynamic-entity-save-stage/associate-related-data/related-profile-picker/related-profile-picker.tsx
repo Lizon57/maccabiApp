@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useDebouncedCallback } from "use-debounce"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
@@ -6,8 +7,6 @@ import { setSaveEntityItem } from "../../../../../../store/action/save-entity-it
 
 import AsyncSelect from "react-select/async"
 import { SingleValue } from "react-select"
-
-import { useDebounce } from "../../../../../../hooks/use-debounce"
 
 import { entityItemService } from "../../../../../../services/entities/entity-item-service"
 
@@ -56,12 +55,13 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
         }
     }
     // const debouncedGetOptions = useDebounce(getOptions, 700)
-    const debouncedGetOptions = useDebounce(getOptions, 0)
+    const debouncedGetOptions = useDebouncedCallback(getOptions, 0)
 
     const loadOptions = (pharse: string) => {
         return new Promise<ProfileOption[]>((resolve) => {
             setTimeout(async () => {
-                resolve(await debouncedGetOptions(pharse))
+                const options = await debouncedGetOptions(pharse)
+                if (options) resolve(options)
                 // }, 700)
             }, 0)
         })

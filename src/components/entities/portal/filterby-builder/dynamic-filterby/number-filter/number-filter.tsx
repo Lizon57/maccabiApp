@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDebounce } from "../../../../../../hooks/use-debounce"
+import { useDebouncedCallback } from "use-debounce"
+
 
 import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
 
@@ -33,7 +34,7 @@ export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
         params.set(param + 'Type', type + '')
         navigate({ search: params.toString() })
     }
-    const debouncedNavigateToNewActiveRange = useDebounce(navigateNewPick, 1000)
+    const debouncedNavigateToNewActiveRange = useDebouncedCallback(navigateNewPick, 1000)
 
 
     const onSetType = (type: number) => {

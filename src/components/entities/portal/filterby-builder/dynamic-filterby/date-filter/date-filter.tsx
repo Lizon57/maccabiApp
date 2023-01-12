@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDebounce } from "../../../../../../hooks/use-debounce"
+import { useDebouncedCallback } from "use-debounce"
 import { AiFillCaretDown } from "react-icons/ai"
 
 import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
@@ -31,7 +31,7 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
         params.set(filter.param + 'Type', type + '')
         navigate({ search: params.toString() })
     }
-    const debouncedNavigateToNewPick = useDebounce(navigateNewPick, 1000)
+    const debouncedNavigateToNewPick = useDebouncedCallback(navigateNewPick, 1000)
 
 
     const onSelectDate = (part: string, value: number | undefined) => {
