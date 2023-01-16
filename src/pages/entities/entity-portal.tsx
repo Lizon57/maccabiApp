@@ -4,6 +4,7 @@ import { useDebouncedCallback } from "use-debounce"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../store/store"
+import { clearDisplayEntity, updateDisplayEntity } from "../../store/action/display-entity-action"
 
 import { EntityItem } from "../../types/entity/entities/entity-item"
 
@@ -55,7 +56,14 @@ export const EntityPortal = (entityName: string) => {
 
 
     useEffect(() => {
+        return () => {
+            clearDisplayEntity()
+        }
+    }, [])
+
+    useEffect(() => {
         if (!isLoading || !ENTITY) return
+        updateDisplayEntity(ENTITY)
 
         const loadItems = async () => {
             if (!isLoading) return

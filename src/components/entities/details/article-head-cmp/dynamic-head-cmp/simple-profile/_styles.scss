@@ -6,7 +6,7 @@ div.entity-details--simple-profile__container {
   @include viewport-wide-start-from($viewport-small) {
     display: grid;
     grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr minmax(fit-content, 1fr);
+    grid-template-columns: minmax(auto, 5fr) 1fr;
   }
 
   div.image {

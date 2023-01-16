@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../store/store"
+import { clearDisplayEntity, updateDisplayEntity } from "../../store/action/display-entity-action"
 import { updateDisplayEntityItem } from "../../store/action/display-entity-item-action"
 
 import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
@@ -52,7 +53,10 @@ export const EntityDetails = (entity: Entity) => {
     }, [isLoading, entity, EntityItemId])
 
     useEffect(() => {
+        updateDisplayEntity(entity)
+
         return () => {
+            clearDisplayEntity()
             updateDisplayEntityItem(emptyEntityItemService.get(''))
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps

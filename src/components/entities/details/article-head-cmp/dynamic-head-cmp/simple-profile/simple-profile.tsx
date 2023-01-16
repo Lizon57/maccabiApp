@@ -6,13 +6,16 @@ import { SimpleProfileEntityDetailsCmp } from "../../../../../../models/interfac
 import { RenderByDeviceWidth } from "../../../../../common/render-by/render-by-device-width"
 import { ItemTitle } from "../item-title"
 import { SimpleInfoListList } from "../simple-info-list/simple-info-list-list"
+import { Entity } from "../../../../../../types/entity/entity"
 
 
 export const SimpleProfile = ({ cmp }: Props) => {
     const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
-    const { id: imageId, name: imageName, imageUrl } = item.miniImages[0]
+    const entity: Entity = useSelector((state: RootState) => state.displayEntityModule.entity)
 
     const simpleListCmp = { type: '', title: '', infos: cmp.infos }
+    const imageName = item.miniImages[0]?.name || entity.entityInfo.image.thumbnail.title
+    const imageUrl = item.miniImages[0]?.imageUrl || entity.entityInfo.image.thumbnail.path
 
 
     return (

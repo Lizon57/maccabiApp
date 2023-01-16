@@ -4,6 +4,7 @@ import { legacy_createStore as createStore, combineReducers } from 'redux'
 import { appLayoutReducer } from './reducer/app-layout-reducer'
 import { appStateReducer } from './reducer/app-state-reducer'
 import { displayEntityItemReducer } from './reducer/display-entity-item-reducer'
+import { displayEntityReducer } from './reducer/display-entity-reducer'
 import { saveEntityItemReducer } from './reducer/save-entity-item-reducer'
 import { userState } from './reducer/user-reducer'
 
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     appLayoutModule: appLayoutReducer,
     appStateModule: appStateReducer,
     userStateModule: userState,
+    displayEntityModule: displayEntityReducer,
     displayEntityItemModule: displayEntityItemReducer,
     saveEntityItemModule: saveEntityItemReducer
 })
