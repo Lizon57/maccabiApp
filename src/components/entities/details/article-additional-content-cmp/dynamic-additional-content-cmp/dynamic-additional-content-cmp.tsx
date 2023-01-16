@@ -1,6 +1,6 @@
 import { ICON_TYPE_MAP } from "../../../../../constans/icon-type-map"
 
-import { EntityDetailsStuctureCmp } from "../../../../../types/entity/details/entity-details-structure-cmp"
+import { EntityDetailsStructureCmp } from "../../../../../models/combiners/entities/entity-details-structure-cmp"
 import { CategoryList } from "./category-list/category-list"
 
 import { ImageGalleryList } from "./image-gallery/image-gallery-list"
@@ -25,5 +25,5 @@ export const DynamicAdditionalContentCmp = ({ cmp }: Props) => {
 
 
 type Props = {
-    cmp: EntityDetailsStuctureCmp
+    cmp: EntityDetailsStructureCmp
 }

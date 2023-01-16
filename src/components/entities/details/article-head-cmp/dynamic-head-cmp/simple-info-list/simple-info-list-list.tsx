@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 
-import { EntityDetailsStuctureCmp } from "../../../../../../types/entity/details/entity-details-structure-cmp"
+import { SimpleListEntityDetailsCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/simple-list-entity-details-cmp"
 
 import { SimpleInfoListPreview } from "./simple-info-list-preview"
 
@@ -21,5 +21,5 @@ export const SimpleInfoListList = ({ cmp }: Props) => {
 
 
 type Props = {
-    cmp: EntityDetailsStuctureCmp
+    cmp: SimpleListEntityDetailsCmp
 }

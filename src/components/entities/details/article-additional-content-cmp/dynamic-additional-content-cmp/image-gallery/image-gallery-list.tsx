@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 
-import { EntityDetailsStuctureCmp } from "../../../../../../types/entity/details/entity-details-structure-cmp"
+import { BasicEntityDetailsStructureCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/basic-entity-details-structure-cmp"
 
 import { MainTitle } from "../../../../../common/main-title/main-title"
 import { ImageGalleryPreview } from "./image-gallery-preview"
@@ -33,7 +33,7 @@ export const ImageGalleryList = ({ cmp }: Props) => {
 
 
 type Props = {
-    cmp: EntityDetailsStuctureCmp
+    cmp: BasicEntityDetailsStructureCmp
 }
 
 

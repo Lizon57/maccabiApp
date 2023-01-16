@@ -1,3 +1,4 @@
+import { SimpleListEntityDetailsCmpInfo } from "../../../../../../models/types/entities/entity-details-structure-cmp/simple-list-entity-details-cmp-info"
 import { EntityItem } from "../../../../../../types/entity/entities/entity-item"
 
 import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
@@ -41,10 +42,6 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
 
 
 type Props = {
-    info: {
-        type: string
-        title: string
-        value: string
-    }
+    info: SimpleListEntityDetailsCmpInfo
     item: EntityItem
 }

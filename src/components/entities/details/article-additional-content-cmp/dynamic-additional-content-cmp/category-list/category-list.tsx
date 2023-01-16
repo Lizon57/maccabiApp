@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 
-import { EntityDetailsStuctureCmp } from "../../../../../../types/entity/details/entity-details-structure-cmp"
+import { BasicEntityDetailsStructureCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/basic-entity-details-structure-cmp"
 
 import { MainTitle } from "../../../../../common/main-title/main-title"
 import { MiniPageCategory } from "../../../../../../types/page-category"
@@ -34,5 +34,5 @@ export const CategoryList = ({ cmp }: Props) => {
 
 
 type Props = {
-    cmp: EntityDetailsStuctureCmp
+    cmp: BasicEntityDetailsStructureCmp
 }

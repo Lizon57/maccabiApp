@@ -11,7 +11,7 @@ export const StageStepper = ({ stages, stagesStatus, currStageIdx, changeCurrSta
 
     return (
         <section className="entity-save-cmp--stage-stepper__container">
-            <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
+            <RenderByDeviceWidth maxDeviceWide="tablet">
                 <UpToTabletWideStageStepper
                     {...basicProps}
                     saveItem={saveItem}

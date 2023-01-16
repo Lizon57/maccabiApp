@@ -2,10 +2,10 @@ h2.common-cmp--main-title {
   display: flex;
   flex-direction: column;
   gap: $space-block-regular-rem;
-  
+
   background-color: $clr-white-regular;
   margin: 0;
-  
+
   @include viewport-wide-start-from($viewport-small) {
     flex-direction: row;
     justify-content: space-between;
@@ -28,6 +28,9 @@ h2.common-cmp--main-title {
   }
 
   div.title-container {
+    display: flex;
+    align-items: center;
+
     color: $clr-blue-darker;
 
     span.icon {

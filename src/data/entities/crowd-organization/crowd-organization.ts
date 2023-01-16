@@ -48,14 +48,9 @@ export const crowdOrganizationEntity: Entity = {
                     type: 'bread-crumbs'
                 },
                 {
-                    type: 'page-title',
+                    type: 'simple-profile',
                     title: 'ארגון PAGE_NAME',
-                    Icon: AiFillFlag
-                },
-
-                {
-                    type: 'simple-info-list',
-
+                    Icon: AiFillFlag,
                     infos: [
                         {
                             type: 'boolean',
@@ -73,7 +68,7 @@ export const crowdOrganizationEntity: Entity = {
                             value: 'entityInfo.item.dateOfActivity.end'
                         },
                     ]
-                }
+                },
             ],
 
             additional: [

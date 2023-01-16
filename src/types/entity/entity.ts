@@ -3,8 +3,8 @@ import { EntityFilterOption } from "./filter/entity-filter-option"
 
 import { EntitySortOption } from "./sort/entity-sort-option"
 import { EntitySaveItemStage } from "./save/entity-save-item-stage"
-import { EntityDetailsStuctureCmp } from "./details/entity-details-structure-cmp"
 import { EntityItem } from "./entities/entity-item"
+import { EntityDetailsStructureCmp } from "../../models/combiners/entities/entity-details-structure-cmp"
 
 
 export type Entity = {
@@ -41,8 +41,8 @@ export type Entity = {
         type: string
 
         structure?: {
-            head?: EntityDetailsStuctureCmp[]
-            additional?: EntityDetailsStuctureCmp[]
+            head?: EntityDetailsStructureCmp[]
+            additional?: EntityDetailsStructureCmp[]
         }
     }
 

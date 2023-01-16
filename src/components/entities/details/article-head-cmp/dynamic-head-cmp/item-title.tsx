@@ -3,7 +3,7 @@ import { RootState } from "../../../../../store/store"
 
 import { getFormatedList } from "../../../../../services/util/get-formated-list"
 
-import { EntityDetailsStuctureCmp } from "../../../../../types/entity/details/entity-details-structure-cmp"
+import { BasicEntityDetailsStructureCmp } from "../../../../../models/interfaces/entities/entity-details-structure-cmp/basic-entity-details-structure-cmp"
 
 import { MainTitle } from "../../../../common/main-title/main-title"
 
@@ -26,5 +26,5 @@ export const ItemTitle = ({ cmp }: Props) => {
 
 
 type Props = {
-    cmp: EntityDetailsStuctureCmp
+    cmp: BasicEntityDetailsStructureCmp
 }

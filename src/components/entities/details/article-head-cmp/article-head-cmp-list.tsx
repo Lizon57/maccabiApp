@@ -1,6 +1,6 @@
 import { makeId } from "../../../../services/util/make-id"
 
-import { EntityDetailsStuctureCmp } from "../../../../types/entity/details/entity-details-structure-cmp"
+import { EntityDetailsStructureCmp } from "../../../../models/combiners/entities/entity-details-structure-cmp"
 
 import { DynamicHeadCmp } from "./dynamic-head-cmp/dynamic-head-cmp"
 
@@ -17,6 +17,6 @@ export const ArticleHeadCmpList = ({ cmps, entityName }: Props) => {
 
 
 type Props = {
-    cmps?: EntityDetailsStuctureCmp[]
+    cmps?: EntityDetailsStructureCmp[]
     entityName: string
 }

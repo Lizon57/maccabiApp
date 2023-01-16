@@ -120,7 +120,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
                             : 'יש להקליד ביטוי לחיפוש'}
                         loadingMessage={({ inputValue }) => `מחפש פרופיל המכיל את "${inputValue}"`}
                         formatOptionLabel={({ value }) => <RelatedProfileOptionPreview option={value} />}
-                        isRtl={true}
+                        isRtl
                         onChange={(value) => setProfile(value)}
                         onBlur={onBlurInput}
                         value={value}

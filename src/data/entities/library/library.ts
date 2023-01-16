@@ -48,13 +48,9 @@ export const libraryEntity: Entity = {
                     type: 'bread-crumbs'
                 },
                 {
-                    type: 'page-title',
+                    type: 'simple-profile',
                     title: '"PAGE_NAME" מאת BY_WRITERS',
-                    Icon: RiBookOpenFill
-                },
-                {
-                    type: 'simple-info-list',
-
+                    Icon: RiBookOpenFill,
                     infos: [
                         {
                             type: 'boolean',
@@ -87,7 +83,7 @@ export const libraryEntity: Entity = {
                             value: 'entityInfo.item.isTranslated'
                         },
                     ]
-                }
+                },
             ],
             additional: [
                 {

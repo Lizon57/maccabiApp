@@ -46,12 +46,11 @@ export const signatureEntity: Entity = {
                 {
                     type: 'bread-crumbs'
                 },
-
                 {
-                    type: 'page-title',
+                    type: 'simple-profile',
                     title: 'חתימתו של RELATED_PROFILE_NAME',
-                    Icon: FaSignature
-                }
+                    Icon: FaSignature,
+                },
             ],
             additional: [
                 {
