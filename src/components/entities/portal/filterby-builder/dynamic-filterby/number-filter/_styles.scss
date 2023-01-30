@@ -3,10 +3,6 @@ div.entities-portal--number-picker__container {
   padding-inline: $space-inline-regular-rem;
   width: 100%;
 
-  @include viewport-wide-start-from-exclusive($viewport-small) {
-    max-width: 300px;
-  }
-
   div.content-container {
     display: flex;
     flex-direction: column-reverse;

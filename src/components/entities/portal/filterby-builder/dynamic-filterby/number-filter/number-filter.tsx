@@ -11,7 +11,7 @@ import { Dropdown } from "../../../../../common/dropdown/dropdown"
 import { AiFillCaretDown } from "react-icons/ai"
 
 
-const TYPE_NAMES = ['החל מ', 'עד ל', 'החל מ ועד ל']
+const TYPE_NAMES = ['החל מ', 'עד ל', 'החל מ עד ל']
 
 
 export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {

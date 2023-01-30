@@ -2,10 +2,6 @@ div.entities-portal--date-filter__container {
   @include squarePicker;
   width: 100%;
 
-  @include viewport-wide-start-from-exclusive($viewport-small) {
-    max-width: 300px;
-  }
-
   div.content-container {
     font-size: $font-size-xSmall-rem;
     width: 100%;

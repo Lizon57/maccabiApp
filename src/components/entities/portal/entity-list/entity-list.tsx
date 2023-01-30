@@ -14,19 +14,19 @@ export const EntityList = ({ entity, items }: Props) => {
 
     return (
         <div className="entity-portal--entity-list__container">
-            {items.map(item => <DynamicEntityPreview
-                key={item.id}
-                item={item}
-                type={entity.listPageInfo.previewType}
-                fallbackImgUrl={entity.entityInfo.image.thumbnail.path}
-            />)}
-
             <div className="add-entity-container" title="הוסף פריט">
                 <Link to="save">
                     <span className="icon-wrapper"><PlusIcon size={40} /></span>
                     <span className="text">הוסף פריט</span>
                 </Link>
             </div>
+
+            {items.map(item => <DynamicEntityPreview
+                key={item.id}
+                item={item}
+                type={entity.listPageInfo.previewType}
+                fallbackImgUrl={entity.entityInfo.image.thumbnail.path}
+            />)}
         </div>
     )
 }
