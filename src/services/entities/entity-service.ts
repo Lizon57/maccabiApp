@@ -23,9 +23,10 @@ const getEntityByName = (name: string) => {
 }
 
 
-const queryEntityItems = async (dbName: string, sortBy: EntitySortParam, optionalFilter: OptionalFilter, fallbackDB: unknown[]) => {
+const queryEntityItems = async (dbName: string, sortBy: EntitySortParam, optionalFilter: OptionalFilter, fallbackDB: unknown[], isArchivedInclude = false) => {
     try {
         let items = await asyncLocalStorageService.query(dbName, fallbackDB) as EntityItem[]
+        if (!isArchivedInclude) items = items.filter(item => !item.isArchived)
         items = filterEntityService.dynamicEntityFilterByParams(items, optionalFilter)
         if (sortBy.sKey && sortBy.sOrder) items = sortEntityService.dynamicEntitySort(items, sortBy)
         return items

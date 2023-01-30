@@ -92,4 +92,5 @@ export interface EntityItem {
 
     images?: string[]
     miniImages?: { id: string, name: string, imageUrl: string }[]
+    isArchived?: boolean
 }

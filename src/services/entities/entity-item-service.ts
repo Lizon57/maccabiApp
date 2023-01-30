@@ -2,6 +2,7 @@ import { IMAGE_DB } from "../../data/entities/image/image-db"
 import { PROFILE_DB } from "../../data/entities/profile/profile-db"
 
 import { EntityItem } from "../../types/entity/entities/entity-item"
+import { Entity } from "../../types/entity/entity"
 
 import { entityService } from "./entity-service"
 import { filterEntityService } from "./filter-entity-service"
@@ -62,9 +63,12 @@ const save = async (item: EntityItem, dbName: string, fallBackDB: unknown[]) => 
 }
 
 
-const remove = async (itemId: string, dbName: string, fallBackDB: unknown[]) => {
+const remove = async (itemId: string, entity: Entity, dbName: string, fallBackDB: unknown[]) => {
     try {
-        await asyncLocalStorageService.removeItem(itemId, dbName, fallBackDB)
+        let item = await entityService.getEntityItemById(itemId, entity)
+        if (!item) throw new Error('Couldn\'t find entity item to remove')
+        Object.assign(item, { isArchived: true })
+        await asyncLocalStorageService.save(item, dbName, fallBackDB)
     } catch (err) {
         console.log(err)
     }

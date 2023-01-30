@@ -51,7 +51,7 @@ export const EntityRemove = (entity: Entity) => {
     const onApprove = async () => {
         if (!EntityItemId) return
         try {
-            await entityItemService.remove(EntityItemId, entity?.dbInfo.name, entity.dbInfo.fallbackDB)
+            await entityItemService.remove(EntityItemId, entity, entity?.dbInfo.name, entity.dbInfo.fallbackDB)
             insertAppMessage(
                 { text: `מחיקת הדף ${item?.entityInfo.name.display} בוצעה בהצלחה`, title: 'מחיקה בוצעה בהצלחה', type: 'success' }
             )

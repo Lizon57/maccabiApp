@@ -1,5 +1,5 @@
-import { legacy_createStore as createStore, combineReducers } from 'redux'
-// import { legacy_createStore as createStore, compose, combineReducers } from 'redux'
+// import { legacy_createStore as createStore, combineReducers } from 'redux'
+import { legacy_createStore as createStore, compose, combineReducers } from 'redux'
 
 import { appLayoutReducer } from './reducer/app-layout-reducer'
 import { appStateReducer } from './reducer/app-state-reducer'
@@ -21,15 +21,15 @@ const rootReducer = combineReducers({
 
 
 
-export const store = createStore(rootReducer)
+// export const store = createStore(rootReducer)
 export type RootState = ReturnType<typeof store.getState>
 
 
-// const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-// export const store = createStore(rootReducer, middleware)
+const middleware = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export const store = createStore(rootReducer, middleware())
 
-// declare global {
-//     interface Window {
-//         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
-//     }
-// }
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
+    }
+}
