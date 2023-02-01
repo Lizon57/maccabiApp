@@ -23,7 +23,7 @@ export const SIGNATURE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 1000000),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 1000000)
@@ -62,7 +62,7 @@ export const SIGNATURE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 480),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 40)
@@ -101,7 +101,7 @@ export const SIGNATURE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 480),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 40)
@@ -140,7 +140,7 @@ export const SIGNATURE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 480),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 40)

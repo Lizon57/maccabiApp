@@ -38,7 +38,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -84,7 +84,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -119,7 +119,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -154,7 +154,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -189,7 +189,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -224,7 +224,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -259,7 +259,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -295,7 +295,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -331,7 +331,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -366,7 +366,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -401,7 +401,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)
@@ -437,7 +437,7 @@ export const PROFILE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(0, 10),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 10)

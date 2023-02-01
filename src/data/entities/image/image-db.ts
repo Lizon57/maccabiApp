@@ -16,7 +16,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -40,7 +40,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -64,7 +64,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -88,7 +88,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -112,7 +112,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -136,7 +136,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(100, 300),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 100)
@@ -160,7 +160,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -184,7 +184,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -208,7 +208,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -232,7 +232,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -256,7 +256,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -280,7 +280,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -304,7 +304,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -328,7 +328,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -352,7 +352,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -376,7 +376,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -400,7 +400,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -424,7 +424,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -448,7 +448,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -472,7 +472,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -496,7 +496,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -520,7 +520,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -544,7 +544,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -568,7 +568,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -592,7 +592,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -616,7 +616,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -640,7 +640,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -664,7 +664,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -688,7 +688,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -712,7 +712,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -736,7 +736,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -760,7 +760,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -784,7 +784,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -808,7 +808,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -832,7 +832,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)
@@ -856,7 +856,7 @@ export const IMAGE_DB: EntityItem[] = [
         },
 
         itemInfo: {
-            view: getRandomInt(40, 500),
+            view: 0,
             rate: {
                 avg: getRandomInt(0, 5),
                 raterCount: getRandomInt(0, 500)

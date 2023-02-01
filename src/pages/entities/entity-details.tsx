@@ -11,6 +11,7 @@ import { usePageType } from "../../hooks/pages/use-page-type"
 
 import { entityService } from "../../services/entities/entity-service"
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
+import { entityItemService } from "../../services/entities/entity-item-service"
 
 import { Entity } from "../../types/entity/entity"
 import { EntityItem } from "../../types/entity/entities/entity-item"
@@ -23,7 +24,7 @@ import { SeoImplement } from "../../components/common/seo-implement/seo-implemen
 
 
 export const EntityDetails = (entity: Entity) => {
-    const { id: EntityItemId } = useParams()
+    const { id: entityItemId } = useParams()
 
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState<string>()
@@ -33,14 +34,19 @@ export const EntityDetails = (entity: Entity) => {
     usePageDataCmp('entity-item-toc')
     usePageType('entity-item-details')
 
+    useEffect(() => {
+        if (!entityItemId) return
+        entityItemService.handleEntityItemView({ entityName: entity.name, entityItemId })
+    }, [entity.name, entityItemId])
+
 
     useEffect(() => {
-        if (!isLoading || !EntityItemId) return
+        if (!isLoading || !entityItemId) return
 
         const loadItem = async () => {
             if (!isLoading) return
             try {
-                const item = await entityService.getEntityItemById(EntityItemId, entity) as EntityItem
+                const item = await entityService.getEntityItemById(entityItemId, entity) as EntityItem
                 updateDisplayEntityItem(item)
             } catch ({ message }) {
                 setErrorMessage(message as string)
@@ -50,7 +56,7 @@ export const EntityDetails = (entity: Entity) => {
             }
         }
         loadItem()
-    }, [isLoading, entity, EntityItemId])
+    }, [isLoading, entity, entityItemId])
 
     useEffect(() => {
         updateDisplayEntity(entity)
@@ -62,7 +68,7 @@ export const EntityDetails = (entity: Entity) => {
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
-    if (isLoading || !EntityItemId || !item) return <Loader />
+    if (isLoading || !entityItemId || !item) return <Loader />
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
 

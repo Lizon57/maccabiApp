@@ -9,7 +9,28 @@ import { filterEntityService } from "./filter-entity-service"
 import { asyncLocalStorageService } from "../async-local-storage-service"
 
 import { makeId } from "../util/make-id"
+import { syncLocalStorage } from "../sync-local-storage-service"
+import { EntityItemViewDetails } from "../../models/types/entities/entity-item-view-details"
 
+
+const save = async (item: EntityItem, dbName: string, fallBackDB: unknown[]) => {
+    if (!item.id) item.id = makeId()
+
+    const savedItem = await asyncLocalStorageService.replaceEntityItem(item, dbName, fallBackDB as EntityItem[])
+    return savedItem
+}
+
+
+const remove = async (itemId: string, entity: Entity, dbName: string, fallBackDB: unknown[]) => {
+    try {
+        let item = await entityService.getEntityItemById(itemId, entity)
+        if (!item) throw new Error('Couldn\'t find entity item to remove')
+        Object.assign(item, { isArchived: true })
+        await asyncLocalStorageService.save(item, dbName, fallBackDB)
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 
 const getMiniProfileById = async (id: string = '') => {
@@ -55,29 +76,43 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
 }
 
 
-const save = async (item: EntityItem, dbName: string, fallBackDB: unknown[]) => {
-    if (!item.id) item.id = makeId()
+const handleEntityItemView = async (entityItemViewDetails: EntityItemViewDetails) => {
+    let viewList = syncLocalStorage.readFromStorage('AppViewedPageList') as EntityItemViewDetails[]
+    if (!Array.isArray(viewList)) {
+        syncLocalStorage.saveToStorage('AppViewedPageList', [])
+        viewList = []
+    }
 
-    const savedItem = await asyncLocalStorageService.replaceEntityItem(item, dbName, fallBackDB as EntityItem[])
-    return savedItem
+    viewList.push(entityItemViewDetails)
+
+    if (viewList.length === 3) {
+        const viewListPrms = viewList.map(view => updateEntityItemView({ entityName: view.entityName, entityItemId: view.entityItemId }))
+        await Promise.all(viewListPrms)
+        syncLocalStorage.saveToStorage('AppViewedPageList', [])
+    }
+    else syncLocalStorage.saveToStorage('AppViewedPageList', viewList)
 }
 
 
-const remove = async (itemId: string, entity: Entity, dbName: string, fallBackDB: unknown[]) => {
+const updateEntityItemView = async (entityItemViewDetails: EntityItemViewDetails) => {
     try {
-        let item = await entityService.getEntityItemById(itemId, entity)
-        if (!item) throw new Error('Couldn\'t find entity item to remove')
-        Object.assign(item, { isArchived: true })
-        await asyncLocalStorageService.save(item, dbName, fallBackDB)
+        const entity = entityService.getEntityByName(entityItemViewDetails.entityName)
+        if (!entity) return
+
+        const item = await entityService.getEntityItemById(entityItemViewDetails.entityItemId, entity) as EntityItem
+        const itemCopy = structuredClone(item)
+        itemCopy.itemInfo.view += 1
+        await save(itemCopy, entity.dbInfo.name, entity.dbInfo.fallbackDB)
     } catch (err) {
-        console.log(err)
+
     }
 }
 
 
 export const entityItemService = {
+    save,
+    remove,
     getMiniProfileById,
     getMiniProfilesByPharse,
-    save,
-    remove
+    handleEntityItemView
 }
