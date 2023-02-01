@@ -22,7 +22,7 @@ import { OptionsList } from "../../components/entities/portal/options-list/optio
 import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 import { MainTitle } from "../../components/common/main-title/main-title"
-import { SeoImplement } from "../../components/common/seo-implement"
+import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 
 
 export const EntityPortal = (entityName: string) => {

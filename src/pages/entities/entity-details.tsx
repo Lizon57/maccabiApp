@@ -19,7 +19,7 @@ import { ErrorMessage } from "../../components/common/error-message/error-messag
 import { Loader } from "../../components/common/loader/loader"
 import { ArticleHeadCmpList } from "../../components/entities/details/article-head-cmp/article-head-cmp-list"
 import { ArticleAdditionalContentCmpList } from "../../components/entities/details/article-additional-content-cmp/article-additional-content-cmp-list"
-import { SeoImplement } from "../../components/common/seo-implement"
+import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 
 
 export const EntityDetails = (entity: Entity) => {

@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { Provider } from "react-redux"
 import { store } from "./store/store"
 
+import { entityService } from "./services/entities/entity-service"
+import { userService } from "./services/user/user-service"
+
 import { LaptopWidePlusAppHeader } from "./components/app-layout/app-header/laptop-wide-plus-app-header/laptop-wide-plus-app-header"
 import { UpToLaptopWideAppHeader } from "./components/app-layout/app-header/up-to-laptop-wide-app-header/up-to-laptp-wide-app-header"
 import { PageRelatedData } from "./components/app-layout/page-data/page-related-data"
@@ -11,15 +14,15 @@ import { AppFooter } from "./components/app-layout/app-footer/app-footer"
 import { AppOptionBar } from "./components/app-layout/app-option-bar/app-option-bar"
 import { AppScreen } from "./components/app-layout/app-screen/app-screen"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
+import { SeoImplement } from "./components/common/seo-implement/seo-implement"
 
 import { ROUTES } from "./data/app/app-routes"
-import { entityService } from "./services/entities/entity-service"
 import { IMAGE_DB } from "./data/entities/image/image-db"
-import { SeoImplement } from "./components/common/seo-implement"
 
 
 export const App = () => {
     entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB)
+    userService.query()
 
     return (
         <Provider store={store}>

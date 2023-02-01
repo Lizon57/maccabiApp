@@ -1,8 +1,9 @@
 import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
 
-import { AppOptionLinksListCategory } from "../../models/interfaces/app/app-option-links-list-category"
+import { AppOptionLinksListCategory } from "../../models/interfaces/app/app-option-link/app-option-links-list-category"
 
 import { makeId } from "../../services/util/make-id"
+import { logout as logoutUser } from "../../store/action/user-action"
 
 
 export const OPTION_BAR: AppOptionLinksListCategory[] = [
@@ -35,14 +36,20 @@ export const OPTION_BAR: AppOptionLinksListCategory[] = [
                 text: 'עריכה',
                 path: '/save',
                 isRelative: true,
-                pageTypesRestriction: ['entity-item-details']
+                restriction: {
+                    pageTypes: ['entity-item-details'],
+                    users: ['logged-real-user']
+                },
             },
             {
                 id: makeId(),
                 text: 'הוספה',
                 path: '/save',
                 isRelative: true,
-                pageTypesRestriction: ['entity-item-portal']
+                restriction: {
+                    pageTypes: ['entity-item-portal'],
+                    users: ['logged-real-user']
+                },
             },
             {
                 id: makeId(),
@@ -61,7 +68,10 @@ export const OPTION_BAR: AppOptionLinksListCategory[] = [
                 text: 'מחיקה',
                 path: '/remove',
                 isRelative: true,
-                pageTypesRestriction: ['entity-item-details']
+                restriction: {
+                    pageTypes: ['entity-item-details'],
+                    users: ['logged-real-user']
+                },
             },
         ]
     },
@@ -72,27 +82,46 @@ export const OPTION_BAR: AppOptionLinksListCategory[] = [
         childrens: [
             {
                 id: makeId(),
+                text: 'התחבר למערכת',
+                path: '/login-signup',
+                isRelative: false,
+                restriction: {
+                    users: ['no-logged-real-user']
+                }
+            },
+            {
+                id: makeId(),
                 text: 'אורן המתעפץ',
                 path: '/משתמש/אורן המתעפץ',
-                isRelative: false
+                isRelative: false,
+                restriction: {
+                    users: ['logged-real-user']
+                }
             },
             {
                 id: makeId(),
                 text: 'הודעות פרטיות',
                 path: '/משתמש/אורן המתעפץ/הודעות פרטיות',
-                isRelative: false
+                isRelative: false,
+                restriction: {
+                    users: ['logged-real-user']
+                }
             },
             {
                 id: makeId(),
-                text: 'הגדרות',
+                text: 'הגדרות מערכת',
                 path: '/משתמש/אורן המתעפץ/הגדרות',
                 isRelative: false
             },
             {
                 id: makeId(),
                 text: 'התנתק',
-                path: '/התנתקות',
-                isRelative: false
+                path: '#',
+                action: logoutUser,
+                isRelative: false,
+                restriction: {
+                    users: ['logged-real-user']
+                }
             },
         ]
     }

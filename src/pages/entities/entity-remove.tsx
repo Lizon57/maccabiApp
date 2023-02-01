@@ -14,7 +14,7 @@ import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
-import { SeoImplement } from "../../components/common/seo-implement"
+import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 
 
 export const EntityRemove = (entity: Entity) => {

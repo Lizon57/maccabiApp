@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { RootState } from "../../../../store/store"
 import { setActiveBranchesIds } from "../../../../store/action/user-action"
 
-import { User } from "../../../../types/user"
+import { User } from "../../../../models/interfaces/user/user"
 import { BranchProp } from "../../../../types/branch"
 
 

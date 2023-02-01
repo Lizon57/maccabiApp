@@ -18,7 +18,7 @@ import { DynamicEntitySaveStage } from "../../components/entities/save/dynamic-e
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { StageStepper } from "../../components/entities/save/stage-stepper/stage-stepper"
 import { EntityItem } from "../../types/entity/entities/entity-item"
-import { SeoImplement } from "../../components/common/seo-implement"
+import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 
 
 const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.length).fill(false)

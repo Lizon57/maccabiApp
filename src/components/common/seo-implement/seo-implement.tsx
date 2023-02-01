@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet'
-import AppLogo from "../../assets/images/wide-logo.png"
+import AppLogo from "../../../assets/images/wide-logo.png"
 
 const DEFAULT_MAP = {
     appTitle: <title>מכביפדיה</title>,

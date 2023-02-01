@@ -1,0 +1,120 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { BiUserCheck } from "react-icons/bi"
+import { BsGoogle } from "react-icons/bs"
+import { AiFillEye, AiFillEyeInvisible, AiOutlineUserAdd } from "react-icons/ai"
+import signupLoginImage from "../../assets/images/app-layout/signup-login.jpg"
+
+import { login } from "../../store/action/user-action"
+
+import { User } from "../../models/interfaces/user/user"
+
+import { userService } from "../../services/user/user-service"
+
+import { MainTitle } from "../../components/common/main-title/main-title"
+import { TextToggler } from "../../components/common/text-toggler/text-toggler"
+
+
+export const LoginSignup = () => {
+    const [isSignupPage, setIsSignupPage] = useState(false)
+    const [isRevealPassword, setIsRevealPassword] = useState(false)
+    const [credential, setCredential] = useState({ email: '', password: '' })
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+
+    const onToggleIsSignupPage = () => setIsSignupPage(!isSignupPage)
+
+    const handleInputChange = (name: string, value: string) => {
+        setCredential(prevState => ({ ...prevState, [name]: value }))
+    }
+
+    const onSubmitForm = (ev: React.FormEvent<HTMLFormElement>) => {
+        ev.preventDefault()
+
+        const { email, password } = credential
+        if (!email || !password) return
+
+        isSignupPage && onSignup(credential)
+        !isSignupPage && onLogin(credential)
+    }
+
+    const onSignup = async (credential: Credential) => {
+        try {
+            const user = await userService.signup(credential) as User
+            login(user)
+            navigate('/')
+        } catch ({ message }) {
+            setError(message as string)
+        }
+    }
+
+    const onLogin = async (credential: Credential) => {
+        try {
+            const user = await userService.login(credential) as User
+            login(user)
+            navigate('/')
+        } catch ({ message }) {
+            setError(message as string)
+        }
+    }
+
+
+    return (
+        <main className="user-pages--login-signup__container">
+            <div className="layout">
+                <img src={signupLoginImage} alt={isSignupPage ? 'הצטרף למכביפדיה!' : 'התחבר למשתמש!'} />
+
+                <div className="content-container">
+                    <TextToggler options={['התחבר', 'הירשם']} onToggleCallBack={onToggleIsSignupPage} />
+
+                    <MainTitle
+                        text={isSignupPage ? 'הירשם למכביפדיה' : 'ברוך השב למכביפדיה!'}
+                        Icon={isSignupPage ? AiOutlineUserAdd : BiUserCheck}
+                    />
+
+                    <form className="form-container" onSubmit={onSubmitForm}>
+                        <div className="field">
+                            <label>דואר אלקטרוני</label>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="דואר אלקטרוני"
+                                value={credential.email}
+                                className={credential.email ? 'pristine' : ''}
+                                onChange={({ currentTarget: { name, value } }) => handleInputChange(name, value)}
+                            />
+                        </div>
+                        <div className="field">
+                            <label>סיסמה</label>
+                            <input
+                                type={isRevealPassword ? 'text' : 'password'}
+                                name="password"
+                                placeholder="סיסמה"
+                                className={credential.password ? 'pristine' : ''}
+                                value={credential.password}
+                                onChange={({ currentTarget: { name, value } }) => handleInputChange(name, value)}
+                            />
+                            {credential.password && <span className="show-password-icon" onClick={() => setIsRevealPassword(!isRevealPassword)}>
+                                {isRevealPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                            </span>}
+                        </div>
+
+                        {error && <div className="error-message">{error}</div>}
+
+                        <button className="form-login-button">{isSignupPage ? 'הירשם' : 'התחבר'}</button>
+                    </form>
+
+                    <span className="divider"></span>
+
+                    <button className="google-login-button">{isSignupPage ? 'הירשם' : 'התחבר'} באמצעות <BsGoogle /></button>
+                </div>
+            </div>
+        </main>
+    )
+}
+
+
+type Credential = {
+    email: string
+    password: string
+}

@@ -1,0 +1,151 @@
+main.user-pages--login-signup__container {
+  @include viewport-wide-start-from($viewport-small) {
+    display: grid;
+    place-items: center;
+    height: 100%;
+  }
+
+  div.layout {
+    @include viewport-wide-start-from($viewport-small) {
+      display: flex;
+      border-radius: $border-radius-regular-rem;
+      background-color: $clr-white-regular;
+      box-shadow: 0 0 5px 1px $clr-white-darkest;
+      overflow: hidden;
+      min-width: 80vw;
+    }
+
+    @include viewport-wide-start-from($viewport-regular) {
+      min-width: unset;
+    }
+
+    img {
+      display: none;
+
+      @include viewport-wide-start-from($viewport-small) {
+        display: block;
+        max-width: 40vw;
+        min-height: 100%;
+        object-fit: cover;
+      }
+
+      @include viewport-wide-start-from($viewport-regular) {
+        max-width: 30vw;
+      }
+
+      @include viewport-wide-start-from($viewport-large) {
+        max-width: 20vw;
+      }
+    }
+
+    div.content-container {
+      display: flex;
+      flex-direction: column;
+      gap: $space-block-regular-rem;
+
+      padding: $space-block-xLarge-rem $space-inline-xLarge-rem;
+
+      @include viewport-wide-start-from($viewport-small) {
+        width: 100%;
+      }
+
+      @include viewport-wide-start-from($viewport-regular) {
+        min-width: 30vw;
+      }
+
+      @include viewport-wide-start-from($viewport-large) {
+        min-width: unset;
+        width: 20rem;
+      }
+
+      form.form-container {
+        display: flex;
+        flex-direction: column;
+        gap: $space-block-large-rem;
+
+        div.field {
+          position: relative;
+
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          label {
+            color: $clr-blue-darker;
+            font-size: $font-size-small-rem;
+            font-family: $typography-emphasis;
+          }
+
+          input {
+            outline: none;
+            border: none;
+            border-block-end: 1px solid $clr-blue-regular;
+            background-color: transparent;
+            font-size: $font-size-small-rem;
+            padding-inline-end: $space-inline-xxxLarge-rem;
+
+            &.pristine {
+              direction: ltr;
+            }
+          }
+
+          span.show-password-icon {
+            position: absolute;
+            right: $space-inline-xxxSmall-rem;
+            bottom: 0;
+
+            cursor: pointer;
+            color: $clr-grey-regular;
+          }
+        }
+
+        div.error-message {
+          color: $clr-red-regular;
+          font-size: $font-size-small-rem;
+          font-family: $typography-emphasis;
+        }
+
+        button.form-login-button {
+          cursor: pointer;
+          border: none;
+          border-radius: $border-radius-regular-rem;
+          background-color: $clr-blue-regular;
+          color: $clr-white-regular;
+          font-family: $typography-emphasis;
+          padding-block: $space-block-xxxSmall-rem;
+          transition: $transition-regular;
+
+          &:hover {
+            background-color: $clr-blue-darker;
+          }
+        }
+      }
+
+      span.divider {
+        background-color: $clr-white-darkest;
+        width: 100%;
+        height: 1px;
+      }
+
+      button.google-login-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: $space-inline-xxxSmall-rem;
+
+        cursor: not-allowed;
+        border: 1px solid $clr-blue-darker;
+        border-radius: $border-radius-regular-rem;
+        background-color: transparent;
+        color: $clr-blue-darker;
+        font-family: $typography-emphasis;
+        padding-block: $space-block-xxxSmall-rem;
+        transition: $transition-regular;
+
+        &:hover {
+          background-color: $clr-white-darker;
+        }
+      }
+    }
+  }
+}

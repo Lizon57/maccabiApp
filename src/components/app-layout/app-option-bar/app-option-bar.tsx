@@ -1,30 +1,32 @@
 import { useRef, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
 
+import { useSelector } from "react-redux"
+import { RootState } from "../../../store/store"
 import { setAppScreenZIndex } from "../../../store/action/app-layout-action"
 
 import { useOnClickOutside } from "../../../hooks/use-on-click-outside"
 import { useWindowSize } from "../../../hooks/use-window-size"
 
+import { AppOptionRestriction } from "../../../models/types/app/app-option-link/app-option-restriction"
+
 import { OPTION_BAR } from "../../../data/app/option-bar"
-import { useSelector } from "react-redux"
-import { RootState } from "../../../store/store"
+
+import { AppOptionPreview } from "./app-option-preview"
 
 
 export const AppOptionBar = () => {
+    const { user } = useSelector((state: RootState) => state.userStateModule.user)
     const { pageType } = useSelector((state: RootState) => state.appLayoutModule)
     const [selectOption, setSelectOption] = useState('')
-
     const elOptionBar = useRef<HTMLUListElement>(null)
-    const location = useLocation()
     const { width: windowWidth } = useWindowSize()
 
     const isLargeScreen = (windowWidth > 550)
 
-
     const onCloseOption = () => {
         if (!isLargeScreen) setSelectOption('')
     }
+    useOnClickOutside(elOptionBar, onCloseOption)
 
     const onOpenOption = (option: string) => {
         setSelectOption(option)
@@ -36,7 +38,34 @@ export const AppOptionBar = () => {
         selectOption === option ? onCloseOption() : onOpenOption(option)
     }
 
-    useOnClickOutside(elOptionBar, onCloseOption)
+    const getShouldOptionRender = (restriction: AppOptionRestriction | undefined) => {
+        if (!restriction) return true
+        let shouldRender = true
+
+        const restrictionTypes = Object.keys(restriction)
+        restrictionTypes.forEach(restrictionKey => {
+            switch (restrictionKey) {
+                case 'pageTypes':
+                    if (!restriction[restrictionKey]?.some(restriction => (restriction === pageType))) shouldRender = false
+                    break
+
+                case 'users':
+                    restriction[restrictionKey]?.forEach(restriction => {
+                        switch (restriction) {
+                            case 'logged-real-user':
+                                if (!user?.credential?.password) shouldRender = false
+                                break
+
+                            case 'no-logged-real-user':
+                                if (!!user?.credential?.password) shouldRender = false
+                                break
+                        }
+                    })
+            }
+        })
+
+        return shouldRender
+    }
 
 
     return (
@@ -51,19 +80,15 @@ export const AppOptionBar = () => {
                             </span>
 
                             <ul className={'links-list-container' + (selectOption === title ? ' open' : '')}>
-                                {option.childrens.map(({ isRelative, path, text, id, pageTypesRestriction }) => {
-                                    const shouldRender = pageTypesRestriction?.find(restriction => (restriction === pageType))
-                                    if (!pageTypesRestriction?.length || shouldRender) return (
-                                        <li key={id} className="link-container">
-                                            <Link
-                                                to={isRelative ? location.pathname + path : path}
-                                                onClick={onCloseOption}
-                                            >
-                                                {text}
-                                            </Link>
-                                        </li>
-                                    )
-                                    return null
+                                {option.childrens.map(({ id, path, text, isRelative, action, restriction }) => {
+                                    const shouldOptionRender = getShouldOptionRender(restriction)
+                                    const appOptionPreviewProps = { path, text, isRelative, action, onCloseOption }
+                                    return shouldOptionRender
+                                        ? <AppOptionPreview
+                                            key={id}
+                                            {...appOptionPreviewProps}
+                                        />
+                                        : null
                                 })}
                             </ul>
                         </li>
