@@ -9,7 +9,7 @@ const DB_NAME = 'user'
 const query = async () => {
     try {
         const collection = await databaseService.getCollection(DB_NAME)
-        let users = await collection.find().toArray()
+        const users = await collection.find().toArray()
         return users.map(user => {
             delete user.credential.password
             return user
@@ -58,18 +58,28 @@ const update = async (user: User) => {
 const add = async (user: User | UserWithoutId) => {
     try {
         const existUser = await getByEmail(user.credential.email)
-        if (existUser) throw new Error ('Email already taken')
+        if (existUser) throw new Error('Email already taken')
 
         const userToAdd = {
             credential: {
                 email: user.credential.email,
                 password: user.credential.password,
-            }
+            },
+
+            client: {
+                name: {
+                    first: user.client.name.first,
+                    last: user.client.name.last,
+                    display: user.client.name.display,
+                }
+            },
+
+            browseableBranchesIds: user.browseableBranchesIds
         }
 
         const collection = await databaseService.getCollection(DB_NAME)
-        await collection.insertOne(userToAdd)
-        return userToAdd
+        const addedUser = await collection.insertOne(userToAdd)
+        return addedUser
     } catch (err) {
         loggerService.error('cannot add user', err)
         throw err
@@ -83,7 +93,6 @@ const getByEmail = async (email: string) => {
         const user = await collection.findOne({ 'credential.email': email })
         if (!user) return
 
-        delete user.credential.password
         return user
     } catch (err) {
         loggerService.error(`while finding user by email: ${email}`, err)

@@ -14,10 +14,10 @@ const login = async (email: string, password: string) => {
     loggerService.debug(`auth.service - login with email: ${email}`)
 
     const user = await userService.getByEmail(email) as User
-    if (!user || !user.credential.password) return Promise.reject('Invalid email or password')
+    if (!user) return Promise.reject('Invalid email')
 
     const match = bcrypt.compare(password, user.credential.password)
-    if (!match) return Promise.reject('Invalid email or password')
+    if (!match) return Promise.reject('Invalid password')
 
     delete user.credential.password
     user._id = user._id.toString()

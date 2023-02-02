@@ -6,6 +6,7 @@ import { AiFillEye, AiFillEyeInvisible, AiOutlineUserAdd } from "react-icons/ai"
 import signupLoginImage from "../../assets/images/app-layout/signup-login.jpg"
 
 import { login } from "../../store/action/user-action"
+import { insertAppMessage } from "../../store/action/app-state-action"
 
 import { User } from "../../models/interfaces/user/user"
 
@@ -43,6 +44,7 @@ export const LoginSignup = () => {
             const user = await userService.signup(credential) as User
             login(user)
             navigate('/')
+            insertAppMessage({ text: 'נרשמת בהצלחה!', title: 'ברוך הבא לאתר!', type: 'success' })
         } catch ({ message }) {
             setError(message as string)
         }
@@ -53,6 +55,7 @@ export const LoginSignup = () => {
             const user = await userService.login(credential) as User
             login(user)
             navigate('/')
+            insertAppMessage({ text: 'התחברת בהצלחה!', title: 'ברוך הבא לאתר!', type: 'success' })
         } catch ({ message }) {
             setError(message as string)
         }

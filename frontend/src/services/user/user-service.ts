@@ -1,29 +1,15 @@
-import { USER_DB } from "../../data/user/user-db"
-import { User } from "../../models/interfaces/user/user"
-
-import { asyncLocalStorageService } from "../async-local-storage-service"
+import { httpService } from "../http-service"
 import { makeId } from "../util/make-id"
 
 
-const DB_NAME = 'UserDB'
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedUser'
 
-const query = async () => {
-    try {
-        const users = await asyncLocalStorageService.query(DB_NAME, USER_DB) as User[]
-        return users
-    } catch (err) {
-        throw err
-    }
-}
 
 const signup = async (credential: Credential) => {
     try {
-        const users = await query()
-        const isUserExist = !!users.find(user => (user.credential.email === credential.email))
-        if (isUserExist) throw new Error('משתמש קיים במערכת, אנא נסה שנית')
-
-        const user = _createUser(credential) as unknown
-        await asyncLocalStorageService.save(user, DB_NAME, USER_DB)
+        const newUser = _createUser(credential)
+        const user = await httpService.post('auth/signup', newUser)
+        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
         return user
     } catch (err) {
         throw err
@@ -32,13 +18,29 @@ const signup = async (credential: Credential) => {
 
 const login = async (credential: Credential) => {
     try {
-        const users = await query()
-        const user = users.find(user => (user.credential.email === credential.email) && (user.credential.password === credential.password))
+        const user = await httpService.post('auth/login', credential)
         if (!user) throw new Error('פרטי התחברות שגויים, אנא נסה שנית')
+        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
         return user
     } catch (err) {
         throw err
     }
+}
+
+const logout = async () => {
+    try {
+        await httpService.post('auth/logout')
+        sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    } catch (err) {
+        throw err
+    }
+}
+
+
+const getLoggedinUser = () => {
+    const loggedUser = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
+    if (!loggedUser) return
+    return JSON.parse(loggedUser)
 }
 
 
@@ -60,9 +62,10 @@ const _createUser = (credential: Credential) => ({
 
 
 export const userService = {
-    query,
     signup,
-    login
+    login,
+    logout,
+    getLoggedinUser
 }
 
 

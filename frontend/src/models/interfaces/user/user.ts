@@ -1,13 +1,11 @@
+import { Credential } from "../../types/user/credential"
 import { LocalUser } from "./local-user"
 
 
 export interface User extends LocalUser {
     _id: string
 
-    credential: {
-        email: string
-        password: string
-    }
+    credential: Credential
 
     client: {
         name: {
@@ -17,3 +15,5 @@ export interface User extends LocalUser {
         }
     }
 }
+
+export interface UserWithoutId extends Omit<User, '_id'> { }

@@ -15,7 +15,7 @@ import { AppOptionPreview } from "./app-option-preview"
 
 
 export const AppOptionBar = () => {
-    const { user } = useSelector((state: RootState) => state.userStateModule.user)
+    const { user } = useSelector((state: RootState) => state.userStateModule)
     const { pageType } = useSelector((state: RootState) => state.appLayoutModule)
     const [selectOption, setSelectOption] = useState('')
     const elOptionBar = useRef<HTMLUListElement>(null)
@@ -53,11 +53,11 @@ export const AppOptionBar = () => {
                     restriction[restrictionKey]?.forEach(restriction => {
                         switch (restriction) {
                             case 'logged-real-user':
-                                if (!user?.credential?.password) shouldRender = false
+                                if (!user?._id) shouldRender = false
                                 break
 
                             case 'no-logged-real-user':
-                                if (!!user?.credential?.password) shouldRender = false
+                                if (!!user?._id) shouldRender = false
                                 break
                         }
                     })

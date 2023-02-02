@@ -4,7 +4,6 @@ import { Provider } from "react-redux"
 import { store } from "./store/store"
 
 import { entityService } from "./services/entities/entity-service"
-import { userService } from "./services/user/user-service"
 
 import { LaptopWidePlusAppHeader } from "./components/app-layout/app-header/laptop-wide-plus-app-header/laptop-wide-plus-app-header"
 import { UpToLaptopWideAppHeader } from "./components/app-layout/app-header/up-to-laptop-wide-app-header/up-to-laptp-wide-app-header"
@@ -22,7 +21,6 @@ import { IMAGE_DB } from "./data/entities/image/image-db"
 
 export const App = () => {
     entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB)
-    userService.query()
 
     return (
         <Provider store={store}>

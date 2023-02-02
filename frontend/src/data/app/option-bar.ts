@@ -1,9 +1,15 @@
 import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
 
 import { AppOptionLinksListCategory } from "../../models/interfaces/app/app-option-link/app-option-links-list-category"
+import { User } from "../../models/interfaces/user/user"
 
+import { userService } from "../../services/user/user-service"
 import { makeId } from "../../services/util/make-id"
+
 import { logout as logoutUser } from "../../store/action/user-action"
+
+
+const loggedUser = userService.getLoggedinUser() as User
 
 
 export const OPTION_BAR: AppOptionLinksListCategory[] = [
@@ -91,8 +97,8 @@ export const OPTION_BAR: AppOptionLinksListCategory[] = [
             },
             {
                 id: makeId(),
-                text: 'אורן המתעפץ',
-                path: '/משתמש/אורן המתעפץ',
+                text: (loggedUser?.client?.name?.display || 'פרטי משתמש'),
+                path: '/user/' + loggedUser?._id,
                 isRelative: false,
                 restriction: {
                     users: ['logged-real-user']
@@ -101,7 +107,7 @@ export const OPTION_BAR: AppOptionLinksListCategory[] = [
             {
                 id: makeId(),
                 text: 'הודעות פרטיות',
-                path: '/משתמש/אורן המתעפץ/הודעות פרטיות',
+                path: `/user/${loggedUser?._id}/inbox`,
                 isRelative: false,
                 restriction: {
                     users: ['logged-real-user']
@@ -110,8 +116,11 @@ export const OPTION_BAR: AppOptionLinksListCategory[] = [
             {
                 id: makeId(),
                 text: 'הגדרות מערכת',
-                path: '/משתמש/אורן המתעפץ/הגדרות',
-                isRelative: false
+                path: `/user/${loggedUser?._id}/setting`,
+                isRelative: false,
+                restriction: {
+                    users: ['logged-real-user']
+                }
             },
             {
                 id: makeId(),

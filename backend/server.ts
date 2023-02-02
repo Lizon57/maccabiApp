@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import { loggerService } from "./services/logger.service"
 import { setupAsyncLocalStorage } from "./middlewares/setupAls"
 import { userRouter } from "./api/user/user.routes"
+import { authRouter } from "./api/auth/auth.routes"
 
 
 const app = express()
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 app.all('*', setupAsyncLocalStorage)
 
 app.use('/api/user', userRouter)
+app.use('/api/auth', authRouter)
 
 
 app.get('/**', (_, res) => {

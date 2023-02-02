@@ -1,11 +1,11 @@
 import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
+import { FaBars } from "react-icons/fa"
 
 import { setAppScreenZIndex } from "../../../../store/action/app-layout-action"
 
 import { useOnClickOutside } from "../../../../hooks/use-on-click-outside"
-
-import { FaBars } from "react-icons/fa"
+import { useSetLoggedUser } from "../../../../hooks/user/useSetLoggedUser"
 
 import wideLogo from "../../../../assets/images/wide-logo.png"
 
@@ -19,6 +19,8 @@ export const UpToLaptopWideAppHeader = () => {
     const [isNavOpen, setIsNavOpen] = useState(false)
     const [currentCategoryOpen, setCurrentCategoryOpen] = useState('')
     const elMenu = useRef<HTMLDivElement>(null)
+
+    useSetLoggedUser()
 
 
     const toggleMenu = (shouldOpen = false) => {

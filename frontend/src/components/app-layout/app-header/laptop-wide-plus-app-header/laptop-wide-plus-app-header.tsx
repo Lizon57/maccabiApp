@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { useSetLoggedUser } from "../../../../hooks/user/useSetLoggedUser"
 
 import squareLogo from "../../../../assets/images/square-logo.png"
 
@@ -9,6 +10,8 @@ import { AppSearch } from "../app-search/app-search"
 
 
 export const LaptopWidePlusAppHeader = () => {
+    useSetLoggedUser()
+
     return (
         <header className="app-layout--app-header__laptop_wide_plus">
             <div className="content">
