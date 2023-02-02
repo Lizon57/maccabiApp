@@ -92,7 +92,7 @@ export const EntityDetails = (entity: Entity) => {
             </section>
 
             <SeoImplement
-                appTitle={itemName}
+                appTitle={`${itemName} (${entity.entityInfo.name.display})`}
                 openGraphTitle={itemName}
                 openGraphDescription="כל מה שאוהד מכבי צריך לדעת"
                 openGraphImage={item?.miniImages[0]?.imageUrl || ''}
