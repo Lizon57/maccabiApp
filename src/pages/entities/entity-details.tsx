@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../store/store"
@@ -21,6 +21,8 @@ import { Loader } from "../../components/common/loader/loader"
 import { ArticleHeadCmpList } from "../../components/entities/details/article-head-cmp/article-head-cmp-list"
 import { ArticleAdditionalContentCmpList } from "../../components/entities/details/article-additional-content-cmp/article-additional-content-cmp-list"
 import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
+import { BreadCrumbs } from "../../components/common/bread-crumbs/bread-crumbs"
+import { RatePage } from "../../components/entities/details/reate-page/rate-page"
 
 
 export const EntityDetails = (entity: Entity) => {
@@ -30,6 +32,8 @@ export const EntityDetails = (entity: Entity) => {
     const [errorMessage, setErrorMessage] = useState<string>()
 
     const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
+
+    const path = useLocation().pathname.split('/')[1] || ''
 
     usePageDataCmp('entity-item-toc')
     usePageType('entity-item-details')
@@ -72,16 +76,20 @@ export const EntityDetails = (entity: Entity) => {
     if (errorMessage) return <ErrorMessage message={errorMessage} />
 
 
-    const { structure } = entity.detailsPageInfo
-    const { display: entityName } = entity.entityInfo.name
+    const { detailsPageInfo: { structure }, entityInfo: { name: { display: entityName } } } = entity
     const { display: itemName } = item.entityInfo.name
 
     return (
         <>
             <section className="entities-pages--entity-display__container">
+                <div className="head-info-container">
+                    <BreadCrumbs path={[{ text: entityName, link: path }, { text: itemName }]} />
+                    <RatePage />
+                </div>
+
                 {!!structure?.head?.length &&
                     <div className="primary-content">
-                        <ArticleHeadCmpList cmps={structure?.head} entityName={entityName} />
+                        <ArticleHeadCmpList cmps={structure?.head} />
                     </div>
                 }
 

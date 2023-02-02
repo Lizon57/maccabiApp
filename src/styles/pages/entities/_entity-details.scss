@@ -1,9 +1,14 @@
 section.entities-pages--entity-display__container {
   display: grid;
-  grid-template-rows: 1fr max-content;
+  grid-template-rows: auto 1fr max-content;
   gap: $space-block-xSmall-rem;
 
   height: 100%;
+
+  div.head-info-container {
+    display: flex;
+    justify-content: space-between;
+  }
 
   div.primary-content,
   div.additional-content {

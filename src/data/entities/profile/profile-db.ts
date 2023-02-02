@@ -40,8 +40,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -86,8 +86,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -121,8 +121,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -156,8 +156,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -191,8 +191,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -226,8 +226,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -261,8 +261,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -297,8 +297,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -333,8 +333,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -368,8 +368,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -403,8 +403,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),
@@ -439,8 +439,8 @@ export const PROFILE_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 10)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 5),

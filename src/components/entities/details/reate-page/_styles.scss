@@ -1,0 +1,54 @@
+div.entity-details--rate-page__container {
+  display: flex;
+  align-items: center;
+
+  div.common-cmp--dropdown__container {
+    cursor: pointer;
+    user-select: none;
+
+    div.toggler {
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: $font-size-xSmall-rem;
+        color: $clr-grey-regular;
+      }
+
+      svg {
+        color: $clr-yellow-regular;
+      }
+    }
+  }
+}
+
+div.entity-details--rater__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxSmall-rem;
+
+  span.divider {
+    background-color: $clr-white-darkest;
+    width: 100%;
+    height: 1px;
+  }
+}
+
+div.entity-details--rate-star-preview__container {
+  display: flex;
+
+  border-radius: $border-radius-regular-rem;
+  padding: $space-block-xxxSmall-rem $space-inline-xxxSmall-rem;
+
+  &:hover {
+    background-color: $clr-white-darker;
+  }
+  span {
+    display: flex;
+    align-items: center;
+
+    &.filled {
+      color: $clr-yellow-regular;
+    }
+  }
+}

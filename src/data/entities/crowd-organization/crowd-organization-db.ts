@@ -33,8 +33,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),
@@ -77,8 +77,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),
@@ -119,8 +119,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),
@@ -164,8 +164,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),
@@ -206,8 +206,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),
@@ -248,8 +248,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),
@@ -290,8 +290,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),
@@ -330,8 +330,8 @@ export const CROWD_ORGANIZATION_DB: EntityItem[] = [
         itemInfo: {
             view: 0,
             rate: {
-                avg: getRandomInt(0, 5),
-                raterCount: getRandomInt(0, 1000000)
+                avg: 0,
+                raterCount: 0
             },
             editHistory: {
                 total: getRandomInt(0, 20),

@@ -8,16 +8,15 @@ import { AiFillHome } from "react-icons/ai"
 
 export const BreadCrumbs = ({ path }: Props) => {
     return (
-        <section className="common-cmp--bread-crumbs__container">
+        <div className="common-cmp--bread-crumbs__container">
             <Link to="/" title="עמוד ראשי"><AiFillHome size={14} /></Link>
             {path.map(({ text, link }, idx) => <span className="wrapper" key={makeId()}>
                 {link && <span title={text}><Link to={'/' + link}>{text}</Link></span>}
                 {!link && <span title={text}>{text}</span>}
                 {(idx + 1 !== path.length) && <span><BiChevronLeft /></span>}
             </span>
-
             )}
-        </section>
+        </div>
     )
 }
 

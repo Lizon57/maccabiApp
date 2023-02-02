@@ -5,12 +5,12 @@ import { EntityDetailsStructureCmp } from "../../../../models/combiners/entities
 import { DynamicHeadCmp } from "./dynamic-head-cmp/dynamic-head-cmp"
 
 
-export const ArticleHeadCmpList = ({ cmps, entityName }: Props) => {
+export const ArticleHeadCmpList = ({ cmps }: Props) => {
     if (!cmps?.length) return null
 
     return (
         <>
-            {cmps.map(cmp => <DynamicHeadCmp key={makeId()} cmp={cmp} entityName={entityName} />)}
+            {cmps.map(cmp => <DynamicHeadCmp key={makeId()} cmp={cmp} />)}
         </>
     )
 }
@@ -18,5 +18,4 @@ export const ArticleHeadCmpList = ({ cmps, entityName }: Props) => {
 
 type Props = {
     cmps?: EntityDetailsStructureCmp[]
-    entityName: string
 }
