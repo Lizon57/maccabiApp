@@ -1,4 +1,6 @@
 import axios, { AxiosError } from 'axios'
+import { STORAGE_KEY_LOGGEDIN_USER } from './user/user-service'
+
 
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
@@ -19,7 +21,7 @@ async function ajax(endpoint: string, method = 'GET', data: null | any = null) {
         console.dir(err)
         const error = err as AxiosError
         if (error.response && error.response.status === 401) {
-            sessionStorage.clear()
+            localStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, '')
         }
         throw err
     }
