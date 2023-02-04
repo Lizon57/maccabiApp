@@ -20,7 +20,7 @@ const query = async () => {
 const getById = async (id: string) => {
     try {
         const collection = await databaseService.getCollection(DB_NAME)
-        const signature = collection.findOne({ _id: new ObjectId(id) })
+        const signature = await collection.findOne({ _id: new ObjectId(id) })
         return signature
     } catch (err) {
         loggerService.error('cannot find signature', err)
@@ -34,6 +34,8 @@ const update = async (signature: Signature) => {
         const existSignature = await getById(signature._id.toString()) as Signature
 
         const signatureToUpdate = {
+            _id: new ObjectId(signature._id),
+
             entityInfo: {
                 name: {
                     display: signature.entityInfo.name,
@@ -44,8 +46,6 @@ const update = async (signature: Signature) => {
                         nickname: signature.entityInfo.name.he.nickname,
                     }
                 },
-
-                ctgIds: signature.entityInfo.ctgIds || [],
                 miniCategories: signature.entityInfo.miniCategories || []
             },
 
@@ -57,12 +57,12 @@ const update = async (signature: Signature) => {
             },
 
             imagesIds: signature.imagesIds,
-            miniImages: signature.miniImages 
+            miniImages: signature.miniImages
         }
 
         const collection = await databaseService.getCollection(DB_NAME)
-        const updatedSignature = collection.insertOne(signatureToUpdate)
-        return updatedSignature
+        await collection.updateOne({ _id: signatureToUpdate._id }, { $set: signatureToUpdate })
+        return signatureToUpdate
     } catch (err) {
         loggerService.error('cannot update signature', err)
         throw err
@@ -85,8 +85,6 @@ const add = async (signature: Signature) => {
                         nickname: signature.entityInfo.name.he.nickname,
                     }
                 },
-
-                ctgIds: signature.entityInfo.ctgIds || [],
                 miniCategories: signature.entityInfo.miniCategories || []
             },
 
@@ -99,7 +97,6 @@ const add = async (signature: Signature) => {
                 },
                 history: {
                     totalEditCount: 0,
-                    lastEditDate: Date
                 }
             },
 
@@ -108,7 +105,7 @@ const add = async (signature: Signature) => {
         }
 
         const collection = await databaseService.getCollection(DB_NAME)
-        const addedSignature = collection.insertOne(signatureToAdd)
+        const addedSignature = await collection.insertOne(signatureToAdd)
         return addedSignature
     } catch (err) {
         loggerService.error('cannot add signature', err)

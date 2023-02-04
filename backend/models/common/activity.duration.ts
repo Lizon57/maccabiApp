@@ -1,4 +1,4 @@
-import { UncompleteDate } from "../../../common/uncomplete.date"
+import { UncompleteDate } from "./uncomplete.date"
 
 export interface ActivityDuration {
     start?: UncompleteDate,

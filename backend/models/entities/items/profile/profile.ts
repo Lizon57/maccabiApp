@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb"
 import { UncompleteDate } from "../../../common/uncomplete.date"
-import { ActivityDuration } from "../misc/activity.duration"
+import { ActivityDuration } from "../../../common/activity.duration"
 import { EntityItem } from "../misc/entity.item"
 
 

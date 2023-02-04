@@ -15,8 +15,6 @@ export interface EntityItem {
                 nickname?: string
             }
         }
-
-        ctgIds: string[]
         miniCategories?: MiniPageCategory[]
     }
 
@@ -35,8 +33,8 @@ export interface EntityItem {
         }
     }
 
-    imagesIds: string[]
-    miniImages: { id: string, name: string, imageUrl: string }[]
+    imagesIds?: string[]
+    miniImages?: { id: string, name: string, imageUrl: string }[]
 
     isArchived?: boolean
 }

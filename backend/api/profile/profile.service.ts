@@ -34,6 +34,8 @@ const update = async (profile: Profile) => {
         const existProfile = await getById(profile._id.toString()) as Profile
 
         const profileToUpdate = {
+            _id: new ObjectId(profile._id),
+
             relatedInfo: {
                 profileImageId: profile.relatedInfo?.profileImageId,
                 branchIds: profile.relatedInfo?.branchIds,
@@ -49,8 +51,6 @@ const update = async (profile: Profile) => {
                         nickname: profile.entityInfo.name.he?.nickname,
                     }
                 },
-
-                ctgIds: profile.entityInfo.ctgIds || [],
                 miniCategories: profile.entityInfo.miniCategories || [],
 
                 item: {
@@ -88,8 +88,8 @@ const update = async (profile: Profile) => {
         }
 
         const collection = await databaseService.getCollection(DB_NAME)
-        const updatedProfile = collection.insertOne(profileToUpdate)
-        return updatedProfile
+        await collection.updateOne({ _id: profileToUpdate._id }, { $set: profileToUpdate })
+        return profileToUpdate
     } catch (err) {
         loggerService.error('cannot update profile', err)
         throw err
@@ -117,8 +117,6 @@ const add = async (profile: Profile) => {
                         nickname: profile.entityInfo.name.he?.nickname,
                     }
                 },
-
-                ctgIds: profile.entityInfo.ctgIds || [],
                 miniCategories: profile.entityInfo.miniCategories || [],
 
                 item: {
@@ -145,6 +143,15 @@ const add = async (profile: Profile) => {
             },
 
             itemInfo: {
+                view: 0,
+                rate: {
+                    raterCount: 0,
+                    rateMap: {
+                    }
+                },
+                history: {
+                    totalEditCount: 0,
+                }
             },
 
             imagesIds: profile.imagesIds,
@@ -152,7 +159,7 @@ const add = async (profile: Profile) => {
         }
 
         const collection = await databaseService.getCollection(DB_NAME)
-        const addedProfile = collection.insertOne(profileToAdd)
+        const addedProfile = await collection.insertOne(profileToAdd)
         return addedProfile
     } catch (err) {
         loggerService.error('cannot add profile', err)

@@ -8,6 +8,8 @@ import { setupAsyncLocalStorage } from "./middlewares/setupAls"
 import { authRouter } from "./api/auth/auth.routes"
 import { userRouter } from "./api/user/user.routes"
 import { signatureRouter } from "./api/signature/signature.routes"
+import { profileRouter } from "./api/profile/profile.routes"
+import { imageRouter } from "./api/image/image.routes"
 
 
 const app = express()
@@ -34,6 +36,8 @@ app.all('*', setupAsyncLocalStorage)
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/signature', signatureRouter)
+app.use('/api/profile', profileRouter)
+app.use('/api/image', imageRouter)
 
 
 app.get('/**', (_, res) => {
