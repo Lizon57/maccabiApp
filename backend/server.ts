@@ -5,8 +5,9 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 import { loggerService } from "./services/logger.service"
 import { setupAsyncLocalStorage } from "./middlewares/setupAls"
-import { userRouter } from "./api/user/user.routes"
 import { authRouter } from "./api/auth/auth.routes"
+import { userRouter } from "./api/user/user.routes"
+import { signatureRouter } from "./api/signature/signature.routes"
 
 
 const app = express()
@@ -32,6 +33,7 @@ app.all('*', setupAsyncLocalStorage)
 
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
+app.use('/api/signature', signatureRouter)
 
 
 app.get('/**', (_, res) => {

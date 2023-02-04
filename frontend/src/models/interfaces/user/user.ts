@@ -14,6 +14,8 @@ export interface User extends LocalUser {
             display: string
         }
     }
+
+    browseableBranchesIds: string[]
 }
 
 export interface UserWithoutId extends Omit<User, '_id'> { }
