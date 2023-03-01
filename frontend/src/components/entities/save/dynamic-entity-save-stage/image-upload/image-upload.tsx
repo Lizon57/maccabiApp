@@ -5,7 +5,8 @@ import { useSelector } from "react-redux"
 import { RootState } from "../../../../../store/store"
 import { setSaveEntityItem } from "../../../../../store/action/save-entity-item-action"
 
-import { EntityItem } from "../../../../../types/entity/entities/entity-item"
+import { EntityItem } from "../../../../../models/types/entities/item/entity-item"
+import { ImageItem } from "../../../../../models/types/entities/item/image-item"
 
 import { makeId } from "../../../../../services/util/make-id"
 
@@ -38,12 +39,12 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
     }
 
 
-    const onUploadSuccess = (image: EntityItem, file: File) => {
+    const onUploadSuccess = (image: ImageItem, file: File) => {
         const editedItem = structuredClone(item)
         let { miniImages } = editedItem
         if (!miniImages) miniImages = []
         miniImages.push({
-            id: image.id,
+            id: image._id,
             name: image.entityInfo.name.display,
             imageUrl: image.entityInfo.imageUrl
         })

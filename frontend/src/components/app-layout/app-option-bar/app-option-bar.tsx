@@ -59,6 +59,10 @@ export const AppOptionBar = () => {
                             case 'no-logged-real-user':
                                 if (!!user?._id) shouldRender = false
                                 break
+
+                            case 'editor':
+                                if (user.permisionGroup !== 'editor' && user.permisionGroup !== 'admin') shouldRender = false
+                                break
                         }
                     })
             }

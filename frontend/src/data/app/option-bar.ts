@@ -76,7 +76,7 @@ export const OPTION_BAR: AppOptionLinksListCategory[] = [
                 isRelative: true,
                 restriction: {
                     pageTypes: ['entity-item-details'],
-                    users: ['logged-real-user']
+                    users: ['editor']
                 },
             },
         ]

@@ -3,11 +3,10 @@ import { useNavigate, useParams } from "react-router-dom"
 
 import { insertAppMessage } from "../../store/action/app-state-action"
 
-import { entityService } from "../../services/entities/entity-service"
 import { entityItemService } from "../../services/entities/entity-item-service"
 
-import { Entity } from "../../types/entity/entity"
-import { EntityItem } from "../../types/entity/entities/entity-item"
+import { Entity } from "../../models/interfaces/entities/entity"
+import { EntityItem } from "../../models/types/entities/item/entity-item"
 
 import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
 
@@ -33,7 +32,7 @@ export const EntityRemove = (entity: Entity) => {
             if (!EntityItemId) return
 
             try {
-                const item = await entityService.getEntityItemById(EntityItemId, entity) as EntityItem
+                const item = await entityItemService.getById(entity.name, EntityItemId, true) as EntityItem
                 setItem(item)
             } catch ({ message }) {
                 setErrorMessage(message as string)
@@ -51,7 +50,7 @@ export const EntityRemove = (entity: Entity) => {
     const onApprove = async () => {
         if (!EntityItemId) return
         try {
-            await entityItemService.remove(EntityItemId, entity, entity?.dbInfo.name, entity.dbInfo.fallbackDB)
+            await entityItemService.remove(entity.name, EntityItemId)
             insertAppMessage(
                 { text: `מחיקת הדף ${item?.entityInfo.name.display} בוצעה בהצלחה`, title: 'מחיקה בוצעה בהצלחה', type: 'success' }
             )

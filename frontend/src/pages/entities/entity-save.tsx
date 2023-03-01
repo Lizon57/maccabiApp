@@ -6,25 +6,24 @@ import { RootState } from "../../store/store"
 import { setSaveEntityItem } from "../../store/action/save-entity-item-action"
 import { insertAppMessage } from "../../store/action/app-state-action"
 
-import { entityService } from "../../services/entities/entity-service"
-import { entityItemService } from "../../services/entities/entity-item-service"
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
+import { entityItemService } from "../../services/entities/entity-item-service"
 
 import { EntitySaveItemStage } from "../../types/entity/save/entity-save-item-stage"
+import { Entity } from "../../models/interfaces/entities/entity"
+import { EntityItem } from "../../models/types/entities/item/entity-item"
 
 import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
 import { DynamicEntitySaveStage } from "../../components/entities/save/dynamic-entity-save-stage/dynamic-entity-save-stage"
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { StageStepper } from "../../components/entities/save/stage-stepper/stage-stepper"
-import { EntityItem } from "../../types/entity/entities/entity-item"
 import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 
 
 const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.length).fill(false)
 
-export const EntitySave = (entityName: string) => {
-    const entity = entityService.getEntityByName(entityName)
+export const EntitySave = (entity: Entity) => {
     const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [currStageIdx, setCurrStageIdx] = useState(0)
@@ -46,10 +45,10 @@ export const EntitySave = (entityName: string) => {
             setIsLoading(false)
             return
         }
-
+        
         const loadItem = async () => {
             try {
-                const item = await entityService.getEntityItemById(id, entity) as EntityItem
+                const item = await entityItemService.getById(entity.name, id, true) as EntityItem
                 setSaveEntityItem(item)
             } catch (_err) { console.log(_err) }
             finally {
@@ -114,13 +113,13 @@ export const EntitySave = (entityName: string) => {
     const saveItem = async () => {
         if (!getIsSaveable() || !entity) return
         const editedItem = structuredClone(item) as EntityItem
-        const isEdited = !!editedItem.id
-        if (id) editedItem.id = id
+        const isEdited = !!editedItem._id
+        if (id) editedItem._id = id
 
         const { display: displayName } = editedItem.entityInfo.name
 
         try {
-            await entityItemService.save(editedItem, entity?.dbInfo.name, entity?.dbInfo.fallbackDB)
+            await entityItemService.save(entity.name, editedItem)
             const text = `${isEdited ? 'עריכת' : 'הוספת'} הדף ${displayName} בוצעה בהצלחה`
             const title = `${isEdited ? 'עריכה' : 'הוספה'} בוצעה בהצלחה`
             insertAppMessage({ text, title, type: 'success' })

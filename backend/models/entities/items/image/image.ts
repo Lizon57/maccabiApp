@@ -1,4 +1,4 @@
-import { EntityItem } from "../misc/entity.item"
+import { EntityItem } from "../misc/entity-item"
 
 export type Image = EntityItem & {
     entityInfo: {

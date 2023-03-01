@@ -1,8 +1,7 @@
 import { store } from "../store"
-
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
+import { EntityItem } from "../../models/types/entities/item/entity-item"
 
-import { EntityItem } from "../../types/entity/entities/entity-item"
 
 
 export const setSaveEntityItem = (item: EntityItem | null) => {

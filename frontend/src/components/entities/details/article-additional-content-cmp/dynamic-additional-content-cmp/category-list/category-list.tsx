@@ -20,7 +20,7 @@ export const CategoryList = ({ cmp }: Props) => {
             <MainTitle text={cmp.title || 'קטגוריות'} Icon={cmp.Icon} />
 
             <div className="list-container">
-                {miniCategories.map(({ id, name: { display: displayName } }) => <Link
+                {miniCategories.map(({ id, displayName }) => <Link
                     to={`/category/${id}`}
                     key={id}
                     className="category-preview"

@@ -1,0 +1,32 @@
+div.entity-save-cmp--profile-filler-duration-add__container {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+  color: $clr-black-lightest;
+  font-size: $font-size-xSmall-rem;
+
+  &:hover {
+    color: $clr-blue-regular;
+  }
+
+  span.icon-wrapper {
+    display: flex;
+    align-items: center;
+    margin-inline-end: $space-inline-xxxSmall-rem;
+  }
+
+  span {
+    user-select: none;
+    transition: $transition-regular;
+  }
+}
+
+div.entity-save-cmp--profile-filler-duration-picker-preview__container {
+  border-block-end: 1px solid $clr-white-darkest;
+  margin-block-end: $space-block-xxSmall-rem;
+
+  div {
+    margin-block-end: $space-block-xxxSmall-rem;
+  }
+}

@@ -9,8 +9,5 @@ export type PageCategory = {
 
 export type MiniPageCategory = {
     id: string
-
-    name: {
-        display: string
-    }
+    displayName: string
 }

@@ -1,7 +1,6 @@
 import { makeId } from "../../../services/util/make-id"
 
-import { Entity } from "../../../types/entity/entity"
-import { CROWD_ORGANIZATION_DB } from "./crowd-organization-db"
+import { Entity } from "../../../models/interfaces/entities/entity"
 
 import { AiFillFlag } from "react-icons/ai"
 import { BsPencil } from "react-icons/bs"
@@ -13,11 +12,6 @@ export const crowdOrganizationEntity: Entity = {
     id: makeId(),
 
     name: 'crowd-organization',
-
-    dbInfo: {
-        name: 'CrowdOrganizationDB',
-        fallbackDB: CROWD_ORGANIZATION_DB
-    },
 
     entityInfo: {
         name: {
@@ -52,17 +46,12 @@ export const crowdOrganizationEntity: Entity = {
                         {
                             type: 'boolean',
                             title: 'ארגון פעיל',
-                            value: 'entityInfo.item.dateOfActivity.isActive'
+                            value: 'entityInfo.item.isActive'
                         },
                         {
-                            type: 'date',
-                            title: 'תחילת פעילות',
-                            value: 'entityInfo.item.dateOfActivity.start'
-                        },
-                        {
-                            type: 'date',
-                            title: 'סיום פעילות',
-                            value: 'entityInfo.item.dateOfActivity.end'
+                            type: 'dates-list',
+                            title: 'פעילות',
+                            value: 'entityInfo.item.activityDurations'
                         },
                     ]
                 },
@@ -97,57 +86,43 @@ export const crowdOrganizationEntity: Entity = {
             {
                 id: makeId(),
                 type: 'primary_text',
-                key: 'entityInfo.name.display',
                 param: 'fDisplayName',
                 title: 'חפש כותרת',
-                activeFilterChip: {
-                    type: 'text',
-                    text: 'כותרת כוללת'
-                }
+                activeFilterChipTexts: ['כותרת כוללת "PLAIN_VALUE"']
             },
             {
                 id: makeId(),
                 type: 'branch_multi_select',
-                key: 'relatedInfo.branchIds',
                 param: 'fBranchIds',
                 title: 'בחירת ענפים',
-                activeFilterChip: {
-                    type: 'multi_select',
-                    text: 'בתוך AMOUNT ענפים'
-                }
+                activeFilterChipTexts: ['חפש בתוך VALUE_LENGTH ענפים']
             },
             {
                 id: makeId(),
                 type: 'date_filter',
-                key: 'entityInfo.item.dateOfActivity.start',
                 param: 'fDateOfActivityStart',
                 title: 'התחילו לפעול',
-                activeFilterChip: {
-                    type: 'date_filter',
-                    text: 'פעילים החל מ-CHOOSE_OPTION'
-                },
+                activeFilterChipTexts: ['התחילו לפעול ב-DATE_VALUE ואילך',
+                    'התחילו לפעול לפני DATE_VALUE',
+                    'התחילו לפעול בדיוק ב-DATE_VALUE'
+                ]
             },
             {
                 id: makeId(),
                 type: 'date_filter',
-                key: 'entityInfo.item.dateOfActivity.end',
                 param: 'fDateOfActivityEnd',
                 title: 'הפסיקו לפעול',
-                activeFilterChip: {
-                    type: 'date_filter',
-                    text: 'פעילים עד ל-CHOOSE_OPTION'
-                },
+                activeFilterChipTexts: ['הפסיקו לפעול ב-DATE_VALUE ואילך',
+                    'הפסיקו לפעול לפני DATE_VALUE',
+                    'הפסיקו לפעול בדיוק ב-DATE_VALUE'
+                ]
             },
             {
                 id: makeId(),
                 type: 'checkbox_filter',
-                key: 'entityInfo.item.dateOfActivity.isActive',
                 param: 'fIsActive',
-                title: 'ארגון פעיל',
-                activeFilterChip: {
-                    type: 'checkbox_filter',
-                    text: 'CHOOSE_OPTION ארגונים פעילים'
-                },
+                title: 'ארגונים פעילים',
+                activeFilterChipTexts: ['BOOLEAN_VALUE ארגונים פעילים'],
             }
         ]
     },
@@ -170,20 +145,14 @@ export const crowdOrganizationEntity: Entity = {
                 option: {
                     infos: [
                         {
-                            type: 'date-picker',
-                            key: 'entityInfo.item.dateOfActivity.start',
-                            title: 'תחילת פעילות',
-                            isRequire: false
-                        },
-                        {
-                            type: 'date-picker',
-                            key: 'entityInfo.item.dateOfActivity.end',
-                            title: 'סוף פעילות',
+                            type: 'durations-picker',
+                            key: 'entityInfo.item.activityDurations',
+                            title: 'פעילות',
                             isRequire: false
                         },
                         {
                             type: 'binary-picker',
-                            key: 'entityInfo.item.dateOfActivity.isActive',
+                            key: 'entityInfo.item.isActive',
                             title: 'ארגון פעיל',
                             isRequire: false
                         },

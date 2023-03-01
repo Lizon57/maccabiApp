@@ -13,7 +13,8 @@ async function ajax(endpoint: string, method = 'GET', data: null | any = null) {
             url: `${BASE_URL}${endpoint}`,
             method,
             data,
-            params: (method === 'GET') ? data : null
+            withCredentials: true,
+            params: (method === 'GET') ? data : null,
         })
         return res.data
     } catch (err) {
@@ -29,16 +30,16 @@ async function ajax(endpoint: string, method = 'GET', data: null | any = null) {
 
 
 export const httpService = {
-    get(endpoint: string, data: any) {
+    get(endpoint: string, data?: any) {
         return ajax(endpoint, 'GET', data)
     },
     post(endpoint: string, data?: any) {
         return ajax(endpoint, 'POST', data)
     },
-    put(endpoint: string, data: any) {
+    put(endpoint: string, data?: any) {
         return ajax(endpoint, 'PUT', data)
     },
-    delete(endpoint: string, data: any) {
+    delete(endpoint: string, data?: any) {
         return ajax(endpoint, 'DELETE', data)
     }
 }

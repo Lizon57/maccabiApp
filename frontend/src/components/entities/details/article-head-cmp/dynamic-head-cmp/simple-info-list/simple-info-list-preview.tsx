@@ -22,6 +22,19 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
 
             case 'date':
                 return getFormatedDate(value, false, false)
+
+            case 'dates-list':
+                const formatter = new Intl.ListFormat('he')
+                const dates = value.map((date: any) => {
+                    let formatedText = ''
+                    if (date.start?.year) formatedText += `החל מ-${getFormatedDate(date.start, false, false)}`
+                    if (date.end?.year) {
+                        if (date.start?.year) formatedText += ' ו'
+                        formatedText += `עד ל-${getFormatedDate(date.end, false, false)}`
+                    }
+                    return formatedText
+                })
+                return formatter.format(dates)
         }
     }
 

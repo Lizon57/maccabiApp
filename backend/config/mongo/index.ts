@@ -1,6 +1,6 @@
-import { devConfig } from "./dev.config"
-import { prodConfig } from "./prod.config"
-import { MongoConfig } from "../../models/server/mongo.config"
+import { devConfig } from "./dev-config"
+import { prodConfig } from "./prod-config"
+import { MongoConfig } from "../../models/server/mongo-config"
 
 export let config: MongoConfig
 

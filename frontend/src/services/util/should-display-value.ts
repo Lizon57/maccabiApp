@@ -10,6 +10,7 @@ export const shouldDisplayValue = (value: any) => {
             return true
 
         case 'object':
+            if (!value) return false
             if (Array.isArray(value)) {
                 if (value.length) return true
                 return false

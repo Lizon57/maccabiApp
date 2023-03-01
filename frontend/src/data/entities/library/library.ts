@@ -1,7 +1,6 @@
 import { makeId } from "../../../services/util/make-id"
 
-import { Entity } from "../../../types/entity/entity"
-import { LIBRARY_DB } from "./library-db"
+import { Entity } from "../../../models/interfaces/entities/entity"
 
 import { RiBookOpenFill } from "react-icons/ri"
 import { FaUpload } from "react-icons/fa"
@@ -13,11 +12,6 @@ export const libraryEntity: Entity = {
     id: makeId(),
 
     name: 'library',
-
-    dbInfo: {
-        name: 'LibraryDB',
-        fallbackDB: LIBRARY_DB
-    },
 
     entityInfo: {
         name: {
@@ -114,35 +108,25 @@ export const libraryEntity: Entity = {
             {
                 id: makeId(),
                 type: 'primary_text',
-                key: 'entityInfo.name.display',
                 param: 'fDisplayName',
                 title: 'חפש כותרת',
-                activeFilterChip: {
-                    type: 'text',
-                    text: 'כותרת כוללת'
-                }
+                activeFilterChipTexts: ['כותרת כוללת "PLAIN_VALUE"']
             },
             {
                 id: makeId(),
                 type: 'branch_multi_select',
-                key: 'relatedInfo.branchIds',
                 param: 'fBranchIds',
                 title: 'בחירת ענפים',
-                activeFilterChip: {
-                    type: 'multi_select',
-                    text: 'בתוך AMOUNT ענפים'
-                }
+                activeFilterChipTexts: ['חפש בתוך VALUE_LENGTH ענפים']
             },
             {
                 id: makeId(),
                 type: 'multi_number_filter',
-                key: 'entityInfo.item.pageCount',
                 param: 'fPageCount',
                 title: 'מס\' עמודים',
-                activeFilterChip: {
-                    type: 'numbers_range',
-                    text: 'בין MIN ל-MAX עמ\''
-                },
+                activeFilterChipTexts: ['עם MIN_RANGE עמודים לפחות',
+                    'עם עד MAX_RANGE עמודים',
+                    'עם MIN_RANGE עד MAX_RANGE עמודים'],
                 option: {
                     min: 150,
                     max: 370,
@@ -151,13 +135,11 @@ export const libraryEntity: Entity = {
             {
                 id: makeId(),
                 type: 'multi_number_filter',
-                key: 'entityInfo.item.publishYear',
                 param: 'fPublishYear',
                 title: 'שנת הוצאה',
-                activeFilterChip: {
-                    type: 'numbers_range',
-                    text: 'יצא לאור בין MIN ל-MAX'
-                },
+                activeFilterChipTexts: ['יצאו ב-MIN_RANGE והלאה',
+                    'יצאו לפני MAX_RANGE',
+                    'יצאו בין MIN_RANGE ל-MAX_RANGE'],
                 option: {
                     min: 1906,
                     max: new Date().getFullYear(),
@@ -166,46 +148,36 @@ export const libraryEntity: Entity = {
             {
                 id: makeId(),
                 type: 'text_filter',
-                key: 'entityInfo.item.writers',
                 param: 'fWriters',
                 title: 'כותבים',
-                activeFilterChip: {
-                    type: 'text_filter',
-                    text: 'TERM בין הכותבים'
-                },
+                activeFilterChipTexts: ['שמות הכותבים מתחילים ב-"PLAIN_VALUE"',
+                    'שמות הכותבים נגמרים ב-"PLAIN_VALUE"',
+                    'שמות הכותבים מכילים את "PLAIN_VALUE"',
+                ],
             },
             {
                 id: makeId(),
                 type: 'text_filter',
-                key: 'entityInfo.item.publishers',
                 param: 'fPublishers',
                 title: 'מוציאים לאור',
-                activeFilterChip: {
-                    type: 'text_filter',
-                    text: 'TERM בין המוציאים לאור'
-                },
+                activeFilterChipTexts: ['שמות המוציאים לאור מתחילים ב-"PLAIN_VALUE"',
+                    'שמות המוציאים לאור נגמרים ב-"PLAIN_VALUE"',
+                    'שמות המוציאים לאור מכילים את "PLAIN_VALUE"',
+                ],
             },
             {
                 id: makeId(),
                 type: 'checkbox_filter',
-                key: 'entityInfo.item.isBiography',
                 param: 'fBiography',
                 title: 'ביוגרפיות',
-                activeFilterChip: {
-                    type: 'checkbox_filter',
-                    text: 'CHOOSE_OPTION ביוגרפיות'
-                },
+                activeFilterChipTexts: ['BOOLEAN_VALUE ביוגרפיות'],
             },
             {
                 id: makeId(),
                 type: 'checkbox_filter',
-                key: 'entityInfo.item.isTranslted',
-                param: 'fBiography',
+                param: 'fTranslated',
                 title: 'מתורגמים',
-                activeFilterChip: {
-                    type: 'checkbox_filter',
-                    text: 'CHOOSE_OPTION מתורגמים'
-                },
+                activeFilterChipTexts: ['BOOLEAN_VALUE מתורגמים'],
             }
         ]
     },
@@ -266,6 +238,12 @@ export const libraryEntity: Entity = {
                             type: 'binary-picker',
                             key: 'entityInfo.item.isBiography',
                             title: 'ביוגרפיה',
+                            isRequire: false
+                        },
+                        {
+                            type: 'binary-picker',
+                            key: 'entityInfo.item.isTranslated',
+                            title: 'מתורגם',
                             isRequire: false
                         }
                     ]

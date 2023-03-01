@@ -1,4 +1,4 @@
-import { Entity } from "../../types/entity/entity"
+import { Entity } from "../../models/interfaces/entities/entity"
 
 
 const initialState: DisplayEntityReducer = {

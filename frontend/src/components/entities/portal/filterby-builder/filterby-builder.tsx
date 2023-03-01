@@ -1,4 +1,4 @@
-import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
+import { EntityFilterOption } from "../../../../models/interfaces/entities/entity-filter-option"
 
 import { DynamicFilterby } from "./dynamic-filterby/dynamic-filterby"
 

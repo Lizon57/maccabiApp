@@ -3,13 +3,16 @@ import * as httpBase from 'http'
 import cors from 'cors'
 import path from 'path'
 import cookieParser from 'cookie-parser'
-import { loggerService } from "./services/logger.service"
+import { loggerService } from "./services/logger-service"
 import { setupAsyncLocalStorage } from "./middlewares/setupAls"
-import { authRouter } from "./api/auth/auth.routes"
-import { userRouter } from "./api/user/user.routes"
-import { signatureRouter } from "./api/signature/signature.routes"
-import { profileRouter } from "./api/profile/profile.routes"
-import { imageRouter } from "./api/image/image.routes"
+import { authRouter } from "./api/auth/auth-routes"
+import { userRouter } from "./api/user/user-routes"
+import { signatureRouter } from "./api/signature/signature-routes"
+import { crowdOrganizationRouter } from "./api/crowd-organization/crowd-organization-routes"
+import { libraryRouter } from "./api/library/library-routes"
+import { profileRouter } from "./api/profile/profile-routes"
+import { imageRouter } from "./api/image/image-routes"
+import { entutyItemInfoUpdateRouter } from "./api/entity-item-info-update/entity-item-info-update-routes"
 
 
 const app = express()
@@ -36,8 +39,11 @@ app.all('*', setupAsyncLocalStorage)
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/signature', signatureRouter)
+app.use('/api/crowd-organization', crowdOrganizationRouter)
+app.use('/api/library', libraryRouter)
 app.use('/api/profile', profileRouter)
 app.use('/api/image', imageRouter)
+app.use('/api/entity-item-info-update', entutyItemInfoUpdateRouter)
 
 
 app.get('/**', (_, res) => {

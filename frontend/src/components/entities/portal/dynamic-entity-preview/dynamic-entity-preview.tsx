@@ -1,4 +1,4 @@
-import { EntityItem } from "../../../../types/entity/entities/entity-item"
+import { EntityItem } from "../../../../models/types/entities/item/entity-item"
 
 import { SquareEntityPreview } from "./square-entity-preview"
 

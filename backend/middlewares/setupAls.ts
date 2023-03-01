@@ -1,5 +1,5 @@
-import { authService } from "../api/auth/auth.service"
-import { asyncLocalStorage } from "../services/als.service"
+import { authService } from "../api/auth/auth-service"
+import { asyncLocalStorage } from "../services/als-service"
 
 
 export const setupAsyncLocalStorage = (req: any, res: any, next: any) => {

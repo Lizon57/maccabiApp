@@ -1,6 +1,6 @@
 import { makeId } from "../services/util/make-id"
 
-import { CategoryLink } from "../types/app/app-category-links"
+import { CategoryLink } from "../types/app/app-category-links2"
 
 
 export const CATEGORY_LINKS: CategoryLink[] = [

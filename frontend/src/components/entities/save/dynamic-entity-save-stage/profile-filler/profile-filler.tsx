@@ -1,5 +1,6 @@
 import { BinaryPicker } from "./pickers/binary-picker"
 import { DatePicker } from "./pickers/date-picker"
+import { DurationsPickerList } from "./pickers/durations-picker/durations-picker-list"
 import { NumberPicker } from "./pickers/number-picker"
 import { SymbolSeperateList } from "./pickers/symbol-seperate-list"
 
@@ -19,6 +20,9 @@ export const ProfileFiller = ({ infos }: Props) => {
 
             case 'symobl-seperate-list':
                 return <SymbolSeperateList {...basicProps} />
+
+            case 'durations-picker':
+                return <DurationsPickerList {...basicProps} />
 
             default: return null
         }

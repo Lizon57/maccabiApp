@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-import { CategoryLink } from "../../../../../types/app/app-category-links"
+import { CategoryLink } from "../../../../../types/app/app-category-links2"
 
 
 export const CategoryLinkPreview = ({ child }: Props) => {

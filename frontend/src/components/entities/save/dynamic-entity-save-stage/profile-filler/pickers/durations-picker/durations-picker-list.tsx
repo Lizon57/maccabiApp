@@ -1,0 +1,94 @@
+import { useState } from 'react'
+import uuid from 'react-uuid'
+
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../../../../../store/store'
+import { setSaveEntityItem } from '../../../../../../../store/action/save-entity-item-action'
+
+import { recursiveValueSetterByKey } from '../../../../../../../services/util/recursive-value-setter-by-key'
+
+import { Duration } from '../../../../../../../models/interfaces/common/duration'
+
+import { DurationAdd } from './duration-add'
+import { DurationPickerPreview } from './duration-picker-preview'
+
+
+const DURATION_MOCK = {
+    start: {
+        day: undefined,
+        month: undefined,
+        year: undefined
+    },
+    end: {
+        day: undefined,
+        month: undefined,
+        year: undefined
+    },
+}
+
+export const DurationsPickerList = ({ pickerInfo }: Props) => {
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
+    const [durations, setDurations] = useState<Duration[]>(item.entityInfo.item.activityDurations || [])
+
+
+    const onAddDuration = () => {
+        setDurations(prevDurations => [...prevDurations, DURATION_MOCK])
+    }
+
+
+    const onPickOption = (value: string, idx: number, isDurationStartDate: boolean, type: string) => {
+        const key = (isDurationStartDate ? 'start.' : 'end.') + type
+        const durationsCopy = structuredClone(durations)
+        const duration = durationsCopy[idx]
+
+        let formattedValue: number | undefined
+
+        switch (value) {
+            case 'יום':
+            case 'חודש':
+            case 'שנה':
+                formattedValue = undefined
+                break
+
+            default:
+                formattedValue = +value
+        }
+
+        recursiveValueSetterByKey(formattedValue, duration, key)
+        const editedItem = structuredClone(item)
+        recursiveValueSetterByKey(durationsCopy, editedItem, pickerInfo.key)
+        setDurations(durationsCopy)
+        setSaveEntityItem(editedItem)
+    }
+
+
+    return (
+        <div className="entity-save-cmp--profile-filler-durations-picker-list__container">
+            <span className="title">{pickerInfo.title}</span>
+            <div>
+                {durations.map((duration, idx) => <DurationPickerPreview
+                    key={uuid()}
+                    idx={idx}
+                    duration={duration}
+                    onPickOption={onPickOption}
+                />
+                )}
+                <DurationAdd onClick={onAddDuration} />
+            </div>
+        </div>
+    )
+}
+
+
+
+type Props = {
+    pickerInfo: PickerInfo
+}
+
+
+type PickerInfo = {
+    type: string
+    title: string
+    key: string
+    isRequire: boolean
+}

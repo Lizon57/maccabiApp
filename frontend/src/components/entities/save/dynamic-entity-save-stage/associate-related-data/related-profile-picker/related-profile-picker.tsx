@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { useDebouncedCallback } from "use-debounce"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
@@ -9,8 +8,10 @@ import AsyncSelect from "react-select/async"
 import { SingleValue } from "react-select"
 
 import { entityItemService } from "../../../../../../services/entities/entity-item-service"
+import { MiniProfileQuery } from "../../../../../../models/interfaces/entities/mini-profile-query"
 
 import { RelatedProfileOptionPreview } from "./related-profile-option-preview"
+
 import { FaTimes } from "react-icons/fa"
 
 
@@ -43,10 +44,10 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
 
     const getOptions = async (pharse: string) => {
         try {
-            const items = await entityItemService.getMiniProfilesByPharse(pharse)
-            const options = items.map(({ name, id, branchIds, profileImageUrl }) => ({
-                label: name,
-                value: { id, name, branchIds, profileImageUrl }
+            const items = await entityItemService.getMiniProfilesByPharse(pharse) as MiniProfileQuery[]
+            const options = items.map(profile => ({
+                label: profile.name,
+                value: { ...profile }
             }))
             return options as ProfileOption[]
         } catch (err) {
@@ -54,15 +55,12 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
             return [] as ProfileOption[]
         }
     }
-    // const debouncedGetOptions = useDebounce(getOptions, 700)
-    const debouncedGetOptions = useDebouncedCallback(getOptions, 0)
 
-    const loadOptions = (pharse: string) => {
+    const loadOptions = (pharse = '') => {
         return new Promise<ProfileOption[]>((resolve) => {
             setTimeout(async () => {
-                const options = await debouncedGetOptions(pharse)
+                const options = await getOptions(pharse)
                 if (options) resolve(options)
-                // }, 700)
             }, 0)
         })
     }
@@ -101,7 +99,6 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
         setValue(null)
         setIsClearable(false)
     }
-
 
 
     return (

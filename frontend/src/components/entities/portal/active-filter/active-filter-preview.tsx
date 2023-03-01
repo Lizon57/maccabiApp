@@ -1,73 +1,55 @@
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { FiXCircle } from "react-icons/fi"
 
-import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
+import { EntityFilterOption } from "../../../../models/interfaces/entities/entity-filter-option"
 import { getFormatedDate } from "../../../../services/util/get-formated-date"
 
 
-export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
-    const { searchParams: params } = new URL(window.location.href)
+export const ActiveFilterPreview = ({ filter, searchParams, setIsLoading }: Props) => {
+    const [text, setText] = useState('')
     const navigate = useNavigate()
-    const activeFilterText = filter.activeFilterChip.text
-    let text: string
 
-    switch (filter.activeFilterChip.type) {
-        case 'text':
-            text = `${activeFilterText}: "${params.get(filter.param)}"`
-            break
 
-        case 'multi_select':
-            const amount = params.get(filter.param)?.split(',').length
-            if (!amount) {
-                text = 'סנן פעיל'
-                break
-            }
-            text = activeFilterText.replace('AMOUNT', '' + amount)
-            break
+    useEffect(() => {
+        let filterType = searchParams.get(filter.param + 'Type') || 0
+        let text = filter.activeFilterChipTexts[+filterType] || ''
+        const plainValue = searchParams.get(filter.param)
+        const valueLength = plainValue?.split(',').length + ''
+        const range = plainValue?.split('|')
+        const minRange = range?.[0] + ''
+        const maxRange = range?.[1] + ''
+        const booleanValue = (plainValue === 'true') ? 'רק' : 'ללא'
 
-        case 'numbers_range':
-            const numbers = params.get(filter.param)?.split('|') || []
-            text = activeFilterText.replace('MIN', numbers[0])
-            text = text.replace('MAX', numbers[1])
-            break
+        let dateValue: string | string[] | (number | undefined)[] = plainValue || ''
+        dateValue = dateValue.split('-').map(part => (part === 'undefined' || !part) ? undefined : +part)
+        dateValue = getFormatedDate({ day: dateValue[0], month: dateValue[1], year: dateValue[2] }, false, false) + ''
 
-        case 'text_filter':
-            const term = params.get(filter.param)?.split(',').map(t => `"${t}"`)
-            text = activeFilterText.replace('TERM', term + '')
-            break
 
-        case 'checkbox_filter':
-            const isChosen = JSON.parse(params.get(filter.param) || '')
-            text = activeFilterText.replace('CHOOSE_OPTION', isChosen ? 'רק' : 'ללא')
-            break
+        text = text.replace('PLAIN_VALUE', plainValue || '')
+        text = text.replace('VALUE_LENGTH', valueLength || '')
+        text = text.replace('MIN_RANGE', minRange || '')
+        text = text.replace('MAX_RANGE', maxRange || '')
+        text = text.replace('BOOLEAN_VALUE', booleanValue || '')
+        text = text.replace('DATE_VALUE', dateValue || '')
 
-        case 'date_filter':
-            let date: string | string[] | (number | undefined)[] = params.get(filter.param) || ''
-            date = date.split('-').map(part => (part === 'undefined' || !part) ? undefined : +part)
-            text = activeFilterText
-            text = text.replace('CHOOSE_OPTION', getFormatedDate({ day: date[0], month: date[1], year: date[2] }, false, false) + '')
-            break
-
-        default:
-            text = 'סנן פעיל'
-    }
+        setText(text)
+    }, [searchParams]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     const onRemoveFilter = () => {
-        params.delete(filter.param)
-        const type = filter.activeFilterChip.type
+        searchParams.delete(filter.param)
+        searchParams.delete(filter.param + 'Type')
 
-        if (type === 'numbers_range' || type === 'text_filter' || type === 'date_filter') params.delete(filter.param + 'Type')
-
-        navigate({ search: params.toString().replaceAll('%2C', ',') })
+        navigate({ search: searchParams.toString().replaceAll('%2C', ',') })
         window.scrollTo({ top: 0, behavior: 'smooth' })
         setIsLoading(true)
     }
 
 
     return (
-        <div className="entities-portal--active-filter-preview__container" title={text}>
+        <div className="entities-portal--active-filter-preview__container">
             <span className="icon-wrapper" title="בטל סנן" onClick={onRemoveFilter}><FiXCircle /></span>
             <span className="text">{text}</span>
         </div>
@@ -77,5 +59,6 @@ export const ActiveFilterPreview = ({ filter, setIsLoading }: Props) => {
 
 type Props = {
     filter: EntityFilterOption
+    searchParams: URLSearchParams
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

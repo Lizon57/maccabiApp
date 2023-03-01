@@ -1,22 +1,16 @@
-import { makeId } from "../../../services/util/make-id"
-
-import { Entity } from "../../../types/entity/entity"
-import { SIGNATURE_DB } from "./signature-db"
-
-import { BiBrain } from "react-icons/bi"
 import { FaSignature, FaUpload } from "react-icons/fa"
 import { BsPencil } from "react-icons/bs"
+import { BiBrain } from "react-icons/bi"
+
+import { makeId } from "../../../services/util/make-id"
+
+import { Entity } from "../../../models/interfaces/entities/entity"
 
 
 export const signatureEntity: Entity = {
     id: makeId(),
 
     name: 'signature',
-
-    dbInfo: {
-        name: 'SignatureDB',
-        fallbackDB: SIGNATURE_DB
-    },
 
     entityInfo: {
         name: {
@@ -81,35 +75,25 @@ export const signatureEntity: Entity = {
             {
                 id: makeId(),
                 type: 'primary_text',
-                key: 'entityInfo.name.display',
                 param: 'fDisplayName',
                 title: 'חפש כותרת',
-                activeFilterChip: {
-                    type: 'text',
-                    text: 'כותרת כוללת'
-                }
+                activeFilterChipTexts: ['כותרת כוללת "PLAIN_VALUE"']
             },
             {
                 id: makeId(),
                 type: 'branch_multi_select',
-                key: 'relatedInfo.branchIds',
                 param: 'fBranchIds',
                 title: 'בחירת ענפים',
-                activeFilterChip: {
-                    type: 'multi_select',
-                    text: 'בתוך AMOUNT ענפים'
-                }
+                activeFilterChipTexts: ['חפש בתוך VALUE_LENGTH ענפים']
             },
             {
                 id: makeId(),
                 type: 'multi_number_filter',
-                key: 'miniImages',
                 param: 'fItemImages',
                 title: 'מס\' חתימות',
-                activeFilterChip: {
-                    type: 'numbers_range',
-                    text: 'בין MIN ל-MAX חתימות'
-                },
+                activeFilterChipTexts: ['עם MIN_RANGE חתימות לפחות',
+                    'עם עד MAX_RANGE חתימות',
+                    'עם MIN_RANGE עד MAX_RANGE חתימות'],
                 option: {
                     isLengthProp: true,
                     min: 0,
@@ -138,7 +122,6 @@ export const signatureEntity: Entity = {
                     minImageCount: 1,
                 }
             },
-
 
             {
                 title: 'שיוך החתימה',

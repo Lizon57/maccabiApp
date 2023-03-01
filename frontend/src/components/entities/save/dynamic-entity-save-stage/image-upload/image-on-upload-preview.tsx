@@ -1,15 +1,12 @@
 import { useEffect, useRef } from "react"
 
-
 // import { cloudinaryService } from "../../../../../services/cloudinary-service"
 import { emptyEntityItemService } from "../../../../../services/entities/empty-entity-item-service"
 // import { entityItemService } from "../../../../../services/entities/entity-item-service"
 
-// import { IMAGE_DB } from "../../../../../data/entities/image/image-db"
-
 import { makeId } from "../../../../../services/util/make-id"
 
-import { EntityItem } from "../../../../../types/entity/entities/entity-item"
+import { ImageItem } from "../../../../../models/types/entities/item/image-item"
 
 import { Loader } from "../../../../common/loader/loader"
 
@@ -26,7 +23,7 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
 
             try {
                 setTimeout(async () => {
-                    const image = await emptyEntityItemService.get('image') as EntityItem
+                    const image = await emptyEntityItemService.get('image')
                     image.id = makeId()
                     image.entityInfo.imageUrl = 'https://res.cloudinary.com/dyxf7nmbe/image/upload/v1666553252/signature/qc8yemagsqd7ojlnxym4.jpg'
                     image.entityInfo.name.display = 'ירון עוז סופרגול'
@@ -38,11 +35,11 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
                 // const { secure_url: url, original_filename: name } = await cloudinaryService.fetchRequest(file, entityName)
                 // if (!url || !name) throw new Error('שגיאה בהעלאת תמונה')
 
-                // const image = emptyEntityItemService.get('image') as ImageEntityItem
+                // const image = emptyEntityItemService.get('image')
                 // image.entityInfo.imageUrl = url
                 // image.entityInfo.name.display = name
 
-                // const uploadedImage = await entityItemService.save(image, 'ImageDB', IMAGE_DB) as ImageEntityItem
+                // const uploadedImage = await entityItemService.save('image', image)
 
                 // onUploadSuccess(uploadedImage, file)
             } catch (err) {
@@ -52,7 +49,6 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
         }
 
         fetchFile()
-        // }, [entityName, file, onUploadSuccess, onUploadFail])
     }, [entityName, file, onUploadSuccess, onUploadFail])
 
 
@@ -65,6 +61,6 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
 type Props = {
     file: File
     entityName: string
-    onUploadSuccess: (image: EntityItem, file: File) => void
+    onUploadSuccess: (image: ImageItem, file: File) => void
     onUploadFail: (file: File) => void
 }

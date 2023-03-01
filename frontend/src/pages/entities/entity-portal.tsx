@@ -1,46 +1,76 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
+
+import { entityItemService } from "../../services/entities/entity-item-service"
+
+import { Entity } from "../../models/interfaces/entities/entity"
+import { EntityItem } from "../../models/types/entities/item/entity-item"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../store/store"
 import { clearDisplayEntity, updateDisplayEntity } from "../../store/action/display-entity-action"
 
-import { EntityItem } from "../../types/entity/entities/entity-item"
-
-import { entityService } from "../../services/entities/entity-service"
-
-import { useEntitySortHandler } from "../../hooks/entities/use-entity-sort-parser"
 import { useOnWindowResize } from "../../hooks/use-on-window-resize"
 import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
 import { usePageType } from "../../hooks/pages/use-page-type"
 
-import { ErrorMessage } from "../../components/common/error-message/error-message"
 import { Loader } from "../../components/common/loader/loader"
-import { EntityList } from "../../components/entities/portal/entity-list/entity-list"
+import { ErrorMessage } from "../../components/common/error-message/error-message"
+import { MainTitle } from "../../components/common/main-title/main-title"
 import { OptionsList } from "../../components/entities/portal/options-list/options-list"
 import { ActiveFilterList } from "../../components/entities/portal/active-filter/active-filter-list"
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
-import { MainTitle } from "../../components/common/main-title/main-title"
 import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
+import { EntityList } from "../../components/entities/portal/entity-list/entity-list"
 
 
-export const EntityPortal = (entityName: string) => {
-    const ENTITY = entityService.getEntityByName(entityName)
-
+export const EntityPortal = (entity: Entity) => {
     const { browseableBranchesIds: userPrefBranchesFilter } = useSelector((state: RootState) => state.userStateModule.user)
+    const [items, setItems] = useState<EntityItem[]>()
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState<string>()
-    const [items, setItems] = useState<EntityItem[]>()
     const [isFilterSectionOpen, setIsFilterSectionOpen] = useState(window.innerWidth > 700)
 
-    const { searchParams: params } = new URL(window.location.href)
-    const navigate = useNavigate()
-
-    const debouncedSetIsLoading = useDebouncedCallback(setIsLoading, 1000)
+    const { searchParams } = new URL(window.location.href)
 
     usePageDataCmp('social-network-preview')
     usePageType('entity-item-portal')
+
+    const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
+    const debouncedSetIsLoading = useDebouncedCallback(setIsLoading, 1000)
+
+
+    useEffect(() => {
+        if (!isLoading) return
+
+        const fetchItems = async () => {
+            try {
+                if (!searchParams.get('fBranchIds')) searchParams.set('fBranchIds', userPrefBranchesFilter)
+                const items = await entityItemService.query(entity.name, searchParams)
+                setItems(items)
+            } catch ({ message }) {
+                setErrorMessage(message as string)
+            }
+            finally {
+                setIsLoading(false)
+            }
+        }
+        fetchItems()
+    }, [searchParams, userPrefBranchesFilter]) // eslint-disable-line react-hooks/exhaustive-deps
+
+
+    useEffect(() => {
+        updateDisplayEntity(entity)
+
+        return () => {
+            clearDisplayEntity()
+        }
+    }, [entity])
+
+
+    useEffect(() => {
+        setIsLoading(true)
+    }, [userPrefBranchesFilter])
 
 
     const changeFilterSectionOpenOnWindowResize = () => {
@@ -50,74 +80,11 @@ export const EntityPortal = (entityName: string) => {
     }
     useOnWindowResize(changeFilterSectionOpenOnWindowResize)
 
-    const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)
-
-    const sortBy = useEntitySortHandler()
-
-
-    useEffect(() => {
-        return () => {
-            clearDisplayEntity()
-        }
-    }, [])
-
-    useEffect(() => {
-        if (!isLoading || !ENTITY) return
-        updateDisplayEntity(ENTITY)
-
-        const loadItems = async () => {
-            if (!isLoading) return
-            let { filters } = ENTITY.listPageInfo
-
-            const primaryFilter = filters.find(({ type }) => type === 'primary_text')
-            filters = filters.filter(({ type }) => type !== 'primary_text')
-            const filter = {
-                primaryFilter,
-                filters
-            }
-
-            try {
-                const { dbInfo: { name: dbName, fallbackDB } } = ENTITY
-                const items = await entityService.queryEntityItems(dbName, sortBy, filter, fallbackDB) as EntityItem[]
-                setItems(items)
-            } catch ({ message }) {
-                setErrorMessage(message as string)
-            }
-            finally {
-                setIsLoading(false)
-            }
-        }
-        loadItems()
-    }, [isLoading, ENTITY, items, sortBy])
-
-
-    useEffect(() => {
-        if (!ENTITY) return
-        let { filters } = ENTITY.listPageInfo
-
-        const branchesFilterIdx = filters.findIndex(filter => filter.key === 'relatedInfo.branchIds')
-        if (branchesFilterIdx >= 0) {
-            debouncedSetIsLoading(true)
-            const paramName = filters[branchesFilterIdx].param
-            params.set(paramName, userPrefBranchesFilter.join())
-            navigate({ search: params.toString().replaceAll('%2C', ',') })
-        }
-    }, [userPrefBranchesFilter, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
-
-
-    if (isLoading || !ENTITY) return <Loader />
-    if (errorMessage) return <ErrorMessage message={errorMessage} />
 
     const {
-        entityInfo: {
-            image: { icon: Icon },
-            name: { listTitle }
-        },
-        listPageInfo: {
-            filters,
-            sorts
-        }
-    } = ENTITY
+        entityInfo: { image: { icon: Icon }, name: { listTitle } },
+        listPageInfo: { filters, sorts }
+    } = entity
 
     const titleAdditionalCmp = <OptionsList
         sorts={sorts}
@@ -128,26 +95,29 @@ export const EntityPortal = (entityName: string) => {
     />
 
     const FilterbyBuilderProps = { filters, debouncedSetIsLoading }
-    const { display: entityDisplayName, openGraph } = ENTITY.entityInfo.name
+    const { display: entityDisplayName, openGraph } = entity.entityInfo.name
+
 
     return (
         <>
             <section className="entities-pages--entity-portal__container">
                 <MainTitle text={listTitle} Icon={Icon} isSticky additionalCmp={titleAdditionalCmp} />
 
-                <ActiveFilterList possibleFiilters={filters} setIsLoading={setIsLoading} />
+                <ActiveFilterList possibleFilters={filters} searchParams={searchParams} setIsLoading={setIsLoading} />
                 {isFilterSectionOpen && <FilterbyBuilder {...FilterbyBuilderProps} />}
 
-                {items?.length
-                    ? <EntityList entity={ENTITY} items={items} />
-                    : <ErrorMessage message="לא נמצאו פריטים להצגה" />}
+                {isLoading && <Loader />}
+                {errorMessage && <ErrorMessage message={errorMessage} />}
+
+                {(!isLoading && !errorMessage && !items?.length) && <ErrorMessage message="לא נמצאו פריטים להצגה" />}
+                {(!isLoading && !errorMessage && !!items?.length) && <EntityList entity={entity} items={items} />}
             </section>
 
             <SeoImplement
                 appTitle={entityDisplayName}
                 openGraphTitle={openGraph}
-                pageDescription={ENTITY.entityInfo.description.short}
-                openGraphDescription={ENTITY.entityInfo.description.short}
+                pageDescription={entity.entityInfo.description.short}
+                openGraphDescription={entity.entityInfo.description.short}
             />
         </>
     )

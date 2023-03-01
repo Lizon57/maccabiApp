@@ -3,10 +3,12 @@ import Select from 'react-select'
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
-import { RelatedBranchOptionPreview } from "./related-branch-option-preview"
+import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
+import { updateDisplayEntityItem } from "../../../../../../store/action/display-entity-item-action"
 
 import { BRANCHES } from '../../../../../../data/app/supports-branches'
-import { updateDisplayEntityItem } from "../../../../../../store/action/display-entity-item-action"
+
+import { RelatedBranchOptionPreview } from "./related-branch-option-preview"
 
 
 const OPTIONS = BRANCHES.map(branch => ({
@@ -20,7 +22,7 @@ const OPTIONS = BRANCHES.map(branch => ({
 
 
 export const RelatedBranchPicker = ({ isRequire }: Props) => {
-    const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
+    const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [values, setValues] = useState<Option[]>([])
     const [isFail, setIsFail] = useState(false)
@@ -43,6 +45,7 @@ export const RelatedBranchPicker = ({ isRequire }: Props) => {
         editedItem.relatedInfo.branchIds = branchIds
         setValues(values)
         setIsFail(false)
+        setSaveEntityItem(editedItem)
         updateDisplayEntityItem(editedItem)
     }
 
@@ -74,7 +77,6 @@ export const RelatedBranchPicker = ({ isRequire }: Props) => {
                     isMulti
                 />
             </div>
-
 
             {!!isFail && <div className="msg">חובה לשייך ענף</div>}
         </div>

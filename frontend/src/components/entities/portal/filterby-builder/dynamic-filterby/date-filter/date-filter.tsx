@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 import { AiFillCaretDown } from "react-icons/ai"
 
-import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
+import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
 import { NON_ZERO_DAYS } from "../../../../../../constans/days"
 import { NON_ZERO_MONTHS } from "../../../../../../constans/months"

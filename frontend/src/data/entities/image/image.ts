@@ -1,20 +1,12 @@
 import { BsCamera } from "react-icons/bs"
-
+import { Entity } from "../../../models/interfaces/entities/entity"
 import { makeId } from "../../../services/util/make-id"
-
-import { Entity } from "../../../types/entity/entity"
-import { IMAGE_DB } from "./image-db"
 
 
 export const imageEntity: Entity = {
     id: makeId(),
 
     name: 'image',
-
-    dbInfo: {
-        name: 'ImageDB',
-        fallbackDB: IMAGE_DB
-    },
 
     entityInfo: {
         name: {

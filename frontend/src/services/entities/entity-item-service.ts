@@ -1,74 +1,81 @@
-import { IMAGE_DB } from "../../data/entities/image/image-db"
-import { PROFILE_DB } from "../../data/entities/profile/profile-db"
+import { httpService } from "../http-service"
+import { localStorageService } from "../local-storage-service"
 
-import { EntityItem } from "../../types/entity/entities/entity-item"
-import { Entity } from "../../types/entity/entity"
-
-import { entityService } from "./entity-service"
-import { filterEntityService } from "./filter-entity-service"
-import { asyncLocalStorageService } from "../async-local-storage-service"
-
-import { makeId } from "../util/make-id"
-import { syncLocalStorage } from "../sync-local-storage-service"
+import { EntityItem } from "../../models/types/entities/item/entity-item"
 import { EntityItemViewDetails } from "../../models/types/entities/entity-item-view-details"
 
 
-const save = async (item: EntityItem, dbName: string, fallBackDB: unknown[]) => {
-    if (!item.id) item.id = makeId()
+const STORAGE_KEY = 'ViewedPages'
 
-    const savedItem = await asyncLocalStorageService.replaceEntityItem(item, dbName, fallBackDB as EntityItem[])
-    return savedItem
+
+const query = async (dbName: string, params: URLSearchParams, archiveState?: string) => {
+    if (archiveState) params.set('fArchived', archiveState + '')
+
+    try {
+        return await httpService.get(dbName, params) as EntityItem[]
+    } catch (err) {
+        throw err
+    }
 }
 
-
-const remove = async (itemId: string, entity: Entity, dbName: string, fallBackDB: unknown[]) => {
+const getById = async (dbName: string, id: string, isPageAction = false) => {
     try {
-        let item = await entityService.getEntityItemById(itemId, entity)
-        if (!item) throw new Error('Couldn\'t find entity item to remove')
-        Object.assign(item, { isArchived: true })
-        await asyncLocalStorageService.save(item, dbName, fallBackDB)
-    } catch (err) {
-        console.log(err)
+        const res = await httpService.get(`${dbName}/${id}`) as EntityItem
+
+        if (!isPageAction) _handleEntityItemView(dbName, id)
+        return res
+    }
+    catch (err) {
+        throw err
     }
 }
 
 
-const getMiniProfileById = async (id: string = '') => {
+const remove = async (dbName: string, id: string) => {
     try {
-        let items = await entityService.queryEntityItems('ProfileDB', {}, {}, PROFILE_DB) as EntityItem[] || []
-        const item = filterEntityService.getEntityById(items, id) as EntityItem
-        if (!item) return
-        const images = await entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB) as EntityItem[] || []
+        await httpService.delete(`${dbName}/${id}`)
+    }
+    catch (err) {
+        throw err
+    }
+}
 
-        const miniProfile = {
-            id: item.id,
-            name: item.entityInfo.name.display,
-            branchIds: item.relatedInfo?.branchIds || [],
-            profileImageUrl: images.find(image => image.id === item.relatedInfo?.profileImageId)?.entityInfo.imageUrl
+
+export const save = async (dbName: string, item: EntityItem) => {
+    try {
+        const savedItem = item._id ? await httpService.put(`${dbName}/${item._id}`, item) : await httpService.post(`${dbName}`, item)
+        return savedItem
+    }
+    catch (err) {
+        throw err
+    }
+}
+
+
+const _handleEntityItemView = async (entityName: string, id: string) => {
+    let viewList = localStorageService.readFromStorage(STORAGE_KEY) as EntityItemViewDetails[]
+    if (!Array.isArray(viewList)) {
+        localStorageService.saveToStorage(STORAGE_KEY, [])
+        viewList = []
+    }
+
+    viewList.push({ entityName, entityItemId: id })
+
+    if (viewList.length >= 3) {
+        try {
+            await httpService.put('entity-item-info-update/view', viewList)
+            localStorageService.saveToStorage(STORAGE_KEY, [])
+        } catch {
+            localStorageService.saveToStorage(STORAGE_KEY, viewList)
         }
-
-        return miniProfile
-    } catch (err) {
-        console.log(err)
     }
+    else localStorageService.saveToStorage(STORAGE_KEY, viewList)
 }
 
 
 const getMiniProfilesByPharse = async (pharse: string = '') => {
     try {
-        let items = await entityService.queryEntityItems('ProfileDB', {}, {}, PROFILE_DB) as EntityItem[] || []
-        items = filterEntityService.filterEntityByTitle(items, pharse) as EntityItem[]
-        const images = await entityService.queryEntityItems('ImageDB', {}, {}, IMAGE_DB) as EntityItem[] || []
-        if (!items) return []
-
-        const availableOptions = items.map(({ id, entityInfo, relatedInfo }) => ({
-            id: id,
-            name: entityInfo.name.display,
-            branchIds: relatedInfo?.branchIds || [],
-            profileImageUrl: images.find(({ id }) => id === relatedInfo?.profileImageId)?.entityInfo.imageUrl
-        }))
-
-        return availableOptions
+        return await httpService.get('profile/getMiniProfilesByPharse', { pharse })
     } catch (err) {
         console.log(err)
         return []
@@ -76,43 +83,10 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
 }
 
 
-const handleEntityItemView = async (entityItemViewDetails: EntityItemViewDetails) => {
-    let viewList = syncLocalStorage.readFromStorage('AppViewedPageList') as EntityItemViewDetails[]
-    if (!Array.isArray(viewList)) {
-        syncLocalStorage.saveToStorage('AppViewedPageList', [])
-        viewList = []
-    }
-
-    viewList.push(entityItemViewDetails)
-
-    if (viewList.length === 3) {
-        const viewListPrms = viewList.map(view => updateEntityItemView({ entityName: view.entityName, entityItemId: view.entityItemId }))
-        await Promise.all(viewListPrms)
-        syncLocalStorage.saveToStorage('AppViewedPageList', [])
-    }
-    else syncLocalStorage.saveToStorage('AppViewedPageList', viewList)
-}
-
-
-const updateEntityItemView = async (entityItemViewDetails: EntityItemViewDetails) => {
-    try {
-        const entity = entityService.getEntityByName(entityItemViewDetails.entityName)
-        if (!entity) return
-
-        const item = await entityService.getEntityItemById(entityItemViewDetails.entityItemId, entity) as EntityItem
-        const itemCopy = structuredClone(item)
-        itemCopy.itemInfo.view += 1
-        await save(itemCopy, entity.dbInfo.name, entity.dbInfo.fallbackDB)
-    } catch (err) {
-
-    }
-}
-
-
 export const entityItemService = {
-    save,
+    query,
+    getById,
     remove,
-    getMiniProfileById,
-    getMiniProfilesByPharse,
-    handleEntityItemView
+    save,
+    getMiniProfilesByPharse
 }

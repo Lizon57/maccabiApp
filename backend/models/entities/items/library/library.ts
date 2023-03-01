@@ -1,9 +1,8 @@
-import { EntityItem } from "../misc/entity.item"
+import { EntityItem } from "../misc/entity-item"
 
 
 export type Library = EntityItem & {
     relatedInfo?: {
-        profileImageId?: string
         miniProfile?: {
             profileId: string
             displayName: string
@@ -20,18 +19,6 @@ export type Library = EntityItem & {
             publishYear?: number
             isBiography?: boolean
             isTranslated?: boolean
-        }
-    }
-
-    itemInfo: {
-        view: number
-        rate: {
-            avg: number
-            raterCount: number
-        },
-        editHistory: {
-            total: number
-            lastEditDate: Date
         }
     }
 }

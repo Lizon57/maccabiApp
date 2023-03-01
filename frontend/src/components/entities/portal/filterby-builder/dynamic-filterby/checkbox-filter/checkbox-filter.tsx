@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 
-import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
+import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
 
 export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
@@ -33,8 +33,7 @@ export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
         if (!newValue) return
 
         setValue(JSON.parse(newValue))
-    }, [])  // eslint-disable-line react-hooks/exhaustive-deps
-
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     const getIsActive = (option: string) => {

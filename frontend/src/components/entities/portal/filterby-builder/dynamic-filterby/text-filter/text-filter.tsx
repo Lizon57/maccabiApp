@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 
-import { EntityFilterOption } from "../../../../../../types/entity/filter/entity-filter-option"
+import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
 import { Dropdown } from "../../../../../common/dropdown/dropdown"
 

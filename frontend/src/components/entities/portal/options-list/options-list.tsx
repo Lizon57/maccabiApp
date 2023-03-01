@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 
-import { EntityFilterOption } from "../../../../types/entity/filter/entity-filter-option"
+import { EntityFilterOption } from "../../../../models/interfaces/entities/entity-filter-option"
 import { EntitySortOption } from "../../../../types/entity/sort/entity-sort-option"
 
 import { SearchInput } from "../../../common/search-input/search-input"

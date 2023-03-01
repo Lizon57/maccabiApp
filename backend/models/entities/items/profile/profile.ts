@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb"
-import { UncompleteDate } from "../../../common/uncomplete.date"
-import { ActivityDuration } from "../../../common/activity.duration"
-import { EntityItem } from "../misc/entity.item"
+import { UncompleteDate } from "../../../common/uncomplete-date"
+import { ActivityDuration } from "../../../common/activity-duration"
+import { EntityItem } from "../misc/entity-item"
 
 
 export type Profile = EntityItem & {

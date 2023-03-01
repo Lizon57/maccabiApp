@@ -1,6 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
+
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../../../store/store"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
 
@@ -8,9 +11,11 @@ import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby
 
 
 export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoading }: Props) => {
+    const { browseableBranchesIds } = useSelector((state: RootState) => state.userStateModule.user)
     const { searchParams: params } = new URL(window.location.href)
     const branchesFromParams = (params.get(filterParam)?.split(',') || [])
-    const [activeBranchesIds, setActiveBranchesIds] = useState<string[]>(branchesFromParams)
+    const initialBranchesIdsState = (branchesFromParams.length) ? branchesFromParams : browseableBranchesIds
+    const [activeBranchesIds, setActiveBranchesIds] = useState<string[]>(initialBranchesIdsState)
 
     const navigate = useNavigate()
 
@@ -22,11 +27,24 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
     }
     const debouncedNavigateToNewActiveBranches = useDebouncedCallback(navigateToNewActiveBranches, 1000)
 
+
+    useEffect(() => {
+        setActiveBranchesIds(browseableBranchesIds)
+    }, [browseableBranchesIds])
+
+    useEffect(() => {
+        if ((browseableBranchesIds.join('') !== branchesFromParams.join('')) && branchesFromParams.length) {
+            setActiveBranchesIds(branchesFromParams)
+        }
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+
     const activeNewBranchesIds = (branchesIds: string[]) => {
         setActiveBranchesIds(branchesIds)
         debouncedNavigateToNewActiveBranches(branchesIds)
         debouncedSetIsLoading(true)
     }
+
 
     const onBranchClick = (branchId: string) => {
         const getIsActiveBranch = !!activeBranchesIds.find(activeBranchId => activeBranchId === branchId)

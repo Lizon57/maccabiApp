@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 import { getFormatedNumber } from "../../../../services/util/get-formated-number"
 
-import { EntityItem } from "../../../../types/entity/entities/entity-item"
+import { EntityItem } from "../../../../models/types/entities/item/entity-item"
 
 import { ICON_TYPE_MAP } from "../../../../constans/icon-type-map"
 
@@ -24,11 +24,11 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
 
     const { fillHeart: FillHeartIcon, outlineHeart: OutlineHeartIcon, view: ViewIcon,
         rate: RateIcon, edit: EditIcon } = ICON_TYPE_MAP.entityItemPreview
-    const { relatedInfo, entityInfo, itemInfo: { view, rate, editHistory } } = item
+    const { relatedInfo, entityInfo, itemInfo: { view, rate, history } } = item
 
     return (
         <div className="dynamic-entity-preview--square-entity-preview__container">
-            <Link to={item.id} className="details-anchor">
+            <Link to={item._id} className="details-anchor">
                 <div className="title">
                     {relatedInfo?.branchIds && <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>}
                     <span className="title">{entityInfo.name.display}</span>
@@ -63,7 +63,7 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
                             </div>
                         </div>
 
-                        <div className="last-edit-date" title={`נערך לאחרונה לפני שנתיים. סה"כ נערך ${editHistory.total} פעמים`}>
+                        <div className="last-edit-date" title={`נערך לאחרונה לפני שנתיים. סה"כ נערך ${history.totalEditCount} פעמים`}>
                             <span className="icon"><EditIcon size={11} /></span>
                             <span className="text">לפני שנתיים</span>
                         </div>

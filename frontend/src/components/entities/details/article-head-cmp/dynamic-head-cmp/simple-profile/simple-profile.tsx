@@ -2,11 +2,11 @@ import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 
 import { SimpleProfileEntityDetailsCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/simpe-profile-entity-details-cmp"
+import { Entity } from "../../../../../../models/interfaces/entities/entity"
 
 import { RenderByDeviceWidth } from "../../../../../common/render-by/render-by-device-width"
 import { ItemTitle } from "../item-title"
 import { SimpleInfoListList } from "../simple-info-list/simple-info-list-list"
-import { Entity } from "../../../../../../types/entity/entity"
 
 
 export const SimpleProfile = ({ cmp }: Props) => {

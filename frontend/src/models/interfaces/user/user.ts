@@ -15,7 +15,9 @@ export interface User extends LocalUser {
         }
     }
 
-    browseableBranchesIds: string[]
+    browseableBranchesIds: string[],
+    
+    permisionGroup?: string
 }
 
 export interface UserWithoutId extends Omit<User, '_id'> { }

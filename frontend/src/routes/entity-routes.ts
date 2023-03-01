@@ -1,12 +1,12 @@
 import { makeId } from "../services/util/make-id"
 import { convertCamelCaseToKebabCase } from "../services/util/convert-camel-case-to-kebab-case"
 
+import { signatureEntity } from "../data/entities/signature/signature"
 import { crowdOrganizationEntity } from "../data/entities/crowd-organization/crowd-organization"
 import { libraryEntity } from "../data/entities/library/library"
-import { signatureEntity } from "../data/entities/signature/signature"
 
 import { AppRoute } from "../models/types/entities/app-route"
-import { Entity } from "../types/entity/entity"
+import { Entity } from "../models/interfaces/entities/entity"
 
 import { EntityPortal } from "../pages/entities/entity-portal"
 import { EntityDetails } from "../pages/entities/entity-details"
@@ -16,8 +16,8 @@ import { EntityRemove } from "../pages/entities/entity-remove"
 
 export const entityMap: { [key: string]: Entity } = {
     signature: signatureEntity,
-    library: libraryEntity,
     crowdOrganization: crowdOrganizationEntity,
+    library: libraryEntity
 }
 
 export const createEntityRoutes = () => {
@@ -29,7 +29,7 @@ export const createEntityRoutes = () => {
         routes.push({
             id: makeId(),
             path: kababCaseKey,
-            element: () => EntityPortal(kababCaseKey)
+            element: () => EntityPortal(entityMap[key])
         })
 
         // Item details route
@@ -43,14 +43,14 @@ export const createEntityRoutes = () => {
         routes.push({
             id: makeId(),
             path: `${kababCaseKey}/:id/save`,
-            element: () => EntitySave(kababCaseKey)
+            element: () => EntitySave(entityMap[key])
         })
 
         // Item create route
         routes.push({
             id: makeId(),
             path: `${kababCaseKey}/save`,
-            element: () => EntitySave(kababCaseKey)
+            element: () => EntitySave(entityMap[key])
         })
 
         // Item remove route

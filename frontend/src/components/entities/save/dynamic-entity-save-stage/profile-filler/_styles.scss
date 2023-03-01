@@ -7,9 +7,10 @@ div.entity-save-cmp--profile-filler__container {
 div.entity-save-cmp--profile-filler-binary-picker__container,
 div.entity-save-cmp--profile-filler-number-picker__container,
 div.entity-save-cmp--profile-filler-date-picker__container,
-div.entity-save-cmp--profile-filler-sybol-seperate-list__container {
+div.entity-save-cmp--profile-filler-sybol-seperate-list__container,
+div.entity-save-cmp--profile-filler-durations-picker-list__container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: $space-inline-xxxSmall-rem;
 
   span.title {

@@ -1,6 +1,5 @@
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
-
-import { EntityItem } from "../../types/entity/entities/entity-item"
+import { EntityItem } from "../../models/types/entities/item/entity-item"
 
 
 const initialState: DisplayEntityItemReducer = {
@@ -10,7 +9,7 @@ const initialState: DisplayEntityItemReducer = {
 
 export const displayEntityItemReducer = (state = initialState, action: Action) => {
     switch (action.type) {
-        case 'setEmptyDisplayEntityItem':
+        case 'clearDisplayEntityItem':
             return { ...state, item: emptyEntityItemService.get('') }
 
         case 'updateDisplayEntityItem':
