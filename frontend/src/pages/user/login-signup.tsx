@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useGoogleLogin } from '@react-oauth/google'
 import { BiUserCheck } from "react-icons/bi"
 import { BsGoogle } from "react-icons/bs"
 import { AiFillEye, AiFillEyeInvisible, AiOutlineUserAdd } from "react-icons/ai"
@@ -29,36 +30,46 @@ export const LoginSignup = () => {
         setCredential(prevState => ({ ...prevState, [name]: value }))
     }
 
+
+    const onGoogleAuthSuccess = async (tokenCode: string) => {
+        try {
+            const user = await userService.googleSignupLogin(tokenCode)
+            onLoginSuccess(user)
+        } catch (err) {
+        }
+    }
+
+    const onGoogleLogin = useGoogleLogin({
+        onSuccess: ({ code }) => onGoogleAuthSuccess(code),
+        flow: 'auth-code',
+    })
+
+
     const onSubmitForm = (ev: React.FormEvent<HTMLFormElement>) => {
         ev.preventDefault()
 
         const { email, password } = credential
         if (!email || !password) return
 
-        isSignupPage && onSignup(credential)
-        !isSignupPage && onLogin(credential)
+        onSignupLogin(credential)
     }
 
-    const onSignup = async (credential: Credential) => {
+
+    const onSignupLogin = async (credential: Credential) => {
         try {
-            const user = await userService.signup(credential) as User
-            login(user)
-            navigate('/')
-            insertAppMessage({ text: 'נרשמת בהצלחה!', title: 'ברוך הבא לאתר!', type: 'success' })
+            const user: User = isSignupPage ? await userService.signup(credential) : await userService.login(credential)
+            if (user._id) onLoginSuccess(user)
         } catch ({ message }) {
             setError(message as string)
         }
     }
 
-    const onLogin = async (credential: Credential) => {
-        try {
-            const user = await userService.login(credential) as User
-            login(user)
-            navigate('/')
-            insertAppMessage({ text: 'התחברת בהצלחה!', title: 'ברוך הבא לאתר!', type: 'success' })
-        } catch ({ message }) {
-            setError(message as string)
-        }
+
+    const onLoginSuccess = (user: User) => {
+        login(user)
+        navigate('/')
+        if (isSignupPage) insertAppMessage({ text: 'נרשמת בהצלחה!', title: 'ברוך הבא לאתר!', type: 'success' })
+        else insertAppMessage({ text: 'התחברת בהצלחה!', title: 'ברוך הבא לאתר!', type: 'success' })
     }
 
 
@@ -109,10 +120,12 @@ export const LoginSignup = () => {
 
                     <span className="divider"></span>
 
-                    <button className="google-login-button">{isSignupPage ? 'הירשם' : 'התחבר'} באמצעות <BsGoogle /></button>
+                    <button className="google-login-button" onClick={() => onGoogleLogin()}>
+                        {isSignupPage ? 'הירשם' : 'התחבר'} באמצעות <BsGoogle />
+                    </button>
                 </div>
             </div>
-        </main>
+        </main >
     )
 }
 

@@ -63,7 +63,6 @@ const add = async (user: User | UserWithoutId) => {
         const userToAdd = {
             credential: {
                 email: user.credential.email,
-                password: user.credential.password,
             },
 
             client: {
@@ -74,7 +73,8 @@ const add = async (user: User | UserWithoutId) => {
                 }
             },
 
-            browseableBranchesIds: user.browseableBranchesIds
+            browseableBranchesIds: user.browseableBranchesIds,
+            isGoogleUser: user.isGoogleUser || false
         }
 
         const collection = await databaseService.getCollection(DB_NAME)
@@ -101,10 +101,33 @@ const getByEmail = async (email: string) => {
 }
 
 
+const getEmptyUser = () => {
+    return {
+        credential: {
+            email: '',
+            password: ''
+        },
+
+        client: {
+            name: {
+                first: '',
+                last: '',
+                display: '',
+            }
+        },
+
+        browseableBranchesIds: [] as string[],
+
+        permisionGroup: ''
+    }
+}
+
+
 export const userService = {
     query,
     getById,
     update,
     add,
-    getByEmail
+    getByEmail,
+    getEmptyUser
 }

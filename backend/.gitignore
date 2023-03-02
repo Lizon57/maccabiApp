@@ -6,3 +6,6 @@
 
 # typescript
 dist/**/*
+
+# env
+.env

@@ -2,7 +2,6 @@ import { userService } from "../user/user-service"
 import { loggerService } from "../../services/logger-service"
 import bcrypt from "bcrypt"
 import { User } from "../../models/user/user"
-// const Cryptr = require('cryptr')
 import Cryptr from "cryptr"
 const cryptr = new Cryptr(process.env.mysterious || 'maccabipedia')
 
@@ -16,6 +15,8 @@ const login = async (email: string, password: string) => {
     const user = await userService.getByEmail(email) as User
     if (!user) return Promise.reject('Invalid email')
 
+    if (!user.credential.password) return Promise.reject('Google user')
+
     const match = bcrypt.compare(password, user.credential.password)
     if (!match) return Promise.reject('Invalid password')
 
@@ -27,13 +28,16 @@ const login = async (email: string, password: string) => {
 
 async function signup(user: User) {
     loggerService.debug(`auth.service - signup with email: ${user.credential.email}`)
-    if (!user.credential.email || !user.credential.password) return Promise.reject('Missing required signup information')
+    if (!user.credential.email || (!user.isGoogleUser && !user.credential.password)) return Promise.reject('Missing required signup information')
 
-    const isUserExist = await userService.getByEmail(user.credential.email)
-    if (isUserExist) return Promise.reject('Email already taken')
-
-    user.credential.password = await bcrypt.hash(user.credential.password, saltRounds)
-    return userService.add(user)
+    if (user.isGoogleUser) {
+        const insertedUser = await userService.add(user)
+        user._id = insertedUser.insertedId.toString()
+        return user
+    } else {
+        user.credential.password = await bcrypt.hash(user.credential.password, saltRounds)
+        return userService.add(user)
+    }
 }
 
 

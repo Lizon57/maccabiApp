@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
-import { Provider } from "react-redux"
+import { Provider as ReduxProvider } from "react-redux"
 import { store } from "./store/store"
 
 import { ROUTES } from "./data/app/app-routes"
@@ -14,49 +14,52 @@ import { AppOptionBar } from "./components/app-layout/app-option-bar/app-option-
 import { AppScreen } from "./components/app-layout/app-screen/app-screen"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
 import { SeoImplement } from "./components/common/seo-implement/seo-implement"
+import { GoogleOAuthProvider } from "@react-oauth/google"
 
 
 
 export const App = () => {
     return (
-        <Provider store={store}>
-            <Router>
-                <div className="app-layout">
-                    <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
-                        <UpToLaptopWideAppHeader />
-                    </RenderByDeviceWidth>
-                    <RenderByDeviceWidth minDeviceWide="tablet">
-                        <LaptopWidePlusAppHeader />
-                    </RenderByDeviceWidth>
+        <GoogleOAuthProvider clientId="599325031327-fnlg79tr0b96t3g692sq0p67iv0ruful.apps.googleusercontent.com">
+            <ReduxProvider store={store}>
+                <Router>
+                    <div className="app-layout">
+                        <RenderByDeviceWidth maxDeviceWide="tablet" isInclusive={true}>
+                            <UpToLaptopWideAppHeader />
+                        </RenderByDeviceWidth>
+                        <RenderByDeviceWidth minDeviceWide="tablet">
+                            <LaptopWidePlusAppHeader />
+                        </RenderByDeviceWidth>
 
-                    <PageRelatedData />
+                        <PageRelatedData />
 
-                    <div className="app-content">
-                        <Routes>
-                            {ROUTES.map(({ id, path, element: Element }) => <Route
-                                key={id}
-                                path={path}
-                                element={<Element />} />)}
-                        </Routes>
-                        {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <div className="app-content">
+                            <Routes>
+                                {ROUTES.map(({ id, path, element: Element }) => <Route
+                                    key={id}
+                                    path={path}
+                                    element={<Element />} />)}
+                            </Routes>
+                            {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> */}
+                        </div>
+
+
+                        <AppData />
+                        <AppFooter />
                     </div>
 
+                    <RenderByDeviceWidth maxDeviceWide="mobile" isInclusive={true}>
+                        <AppOptionBar />
+                    </RenderByDeviceWidth>
 
-                    <AppData />
-                    <AppFooter />
-                </div>
+                    <AppScreen />
+                </Router>
 
-                <RenderByDeviceWidth maxDeviceWide="mobile" isInclusive={true}>
-                    <AppOptionBar />
-                </RenderByDeviceWidth>
-
-                <AppScreen />
-            </Router>
-
-            <SeoImplement openGraphTitle="מכביפדיה" />
-        </Provider>
+                <SeoImplement openGraphTitle="מכביפדיה" />
+            </ReduxProvider>
+        </GoogleOAuthProvider>
     )
 }

@@ -133,7 +133,7 @@ main.user-pages--login-signup__container {
         align-items: center;
         gap: $space-inline-xxxSmall-rem;
 
-        cursor: not-allowed;
+        cursor: pointer;
         border: 1px solid $clr-blue-darker;
         border-radius: $border-radius-regular-rem;
         background-color: transparent;

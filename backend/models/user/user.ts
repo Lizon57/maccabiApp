@@ -15,9 +15,9 @@ export interface User {
         }
     },
 
-    browseableBranchesIds: string[],
-
+    browseableBranchesIds: string[]
     permisionGroup?: string
+    isGoogleUser?: boolean
 }
 
 export interface UserWithoutId extends Omit<User, '_id'> { }

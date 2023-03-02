@@ -1,5 +1,6 @@
 import express from 'express'
 import * as httpBase from 'http'
+import dotenv from 'dotenv'
 import cors from 'cors'
 import path from 'path'
 import cookieParser from 'cookie-parser'
@@ -33,6 +34,8 @@ if (process.env.NODE_ENV === 'production') {
     app.use(cors(corsOptions))
 }
 
+
+dotenv.config()
 
 app.all('*', setupAsyncLocalStorage)
 

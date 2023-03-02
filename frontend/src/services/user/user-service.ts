@@ -44,6 +44,18 @@ const getLoggedinUser = () => {
 }
 
 
+export const googleSignupLogin = async (tokenCode: string) => {
+    try {
+        const user = await httpService.post('auth/googleSignupLogin', { code: tokenCode })
+        if (!user) throw new Error('פרטי התחברות שגויים, אנא נסה שנית')
+        localStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+        return user
+    } catch (err) {
+        throw err
+    }
+}
+
+
 const _createUser = (credential: Credential) => ({
     _id: makeId(),
     credential: {
@@ -65,7 +77,8 @@ export const userService = {
     signup,
     login,
     logout,
-    getLoggedinUser
+    getLoggedinUser,
+    googleSignupLogin
 }
 
 
