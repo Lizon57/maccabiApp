@@ -17,10 +17,9 @@ import { SeoImplement } from "./components/common/seo-implement/seo-implement"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 
 
-
 export const App = () => {
     return (
-        <GoogleOAuthProvider clientId="599325031327-fnlg79tr0b96t3g692sq0p67iv0ruful.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || ''}>
             <ReduxProvider store={store}>
                 <Router>
                     <div className="app-layout">
