@@ -41,10 +41,31 @@ const remove = async (dbName: string, id: string) => {
 }
 
 
-export const save = async (dbName: string, item: EntityItem) => {
+const save = async (dbName: string, item: EntityItem) => {
     try {
         const savedItem = item._id ? await httpService.put(`${dbName}/${item._id}`, item) : await httpService.post(`${dbName}`, item)
         return savedItem
+    }
+    catch (err) {
+        throw err
+    }
+}
+
+
+const getMiniProfilesByPharse = async (pharse: string = '') => {
+    try {
+        return await httpService.get('profile/getMiniProfilesByPharse', { pharse })
+    } catch (err) {
+        console.log(err)
+        return []
+    }
+}
+
+
+const setEntityItemRate = async (entityName: string, id: string, rate: number) => {
+    try {
+        const ratePayload = { id, entityName, rate }
+        return await httpService.put('entity-item-info-update/rate', { ratePayload })
     }
     catch (err) {
         throw err
@@ -73,20 +94,11 @@ const _handleEntityItemView = async (entityName: string, id: string) => {
 }
 
 
-const getMiniProfilesByPharse = async (pharse: string = '') => {
-    try {
-        return await httpService.get('profile/getMiniProfilesByPharse', { pharse })
-    } catch (err) {
-        console.log(err)
-        return []
-    }
-}
-
-
 export const entityItemService = {
     query,
     getById,
     remove,
     save,
-    getMiniProfilesByPharse
+    getMiniProfilesByPharse,
+    setEntityItemRate
 }

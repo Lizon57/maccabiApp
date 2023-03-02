@@ -1,4 +1,5 @@
 import { ObjectId } from "mongodb"
+import { EntityItemRate } from "./entity-item-rate"
 import { MiniPageCategory } from "../page-category/mini-page-category"
 
 
@@ -20,13 +21,7 @@ export interface EntityItem {
 
     itemInfo: {
         view: number
-        rate: {
-            avg?: number
-            raterCount: number
-            rateMap: {
-                [key: string]: 1 | 2 | 3 | 4 | 5
-            }
-        },
+        rate: EntityItemRate,
         history: {
             totalEditCount: number
             lastEditDate: Date

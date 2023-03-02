@@ -20,12 +20,35 @@ div.entity-details--rate-page__container {
       }
     }
   }
+
+  a {
+    color: $clr-grey-regular;
+    font-size: $font-size-xSmall-rem;
+    text-decoration: none;
+  }
 }
 
 div.entity-details--rater__container {
   display: flex;
   flex-direction: column;
   gap: $space-block-xxSmall-rem;
+
+  div.stars-list div {
+    display: flex;
+    align-items: center;
+
+    border-radius: $border-radius-regular-rem;
+    padding: 3px;
+
+    &:hover {
+      background-color: $clr-white-darker;
+    }
+
+    span.actual-rate-indicator {
+      color: $clr-grey-regular;
+      font-size: $font-size-xxSmall-rem;
+    }
+  }
 
   span.divider {
     background-color: $clr-white-darkest;
@@ -35,14 +58,6 @@ div.entity-details--rater__container {
 }
 
 div.entity-details--rate-star-preview__container {
-  display: flex;
-
-  border-radius: $border-radius-regular-rem;
-  padding: $space-block-xxxSmall-rem $space-inline-xxxSmall-rem;
-
-  &:hover {
-    background-color: $clr-white-darker;
-  }
   span {
     display: flex;
     align-items: center;
