@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useLocation } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 
 import { entityItemService } from "../../services/entities/entity-item-service"
@@ -9,6 +10,8 @@ import { EntityItem } from "../../models/types/entities/item/entity-item"
 import { useSelector } from "react-redux"
 import { RootState } from "../../store/store"
 import { clearDisplayEntity, updateDisplayEntity } from "../../store/action/display-entity-action"
+
+import { ENTITIES_LIST } from "../../constans/entities-list"
 
 import { useOnWindowResize } from "../../hooks/use-on-window-resize"
 import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
@@ -24,7 +27,17 @@ import { SeoImplement } from "../../components/common/seo-implement/seo-implemen
 import { EntityList } from "../../components/entities/portal/entity-list/entity-list"
 
 
-export const EntityPortal = (entity: Entity) => {
+const EntityPortalWrapper = () => {
+    let { pathname } = useLocation()
+    pathname = pathname.split('/')[1]
+    const entity = ENTITIES_LIST[pathname]
+    return (
+        <EntityPortal entity={entity} />
+    )
+}
+
+
+const EntityPortal = ({ entity }: Props) => {
     const { browseableBranchesIds: userPrefBranchesFilter } = useSelector((state: RootState) => state.userStateModule.user)
     const [items, setItems] = useState<EntityItem[]>()
     const [isLoading, setIsLoading] = useState(true)
@@ -40,21 +53,25 @@ export const EntityPortal = (entity: Entity) => {
     const debouncedSetIsLoading = useDebouncedCallback(setIsLoading, 1000)
 
 
+    const fetchItems = async () => {
+        try {
+            if (!searchParams.get('fBranchIds')) searchParams.set('fBranchIds', userPrefBranchesFilter)
+            const items = await entityItemService.query(entity.name, searchParams)
+            setItems(items)
+        } catch ({ message }) {
+            setErrorMessage(message as string)
+        }
+        finally {
+            setIsLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        setIsLoading(true)
+    }, [entity])
+
     useEffect(() => {
         if (!isLoading) return
-
-        const fetchItems = async () => {
-            try {
-                if (!searchParams.get('fBranchIds')) searchParams.set('fBranchIds', userPrefBranchesFilter)
-                const items = await entityItemService.query(entity.name, searchParams)
-                setItems(items)
-            } catch ({ message }) {
-                setErrorMessage(message as string)
-            }
-            finally {
-                setIsLoading(false)
-            }
-        }
         fetchItems()
     }, [searchParams, userPrefBranchesFilter]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -121,4 +138,11 @@ export const EntityPortal = (entity: Entity) => {
             />
         </>
     )
+}
+
+export default EntityPortalWrapper
+
+
+type Props = {
+    entity: Entity
 }

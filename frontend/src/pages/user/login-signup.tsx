@@ -17,7 +17,7 @@ import { MainTitle } from "../../components/common/main-title/main-title"
 import { TextToggler } from "../../components/common/text-toggler/text-toggler"
 
 
-export const LoginSignup = () => {
+const LoginSignup = () => {
     const [isSignupPage, setIsSignupPage] = useState(false)
     const [isRevealPassword, setIsRevealPassword] = useState(false)
     const [credential, setCredential] = useState({ email: '', password: '' })
@@ -128,6 +128,8 @@ export const LoginSignup = () => {
         </main >
     )
 }
+
+export default LoginSignup
 
 
 type Credential = {

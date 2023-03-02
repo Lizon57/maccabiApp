@@ -9,6 +9,8 @@ import { clearDisplayEntityItem, updateDisplayEntityItem } from "../../store/act
 import { usePageDataCmp } from "../../hooks/pages/use-page-data-cmp"
 import { usePageType } from "../../hooks/pages/use-page-type"
 
+import { ENTITIES_LIST } from "../../constans/entities-list"
+
 import { entityItemService } from "../../services/entities/entity-item-service"
 
 import { Entity } from "../../models/interfaces/entities/entity"
@@ -23,7 +25,18 @@ import { BreadCrumbs } from "../../components/common/bread-crumbs/bread-crumbs"
 import { RatePage } from "../../components/entities/details/reate-page/rate-page"
 
 
-export const EntityDetails = (entity: Entity) => {
+const EntityDetailsWrapper = () => {
+    let { pathname } = useLocation()
+    pathname = pathname.split('/')[1]
+    const entity = ENTITIES_LIST[pathname]
+
+    return (
+        <EntityDetails entity={entity} />
+    )
+}
+
+
+const EntityDetails = ({ entity }: Props) => {
     const { id: entityItemId } = useParams()
 
     const [isLoading, setIsLoading] = useState(true)
@@ -100,4 +113,11 @@ export const EntityDetails = (entity: Entity) => {
             />
         </>
     )
+}
+
+export default EntityDetailsWrapper
+
+
+type Props = {
+    entity: Entity
 }

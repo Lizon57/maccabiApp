@@ -1,4 +1,6 @@
+import { Suspense } from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { GoogleOAuthProvider } from "@react-oauth/google"
 
 import { Provider as ReduxProvider } from "react-redux"
 import { store } from "./store/store"
@@ -14,7 +16,7 @@ import { AppOptionBar } from "./components/app-layout/app-option-bar/app-option-
 import { AppScreen } from "./components/app-layout/app-screen/app-screen"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
 import { SeoImplement } from "./components/common/seo-implement/seo-implement"
-import { GoogleOAuthProvider } from "@react-oauth/google"
+import { Loader } from "./components/common/loader/loader"
 
 
 export const App = () => {
@@ -33,12 +35,14 @@ export const App = () => {
                         <PageRelatedData />
 
                         <div className="app-content">
-                            <Routes>
-                                {ROUTES.map(({ id, path, element: Element }) => <Route
-                                    key={id}
-                                    path={path}
-                                    element={<Element />} />)}
-                            </Routes>
+                            <Suspense fallback={<Loader text="טוען עמוד, אנא המתן..." />}>
+                                <Routes>
+                                    {ROUTES.map(({ id, path, element: Element }) => <Route
+                                        key={id}
+                                        path={path}
+                                        element={<Element />} />)}
+                                </Routes>
+                            </Suspense>
                             {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

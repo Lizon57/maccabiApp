@@ -9,6 +9,8 @@ import { insertAppMessage } from "../../store/action/app-state-action"
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
 import { entityItemService } from "../../services/entities/entity-item-service"
 
+import { ENTITIES_LIST } from "../../constans/entities-list"
+
 import { EntitySaveItemStage } from "../../types/entity/save/entity-save-item-stage"
 import { Entity } from "../../models/interfaces/entities/entity"
 import { EntityItem } from "../../models/types/entities/item/entity-item"
@@ -23,7 +25,18 @@ import { SeoImplement } from "../../components/common/seo-implement/seo-implemen
 
 const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.length).fill(false)
 
-export const EntitySave = (entity: Entity) => {
+
+const EntitySaveWrapper = () => {
+    let { pathname } = useLocation()
+    pathname = pathname.split('/')[1]
+    const entity = ENTITIES_LIST[pathname]
+
+    return (
+        <EntitySave entity={entity} />
+    )
+}
+
+const EntitySave = ({ entity }: Props) => {
     const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const [currStageIdx, setCurrStageIdx] = useState(0)
@@ -45,7 +58,7 @@ export const EntitySave = (entity: Entity) => {
             setIsLoading(false)
             return
         }
-        
+
         const loadItem = async () => {
             try {
                 const item = await entityItemService.getById(entity.name, id, true) as EntityItem
@@ -185,4 +198,11 @@ export const EntitySave = (entity: Entity) => {
             />
         </>
     )
+}
+
+export default EntitySaveWrapper
+
+
+type Props = {
+    entity: Entity
 }

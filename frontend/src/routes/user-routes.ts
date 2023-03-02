@@ -1,6 +1,7 @@
+import { lazy } from "react"
 import { makeId } from "../services/util/make-id"
 
-import { LoginSignup } from "../pages/user/login-signup"
+const LoginSignup = lazy(() => import('../pages/user/login-signup'))
 
 
 export const userRoutes = [

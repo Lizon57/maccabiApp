@@ -75,7 +75,7 @@ const updateRate = async ({ id, entityName, rate }: RatePayload) => {
 
 
 const _calcRateAvg = (rate: EntityItemRate) => {
-    const totalRate = Object.values(rate.rateMap).reduce((acc, rate) => acc + rate, 0)
+    const totalRate = Object.values(rate.rateMap).reduce((acc, currRate) => acc + currRate, 0)
     const avg = Number((totalRate / rate.raterCount).toFixed(1))
     return avg
 }

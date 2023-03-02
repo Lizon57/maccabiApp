@@ -1,3 +1,12 @@
-import { imageEntity } from "../data/entities/image/image"
+import { Entity } from "../models/interfaces/entities/entity"
 
-export const ENTITIES_LIST = [imageEntity]
+import { crowdOrganizationEntity } from "../data/entities/crowd-organization/crowd-organization"
+import { libraryEntity } from "../data/entities/library/library"
+import { signatureEntity } from "../data/entities/signature/signature"
+
+
+export const ENTITIES_LIST: { [key: string]: Entity } = {
+    signature: signatureEntity,
+    'crowd-organization': crowdOrganizationEntity,
+    library: libraryEntity,
+}

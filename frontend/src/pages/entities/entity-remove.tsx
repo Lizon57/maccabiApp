@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 import { insertAppMessage } from "../../store/action/app-state-action"
 
@@ -8,6 +8,7 @@ import { entityItemService } from "../../services/entities/entity-item-service"
 import { Entity } from "../../models/interfaces/entities/entity"
 import { EntityItem } from "../../models/types/entities/item/entity-item"
 
+import { ENTITIES_LIST } from "../../constans/entities-list"
 import { ICON_TYPE_MAP } from "../../constans/icon-type-map"
 
 import { MainTitle } from "../../components/common/main-title/main-title"
@@ -16,7 +17,18 @@ import { Loader } from "../../components/common/loader/loader"
 import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 
 
-export const EntityRemove = (entity: Entity) => {
+const EntityRemoveWrapper = () => {
+    let { pathname } = useLocation()
+    pathname = pathname.split('/')[1]
+    const entity = ENTITIES_LIST[pathname]
+
+    return (
+        <EntityRemove entity={entity} />
+    )
+}
+
+
+const EntityRemove = ({ entity }: Props) => {
     const [item, setItem] = useState<EntityItem>()
     const [isLoading, setIsLoading] = useState(true)
     const [errorMessage, setErrorMessage] = useState<string>()
@@ -92,4 +104,11 @@ export const EntityRemove = (entity: Entity) => {
             />
         </>
     )
+}
+
+export default EntityRemoveWrapper
+
+
+type Props = {
+    entity: Entity
 }
