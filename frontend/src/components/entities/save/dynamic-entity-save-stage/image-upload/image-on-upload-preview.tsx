@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
+import { useIsFirstRender } from "../../../../../hooks/use-is-first-render"
 
 // import { cloudinaryService } from "../../../../../services/cloudinary-service"
 import { emptyEntityItemService } from "../../../../../services/entities/empty-entity-item-service"
@@ -12,15 +13,12 @@ import { Loader } from "../../../../common/loader/loader"
 
 
 export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUploadFail }: Props) => {
-    let isFirstRender = useRef(true)
-
+    let isFirstRender = useIsFirstRender()
 
     useEffect(() => {
-        if (!isFirstRender.current) return
+        if (!isFirstRender) return
 
         const fetchFile = async () => {
-            isFirstRender.current = false
-
             try {
                 setTimeout(async () => {
                     const image = await emptyEntityItemService.get('image')
@@ -49,7 +47,7 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
         }
 
         fetchFile()
-    }, [entityName, file, onUploadSuccess, onUploadFail])
+    }, [entityName, file, isFirstRender, onUploadSuccess, onUploadFail])
 
 
     return (

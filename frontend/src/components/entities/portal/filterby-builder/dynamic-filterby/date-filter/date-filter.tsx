@@ -5,6 +5,8 @@ import { AiFillCaretDown } from "react-icons/ai"
 
 import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
+import { eventBus } from "../../../../../../services/event-bus-service"
+
 import { NON_ZERO_DAYS } from "../../../../../../constans/days"
 import { NON_ZERO_MONTHS } from "../../../../../../constans/months"
 
@@ -55,6 +57,13 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
+        const unsubscribeClearFilter = eventBus.on('clear-filter', (param) => {
+            if (param !== filter.param) return
+            setDate(INITIAL_VALUE)
+            setType(2)
+        })
+
+
         if (!params.get(filter.param)) return
 
         let typeFromParam: string | number | null = params.get(filter.param + 'Type') || 2
@@ -69,6 +78,9 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
             year: newValue[2],
         }
         setDate(valueFromParam)
+
+
+        return () => unsubscribeClearFilter()
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

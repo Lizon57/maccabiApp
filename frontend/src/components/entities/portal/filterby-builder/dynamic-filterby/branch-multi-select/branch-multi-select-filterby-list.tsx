@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
+
+import { eventBus } from "../../../../../../services/event-bus-service"
 
 import { BRANCHES } from "../../../../../../data/app/supports-branches"
 
@@ -13,10 +15,9 @@ import { BranchMultiSelectFilterbyPreview } from "./branch-multi-select-filterby
 export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoading }: Props) => {
     const { browseableBranchesIds } = useSelector((state: RootState) => state.userStateModule.user)
     const { searchParams: params } = new URL(window.location.href)
-    const branchesFromParams = (params.get(filterParam)?.split(',') || [])
+    const branchesFromParams = useMemo(() => (params.get(filterParam)?.split(',') || []), [filterParam, params])
     const initialBranchesIdsState = (branchesFromParams.length) ? branchesFromParams : browseableBranchesIds
     const [activeBranchesIds, setActiveBranchesIds] = useState<string[]>(initialBranchesIdsState)
-
     const navigate = useNavigate()
 
 
@@ -36,6 +37,12 @@ export const BranchMultiSelectFilterbyList = ({ filterParam, debouncedSetIsLoadi
         if ((browseableBranchesIds.join('') !== branchesFromParams.join('')) && branchesFromParams.length) {
             setActiveBranchesIds(branchesFromParams)
         }
+
+        const unsubscribeClearFilter = eventBus.on('clear-filter', (param) => {
+            if (param === filterParam) setActiveBranchesIds(initialBranchesIdsState)
+        })
+
+        return () => unsubscribeClearFilter()
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

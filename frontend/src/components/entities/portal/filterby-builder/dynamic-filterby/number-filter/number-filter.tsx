@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
+import { AiFillCaretDown } from "react-icons/ai"
 
 import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
+import { eventBus } from "../../../../../../services/event-bus-service"
+
 import { Slider } from "./slider"
 import { Dropdown } from "../../../../../common/dropdown/dropdown"
-
-import { AiFillCaretDown } from "react-icons/ai"
 
 
 const TYPE_NAMES = ['החל מ', 'עד ל', 'החל מ עד ל']
@@ -63,6 +64,15 @@ export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
+        const unsubscribeClearFilter = eventBus.on('clear-filter', (param) => {
+            if (param !== filter.param) return
+            const min = option?.min || 0
+            const max = option?.max || 100
+            setValues([min, max])
+            setType(2)
+        })
+
+
         if (!params.get(param)) return
 
         let type: string | number | null = params.get(param + 'Type') || 2
@@ -73,6 +83,9 @@ export const NumberFilter = ({ filter, debouncedSetIsLoading }: Props) => {
         if (type === 0) newValues = [newValues[0]]
         else if (type === 1) newValues = [newValues[1]]
         setValues(newValues)
+
+
+        return () => unsubscribeClearFilter()
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

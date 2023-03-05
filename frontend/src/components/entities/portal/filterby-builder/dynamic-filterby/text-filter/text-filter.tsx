@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
+import { AiFillCaretDown } from "react-icons/ai"
 
 import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
-import { Dropdown } from "../../../../../common/dropdown/dropdown"
+import { eventBus } from "../../../../../../services/event-bus-service"
 
-import { AiFillCaretDown } from "react-icons/ai"
+import { Dropdown } from "../../../../../common/dropdown/dropdown"
 
 
 const TYPE_NAMES = ['מתחיל ב', 'נגמר ב', 'כולל את']
@@ -37,6 +38,14 @@ export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
+        const unsubscribeClearFilter = eventBus.on('clear-filter', (param) => {
+            if (param === filter.param) {
+                setValue('')
+                setType(2)
+            }
+        })
+
+
         const newValue = params.get(param)
         if (!newValue) return
 
@@ -47,6 +56,9 @@ export const TextFilter = ({ filter, debouncedSetIsLoading }: Props) => {
         else if (type === '1') type = 1
         else type = 2
         setType(type)
+
+
+        return () => unsubscribeClearFilter()
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 
+import { eventBus } from "../../../../../../services/event-bus-service"
+
 import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
 
@@ -29,10 +31,17 @@ export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
 
 
     useEffect(() => {
+        const unsubscribeClearFilter = eventBus.on('clear-filter', (param) => {
+            if (param === filter.param) setValue(undefined)
+        })
+
+        
         const newValue = params.get(filter.param)
         if (!newValue) return
-
         setValue(JSON.parse(newValue))
+
+
+        return () => unsubscribeClearFilter()
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 

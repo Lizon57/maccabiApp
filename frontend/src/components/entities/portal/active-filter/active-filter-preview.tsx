@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-
 import { FiXCircle } from "react-icons/fi"
 
 import { EntityFilterOption } from "../../../../models/interfaces/entities/entity-filter-option"
+
 import { getFormatedDate } from "../../../../services/util/get-formated-date"
+import { activeClearFilter } from "../../../../services/event-bus-service"
 
 
 export const ActiveFilterPreview = ({ filter, searchParams, setIsLoading }: Props) => {
@@ -45,6 +46,7 @@ export const ActiveFilterPreview = ({ filter, searchParams, setIsLoading }: Prop
         navigate({ search: searchParams.toString().replaceAll('%2C', ',') })
         window.scrollTo({ top: 0, behavior: 'smooth' })
         setIsLoading(true)
+        activeClearFilter(filter.param)
     }
 
 
