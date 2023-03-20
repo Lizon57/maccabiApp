@@ -1,0 +1,113 @@
+div.app-data--share__container {
+  position: fixed;
+  top: 50%;
+  left: $space-inline-xxxSmall-rem;
+  transform: translateY(-50%);
+
+  @include viewport-wide-start-from($viewport-xLarge) {
+    position: absolute;
+    right: 0;
+    left: unset;
+  }
+
+  button.share-toggler {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border-radius: 50vw;
+    border: none;
+    background-color: $clr-blue-darker;
+    color: $clr-white-regular;
+    font-size: $font-size-xxLarge-rem;
+    width: 2rem;
+    height: 2rem;
+    transition: $transition-regular;
+
+    &:hover {
+      color: $clr-yellow-regular;
+    }
+  }
+
+  div.share-list-container {
+    position: absolute;
+    top: -50%;
+
+    opacity: 0;
+    width: 5rem;
+    height: 4rem;
+    transition: $transition-regular;
+
+    animation: mount-animation 0.3s;
+
+    @keyframes mount-animation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    &.open {
+      opacity: 1;
+    }
+
+    &.right-sided {
+      left: 0;
+
+      span.whatsapp,
+      span.telegram {
+        right: $space-block-small-rem;
+      }
+
+      span.twitter,
+      span.facebook {
+        right: -1rem;
+      }
+    }
+
+    &.left-sided {
+      span.whatsapp,
+      span.telegram {
+        left: $space-block-small-rem;
+      }
+
+      span.twitter,
+      span.facebook {
+        left: -1rem;
+      }
+    }
+
+    span {
+      position: absolute;
+      display: flex;
+
+      border-radius: 50vw;
+      background-color: $clr-white-regular;
+      color: $clr-blue-regular;
+      font-size: $font-size-xLarge-rem;
+      padding: $space-block-xxxSmall-rem $space-inline-xxxSmall-rem;
+      box-shadow: 0 0 5px 1px $clr-white-darkest;
+
+      &.whatsapp {
+        top: -3rem;
+      }
+      &.facebook {
+        top: -$space-block-xxSmall-rem;
+      }
+
+      &.twitter {
+        bottom: -$space-block-xxSmall-rem;
+      }
+
+      &.telegram {
+        bottom: -3rem;
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
-div.app-data--scrol-to-top__container {
+button.app-data--scrol-to-top__container {
   position: fixed;
-  left: 0.5rem;
+  left: $space-inline-xxxSmall-rem;
   bottom: calc(
     #{$up-to-laptop-option-bar-total-height} + var(
         --app-additional-content-app-footer-in-view
@@ -9,6 +9,7 @@ div.app-data--scrol-to-top__container {
 
   cursor: pointer;
   border-radius: 50vw;
+  border: none;
   background-color: $clr-blue-darker;
   color: $clr-white-regular;
   font-size: $font-size-xxLarge-rem;

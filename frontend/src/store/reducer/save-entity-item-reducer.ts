@@ -11,8 +11,8 @@ export const saveEntityItemReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case 'clearSaveEntityItem':
             return { ...state, item: emptyEntityItemService.get('') }
-            
-            case 'setSaveEntityItem':
+
+        case 'setSaveEntityItem':
             return { ...state, item: action.item }
 
         default:
