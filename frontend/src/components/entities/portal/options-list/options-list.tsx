@@ -40,7 +40,10 @@ export const OptionsList = ({ sorts, filters, isFilterSectionOpen, setIsLoading,
 
             {shouldRenderFiltersToggle &&
                 <div className={"filterby-icon" + (isFilterSectionOpen ? ' active' : '')}>
-                    <FilterSectionToggler toggleIsFilterSectionOpen={toggleIsFilterSectionOpen} />
+                    <FilterSectionToggler
+                        isFilterSectionOpen={isFilterSectionOpen}
+                        toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}
+                    />
                 </div>}
 
             <SortDropdown sorts={sorts} setIsLoading={setIsLoading} />

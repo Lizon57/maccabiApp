@@ -1,9 +1,9 @@
 import { BsFilter } from "react-icons/bs"
 
 
-export const FilterSectionToggler = ({ toggleIsFilterSectionOpen }: Props) => {
+export const FilterSectionToggler = ({ toggleIsFilterSectionOpen, isFilterSectionOpen }: Props) => {
     const onToggleFillter = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        !isFilterSectionOpen && window.scrollTo({ top: 0, behavior: 'smooth' })
         toggleIsFilterSectionOpen()
     }
 
@@ -16,5 +16,6 @@ export const FilterSectionToggler = ({ toggleIsFilterSectionOpen }: Props) => {
 
 
 type Props = {
+    isFilterSectionOpen: boolean
     toggleIsFilterSectionOpen: () => void
 }
