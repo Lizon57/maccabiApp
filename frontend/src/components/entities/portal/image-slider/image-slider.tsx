@@ -1,7 +1,13 @@
 import Slider from "react-slick"
 
 
-const SETTING = { dots: true, speed: 300 }
+const CustomDots = () => {
+    return (
+        <span className="entities-portal-cmp--image-carousel-dots__container"></span>
+    )
+}
+
+const SETTING = { dots: true, speed: 300, customPaging: CustomDots }
 
 export const ImageSlider = ({ images, fallbackImgUrl }: Props) => {
     if (!images.length && !fallbackImgUrl) return <></>

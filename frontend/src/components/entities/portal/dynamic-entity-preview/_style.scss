@@ -1,65 +1,62 @@
-div.dynamic-entity-preview--square-entity-preview__container {
-  overflow: hidden;
+a.dynamic-entity-preview--square-entity-preview__container {
+  display: flex;
+  flex-direction: column;
+  gap: $space-block-xxxSmall-rem;
+
   border-radius: $border-radius-regular-rem;
   border: 1px solid $clr-white-darkest;
+  color: $clr-black-regular;
+  text-decoration: none;
+  padding-block-end: $space-block-xxxSmall-rem;
+  overflow: hidden;
 
-  &:hover div.image-container span.like-icon {
-    display: flex !important;
-    color: $clr-yellow-regular;
-  }
+  @include viewport-wide-start-from-exclusive($viewport-large) {
+    &:hover {
+      span.like-icon,
+      span.image-counter,
+      ul.slick-dots,
+      div.item-additional-info {
+        transform: translateY(0) !important;
+      }
 
-  a.details-anchor {
-    display: flex;
-    flex-direction: column;
+      div.title {
+        color: $clr-blue-regular;
+      }
 
-    text-decoration: none;
-    height: 100%;
+      button.slick-prev {
+        left: $space-inline-xxxSmall-rem !important;
+      }
 
-    div.title {
-      border-start-start-radius: $border-radius-regular-rem;
-      border-start-end-radius: $border-radius-regular-rem;
-      background-color: $clr-blue-regular;
-      color: $clr-white-regular;
-      font-family: $typography-emphasis;
-      padding-inline: $space-inline-xxxSmall-rem;
-      padding-block: $space-block-xxxSmall-rem;
-
-      span.branch-icon {
-        float: right;
-
-        user-select: none;
-        border-radius: 50vw;
-        background-color: white;
-        margin-inline-end: $space-inline-xxxSmall-rem;
-        height: 16px;
+      button.slick-next {
+        right: $space-inline-xxxSmall-rem !important;
       }
     }
+  }
 
-    div.image-container {
-      flex-grow: 1;
-      position: relative;
-      justify-self: center;
+  div.image-container {
+    position: relative;
+    height: 8rem;
 
-      span.like-icon {
-        display: flex;
-        align-items: center;
+    span {
+      position: absolute;
+      top: $space-block-xxxSmall-rem;
+      z-index: 5;
 
-        position: absolute;
-        top: $space-block-xxxSmall-rem;
+      display: flex;
+      align-items: center;
+
+      border: 1px solid $clr-blue-darkest;
+      border-radius: $border-radius-regular-rem;
+      background-color: $clr-white-darker;
+      font-size: $font-size-xSmall-rem;
+      padding: 3px;
+      transition: $transition-regular;
+
+      &.like-icon {
         right: $space-inline-xxxSmall-rem;
-        z-index: 5;
 
-        cursor: pointer;
-        border-radius: $border-radius-large-rem;
-        border: 1px solid $clr-white-darkest;
-        background-color: $clr-blue-darkest;
-        color: $clr-white-darkest;
-        font-size: $font-size-xxSmall-rem;
-        padding: 5px;
-        transition: $transition-regular;
-
-        @include viewport-wide-start-from-exclusive($viewport-regular) {
-          display: none;
+        @include viewport-wide-start-from-exclusive($viewport-large) {
+          transform: translateY(-150%);
         }
 
         &.active {
@@ -67,81 +64,69 @@ div.dynamic-entity-preview--square-entity-preview__container {
         }
       }
 
-      span.image-counter {
-        position: absolute;
-        top: $space-block-xxxSmall-rem;
+      &.image-counter {
         left: $space-inline-xxxSmall-rem;
-        z-index: 5;
 
-        user-select: none;
-        border: 1px solid $clr-white-darkest;
-        border-radius: 0.2rem;
-        background-color: $clr-blue-darkest;
-        color: $clr-white-darkest;
-        font-size: $font-size-xxSmall-rem;
-        padding: 3px;
+        @include viewport-wide-start-from-exclusive($viewport-large) {
+          transform: translateY(-150%);
+        }
+      }
+    }
+  }
+
+  div.title {
+    flex-grow: 1;
+    padding: 0 $space-block-xxxSmall-rem;
+    transition: $transition-regular;
+
+    span.branch-icon {
+      float: right;
+      padding-inline-end: $space-block-xxxSmall-rem;
+      height: 0.5rem;
+      user-select: none;
+    }
+
+    span.title {
+      font-family: $typography-emphasis;
+      font-weight: 500;
+    }
+  }
+
+  div.item-additional-info {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: $font-size-xxSmall-rem;
+    color: $clr-grey-regular;
+    padding: 0 $space-block-xxxSmall-rem;
+    user-select: none;
+
+    @include viewport-wide-start-from-exclusive($viewport-large) {
+      transition: $transition-regular;
+      transform: translateY(150%);
+    }
+
+    div.views-and-rate {
+      display: flex;
+      gap: $space-block-xSmall-rem;
+
+      div.views,
+      div.rate {
+        display: flex;
+        align-items: center;
+        gap: 3px;
       }
     }
 
-    div.additional-info {
-      position: absolute;
-      bottom: 0;
-
+    span.icon {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+    }
 
-      user-select: none;
-      background-color: $clr-blue-darkest;
-      border-end-start-radius: $border-radius-regular-rem;
-      border-end-end-radius: $border-radius-regular-rem;
-      color: $clr-white-darkest;
-      font-size: $font-size-xxSmall-rem;
-      padding-inline: $space-inline-xxxSmall-rem;
-      padding-block: $space-block-xxxSmall-rem;
-      width: 100%;
-
-      div.views-and-rate {
-        display: flex;
-        gap: $space-inline-regular-rem;
-
-        div.views,
-        div.rate {
-          display: flex;
-
-          span.icon {
-            display: flex;
-            align-items: center;
-
-            margin-inline-end: 5px;
-          }
-        }
-
-        div.rate {
-          position: relative;
-
-          &::before {
-            position: absolute;
-            right: -$space-inline-xxSmall-rem;
-
-            opacity: 0.4;
-            content: "";
-            background-color: $clr-white-darkest;
-            height: 100%;
-            width: 1px;
-          }
-        }
-      }
-
-      div.last-edit-date {
-        display: flex;
-
-        span.icon {
-          display: flex;
-          align-items: center;
-          margin-inline-end: 5px;
-        }
-      }
+    div.last-edit-date {
+      display: flex;
+      align-items: center;
+      gap: 3px;
     }
   }
 }

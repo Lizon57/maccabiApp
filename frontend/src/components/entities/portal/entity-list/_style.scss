@@ -1,13 +1,14 @@
 div.entity-portal--entity-list__container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  grid-auto-rows: minmax(220px, auto);
+  grid-auto-rows: minmax(10rem, auto);
   justify-content: center;
   gap: $space-inline-xxSmall-rem;
 
-  @include viewport-wide-start-from-exclusive($viewport-regular) {
+  @include viewport-wide-start-from-exclusive($viewport-small) {
     justify-content: unset;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 300px));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 280px));
+    grid-template-rows: unset;
     gap: $space-inline-small-rem;
 
     &:not(.short-list) {

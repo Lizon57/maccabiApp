@@ -11,6 +11,8 @@ import { DisplayBranchesIconByIds } from "../../../common/branch-icon/display-br
 import { ImageSlider } from "../image-slider/image-slider"
 
 
+
+
 export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
     const [isLike, setIsLike] = useState(false)
 
@@ -19,60 +21,122 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
         setIsLike(!isLike)
     }
 
+
     const totalImageCount = item.miniImages?.length || 0
-
-
     const { fillHeart: FillHeartIcon, outlineHeart: OutlineHeartIcon, view: ViewIcon,
         rate: RateIcon, edit: EditIcon } = ICON_TYPE_MAP.entityItemPreview
     const { relatedInfo, entityInfo, itemInfo: { view, rate, history } } = item
 
     return (
-        <div className="dynamic-entity-preview--square-entity-preview__container">
-            <Link to={item._id} className="details-anchor">
-                <div className="title">
-                    {relatedInfo?.branchIds && <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>}
-                    <span className="title">{entityInfo.name.display}</span>
-                </div>
+        <Link to={item._id} className="dynamic-entity-preview--square-entity-preview__container">
+            <div className="image-container">
+                <ImageSlider images={item.miniImages || []} fallbackImgUrl={fallbackImgUrl} />
 
-                <div className="image-container">
-                    <span
-                        className={"like-icon" + (isLike ? ' active' : '')}
-                        title={isLike ? 'הסר מרשימת המועדפים' : 'הוסף לרשימת המועדפים'}
-                        onClick={toggleIsLike}>
-                        {isLike ? <FillHeartIcon /> : <OutlineHeartIcon />}
-                    </span>
+                <span
+                    className={"like-icon" + (isLike ? ' active' : '')}
+                    title={isLike ? 'הסר מרשימת המועדפים' : 'הוסף לרשימת המועדפים'}
+                    onClick={toggleIsLike}>
+                    {isLike ? <FillHeartIcon /> : <OutlineHeartIcon />}
+                </span>
 
-                    {totalImageCount > 1 && <span className="image-counter" title={`${totalImageCount} תמונות תצוגה`}>{totalImageCount}</span>}
+                {totalImageCount > 1 && <span className="image-counter" title={`${totalImageCount} תמונות תצוגה`}>{totalImageCount}</span>}
+            </div>
 
-                    <ImageSlider images={item.miniImages || []} fallbackImgUrl={fallbackImgUrl} />
+            <div className="title">
+                {relatedInfo?.branchIds && <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>}
+                <span className="title">{entityInfo.name.display}</span>
+            </div>
 
-                    <div className="additional-info">
-                        <div className="views-and-rate">
-                            <div className="views" title={`${getFormatedNumber(view)} צפיות`}>
-                                <span className="icon"><ViewIcon size={11} /></span>
-                                <span className="text">{view ? getFormatedNumber(view) : 'לא נצפה'}</span>
-                            </div>
 
-                            <div
-                                className="rate"
-                                title={rate.avg
-                                    ? `${rate.avg} כוכבי דירוג (בידי ${getFormatedNumber(rate.raterCount)} מדרגים)`
-                                    : 'טרם דורג'}>
-                                <span className="icon"><RateIcon size={11} /></span>
-                                <span className="text">{rate.avg ? rate.avg : 'ללא דירוג'}</span>
-                            </div>
-                        </div>
+            <div className="item-additional-info">
+                <div className="views-and-rate">
+                    <div className="views" title={`${getFormatedNumber(view)} צפיות`}>
+                        <span className="icon"><ViewIcon size={11} /></span>
+                        <span className="text">{view ? getFormatedNumber(view) : 'לא נצפה'}</span>
+                    </div>
 
-                        <div className="last-edit-date" title={`נערך לאחרונה לפני שנתיים. סה"כ נערך ${history.totalEditCount} פעמים`}>
-                            <span className="icon"><EditIcon size={11} /></span>
-                            <span className="text">לפני שנתיים</span>
-                        </div>
+                    <div
+                        className="rate"
+                        title={rate.avg
+                            ? `${rate.avg} כוכבי דירוג (בידי ${getFormatedNumber(rate.raterCount)} מדרגים)`
+                            : 'טרם דורג'}>
+                        <span className="icon"><RateIcon size={11} /></span>
+                        <span className="text">{rate.avg ? rate.avg : 'ללא דירוג'}</span>
                     </div>
                 </div>
-            </Link>
-        </div>
+
+                <div className="last-edit-date" title={`נערך לאחרונה לפני שנתיים. סה"כ נערך ${history.totalEditCount} פעמים`}>
+                    <span className="icon"><EditIcon size={11} /></span>
+                    <span className="text">לפני שנתיים</span>
+                </div>
+            </div>
+        </Link >
     )
 }
+
+
+// export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
+//     const [isLike, setIsLike] = useState(false)
+
+//     const toggleIsLike = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+//         ev.preventDefault()
+//         setIsLike(!isLike)
+//     }
+
+//     const totalImageCount = item.miniImages?.length || 0
+
+
+//     const { fillHeart: FillHeartIcon, outlineHeart: OutlineHeartIcon, view: ViewIcon,
+//         rate: RateIcon, edit: EditIcon } = ICON_TYPE_MAP.entityItemPreview
+//     const { relatedInfo, entityInfo, itemInfo: { view, rate, history } } = item
+
+//     return (
+//         <div className="dynamic-entity-preview--square-entity-preview__container">
+//             <Link to={item._id} className="details-anchor">
+//                 <div className="title">
+//                     {relatedInfo?.branchIds && <span className="branch-icon"><DisplayBranchesIconByIds ids={relatedInfo.branchIds} /></span>}
+//                     <span className="title">{entityInfo.name.display}</span>
+//                 </div>
+
+//                 <div className="image-container">
+//                     <span
+//                         className={"like-icon" + (isLike ? ' active' : '')}
+//                         title={isLike ? 'הסר מרשימת המועדפים' : 'הוסף לרשימת המועדפים'}
+//                         onClick={toggleIsLike}>
+//                         {isLike ? <FillHeartIcon /> : <OutlineHeartIcon />}
+//                     </span>
+
+//                     {totalImageCount > 1 && <span className="image-counter" title={`${totalImageCount} תמונות תצוגה`}>{totalImageCount}</span>}
+
+//                     <ImageSlider images={item.miniImages || []} fallbackImgUrl={fallbackImgUrl} />
+
+//                     <div className="additional-info">
+//                         <div className="views-and-rate">
+//                             <div className="views" title={`${getFormatedNumber(view)} צפיות`}>
+//                                 <span className="icon"><ViewIcon size={11} /></span>
+//                                 <span className="text">{view ? getFormatedNumber(view) : 'לא נצפה'}</span>
+//                             </div>
+
+//                             <div
+//                                 className="rate"
+//                                 title={rate.avg
+//                                     ? `${rate.avg} כוכבי דירוג (בידי ${getFormatedNumber(rate.raterCount)} מדרגים)`
+//                                     : 'טרם דורג'}>
+//                                 <span className="icon"><RateIcon size={11} /></span>
+//                                 <span className="text">{rate.avg ? rate.avg : 'ללא דירוג'}</span>
+//                             </div>
+//                         </div>
+
+//                         <div className="last-edit-date" title={`נערך לאחרונה לפני שנתיים. סה"כ נערך ${history.totalEditCount} פעמים`}>
+//                             <span className="icon"><EditIcon size={11} /></span>
+//                             <span className="text">לפני שנתיים</span>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </Link>
+//         </div>
+//     )
+// }
 
 
 type Props = {

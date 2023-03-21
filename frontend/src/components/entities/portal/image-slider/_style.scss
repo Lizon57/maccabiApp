@@ -4,6 +4,22 @@ div.entities-portal-cmp--image-carousel__container {
   overflow: hidden;
   height: 100%;
 
+  @include viewport-wide-start-from-exclusive($viewport-large) {
+    &:hover {
+      button.slick-prev {
+        left: $space-inline-xxxSmall-rem !important;
+      }
+
+      button.slick-next {
+        right: $space-inline-xxxSmall-rem !important;
+      }
+
+      ul.slick-dots {
+        transform: translateY(0) !important;
+      }
+    }
+  }
+
   div.slick-slider {
     height: 100%;
 
@@ -11,23 +27,10 @@ div.entities-portal-cmp--image-carousel__container {
       height: 100%;
     }
 
-    &:hover button.slick-prev,
-    &:hover button.slick-next,
-    &:hover ul.slick-dots {
-      display: block;
-      opacity: 1;
-    }
-
     button.slick-prev,
     button.slick-next {
-      display: none;
-      opacity: 0;
-
-      position: absolute;
       z-index: 2;
 
-      border-radius: 50vw;
-      background-color: $clr-blue-regular;
       transition: $transition-regular;
 
       &::before {
@@ -36,33 +39,43 @@ div.entities-portal-cmp--image-carousel__container {
     }
 
     button.slick-prev {
-      left: $space-inline-xSmall-rem;
+      left: $space-inline-xxxSmall-rem;
     }
 
     button.slick-next {
-      right: $space-inline-xSmall-rem;
+      right: $space-inline-xxxSmall-rem;
+    }
+
+    @include viewport-wide-start-from-exclusive($viewport-large) {
+      button.slick-prev {
+        left: -100%;
+      }
+
+      button.slick-next {
+        right: -100%;
+      }
     }
 
     ul.slick-dots {
-      display: none;
+      bottom: $space-block-xxxSmall-rem;
 
-      bottom: $space-block-xSmall-rem;
+      transition: $transition-regular;
 
-      opacity: 0;
+      @include viewport-wide-start-from-exclusive($viewport-large) {
+        transform: translateY(150%);
+      }
 
       li {
-        margin: 0;
-        margin-inline-start: $space-inline-xxxSmall-rem;
-        width: 0.5rem;
-        height: 0.5rem;
+        position: static;
 
-        button:hover::before {
-          color: $clr-blue-darkest;
-          transition: $transition-regular;
-        }
+        margin-inline-start: $space-inline-xSmall-rem;
+        width: auto;
+        height: auto;
 
-        &.slick-active button::before {
-          color: $clr-blue-regular;
+        &.slick-active span {
+          background-color: $clr-white-regular;
+          width: 11px;
+          height: 11px;
         }
       }
     }
@@ -75,5 +88,20 @@ div.entities-portal-cmp--image-carousel__container {
       height: 100%;
       object-fit: cover;
     }
+  }
+}
+
+span.entities-portal-cmp--image-carousel-dots__container {
+  display: inline-block;
+
+  border-radius: 50vw;
+  border: 1px solid $clr-blue-regular;
+  background-color: $clr-white-darkest;
+  width: 8px;
+  height: 8px;
+  transition: $transition-regular;
+
+  &:hover {
+    background-color: $clr-white-darker;
   }
 }
