@@ -7,7 +7,7 @@ export const FilterbyBuilder = ({ filters, debouncedSetIsLoading }: Props) => {
     filters = filters.filter(filter => filter.type !== 'primary_text')
 
     return (
-        <div className={'entity-portal--filterby-builder__container' + (filters.length <= 3 ? ' short-list' : '')}>
+        <div className={'entity-portal--filterby-builder__container' + (filters.length < 4 ? ' short-list' : '')}>
             {filters.map(filter => <DynamicFilterby
                 key={filter.id}
                 filter={filter}
