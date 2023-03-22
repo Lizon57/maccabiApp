@@ -7,6 +7,7 @@ import { User } from '../../models/user/user'
 import { GoogleAuthResponse } from "../../models/user/google-auth-response"
 import { BRANCHES } from "../../data/branches"
 
+const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 21
 
 const login = async (req: any, res: any) => {
     const { email, password } = req.body
@@ -15,7 +16,7 @@ const login = async (req: any, res: any) => {
         const user = await authService.login(email, password)
         const loginToken = authService.getLoginToken(user)
         loggerService.info('User login: ', user.credential.email)
-        res.cookie('loginToken', loginToken, { secure: true, maxAge: 1000 * 60 * 24 * 21 })
+        res.cookie('loginToken', loginToken, { secure: true, maxAge: COOKIE_MAX_AGE })
         res.json(user)
     } catch (err) {
         loggerService.error('Failed to Login ' + err)
@@ -81,7 +82,7 @@ const googleSignupLogin = async (req: any, res: any) => {
 
         const loginToken = authService.getLoginToken(existUser)
         loggerService.info('User login with google: ', existUser.credential.email)
-        res.cookie('loginToken', loginToken, { secure: true, maxAge: 1000 * 60 * 24 * 7 })
+        res.cookie('loginToken', loginToken, { secure: true, maxAge: COOKIE_MAX_AGE })
         res.json(existUser)
     } catch (err) {
         loggerService.error('Failed to signup / login with google ' + err)
