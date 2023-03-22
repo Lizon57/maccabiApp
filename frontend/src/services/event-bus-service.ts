@@ -26,3 +26,7 @@ type Listener = (data: unknown) => void
 export const activeClearFilter = (param: string) => {
     eventBus.emit('clear-filter', param)
 }
+
+export const closeDropdown = () =>{
+    eventBus.emit('closeDropdown')
+}

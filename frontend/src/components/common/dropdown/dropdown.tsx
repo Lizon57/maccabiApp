@@ -1,16 +1,27 @@
-import { useState, useRef } from "react"
-
+import { useState, useRef, useEffect } from "react"
 import { IconType } from "react-icons"
+
 import { useOnClickOutside } from "../../../hooks/use-on-click-outside"
+
+import { eventBus } from "../../../services/event-bus-service"
 
 
 export const Dropdown = ({ controllerText, controllerIcon: Icon, title, children }: Props) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen)
 
-
     const elDropdown = useRef<HTMLDivElement>(null)
     useOnClickOutside(elDropdown, () => setIsDropdownOpen(false))
+
+    useEffect(() => {
+        const unsubscribeCloseDropdown = eventBus.on('closeDropdown', () => {
+            setIsDropdownOpen(false)
+        })
+
+        return () => {
+            unsubscribeCloseDropdown()
+        }
+    }, [])
 
 
     return (

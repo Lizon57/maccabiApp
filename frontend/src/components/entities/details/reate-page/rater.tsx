@@ -7,6 +7,7 @@ import { updateDisplayEntityItem } from '../../../../store/action/display-entity
 
 import { entityItemService } from '../../../../services/entities/entity-item-service'
 import { getFormatedNumber } from "../../../../services/util/get-formated-number"
+import { eventBus } from '../../../../services/event-bus-service'
 
 import { EntityItem } from '../../../../models/types/entities/item/entity-item'
 
@@ -20,6 +21,8 @@ export const Rater = () => {
 
 
     const onRatePage = async (idx: number) => {
+        eventBus.emit('closeDropdown')
+
         const rate = 5 - idx
         try {
             const newRateData = await entityItemService.setEntityItemRate(entity.name, item._id, rate)
@@ -29,6 +32,7 @@ export const Rater = () => {
             insertAppMessage({ text: `דירוג הדף ${item?.entityInfo.name.display} בוצע בהצלחה`, title: 'דירוג הצליח', type: 'success' })
         } catch (err) {
             insertAppMessage({ text: `דירוג הדף ${item?.entityInfo.name.display} נכשל`, title: 'דירוג נכשל', type: 'fail' })
+        } finally {
         }
     }
 
