@@ -66,8 +66,8 @@ const update = async (crowdOrganization: CrowdOrganization) => {
             itemInfo: {
                 ...crowdOrganization.itemInfo,
                 history: {
-                    totalEditCount: existCrowdOrganization.itemInfo.history.totalEditCount++,
-                    lastEditDate: Date.now()
+                    totalEditCount: ++existCrowdOrganization.itemInfo.history.totalEditCount,
+                    lastEditDate: new Date()
                 }
             },
 

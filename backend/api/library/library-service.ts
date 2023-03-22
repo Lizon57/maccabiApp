@@ -75,8 +75,8 @@ const update = async (libraryItem: Library) => {
             itemInfo: {
                 ...libraryItem.itemInfo,
                 history: {
-                    totalEditCount: existLibraryItem.itemInfo.history.totalEditCount++,
-                    lastEditDate: Date.now()
+                    totalEditCount: ++existLibraryItem.itemInfo.history.totalEditCount,
+                    lastEditDate: new Date()
                 }
             },
 

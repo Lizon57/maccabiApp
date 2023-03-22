@@ -46,8 +46,8 @@ const update = async (image: Image) => {
 
             itemInfo: {
                 history: {
-                    totalEditCount: existImage.itemInfo.history.totalEditCount++,
-                    lastEditDate: Date.now()
+                    totalEditCount: ++existImage.itemInfo.history.totalEditCount,
+                    lastEditDate: new Date()
                 }
             },
         }

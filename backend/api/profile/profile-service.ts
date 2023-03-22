@@ -100,6 +100,8 @@ const update = async (profile: Profile) => {
 const add = async (profile: Profile) => {
     if (!profile.entityInfo.name) throw new Error('Missing required data')
 
+    const existProfile = await getById(profile._id.toString()) as Profile
+
     try {
         const profileToAdd = {
             relatedInfo: {
@@ -150,7 +152,8 @@ const add = async (profile: Profile) => {
                     }
                 },
                 history: {
-                    totalEditCount: 0,
+                    totalEditCount: ++existProfile.itemInfo.history.totalEditCount,
+                    lastEditDate: new Date()
                 }
             },
 

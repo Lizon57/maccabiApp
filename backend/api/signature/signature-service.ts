@@ -67,8 +67,8 @@ const update = async (signature: Signature) => {
             itemInfo: {
                 ...signature.itemInfo,
                 history: {
-                    totalEditCount: existSignature.itemInfo.history.totalEditCount++,
-                    lastEditDate: Date.now()
+                    totalEditCount: ++existSignature.itemInfo.history.totalEditCount,
+                    lastEditDate: new Date()
                 }
             },
 
