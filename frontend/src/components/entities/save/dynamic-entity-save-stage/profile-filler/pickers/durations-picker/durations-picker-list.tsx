@@ -32,11 +32,12 @@ export const DurationsPickerList = ({ pickerInfo }: Props) => {
 
 
     const onAddDuration = () => {
-        setDurations(prevDurations => [...prevDurations, DURATION_MOCK])
+        const newDuration = structuredClone(DURATION_MOCK)
+        setDurations(prevDurations => [...prevDurations, newDuration])
     }
 
 
-    const onPickOption = (value: string, idx: number, isDurationStartDate: boolean, type: string) => {
+    const onPickDuration = (value: string, idx: number, isDurationStartDate: boolean, type: string) => {
         const key = (isDurationStartDate ? 'start.' : 'end.') + type
         const durationsCopy = structuredClone(durations)
         const duration = durationsCopy[idx]
@@ -62,6 +63,16 @@ export const DurationsPickerList = ({ pickerInfo }: Props) => {
     }
 
 
+    const onRemoveDuration = (idx: number) => {
+        const newDurations = durations.filter((_, index) => index !== idx)
+        const editedItem = structuredClone(item)
+
+        recursiveValueSetterByKey(newDurations, editedItem, pickerInfo.key)
+        setDurations(newDurations)
+        setSaveEntityItem(editedItem)
+    }
+
+
     return (
         <div className="entity-save-cmp--profile-filler-durations-picker-list__container">
             <span className="title">{pickerInfo.title}</span>
@@ -70,7 +81,8 @@ export const DurationsPickerList = ({ pickerInfo }: Props) => {
                     key={uuid()}
                     idx={idx}
                     duration={duration}
-                    onPickOption={onPickOption}
+                    onPickDuration={onPickDuration}
+                    onRemoveDuration={onRemoveDuration}
                 />
                 )}
                 <DurationAdd onClick={onAddDuration} />

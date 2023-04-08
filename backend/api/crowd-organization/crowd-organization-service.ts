@@ -2,8 +2,10 @@ import { ObjectId } from "mongodb"
 import { CrowdOrganizationFilterby } from "../../models/entities/items/crowd-organization/crowd-organization-filterby"
 import { CrowdOrganization } from "../../models/entities/items/crowd-organization/crowd-organization"
 import { Sortby } from "../../models/entities/items/misc/sortby"
+import { ActivityDuration } from "../../models/common/activity-duration"
 import { databaseService } from "../../services/database-service"
 import { loggerService } from "../../services/logger-service"
+import {sortActivityDurations} from "../../services/util/sort-activity-durations"
 
 
 const DB_NAME = 'crowdOrganization'
@@ -39,6 +41,11 @@ const update = async (crowdOrganization: CrowdOrganization) => {
     try {
         const existCrowdOrganization = await getById(crowdOrganization._id.toString()) as CrowdOrganization
 
+        let activityDurations = [] as ActivityDuration[]
+        if (crowdOrganization.entityInfo.item.activityDurations.length) {
+            activityDurations = sortActivityDurations(crowdOrganization.entityInfo.item.activityDurations)
+        }
+
         const crowdOrganizationToUpdate = {
             _id: new ObjectId(crowdOrganization._id),
 
@@ -58,7 +65,7 @@ const update = async (crowdOrganization: CrowdOrganization) => {
                 },
                 item: {
                     isActive: crowdOrganization.entityInfo.item.isActive,
-                    activityDurations: crowdOrganization.entityInfo.item.activityDurations
+                    activityDurations
                 },
                 miniCategories: crowdOrganization.entityInfo.miniCategories || []
             },
@@ -88,6 +95,11 @@ const update = async (crowdOrganization: CrowdOrganization) => {
 const add = async (crowdOrganization: CrowdOrganization) => {
     if (!crowdOrganization.entityInfo.name.display) throw new Error('Missing required data')
 
+    let activityDurations = [] as ActivityDuration[]
+    if (crowdOrganization.entityInfo.item.activityDurations.length) {
+        activityDurations = sortActivityDurations(crowdOrganization.entityInfo.item.activityDurations)
+    }
+
     try {
         const crowdOragnizationToAdd = {
             relatedInfo: {
@@ -106,7 +118,7 @@ const add = async (crowdOrganization: CrowdOrganization) => {
                 },
                 item: {
                     isActive: crowdOrganization.entityInfo.item.isActive,
-                    activityDurations: crowdOrganization.entityInfo.item.activityDurations
+                    activityDurations
                 },
                 miniCategories: crowdOrganization.entityInfo.miniCategories || []
             },
@@ -345,6 +357,10 @@ const _buildCriteria = (filterBy: CrowdOrganizationFilterby = {}) => {
 
     return criteria
 }
+
+
+
+
 
 export const crowdOrganizationService = {
     query,

@@ -28,10 +28,9 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
                 const dates = value.map((date: any) => {
                     let formatedText = ''
                     if (date.start?.year) formatedText += `החל מ-${getFormatedDate(date.start, false, false)}`
-                    if (date.end?.year) {
+                    if (date.end?.year && date.start?.year) formatedText += ' ו'
                         if (date.start?.year) formatedText += ' ו'
                         formatedText += `עד ל-${getFormatedDate(date.end, false, false)}`
-                    }
                     return formatedText
                 })
                 return formatter.format(dates)

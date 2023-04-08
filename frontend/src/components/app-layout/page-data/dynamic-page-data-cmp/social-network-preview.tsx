@@ -9,7 +9,7 @@ export const SocialNetworkPreview = () => {
                 screenName="MaccabiPedia"
                 options={{ height: 400 }}
                 noScrollbar
-                tweetLimit={1}
+                tweetLimit={0}
                 noHeader
             />
         </aside>

@@ -23,10 +23,25 @@ div.entity-save-cmp--profile-filler-duration-add__container {
 }
 
 div.entity-save-cmp--profile-filler-duration-picker-preview__container {
+  display: flex;
+  align-items: center;
+  gap: $space-inline-xSmall-rem;
+
   border-block-end: 1px solid $clr-white-darkest;
   margin-block-end: $space-block-xxSmall-rem;
 
-  div {
+  div.duration-picker div {
     margin-block-end: $space-block-xxxSmall-rem;
+  }
+
+  span.remove-icon {
+    display: flex;
+    cursor: pointer;
+    color: $clr-white-darkest;
+    transition: $transition-regular;
+
+    &:hover {
+      color: $clr-black-lightest;
+    }
   }
 }

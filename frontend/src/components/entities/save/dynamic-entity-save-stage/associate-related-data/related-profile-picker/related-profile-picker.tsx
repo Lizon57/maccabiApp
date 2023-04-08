@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
+import { useDebouncedCallback } from "use-debounce"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
 
 import AsyncSelect from "react-select/async"
-import { SingleValue } from "react-select"
+import { GroupBase, OptionsOrGroups, SingleValue } from "react-select"
 
 import { entityItemService } from "../../../../../../services/entities/entity-item-service"
 import { MiniProfileQuery } from "../../../../../../models/interfaces/entities/mini-profile-query"
@@ -43,6 +44,8 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
 
 
     const getOptions = async (pharse: string) => {
+        if (!pharse) return []
+
         try {
             const items = await entityItemService.getMiniProfilesByPharse(pharse) as MiniProfileQuery[]
             const options = items.map(profile => ({
@@ -56,14 +59,13 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
         }
     }
 
-    const loadOptions = (pharse = '') => {
-        return new Promise<ProfileOption[]>((resolve) => {
-            setTimeout(async () => {
-                const options = await getOptions(pharse)
-                if (options) resolve(options)
-            }, 0)
+    const loadOptions = (pharse = '', callback: (options: OptionsOrGroups<ProfileOption, GroupBase<ProfileOption>>) => void) => {
+        return new Promise<ProfileOption[]>(async _ => {
+            const options = await getOptions(pharse)
+            if (options) callback(options)
         })
     }
+    const debouncedLoadOptions = useDebouncedCallback(loadOptions, 300)
 
 
     const setProfile = (option: SingleValue<ProfileOption>) => {
@@ -108,7 +110,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
 
                 <div className="select-wrapper">
                     <AsyncSelect
-                        loadOptions={loadOptions}
+                        loadOptions={debouncedLoadOptions}
                         className="react-select-cmp-container"
                         styles={customStyles}
                         placeholder="הקלד שם"

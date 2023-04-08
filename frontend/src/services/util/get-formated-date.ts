@@ -6,7 +6,6 @@ export const getFormatedDate = (
     isLinkAble: boolean = false) => {
 
     const { day, month, year } = date
-
     let value = ''
 
     if (isLinkAble) return value
