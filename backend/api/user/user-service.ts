@@ -63,6 +63,7 @@ const add = async (user: User | UserWithoutId) => {
         const userToAdd = {
             credential: {
                 email: user.credential.email,
+                password: user.credential.password
             },
 
             client: {

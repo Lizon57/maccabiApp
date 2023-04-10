@@ -3,10 +3,12 @@ import jwt_decode from 'jwt-decode'
 import { authService } from "./auth-service"
 import { userService } from "../user/user-service"
 import { loggerService } from "../../services/logger-service"
+import { makeId } from "../../services/util/make-id"
 import { User } from '../../models/user/user'
 import { GoogleAuthResponse } from "../../models/user/google-auth-response"
 import { BRANCHES } from "../../data/branches"
 
+// const COOKIE_MAX_AGE = 1000
 const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 21
 
 const login = async (req: any, res: any) => {
@@ -14,8 +16,11 @@ const login = async (req: any, res: any) => {
 
     try {
         const user = await authService.login(email, password)
-        const loginToken = authService.getLoginToken(user)
+        const loginToken = authService.createLoginToken(user)
         loggerService.info('User login: ', user.credential.email)
+
+        const refreshToken = makeId(35)
+        res.cookie('refreshToken', refreshToken, { sameSite: 'None', secure: true })
         res.cookie('loginToken', loginToken, { secure: true, maxAge: COOKIE_MAX_AGE })
         res.json(user)
     } catch (err) {
@@ -31,10 +36,12 @@ const signup = async (req: any, res: any) => {
         await authService.signup(user)
         loggerService.debug(`auth.route - new account created: ${user.credential.email}`)
         const loggedUser = await authService.login(user.credential.email, user.credential.password)
-        loggerService.info('User signup:', loggedUser)
+        loggerService.info('User login:', loggedUser)
         delete loggedUser.credential.password
-        const loginToken = authService.getLoginToken(loggedUser)
-        res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
+        const loginToken = authService.createLoginToken(loggedUser)
+        const refreshToken = makeId(35)
+        res.cookie('refreshToken', refreshToken, { sameSite: 'None', secure: true })
+        res.cookie('loginToken', loginToken, { secure: true, maxAge: COOKIE_MAX_AGE })
         res.json(loggedUser)
     } catch (err) {
         loggerService.error('Failed to signup ' + err)
@@ -46,6 +53,7 @@ const signup = async (req: any, res: any) => {
 const logout = (req: any, res: any) => {
     try {
         res.clearCookie('loginToken')
+        res.clearCookie('refreshToken')
         res.send({ msg: 'Logged out successfully' })
     } catch (err) {
         loggerService.error('Failed to logout ' + err)
@@ -62,17 +70,17 @@ const googleSignupLogin = async (req: any, res: any) => {
             'postmessage',
         )
 
-        const { tokens } = await oAuth2Client.getToken(req.body.code)
-        const decoded: GoogleAuthResponse = jwt_decode(tokens.id_token)
-        let existUser = await userService.getByEmail(decoded.email) as User
+        const { tokens: { id_token: idToken, refresh_token: refreshToken } } = await oAuth2Client.getToken(req.body.code)
+        const decodedIdToken: GoogleAuthResponse = jwt_decode(idToken)
+        let existUser = await userService.getByEmail(decodedIdToken.email) as User
 
         if (existUser?._id) delete existUser.credential.password
         else {
             const newUser = userService.getEmptyUser() as User
-            newUser.credential.email = decoded.email
-            newUser.client.name.first = decoded.given_name || ''
-            newUser.client.name.last = decoded.family_name || ''
-            newUser.client.name.display = `${decoded.given_name || ''} ${decoded.family_name || ''}`
+            newUser.credential.email = decodedIdToken.email
+            newUser.client.name.first = decodedIdToken.given_name || ''
+            newUser.client.name.last = decodedIdToken.family_name || ''
+            newUser.client.name.display = `${decodedIdToken.given_name || ''} ${decodedIdToken.family_name || ''}`
             newUser.browseableBranchesIds = BRANCHES.map(branch => branch.id)
             newUser.isGoogleUser = true
             const addedUser = await authService.signup(newUser) as User
@@ -80,8 +88,9 @@ const googleSignupLogin = async (req: any, res: any) => {
             loggerService.info('User signup with google: ', newUser.credential.email)
         }
 
-        const loginToken = authService.getLoginToken(existUser)
+        const loginToken = authService.createLoginToken(existUser)
         loggerService.info('User login with google: ', existUser.credential.email)
+        res.cookie('refreshToken', refreshToken, { sameSite: 'None', secure: true })
         res.cookie('loginToken', loginToken, { secure: true, maxAge: COOKIE_MAX_AGE })
         res.json(existUser)
     } catch (err) {

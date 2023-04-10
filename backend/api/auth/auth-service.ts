@@ -41,13 +41,13 @@ async function signup(user: User) {
 }
 
 
-const getLoginToken = (user: User) => {
+const createLoginToken = (user: User) => {
     const userInfo = { _id: user._id, email: user.credential.email, permisionGroup: (user.permisionGroup) }
     return cryptr.encrypt(JSON.stringify(userInfo))
 }
 
 
-const validateToken = (loginToken: any) => {
+const validateToken = (loginToken: string) => {
     try {
         const json = cryptr.decrypt(loginToken)
         return JSON.parse(json)
@@ -60,6 +60,6 @@ const validateToken = (loginToken: any) => {
 export const authService = {
     signup,
     login,
-    getLoginToken,
+    createLoginToken,
     validateToken
 }
