@@ -5,6 +5,8 @@ export const getFormatedDate = (
     isZeroIndex: boolean = true,
     isLinkAble: boolean = false) => {
 
+    if (!date) return
+
     const { day, month, year } = date
     let value = ''
 

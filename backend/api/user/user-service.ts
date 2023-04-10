@@ -90,7 +90,7 @@ const add = async (user: User | UserWithoutId) => {
 const getByEmail = async (email: string) => {
     try {
         const collection = await databaseService.getCollection(DB_NAME)
-        const user = await collection.findOne({ 'credential.email': email })
+        const user = await collection.findOne({ 'credential.email': { $eq: email } })
         if (!user) return
 
         return user

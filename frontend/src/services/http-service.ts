@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios'
+import { sanitize } from 'dompurify'
 import { STORAGE_KEY_LOGGEDIN_USER } from './user/user-service'
 
 
@@ -8,6 +9,9 @@ const BASE_URL = process.env.NODE_ENV === 'production'
 
 
 async function ajax(endpoint: string, method = 'GET', data: null | any = null) {
+    endpoint = sanitize(endpoint)
+    method = sanitize(method)
+    
     try {
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,

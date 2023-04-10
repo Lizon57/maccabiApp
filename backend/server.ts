@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import path from 'path'
 import cookieParser from 'cookie-parser'
+import rateLimit from 'express-rate-limit'
 import { loggerService } from "./services/logger-service"
 import { setupAsyncLocalStorage } from "./middlewares/setupAls"
 import { authRouter } from "./api/auth/auth-routes"
@@ -38,6 +39,11 @@ if (process.env.NODE_ENV === 'production') {
 dotenv.config()
 
 app.all('*', setupAsyncLocalStorage)
+
+
+const limiter = rateLimit({ windowMs: 1 * 60 * 1000, max: 30 })
+app.use(limiter)
+
 
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)

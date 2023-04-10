@@ -1,3 +1,4 @@
+import escape from 'escape-html'
 import { Sortby } from "../../models/entities/items/misc/sortby"
 import { loggerService } from "../../services/logger-service"
 import { signatureService } from "./signature-service"
@@ -69,7 +70,7 @@ const removeById = async (req: any, res: any) => {
 
     try {
         const removedId = await signatureService.removeById(id)
-        res.send(removedId)
+        res.send(escape(removedId))
     } catch (err) {
         loggerService.error(`Failed to remove signature (${id})`, err)
         res.status(500).send({ err: 'Failed to remove signature' })

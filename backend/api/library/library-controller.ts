@@ -1,3 +1,4 @@
+import escape from 'escape-html'
 import { Sortby } from "../../models/entities/items/misc/sortby"
 import { loggerService } from "../../services/logger-service"
 import { libraryService } from "./library-service"
@@ -84,7 +85,7 @@ const removeById = async (req: any, res: any) => {
 
     try {
         const removedId = await libraryService.removeById(id)
-        res.send(removedId)
+        res.send(escape(removedId))
     } catch (err) {
         loggerService.error(`Failed to remove library item (${id})`, err)
         res.status(500).send({ err: 'Failed to remove library item' })
