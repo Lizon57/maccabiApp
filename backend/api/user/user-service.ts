@@ -58,7 +58,7 @@ const update = async (user: User) => {
 const add = async (user: User | UserWithoutId) => {
     try {
         const existUser = await getByEmail(user.credential.email)
-        if (existUser) throw new Error('Email already taken')
+        if (existUser) throw 'Email already taken'
 
         const userToAdd = {
             credential: {

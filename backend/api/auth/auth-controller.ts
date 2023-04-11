@@ -15,7 +15,7 @@ const login = async (req: any, res: any) => {
     const { email, password } = req.body
 
     try {
-        const user = await authService.login(email, password)
+        const user = await authService.login(email, password) as User
         const loginToken = authService.createLoginToken(user)
         loggerService.info('User login: ', user.credential.email)
 
@@ -25,7 +25,7 @@ const login = async (req: any, res: any) => {
         res.json(user)
     } catch (err) {
         loggerService.error('Failed to Login ' + err)
-        res.status(401).send({ err: 'Failed to Login' })
+        res.status(401).send({ err })
     }
 }
 
@@ -33,9 +33,10 @@ const login = async (req: any, res: any) => {
 const signup = async (req: any, res: any) => {
     try {
         const user = req.body
-        await authService.signup(user)
+        const copyUser = structuredClone(user)
+        await authService.signup(copyUser)
         loggerService.debug(`auth.route - new account created: ${user.credential.email}`)
-        const loggedUser = await authService.login(user.credential.email, user.credential.password)
+        const loggedUser = await authService.login(user.credential.email, user.credential.password) as User
         loggerService.info('User login:', loggedUser)
         delete loggedUser.credential.password
         const loginToken = authService.createLoginToken(loggedUser)
@@ -45,7 +46,7 @@ const signup = async (req: any, res: any) => {
         res.json(loggedUser)
     } catch (err) {
         loggerService.error('Failed to signup ' + err)
-        res.status(500).send({ err: 'Failed to signup' })
+        res.status(500).send({ err })
     }
 }
 

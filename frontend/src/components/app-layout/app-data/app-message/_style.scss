@@ -39,6 +39,10 @@ article.app-data--message__preview-container {
   animation: make-not-visibility 5s linear;
   animation-fill-mode: forwards;
 
+  &:hover {
+    animation-play-state: paused;
+  }
+
   @keyframes make-not-visibility {
     0% {
       opacity: 1;

@@ -17,6 +17,8 @@ import { imageRouter } from "./api/image/image-routes"
 import { entutyItemInfoUpdateRouter } from "./api/entity-item-info-update/entity-item-info-update-routes"
 
 
+dotenv.config()
+
 const app = express()
 const http = httpBase.createServer(app)
 
@@ -35,8 +37,6 @@ if (process.env.NODE_ENV === 'production') {
     app.use(cors(corsOptions))
 }
 
-
-dotenv.config()
 
 app.all('*', setupAsyncLocalStorage)
 

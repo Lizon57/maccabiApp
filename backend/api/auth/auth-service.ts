@@ -1,11 +1,13 @@
+import dotenv from 'dotenv'
+import Cryptr from "cryptr"
+import bcrypt from "bcrypt"
 import { userService } from "../user/user-service"
 import { loggerService } from "../../services/logger-service"
-import bcrypt from "bcrypt"
 import { User } from "../../models/user/user"
-import Cryptr from "cryptr"
-const cryptr = new Cryptr(process.env.mysterious || 'maccabipedia')
 
+dotenv.config()
 
+const cryptr = new Cryptr(process.env.BCRYPT_MYSTERIOUS)
 const saltRounds = 10
 
 
@@ -17,7 +19,7 @@ const login = async (email: string, password: string) => {
 
     if (!user.credential.password) return Promise.reject('Google user')
 
-    const match = bcrypt.compare(password, user.credential.password)
+    const match = await bcrypt.compare(password, user.credential.password)
     if (!match) return Promise.reject('Invalid password')
 
     delete user.credential.password
