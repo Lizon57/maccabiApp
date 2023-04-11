@@ -1,10 +1,11 @@
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useRef } from "react"
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
 import { useDelayUnmount } from "../../../../hooks/use-delay-unmount"
 import { useOnWindowResize } from "../../../../hooks/use-on-window-resize"
 
 import { AiOutlineShareAlt } from "react-icons/ai"
 import { FaWhatsapp, FaFacebook, FaTwitter, FaTelegram } from "react-icons/fa"
+import { useOnClickOutside } from "../../../../hooks/use-on-click-outside"
 
 const PAGE_LINK = window.location.href
 const PAGE_TITLE = document.title
@@ -14,6 +15,9 @@ const HASHTAG = '#מכביפדיה'
 export const Share = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [shouldOpenToRight, setShouldOpenToRight] = useState(true)
+    const elShareContainer = useRef<HTMLDivElement>(null)
+
+    useOnClickOutside(elShareContainer, () => setIsOpen(false))
     const shouldRenderList = useDelayUnmount(isOpen, 300)
 
     const onWindowResize = useCallback(() => {
@@ -31,7 +35,7 @@ export const Share = () => {
 
 
     return (
-        <div className="app-data--share__container">
+        <div className="app-data--share__container" ref={elShareContainer}>
             {shouldRenderList && <div
                 className={'share-list-container' + (isOpen ? ' open' : '') + (shouldOpenToRight ? ' right-sided' : ' left-sided')}
             >

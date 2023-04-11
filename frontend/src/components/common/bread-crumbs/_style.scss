@@ -1,6 +1,6 @@
 div.common-cmp--bread-crumbs__container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: $space-inline-xxxSmall-rem;
 
   user-select: none;

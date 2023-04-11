@@ -8,6 +8,12 @@ section.entities-pages--entity-display__container {
   div.head-info-container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    gap: $space-inline-regular-rem;
+
+    div.entity-details--rate-page__container {
+      min-width: max-content;
+    }
   }
 
   div.primary-content,

@@ -16,11 +16,6 @@ h2.common-cmp--main-title {
     grid-template-columns: 1fr max-content;
   }
 
-  @include viewport-wide-start-from($viewport-regular) {
-    display: grid;
-    grid-template-columns: 1fr max-content;
-  }
-
   &.sticky {
     position: sticky;
     top: $up-to-laptop-wide-header-total-height;
@@ -28,9 +23,6 @@ h2.common-cmp--main-title {
   }
 
   div.title-container {
-    display: flex;
-    align-items: center;
-
     color: $clr-blue-darker;
 
     span.icon {
@@ -40,15 +32,9 @@ h2.common-cmp--main-title {
     }
 
     span.text {
-      display: flex;
-      align-items: center;
-
       font-size: $font-size-xLarge-rem;
       font-family: $typography-emphasis;
       font-weight: 500;
-      height: 100%;
-      word-break: break-all;
-      word-wrap: break-word;
     }
   }
 }
