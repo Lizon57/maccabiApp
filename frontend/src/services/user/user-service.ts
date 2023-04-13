@@ -1,9 +1,11 @@
 import { httpService } from "../http-service"
+
 import { errorHandler } from "../util/error-handler"
+import { getCookieValueByName } from "../util/get-cookie-value-by-name"
 import { makeId } from "../util/make-id"
 
-export const STORAGE_KEY_LOGGEDIN_USER = 'loggedUser'
 
+export const STORAGE_KEY_LOGGEDIN_USER = 'loggedUser'
 
 const signup = async (credential: Credential) => {
     try {
@@ -38,8 +40,12 @@ const logout = async () => {
 
 
 const getLoggedinUser = () => {
+    const loginToken = getCookieValueByName('loginToken')
+    if (!loginToken) return
+
     const loggedUser = localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
     if (!loggedUser) return
+
     return JSON.parse(loggedUser)
 }
 

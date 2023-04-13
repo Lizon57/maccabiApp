@@ -185,6 +185,13 @@ export const libraryEntity: Entity = {
     saveItemPage: {
         stages: [
             {
+                title: 'פרטי עמוד',
+                icon: BsPencil,
+                type: 'page-details',
+                isRequire: true,
+            },
+
+            {
                 title: 'פרטי הספר',
                 icon: RiBookOpenFill,
                 type: 'profile-filler',
@@ -248,13 +255,6 @@ export const libraryEntity: Entity = {
                         }
                     ]
                 }
-            },
-
-            {
-                title: 'פרטי עמוד',
-                icon: BsPencil,
-                type: 'page-details',
-                isRequire: true,
             },
 
             {

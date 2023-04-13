@@ -12,6 +12,7 @@ export const setupAsyncLocalStorage = (req: any, res: any, next: any) => {
     if (loggedinUser) {
       const alsStore = asyncLocalStorage.getStore() as any
       alsStore.loggedinUser = loggedinUser
+      alsStore.refreshToken = req.cookies.refreshToken
     }
 
     next()

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
-import { login, logout } from '../../store/action/user-action'
+import { login } from '../../store/action/user-action'
 import { RootState } from '../../store/store'
 
 import { userService } from '../../services/user/user-service'
@@ -13,6 +13,5 @@ export const useSetLoggedUser = () => {
     useEffect(() => {
         const loggedUser = userService.getLoggedinUser()
         if (user._id && loggedUser) login(loggedUser)
-        else logout()
     }, [])  // eslint-disable-line react-hooks/exhaustive-deps
 }
