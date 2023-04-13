@@ -81,6 +81,7 @@ const EntityRemove = ({ entity }: Props) => {
 
 
     const { display: displayName } = item.entityInfo.name
+    const { entityInfo: { name: { display: entityDisplayName } } } = entity
     const Icon = ICON_TYPE_MAP.remove.trash
 
     return (
@@ -89,7 +90,7 @@ const EntityRemove = ({ entity }: Props) => {
                 <MainTitle text="מחיקת ערך" Icon={Icon} />
 
                 <p className="action-text">
-                    האם אתה בטוח שברצונך למחוק את הערך {displayName}?
+                    האם אתה בטוח שברצונך למחוק את הערך {displayName} ({entityDisplayName})?
                 </p>
 
                 <div className="buttons-container">
@@ -99,7 +100,7 @@ const EntityRemove = ({ entity }: Props) => {
             </main>
 
             <SeoImplement
-                appTitle={`${item.entityInfo.name.display} (${entity.entityInfo.name.display}) - הסרה`}
+                appTitle={`${displayName} (${entityDisplayName}) - הסרה`}
                 noIndex
             />
         </>
