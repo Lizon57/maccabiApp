@@ -1,6 +1,6 @@
 import { getMonthName } from "./get-month-name"
 
-export const getFormatedDate = (
+export const getFormattedDate = (
     date: { day?: number, month?: number, year?: number, timestamp?: number },
     isZeroIndex: boolean = true,
     isLinkAble: boolean = false) => {

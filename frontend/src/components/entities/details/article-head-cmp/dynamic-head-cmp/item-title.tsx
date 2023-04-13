@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../store/store"
 
-import { getFormatedList } from "../../../../../services/util/get-formated-list"
+import { getFormattedList } from "../../../../../services/util/get-formatted-list"
 
 import { BasicEntityDetailsStructureCmp } from "../../../../../models/interfaces/entities/entity-details-structure-cmp/basic-entity-details-structure-cmp"
 
@@ -16,7 +16,7 @@ export const ItemTitle = ({ cmp }: Props) => {
     title = title?.replace('RELATED_PROFILE_NAME', (item.relatedInfo?.miniProfile?.displayName || ''))
     title = title?.replace('PAGE_NAME', (item.entityInfo.name.display || ''))
     if (!item.entityInfo.item?.writers?.length) title = title?.replace('מאת BY_WRITERS', '')
-    title = title?.replace('BY_WRITERS', (getFormatedList(item.entityInfo.item?.writers || [])))
+    title = title?.replace('BY_WRITERS', (getFormattedList(item.entityInfo.item?.writers || [])))
 
 
     return (

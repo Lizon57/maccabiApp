@@ -2,38 +2,30 @@ import { SimpleListEntityDetailsCmpInfo } from "../../../../../../models/types/e
 import { EntityItem } from "../../../../../../types/entity/entities/entity-item"
 
 import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
-import { getFormatedList } from "../../../../../../services/util/get-formated-list"
+import { getFormattedList } from "../../../../../../services/util/get-formatted-list"
 import { shouldDisplayValue } from "../../../../../../services/util/should-display-value"
-import { getFormatedDate } from "../../../../../../services/util/get-formated-date"
+import { getFormattedDate } from "../../../../../../services/util/get-formatted-date"
+import { getFormattedDurations } from "../../../../../../services/util/get-formatted-durations"
 
 
 export const SimpleInfoListPreview = ({ info, item }: Props) => {
     let value = getValueByDynamicKey(info.value, item)
     if (!shouldDisplayValue(value) || !value) return <></>
 
-    const getFormatedText = () => {
+    const getFormattedText = () => {
         switch (info.type) {
             case 'number':
                 return value
 
             case 'list':
-                if (value.length) return getFormatedList(value)
+                if (value.length) return getFormattedList(value)
                 break
 
             case 'date':
-                return getFormatedDate(value, false, false)
+                return getFormattedDate(value, false, false)
 
             case 'dates-list':
-                const formatter = new Intl.ListFormat('he')
-                const dates = value.map((date: any) => {
-                    let formatedText = ''
-                    if (date.start?.year) formatedText += `החל מ-${getFormatedDate(date.start, false, false)}`
-                    if (date.end?.year && date.start?.year) formatedText += ' ו'
-                        if (date.start?.year) formatedText += ' ו'
-                        formatedText += `עד ל-${getFormatedDate(date.end, false, false)}`
-                    return formatedText
-                })
-                return formatter.format(dates)
+                return getFormattedDurations(value)
         }
     }
 
@@ -47,7 +39,7 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
     return (
         <div className="entity-details--simple-info-list-preview__container">
             <span className="title">{info.title}</span>
-            <span className="value">{getFormatedText()}</span>
+            <span className="value">{getFormattedText()}</span>
         </div>
     )
 }

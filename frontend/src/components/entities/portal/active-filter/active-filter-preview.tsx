@@ -4,7 +4,7 @@ import { FiXCircle } from "react-icons/fi"
 
 import { EntityFilterOption } from "../../../../models/interfaces/entities/entity-filter-option"
 
-import { getFormatedDate } from "../../../../services/util/get-formated-date"
+import { getFormattedDate } from "../../../../services/util/get-formatted-date"
 import { activeClearFilter } from "../../../../services/event-bus-service"
 
 
@@ -25,7 +25,7 @@ export const ActiveFilterPreview = ({ filter, searchParams, setIsLoading }: Prop
 
         let dateValue: string | string[] | (number | undefined)[] = plainValue || ''
         dateValue = dateValue.split('-').map(part => (part === 'undefined' || !part) ? undefined : +part)
-        dateValue = getFormatedDate({ day: dateValue[0], month: dateValue[1], year: dateValue[2] }, false, false) + ''
+        dateValue = getFormattedDate({ day: dateValue[0], month: dateValue[1], year: dateValue[2] }, false, false) + ''
 
 
         text = text.replace('PLAIN_VALUE', plainValue || '')

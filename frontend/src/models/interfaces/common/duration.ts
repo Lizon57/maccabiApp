@@ -1,6 +1,6 @@
 import { UncompleteDate } from "./uncomplete-date"
 
 export interface Duration {
-    start?: UncompleteDate,
+    start?: UncompleteDate
     end?: UncompleteDate
 }

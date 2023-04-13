@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-import { getFormatedNumber } from "../../../../services/util/get-formated-number"
+import { getFormattedNumber } from "../../../../services/util/get-formatted-number"
 import { getRelativePastTime } from "../../../../services/util/get-relative-past-time"
 
 import { EntityItem } from "../../../../models/types/entities/item/entity-item"
@@ -57,15 +57,15 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
 
             <div className="item-additional-info">
                 <div className="views-and-rate">
-                    <div className="views" title={`${getFormatedNumber(view)} צפיות`}>
+                    <div className="views" title={`${getFormattedNumber(view)} צפיות`}>
                         <span className="icon"><ViewIcon size={11} /></span>
-                        <span className="text">{view ? getFormatedNumber(view) : 'לא נצפה'}</span>
+                        <span className="text">{view ? getFormattedNumber(view) : 'לא נצפה'}</span>
                     </div>
 
                     <div
                         className="rate"
                         title={rate.avg
-                            ? `${rate.avg} כוכבי דירוג (בידי ${getFormatedNumber(rate.raterCount)} מדרגים)`
+                            ? `${rate.avg} כוכבי דירוג (בידי ${getFormattedNumber(rate.raterCount)} מדרגים)`
                             : 'טרם דורג'}>
                         <span className="icon"><RateIcon size={11} /></span>
                         <span className="text">{rate.avg ? rate.avg : 'ללא דירוג'}</span>

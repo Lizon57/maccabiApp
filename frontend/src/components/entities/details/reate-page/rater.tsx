@@ -6,7 +6,7 @@ import { insertAppMessage } from '../../../../store/action/app-state-action'
 import { updateDisplayEntityItem } from '../../../../store/action/display-entity-item-action'
 
 import { entityItemService } from '../../../../services/entities/entity-item-service'
-import { getFormatedNumber } from "../../../../services/util/get-formated-number"
+import { getFormattedNumber } from "../../../../services/util/get-formatted-number"
 import { eventBus } from '../../../../services/event-bus-service'
 
 import { EntityItem } from '../../../../models/types/entities/item/entity-item'
@@ -58,7 +58,7 @@ export const Rater = () => {
 
             <span className="divider"></span>
 
-            <div className="avg-indicator">{getFormatedNumber(item.itemInfo.rate.raterCount)} מדרגים</div>
+            <div className="avg-indicator">{getFormattedNumber(item.itemInfo.rate.raterCount)} מדרגים</div>
         </div>
     )
 }
