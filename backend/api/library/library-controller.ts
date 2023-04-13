@@ -41,7 +41,7 @@ const get = async (req: any, res: any) => {
         res.json(library)
     } catch (err) {
         loggerService.error('Failed to get library', err)
-        res.status(500).send({ err: 'Failed to get library' })
+        res.status(500).send({ err: 'Failed to get entity items' })
     }
 }
 
@@ -55,7 +55,7 @@ const getById = async (req: any, res: any) => {
         res.json(item)
     } catch (err) {
         loggerService.error(`Failed to get library item (${id})`, err)
-        res.status(500).send({ err: 'Failed to get library item' })
+        res.status(500).send({ err: 'Failed to get entity item' })
     }
 }
 

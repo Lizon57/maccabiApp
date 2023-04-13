@@ -10,7 +10,7 @@ const get = async (req: any, res: any) => {
         res.json(images)
     } catch (err) {
         loggerService.error('Failed to get images', err)
-        res.status(500).send({ err: 'Failed to get images' })
+        res.status(500).send({ err: 'Failed to get entity items' })
     }
 }
 
@@ -23,7 +23,7 @@ const getById = async (req: any, res: any) => {
         res.json(image)
     } catch (err) {
         loggerService.error('Failed to get image', err)
-        res.status(500).send({ err: 'Failed to get image' })
+        res.status(500).send({ err: 'Failed to get entity item' })
     }
 }
 

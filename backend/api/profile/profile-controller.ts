@@ -10,7 +10,7 @@ const get = async (req: any, res: any) => {
         res.json(profiles)
     } catch (err) {
         loggerService.error('Failed to get profiles', err)
-        res.status(500).send({ err: 'Failed to get profiles' })
+        res.status(500).send({ err: 'Failed to get entity items' })
     }
 }
 
@@ -23,7 +23,7 @@ const getById = async (req: any, res: any) => {
         res.json(profile)
     } catch (err) {
         loggerService.error('Failed to get profile', err)
-        res.status(500).send({ err: 'Failed to get profile' })
+        res.status(500).send({ err: 'Failed to get entity item' })
     }
 }
 

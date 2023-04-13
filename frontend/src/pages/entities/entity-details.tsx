@@ -23,6 +23,7 @@ import { ArticleAdditionalContentCmpList } from "../../components/entities/detai
 import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 import { BreadCrumbs } from "../../components/common/bread-crumbs/bread-crumbs"
 import { RatePage } from "../../components/entities/details/reate-page/rate-page"
+import { errorHandler } from "../../services/util/error-handler"
 
 
 const EntityDetailsWrapper = () => {
@@ -59,7 +60,8 @@ const EntityDetails = ({ entity }: Props) => {
                 const item = await entityItemService.getById(entity.name, entityItemId) as EntityItem
                 updateDisplayEntityItem(item)
             } catch ({ message }) {
-                setErrorMessage(message as string)
+                const errorMessage = errorHandler(message, false)
+                setErrorMessage(errorMessage)
             }
             finally {
                 setIsLoading(false)

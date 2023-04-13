@@ -34,7 +34,7 @@ const get = async (req: any, res: any) => {
         res.json(crowdOrganizations)
     } catch (err) {
         loggerService.error('Failed to get crowd organizations', err)
-        res.status(500).send({ err: 'Failed to get crowd organizations' })
+        res.status(500).send({ err: 'Failed to get entity items' })
     }
 }
 
@@ -47,7 +47,7 @@ const getById = async (req: any, res: any) => {
         res.json(crowdOrganization)
     } catch (err) {
         loggerService.error(`Failed to get crowd organization (${id})`, err)
-        res.status(500).send({ err: 'Failed to get crowd organization' })
+        res.status(500).send({ err: 'Failed to get entity item' })
     }
 }
 

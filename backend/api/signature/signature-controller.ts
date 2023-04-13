@@ -27,7 +27,7 @@ const get = async (req: any, res: any) => {
         res.json(signatures)
     } catch (err) {
         loggerService.error('Failed to get signatures', err)
-        res.status(500).send({ err: 'Failed to get signatures' })
+        res.status(500).send({ err: 'Failed to get entity items' })
     }
 }
 
@@ -40,7 +40,7 @@ const getById = async (req: any, res: any) => {
         res.json(signature)
     } catch (err) {
         loggerService.error(`Failed to get signature (${id})`, err)
-        res.status(500).send({ err: 'Failed to get signature' })
+        res.status(500).send({ err: 'Failed to get entity item' })
     }
 }
 

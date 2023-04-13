@@ -41,7 +41,6 @@ export const ImageOnUploadPreview = ({ file, entityName, onUploadSuccess, onUplo
 
                 // onUploadSuccess(uploadedImage, file)
             } catch (err) {
-                console.log(err)
                 onUploadFail(file)
             }
         }

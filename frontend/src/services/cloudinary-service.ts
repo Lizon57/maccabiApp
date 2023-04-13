@@ -16,7 +16,7 @@ const fetchRequest = async (file: File, path: string) => {
         const { data } = await AXIOS.post(UPLOAD_URL, fileData)
         return data
     } catch (err) {
-        console.log(err)
+        throw err
     }
 }
 

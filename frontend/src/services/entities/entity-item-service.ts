@@ -56,7 +56,6 @@ const getMiniProfilesByPharse = async (pharse: string = '') => {
     try {
         return await httpService.get('profile/getMiniProfilesByPharse', { pharse })
     } catch (err) {
-        console.log(err)
         return []
     }
 }

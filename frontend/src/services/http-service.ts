@@ -23,7 +23,6 @@ async function ajax(endpoint: string, method = 'GET', data: null | any = null) {
         return res.data
     } catch (err) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: `, data)
-        console.dir(err)
         const error = err as AxiosError
         if (error.response && error.response.status === 401) {
             localStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, '')

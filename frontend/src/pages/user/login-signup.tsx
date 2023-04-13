@@ -36,7 +36,7 @@ const LoginSignup = () => {
             const user = await userService.googleSignupLogin(tokenCode)
             onLoginSuccess(user)
         } catch (err) {
-            setError('תקלה בזמנית בחיבור לחשבון, אנא נסה שנית')
+            setError('תקלה זמנית בחיבור לחשבון, אנא נסה שנית')
         }
     }
 

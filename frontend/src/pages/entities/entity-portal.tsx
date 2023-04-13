@@ -25,6 +25,7 @@ import { ActiveFilterList } from "../../components/entities/portal/active-filter
 import { FilterbyBuilder } from "../../components/entities/portal/filterby-builder/filterby-builder"
 import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
 import { EntityList } from "../../components/entities/portal/entity-list/entity-list"
+import { errorHandler } from "../../services/util/error-handler"
 
 
 const EntityPortalWrapper = () => {
@@ -59,7 +60,8 @@ const EntityPortal = ({ entity }: Props) => {
             const items = await entityItemService.query(entity.name, searchParams)
             setItems(items)
         } catch ({ message }) {
-            setErrorMessage(message as string)
+            const errorMessage = errorHandler(message, false)
+            setErrorMessage(errorMessage)
         }
         finally {
             setIsLoading(false)

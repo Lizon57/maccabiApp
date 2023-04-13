@@ -54,7 +54,6 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
             }))
             return options as ProfileOption[]
         } catch (err) {
-            console.log(err)
             return [] as ProfileOption[]
         }
     }
