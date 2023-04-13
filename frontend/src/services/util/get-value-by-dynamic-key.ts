@@ -3,8 +3,10 @@ export const getValueByDynamicKey = (key: string, item: Object) => {
     let actualValue: any = item
 
     for (let key of keyPath) {
+        if (!actualValue) return undefined
         actualValue = actualValue[key as any]
     }
+
 
     return actualValue
 }

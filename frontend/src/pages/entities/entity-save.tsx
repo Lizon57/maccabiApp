@@ -8,6 +8,7 @@ import { insertAppMessage } from "../../store/action/app-state-action"
 
 import { emptyEntityItemService } from "../../services/entities/empty-entity-item-service"
 import { entityItemService } from "../../services/entities/entity-item-service"
+import { getValueByDynamicKey } from "../../services/util/get-value-by-dynamic-key"
 
 import { ENTITIES_LIST } from "../../constans/entities-list"
 
@@ -21,6 +22,7 @@ import { DynamicEntitySaveStage } from "../../components/entities/save/dynamic-e
 import { MainTitle } from "../../components/common/main-title/main-title"
 import { StageStepper } from "../../components/entities/save/stage-stepper/stage-stepper"
 import { SeoImplement } from "../../components/common/seo-implement/seo-implement"
+import { Duration } from "../../models/interfaces/common/duration"
 
 
 const getInitStagesStatus = (stages: EntitySaveItemStage[]) => new Array(stages.length).fill(false)
@@ -79,13 +81,16 @@ const EntitySave = ({ entity }: Props) => {
             if (!isRequire) return true
             const { relatedInfo } = item
             let isFilled = true
+            let isNoneRequire = true
+            let value
+
             switch (type) {
                 case 'page-details':
                     if (!item.entityInfo.name.display) isFilled = false
                     break
 
                 case 'associate-related-data':
-                    const isNoneRequire = option?.relateds?.every(related => !related.isRequire)
+                    isNoneRequire = !!option?.relateds?.every(related => !related.isRequire)
                     option?.relateds?.forEach(related => {
                         switch (related.type) {
                             case 'profile':
@@ -105,6 +110,40 @@ const EntitySave = ({ entity }: Props) => {
                     if ((item.miniImages?.length || 0) < (option?.minImageCount || 0)
                         || (item.miniImages?.length || 0) > (option?.maxImageCount || Infinity)
                     ) isFilled = false
+                    break
+
+                case 'profile-filler':
+                    isNoneRequire = !!option?.infos?.every(related => !related.isRequire)
+                    option?.infos?.forEach(info => {
+                        switch (info.type) {
+                            case 'symobl-seperate-list':
+                                if (!info.isRequire) break
+                                value = getValueByDynamicKey(info.key, item)
+                                if (!Array.isArray(value) || !value[0].length) isFilled = false
+                                break
+
+                            case 'number-picker':
+                                if (!info.isRequire) break
+                                value = getValueByDynamicKey(info.key, item)
+                                if (typeof value !== 'number') isFilled = false
+                                break
+
+                            case 'binary-picker':
+                                if (!info.isRequire) break
+                                value = getValueByDynamicKey(info.key, item)
+                                if (typeof value !== 'boolean') isFilled = false
+                                break
+
+                            case 'durations-picker':
+                                if (!info.isRequire) break
+                                value = getValueByDynamicKey(info.key, item) as Duration[]
+                                if (!value || !Array.isArray(value) || !value[0]) isFilled = false
+                                else if (!value[0].start?.day && !value[0].start?.month && !value[0].start?.year
+                                    && !value[0].end?.day && !value[0].end?.month && !value[0].end?.year) isFilled = false
+                                break
+                        }
+                    })
+                    break
             }
 
             return isFilled

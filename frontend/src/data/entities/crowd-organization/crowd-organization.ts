@@ -130,13 +130,6 @@ export const crowdOrganizationEntity: Entity = {
     saveItemPage: {
         stages: [
             {
-                title: 'פרטי עמוד',
-                icon: BsPencil,
-                type: 'page-details',
-                isRequire: true,
-            },
-
-            {
                 title: 'פרטי הארגון',
                 icon: AiFillFlag,
                 type: 'profile-filler',
@@ -159,6 +152,13 @@ export const crowdOrganizationEntity: Entity = {
                     ]
                 }
             },
+            {
+                title: 'פרטי עמוד',
+                icon: BsPencil,
+                type: 'page-details',
+                isRequire: true,
+            },
+
 
             {
                 title: 'העלאת תמונות',

@@ -15,7 +15,6 @@ export const BinaryPicker = ({ pickerInfo }: Props) => {
     const onPickOption = (value: boolean | undefined) => {
         const editedItem = structuredClone(item)
         recursiveValueSetterByKey(value, editedItem, pickerInfo.key)
-
         setSaveEntityItem(editedItem)
     }
 

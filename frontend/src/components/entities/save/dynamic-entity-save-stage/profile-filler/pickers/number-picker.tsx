@@ -1,3 +1,4 @@
+import {useEffect} from "react"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
@@ -10,12 +11,13 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
     const { item } = useSelector((state: RootState) => state.saveEntityItemModule)
 
     const { option, key: optionKey, title } = pickerInfo
-
     const min = option?.min || 0
     const max = option?.max || 1000000
-
-
     const value = getValueByDynamicKey(optionKey, item)
+
+    useEffect(() => {
+        console.log(item)
+    }, [item])
 
     const setValue = (value: number | undefined) => {
         const editedItem = structuredClone(item)
@@ -28,13 +30,13 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
         if (typeof actualValue !== 'number') return
         if (actualValue > max) setValue(max)
         else if (actualValue < min) setValue(min)
-        else setValue(undefined)
+        else setValue(actualValue)
     }
 
     const clearPick = () => setValue(undefined)
 
 
-    const inputProps = { min, max, value }
+    const inputProps = { min, max }
 
     return (
         <div className="entity-save-cmp--profile-filler-number-picker__container">
@@ -45,12 +47,13 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
                     type="number"
                     placeholder={`בין ${min} ל-${max}`}
                     {...inputProps}
+                    value={typeof value === 'undefined' ? '' : value}
                     onChange={onPickValue}
                 />
             </span>
 
             <span
-                className={"unknown-number" + ((typeof value === 'undefined') ? ' active' : '')}
+                className={'unknown-number' + ((typeof value === 'undefined') ? ' active' : '')}
                 onClick={clearPick}
             >
                 לא ידוע

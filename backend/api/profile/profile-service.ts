@@ -176,7 +176,7 @@ const getMiniProfilesByPharse = async (pharse = '') => {
         const collection = await databaseService.getCollection(DB_NAME)
         const profiles = await collection.aggregate([
             {
-                $match: { 'entityInfo.name.display': { $regex: pharse, $options: 'ig' } }
+                $match: { 'entityInfo.name.display': { $regex: pharse, $options: 'i' } }
             },
             {
                 $addFields: {
