@@ -35,6 +35,15 @@ export const SimpleInfoListPreview = ({ info, item }: Props) => {
         </div>
     )
 
+    if (info.type === 'boolean-profile-related-combiner' && value) {
+        const text = info.title.replace('PROFILE_NAME', item.relatedInfo?.miniProfile?.displayName || '')
+        return (
+            <div className="entity-details--simple-info-list-preview__container">
+                <span className="value-driven">{text}</span>
+            </div>
+        )
+    }
+
 
     return (
         <div className="entity-details--simple-info-list-preview__container">

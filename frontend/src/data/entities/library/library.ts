@@ -47,8 +47,8 @@ export const libraryEntity: Entity = {
                     Icon: RiBookOpenFill,
                     infos: [
                         {
-                            type: 'boolean',
-                            title: 'ספר אוטוביוגרפי',
+                            type: 'boolean-profile-related-combiner',
+                            title: 'ספרו האוטוביוגרפי של PROFILE_NAME',
                             value: 'entityInfo.item.isBiography'
                         },
                         {
