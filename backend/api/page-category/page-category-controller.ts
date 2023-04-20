@@ -2,10 +2,6 @@ import { loggerService } from "../../services/logger-service"
 import { pageCategoryService } from "./page-category-service"
 
 
-const get = async (req: any, res: any) => {
-   
-}
-
 const getById = async (req: any, res: any) => {
     loggerService.debug('Getting signature by id')
     const id = req.params.id
@@ -20,19 +16,7 @@ const getById = async (req: any, res: any) => {
 }
 
 
-const save = async (req: any, res: any) => {
-    
-}
-
-
-const removeById = async (req: any, res: any) => {
-
-}
-
 
 export const pageCategoryController = {
-    get,
     getById,
-    save,
-    removeById
 }
