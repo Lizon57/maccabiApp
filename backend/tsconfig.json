@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "ESNext",
         "esModuleInterop": true,
         "target": "es6",
         "noImplicitAny": true,
@@ -20,5 +20,9 @@
     ],
     "exclude": [
         "node_modules"
-    ]
+    ],
+    "ts-node": {
+        "esm": true,
+        "experimentalSpecifierResolution": "node",
+    }
 }
