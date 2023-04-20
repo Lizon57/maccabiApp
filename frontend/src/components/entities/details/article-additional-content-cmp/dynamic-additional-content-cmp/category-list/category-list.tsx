@@ -3,14 +3,17 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 
-import { BasicEntityDetailsStructureCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/basic-entity-details-structure-cmp"
+import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
 
-import { MainTitle } from "../../../../../common/main-title/main-title"
+import { KeySpecifyBasicEntityDetailsStructureCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/key-specify-basic-entity-details-structure-cmp"
+
 import { MiniPageCategory } from "../../../../../../types/page-category"
+import { MainTitle } from "../../../../../common/main-title/main-title"
 
 
 export const CategoryList = ({ cmp }: Props) => {
-    const miniCategories = useSelector((state: RootState) => state.displayEntityItemModule.item.entityInfo.miniCategories) as MiniPageCategory[]
+    const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
+    const miniCategories = getValueByDynamicKey(cmp.key || '', item) as MiniPageCategory[]
 
 
     if (!miniCategories?.length) return null
@@ -21,7 +24,7 @@ export const CategoryList = ({ cmp }: Props) => {
 
             <div className="list-container">
                 {miniCategories.map(({ id, displayName }) => <Link
-                    to={`/category/${id}`}
+                    to={`/page-category/${id}`}
                     key={id}
                     className="category-preview"
                 >
@@ -34,5 +37,5 @@ export const CategoryList = ({ cmp }: Props) => {
 
 
 type Props = {
-    cmp: BasicEntityDetailsStructureCmp
+    cmp: KeySpecifyBasicEntityDetailsStructureCmp
 }

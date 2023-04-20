@@ -14,6 +14,7 @@ import { crowdOrganizationRouter } from "./api/crowd-organization/crowd-organiza
 import { libraryRouter } from "./api/library/library-routes"
 import { profileRouter } from "./api/profile/profile-routes"
 import { imageRouter } from "./api/image/image-routes"
+import { pageCategoryRouter } from "./api/page-category/page-category-routes"
 import { entutyItemInfoUpdateRouter } from "./api/entity-item-info-update/entity-item-info-update-routes"
 
 
@@ -52,6 +53,7 @@ app.use('/api/crowd-organization', crowdOrganizationRouter)
 app.use('/api/library', libraryRouter)
 app.use('/api/profile', profileRouter)
 app.use('/api/image', imageRouter)
+app.use('/api/page-category', pageCategoryRouter)
 app.use('/api/entity-item-info-update', entutyItemInfoUpdateRouter)
 
 

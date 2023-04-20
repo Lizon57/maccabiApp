@@ -8,7 +8,7 @@ import { ENTITIES_LIST } from "../constans/entities-list"
 import { AppRoute } from "../models/types/entities/app-route"
 
 const EntityPortal = lazy(() => import('../pages/entities/entity-portal'))
-const EntityDetails = lazy(() => import('../pages/entities/entity-details'))
+const EntityDetails = lazy(() => import('../pages/entities/dynamic-entity-details/dynamic-entity-details'))
 const EntitySave = lazy(() => import('../pages/entities/entity-save'))
 const EntityRemove = lazy(() => import('../pages/entities/entity-remove'))
 

@@ -1,6 +1,6 @@
-section.entities-pages--entity-display__container {
+section.entities-pages--page-category-entity-details__container {
   display: grid;
-  grid-template-rows: auto 1fr max-content;
+  grid-template-rows: 1fr max-content;
   gap: $space-block-xSmall-rem;
 
   height: 100%;

@@ -11,6 +11,7 @@ const getErrorMessage = (error: string) => {
         case 'Failed to logout': return 'לא הצלחנו לנתק אותך מהשרת'
         case 'Failed to get entity items':
         case 'Failed to get entity item': return 'לא הצלחנו לבצע את השאילתא המבוקשת'
+        case 'Request failed with status code 404': return 'העמוד המבוקש לא נמצא'
         default: return 'אנו חווים קשיים בשרת. אנא נסה שנית מאוחר יותר'
     }
 }

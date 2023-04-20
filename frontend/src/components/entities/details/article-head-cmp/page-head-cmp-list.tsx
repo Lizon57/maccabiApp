@@ -5,7 +5,7 @@ import { EntityDetailsStructureCmp } from "../../../../models/combiners/entities
 import { DynamicHeadCmp } from "./dynamic-head-cmp/dynamic-head-cmp"
 
 
-export const ArticleHeadCmpList = ({ cmps }: Props) => {
+export const PageHeadCmpList = ({ cmps }: Props) => {
     if (!cmps?.length) return null
 
     return (

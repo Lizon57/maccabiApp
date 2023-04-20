@@ -59,12 +59,14 @@ export const crowdOrganizationEntity: Entity = {
 
             additional: [
                 {
-                    type: 'image-gallery',
-                    title: 'תמונות מתוך "PAGE_NAME"'
+                    type: 'category-list',
+                    title: 'קטגוריות',
+                    key: 'entityInfo.miniCategories'
                 },
                 {
-                    type: 'category-list',
-                    title: 'קטגוריות'
+                    type: 'image-gallery',
+                    title: 'תמונות מתוך "PAGE_NAME"',
+                    key: 'miniImages'
                 }
             ]
         }

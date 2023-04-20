@@ -1,8 +1,9 @@
 @import "app";
 
 @import "entities/entity-portal";
-@import "entities/entity-details";
 @import "entities/entity-save";
 @import "entities/entity-remove";
+@import "entities/dynamic-entity-details/aricle-entity-details";
+@import "entities/dynamic-entity-details/page-category-entity-details";
 
 @import "user/login-signup";

@@ -48,12 +48,14 @@ export const signatureEntity: Entity = {
             ],
             additional: [
                 {
-                    type: 'image-gallery',
-                    title: 'חתימות של RELATED_PROFILE_NAME'
+                    type: 'category-list',
+                    title: 'קטגוריות',
+                    key: 'entityInfo.miniCategories'
                 },
                 {
-                    type: 'category-list',
-                    title: 'קטגוריות'
+                    type: 'image-gallery',
+                    title: 'חתימות של RELATED_PROFILE_NAME',
+                    key: 'miniImages'
                 }
             ]
         }

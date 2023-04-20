@@ -1,20 +1,24 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 
-import { BasicEntityDetailsStructureCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/basic-entity-details-structure-cmp"
+import { KeySpecifyBasicEntityDetailsStructureCmp } from "../../../../../../models/interfaces/entities/entity-details-structure-cmp/key-specify-basic-entity-details-structure-cmp"
 
 import { MainTitle } from "../../../../../common/main-title/main-title"
 import { ImageGalleryPreview } from "./image-gallery-preview"
+import { getValueByDynamicKey } from "../../../../../../services/util/get-value-by-dynamic-key"
 
 
 export const ImageGalleryList = ({ cmp }: Props) => {
-    let { relatedInfo, entityInfo, miniImages } = useSelector((state: RootState) => state.displayEntityItemModule.item)
+    const { item } = useSelector((state: RootState) => state.displayEntityItemModule)
+    const miniImages = getValueByDynamicKey(cmp.key || '', item)
+
+    let { relatedInfo, entityInfo } = useSelector((state: RootState) => state.displayEntityItemModule.item)
     if (!miniImages?.length) return <></>
 
 
     let title = cmp.title
     title = title?.replace('RELATED_PROFILE_NAME', (relatedInfo?.miniProfile?.displayName || ''))
-    title = title?.replace('PAGE_NAME', (entityInfo.name.display || ''))
+    title = title?.replace('PAGE_NAME', (entityInfo?.name?.display || item.name?.display || ''))
 
 
     return (
@@ -33,7 +37,7 @@ export const ImageGalleryList = ({ cmp }: Props) => {
 
 
 type Props = {
-    cmp: BasicEntityDetailsStructureCmp
+    cmp: KeySpecifyBasicEntityDetailsStructureCmp
 }
 
 

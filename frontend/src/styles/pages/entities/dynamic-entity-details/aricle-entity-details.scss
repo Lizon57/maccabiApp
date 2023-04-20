@@ -1,0 +1,25 @@
+section.entities-pages--article-entity-details__container {
+  display: grid;
+  grid-template-rows: auto 1fr max-content;
+  gap: $space-block-xSmall-rem;
+
+  height: 100%;
+
+  div.head-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $space-inline-regular-rem;
+
+    div.entity-details--rate-page__container {
+      min-width: max-content;
+    }
+  }
+
+  div.primary-content,
+  div.additional-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-block-xSmall-rem;
+  }
+}
