@@ -14,8 +14,13 @@ div.entity-details--image-gallery-cmp__preview-container {
   position: relative;
 
   border-radius: $border-radius-regular-rem;
+  border: 1px solid $clr-white-darkest;
   overflow: hidden;
   user-select: none;
+
+  &:hover div.name {
+    bottom: 0;
+  }
 
   img {
     display: block;
@@ -28,10 +33,7 @@ div.entity-details--image-gallery-cmp__preview-container {
 
   div.name {
     position: absolute;
-    bottom: 0;
-
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    bottom: -100%;
     overflow: hidden;
 
     background-color: $clr-blue-regular;
@@ -40,5 +42,6 @@ div.entity-details--image-gallery-cmp__preview-container {
     padding-inline: $space-inline-xxxSmall-rem;
     padding-block: $space-block-xxxSmall-rem;
     width: 100%;
+    transition: $transition-regular;
   }
 }

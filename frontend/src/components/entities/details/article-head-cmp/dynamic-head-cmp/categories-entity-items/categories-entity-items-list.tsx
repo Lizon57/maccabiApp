@@ -29,7 +29,7 @@ export const CategoriesEntityItemsList = ({ cmp }: Props) => {
             {title && <MainTitle text={title} Icon={cmp.Icon} />}
 
             {Object.keys(entitiesMap) &&
-                <div className="grid-container">
+                <div className={'pages-list-container' + ((entityItems.length < 9) ? ' small-list' : '')}>
                     {Object.keys(entitiesMap).map(catName => <CategoriesEntityItemsPreview
                         key={catName}
                         name={catName}

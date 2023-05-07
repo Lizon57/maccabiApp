@@ -1,0 +1,37 @@
+div.entity-details--categories-entity-list__container {
+  div.pages-list-container {
+    margin-block-start: $space-block-xxSmall-rem;
+
+    &:not(.small-list) {
+      @include viewport-wide-start-from-exclusive($viewport-small) {
+        column-count: 2;
+      }
+
+      @include viewport-wide-start-from-exclusive($viewport-regular) {
+        column-count: 3;
+      }
+    }
+
+    h3 {
+      margin: 0 0 $space-block-xxSmall-rem;
+
+      &:not(:first-of-type) {
+        margin-block-start: $space-block-xSmall-rem;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding-inline-start: $space-inline-regular-rem;
+
+      li {
+        margin-block-end: $space-block-xxSmall-rem;
+
+        a {
+          color: $clr-black-regular;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
