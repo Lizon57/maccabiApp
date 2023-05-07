@@ -13,7 +13,7 @@ export const ImageGalleryList = ({ cmp }: Props) => {
     const miniImages = getValueByDynamicKey(cmp.key || '', item)
 
     let { relatedInfo, entityInfo } = useSelector((state: RootState) => state.displayEntityItemModule.item)
-    if (!miniImages?.length) return <></>
+    if (!miniImages?.length) return null
 
 
     let title = cmp.title

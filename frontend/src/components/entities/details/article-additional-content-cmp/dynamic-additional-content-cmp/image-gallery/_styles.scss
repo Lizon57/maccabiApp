@@ -13,6 +13,9 @@ section.entity-details--image-gallery-cmp__gallery-container {
 div.entity-details--image-gallery-cmp__preview-container {
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+
   border-radius: $border-radius-regular-rem;
   border: 1px solid $clr-white-darkest;
   overflow: hidden;
@@ -22,7 +25,12 @@ div.entity-details--image-gallery-cmp__preview-container {
     bottom: 0;
   }
 
+  div.spacer {
+    flex-grow: 1;
+  }
+
   img {
+    flex-grow: 1;
     display: block;
 
     cursor: pointer;
