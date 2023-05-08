@@ -1,35 +1,35 @@
 div.common-cmp--loader {
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: $space-block-xxxSmall-rem;
   align-items: center;
 
-  height: 100%;
+  margin: 0 auto;
 
-  .loader {
-    position: relative;
+  svg {
+    animation: pump 3s alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 
-    border: 5px solid $clr-blue-regular;
-    border-block-end: 5px solid $clr-white-darkest;
-    transform: translateZ(0);
+    width: 100%;
+    height: 100%;
 
-    animation: load-animation 2s infinite linear;
-
-    &,
-    &::after {
-      border-radius: 50vw;
-      width: 3em;
-      height: 3em;
+    &.maccabi-association-inside-letters {
+      position: absolute;
+      top: -12px;
+      right: 0;
+      z-index: 20;
     }
 
-    @keyframes load-animation {
-      0% {
-        transform: rotate(0deg);
+    @keyframes pump {
+      from {
+        transform: scale(0.75);
       }
-
-      100% {
-        transform: rotate(360deg);
+      to {
+        transform: scale(1);
       }
     }
   }
