@@ -6,6 +6,13 @@
 
 # typescript
 dist/**/*
+!dist/public
+!dist/public/*
+!dist/public/static
+!dist/public/static/*
+!dist/public/static/css/*
+!dist/public/static/js/*
+!dist/public/static/media/*
 
 # env
 .env
