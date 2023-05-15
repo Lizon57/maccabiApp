@@ -58,16 +58,13 @@ const EntityPortal = ({ entity }: Props) => {
         try {
             if (!searchParams.get('fBranchIds')) searchParams.set('fBranchIds', userPrefBranchesFilter)
             const items = await entityItemService.query(entity.name, searchParams)
-            setTimeout(() => {
-                setItems(items)
-                setIsLoading(false)
-            }, 50000)
+            setItems(items)
         } catch ({ message }) {
             const errorMessage = errorHandler(message, false)
             setErrorMessage(errorMessage)
-            setIsLoading(false)
         }
         finally {
+            setIsLoading(false)
         }
     }
 
