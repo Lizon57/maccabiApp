@@ -1,6 +1,7 @@
+import classNames from "classnames"
 import { Link } from "react-router-dom"
 
-import { CategoryLink } from "../../../../../types/app/app-category-links2"
+import { CategoryLink } from "../../../../../types/app/app-category-links"
 
 
 export const CategoryLinkPreview = ({ child }: Props) => {
@@ -14,7 +15,7 @@ export const CategoryLinkPreview = ({ child }: Props) => {
                     return (<Link
                         key={id}
                         to={path}
-                        className={'link-container' + (isDisabled ? ' disabled' : '')}
+                        className={classNames('link-container' + { disabled: isDisabled })}
                         title={'עמוד ' + title}
                     >
                         {img && <img src={require(`../../../../../assets/images/navbar/${img}`)} alt={title} />}

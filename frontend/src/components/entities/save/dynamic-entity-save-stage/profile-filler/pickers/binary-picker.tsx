@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 import { useSelector } from "react-redux"
 import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
 import { RootState } from "../../../../../../store/store"
@@ -34,7 +36,7 @@ export const BinaryPicker = ({ pickerInfo }: Props) => {
             <span className="options">
                 {OPTIONS.map(({ value, title }) => <span
                     key={title}
-                    className={"option" + ((isActiveOption(value, pickerInfo)) ? ' active' : '')}
+                    className={classNames('option', { active: isActiveOption(value, pickerInfo) })}
                     onClick={() => onPickOption(value)}
                 >
                     {title}

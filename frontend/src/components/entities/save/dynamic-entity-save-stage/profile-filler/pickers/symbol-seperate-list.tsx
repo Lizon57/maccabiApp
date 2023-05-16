@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
@@ -42,7 +44,7 @@ export const SymbolSeperateList = ({ pickerInfo }: Props) => {
             />
 
             <span
-                className={"unknown-list" + ((typeof actualValue === 'undefined') ? ' active' : '')}
+                className={classNames('unknown-list', { active: (typeof actualValue === 'undefined') })}
                 onClick={() => setValue(undefined)}
             >
                 לא ידוע

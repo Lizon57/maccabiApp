@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from "react"
+import classNames from "classnames"
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton, TelegramShareButton } from "react-share"
 import { useDelayUnmount } from "../../../../hooks/use-delay-unmount"
 import { useOnWindowResize } from "../../../../hooks/use-on-window-resize"
@@ -35,9 +36,9 @@ export const Share = () => {
 
 
     return (
-        <div className="app-data--share__container" ref={elShareContainer}>
+        <div className="app-data--share__container" ref={elShareContainer} title="שתף עמוד">
             {shouldRenderList && <div
-                className={'share-list-container' + (isOpen ? ' open' : '') + (shouldOpenToRight ? ' right-sided' : ' left-sided')}
+                className={classNames('share-list-container', { open: isOpen }, (shouldOpenToRight ? 'right-sided' : 'left-sided'))}
             >
                 <WhatsappShareButton url={PAGE_LINK} title={`רציתי לשתף איתך את העמוד ${PAGE_TITLE} מאתר מכביפדיה!`} separator="-">
                     <span className="whatsapp" title="שתף בווטסאפ"><FaWhatsapp /></span>
@@ -56,6 +57,6 @@ export const Share = () => {
             <button className="share-toggler" onClick={toggleIsOpen}>
                 <AiOutlineShareAlt />
             </button>
-        </div>
+        </div >
     )
 }

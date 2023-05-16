@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDebouncedCallback } from "use-debounce"
+import classNames from "classnames"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
@@ -104,7 +105,7 @@ export const RelatedProfilePicker = ({ isRequire }: Props) => {
 
     return (
         <div className="entity-save-cmp--related-profile-picker__container">
-            <div className={"picker" + (isFail ? ' fail' : '')} title="בחירת פרופיל">
+            <div className={classNames('picker', { fail: isFail })} title="בחירת פרופיל">
                 <span className="title">בחירת פרופיל</span>
 
                 <div className="select-wrapper">

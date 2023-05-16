@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import { BranchType } from "../../../../../../types/branch"
 
 export const BranchMultiSelectFilterbyPreview = ({ branch, isActive, toggleActiveBranch }: Props) => {
@@ -5,7 +6,7 @@ export const BranchMultiSelectFilterbyPreview = ({ branch, isActive, toggleActiv
 
     return (
         <div
-            className={"entities-portal--branch-multi-select-filterby-preview__container" + (isActive ? ' active' : ' inactive')}
+            className={classNames('entities-portal--branch-multi-select-filterby-preview__container', (isActive ? 'active' : 'inactive'))}
             onClick={() => toggleActiveBranch(_id)}>
             <img
                 className="symbol"

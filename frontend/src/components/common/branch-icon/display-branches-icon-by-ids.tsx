@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import { branchService } from "../../../services/app/branch-service"
 
 
@@ -12,7 +13,7 @@ export const DisplayBranchesIconByIds = ({ ids, className }: Props) => {
 
     return (
         <div
-            className={'branch-icon--display-branch-icon-by-id ' + className}
+            className={classNames('branch-icon--display-branch-icon-by-id', className)}
             title={`מתוך ${branchesNameList}`}
         >
             <img

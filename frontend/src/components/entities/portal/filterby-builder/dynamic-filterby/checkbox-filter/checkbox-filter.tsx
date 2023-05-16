@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
+import classNames from "classnames"
 
 import { eventBus } from "../../../../../../services/event-bus-service"
 
@@ -35,7 +36,7 @@ export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
             if (param === filter.param) setValue(undefined)
         })
 
-        
+
         const newValue = params.get(filter.param)
         if (!newValue) return
         setValue(JSON.parse(newValue))
@@ -71,20 +72,20 @@ export const CheckboxFilter = ({ filter, debouncedSetIsLoading }: Props) => {
             <div className="content-container">
                 <span className="options-container">
                     <span
-                        className={"option" + (getIsActive('true') ? ' active' : '')}
+                        className={classNames('option', { active: getIsActive('true') })}
                         onClick={() => onSetValue(true)}
                     >רק</span>
 
                     <span
-                        className={"option" + (getIsActive('false') ? ' active' : '')}
+                        className={classNames('option', { active: getIsActive('false') })}
                         onClick={() => onSetValue(false)}
                     >ללא</span>
 
-                    <span className={"param" + ((typeof value === 'boolean') ? ' active' : '')}>{filter.title}</span>
+                    <span className={classNames('param', { active: (typeof value === 'boolean') })}>{filter.title}</span>
                 </span>
 
                 <span
-                    className={"clear" + ((typeof value === 'boolean') ? ' clickable' : ' active')}
+                    className={classNames('clear', ((typeof value === 'boolean') ? 'clickable' : 'active'))}
                     onClick={() => onSetValue(undefined)}
                 >לא משנה לי</span>
             </div>

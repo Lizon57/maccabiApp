@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Select from 'react-select'
+import classNames from "classnames"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
@@ -60,7 +61,7 @@ export const RelatedBranchPicker = ({ isRequire }: Props) => {
 
     return (
         <div className="entity-save-cmp--related-branch-picker__container">
-            <div className={"picker" + (isFail ? ' fail' : '')} title="בחירת ענף">
+            <div className={classNames('picker', { fail: isFail })} title="בחירת ענף">
                 <span className="title">בחירת ענף</span>
 
                 <Select

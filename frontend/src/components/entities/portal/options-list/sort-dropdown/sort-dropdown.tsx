@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import classNames from "classnames"
 
 import { BiSort } from "react-icons/bi"
 import { FiXCircle } from "react-icons/fi"
@@ -47,7 +48,7 @@ export const SortDropdown = ({ sorts, setIsLoading }: Props) => {
                         {sorts.map(sort => (
                             <div
                                 key={sort.id}
-                                className={"sort-option" + (getIsSortOptionActive(sort) ? ' active' : '')}
+                                className={classNames('sort-option', { active: getIsSortOptionActive(sort) })}
                                 title={'מיין לפי ' + sort.title}
                                 onClick={() => onSelectSort(sort)}>
                                 {sort.title}

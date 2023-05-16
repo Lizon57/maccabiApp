@@ -85,7 +85,7 @@ export const ArticleEntityDetails = ({ entity }: Props) => {
                 appTitle={`${itemName} (${entity.entityInfo.name.display})`}
                 openGraphTitle={itemName}
                 openGraphDescription="כל מה שאוהד מכבי צריך לדעת"
-                openGraphImage={item?.miniImages?.[0]?.imageUrl || ''}
+                // openGraphImage={item?.miniImages?.[0]?.imageUrl || ''}
             />
         </>
     )

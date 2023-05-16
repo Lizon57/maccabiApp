@@ -72,7 +72,7 @@ export const PageCategoryEntityDetails = ({ entity }: Props) => {
                 appTitle={`${itemName} (${entity.entityInfo.name.display})`}
                 openGraphTitle={itemName}
                 openGraphDescription={`כל מה שקשור ב-${itemName} באתר מכביפדיה`}
-            // openGraphImage={item?.miniImages?.[0]?.imageUrl || ''}
+                openGraphImage={item?.miniImages?.[0]?.imageUrl || ''}
             />
         </>
     )

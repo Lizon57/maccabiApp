@@ -1,4 +1,6 @@
 import { useState } from "react"
+import classNames from "classnames"
+
 import { FixedLengthArray } from "../../../models/types/typescript/fixed-length-array"
 
 
@@ -13,10 +15,10 @@ export const TextToggler = ({ options, onToggleCallBack }: Props) => {
     return (
         <div className="common-cmp--text_toggler__container" onClick={onTogglerClick}>
             <input type="checkbox" />
-            <span className={'option' + (isFirstOptionActive ? ' active' : '')}>{options[0]}</span>
-            <span className={'option' + (!isFirstOptionActive ? ' active' : '')}>{options[1]}</span>
+            <span className={classNames('option', { active: isFirstOptionActive })}>{options[0]}</span>
+            <span className={classNames('option', { active: !isFirstOptionActive })}>{options[1]}</span>
             <span className="indicator"></span>
-        </div>
+        </div >
     )
 }
 

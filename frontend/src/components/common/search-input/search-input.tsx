@@ -1,4 +1,6 @@
 import { useState } from "react"
+import classNames from "classnames"
+
 import { ICON_TYPE_MAP } from "../../../constans/icon-type-map"
 
 
@@ -24,14 +26,14 @@ export const SearchInput = ({ placeholder, title, initialValue = '', searchCallb
             />
 
             <span
-                className={"clear-icon" + (search.length ? ' active' : '')}
+                className={classNames('clear-icon', { active: search.length })}
                 title="נקה חיפוש"
                 onClick={() => onSearchHandler('')}
             >
                 <SearchIcon />
             </span>
 
-            <span className={"search-icon" + (search.length ? '' : ' active')}>
+            <span className={classNames('search-icon', { active: search.length })}>
                 <ClearIcon />
             </span>
         </div>

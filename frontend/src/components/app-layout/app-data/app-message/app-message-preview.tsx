@@ -1,4 +1,7 @@
+import classNames from "classnames"
+
 import { ICON_TYPE_MAP } from "../../../../constans/icon-type-map"
+
 import { AppMessage } from "../../../../types/app/app-message"
 
 
@@ -8,7 +11,7 @@ export const AppMessagePreview = ({ message }: Props) => {
 
     return (
         <article className="app-data--message__preview-container" title={title}>
-            <div className={'preview-title ' + type}>
+            <div className={classNames('preview-title', type)}>
                 <span className="type-icon"><Icon /></span>
                 <span className="title">{title}</span>
             </div>

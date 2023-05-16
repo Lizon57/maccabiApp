@@ -1,4 +1,5 @@
 import { useState } from "react"
+import classNames from "classnames"
 import { useNavigate } from "react-router-dom"
 import { useGoogleLogin } from '@react-oauth/google'
 import { BiUserCheck } from "react-icons/bi"
@@ -95,7 +96,7 @@ const LoginSignup = () => {
                                 name="email"
                                 placeholder="דואר אלקטרוני"
                                 value={credential.email}
-                                className={credential.email ? 'pristine' : ''}
+                                className={classNames({ pristine: credential.email })}
                                 onChange={({ currentTarget: { name, value } }) => handleInputChange(name, value)}
                             />
                         </div>

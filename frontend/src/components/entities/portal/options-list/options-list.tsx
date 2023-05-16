@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
+import classNames from "classnames"
 
 import { EntityFilterOption } from "../../../../models/interfaces/entities/entity-filter-option"
 import { EntitySortOption } from "../../../../types/entity/sort/entity-sort-option"
@@ -39,7 +40,7 @@ export const OptionsList = ({ sorts, filters, isFilterSectionOpen, setIsLoading,
                     searchCallback={debouncedPrimarySearchCallback} />}
 
             {shouldRenderFiltersToggle &&
-                <div className={"filterby-icon" + (isFilterSectionOpen ? ' active' : '')}>
+                <div className={classNames('filterby-icon', { active: isFilterSectionOpen })}>
                     <FilterSectionToggler
                         isFilterSectionOpen={isFilterSectionOpen}
                         toggleIsFilterSectionOpen={toggleIsFilterSectionOpen}

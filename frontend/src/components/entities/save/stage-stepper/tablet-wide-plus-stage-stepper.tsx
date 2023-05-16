@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import { EntitySaveItemStage } from "../../../../types/entity/save/entity-save-item-stage"
 
 
@@ -16,12 +17,12 @@ export const TabletWidePlusStageStepper = ({ stages, stagesStatus, currStageIdx,
                         ? stages[idx].title
                         : `חזור אל ${stages[idx].title}`
                     : `השלם את השלבים הנדרשים כדי לעבור לשלב ${stages[idx].title}`}
-                className={"stage-container"
-                    + ((title === stages[currStageIdx].title) ? ' active' : '')
-                    + ((!stagesStatus[idx] && (idx < currStageIdx)) ? ' fail' : '')
-                    + (((currStageIdx > idx) && stagesStatus[idx]) ? ' complete' : '')
-                    + ((stagesStatus[idx] && (idx > currStageIdx) ? ' completed' : ''))
-                }
+                className={classNames('stage-container', {
+                    active: (title === stages[currStageIdx].title),
+                    fail: (!stagesStatus[idx] && (idx < currStageIdx)),
+                    complete: ((currStageIdx > idx) && stagesStatus[idx]),
+                    completed: (stagesStatus[idx] && (idx > currStageIdx))
+                })}
                 onClick={() => onChangeCurrStageIdx(idx)}
             >
                 {title}

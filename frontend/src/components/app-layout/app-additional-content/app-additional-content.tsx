@@ -1,4 +1,6 @@
 import { useEffect } from "react"
+import classNames from "classnames"
+
 import { useWindowSize } from "../../../hooks/use-window-size"
 import { useWindowScrollY } from "../../../hooks/use-window-scroll-y"
 
@@ -22,7 +24,7 @@ export const AppAdditionalContent = ({ isBlockEnd = false, children }: Props) =>
 
 
     return (
-        <aside className={'app-layout--app-additional-content__container' + (isBlockEnd ? ' block-end-container' : '')}>
+        <aside className={classNames('app-layout--app-additional-content__container', { 'block-end-container': isBlockEnd })}>
             <div className="content">
                 {children}
             </div>

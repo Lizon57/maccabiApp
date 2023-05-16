@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 
@@ -29,7 +31,7 @@ export const CategoriesEntityItemsList = ({ cmp }: Props) => {
             {title && <MainTitle text={title} Icon={cmp.Icon} />}
 
             {Object.keys(entitiesMap) &&
-                <div className={'pages-list-container' + ((entityItems.length < 9) ? ' small-list' : '')}>
+                <div className={classNames('pages-list-container', { 'small-list': (entityItems.length < 9) })}>
                     {Object.keys(entitiesMap).map(catName => <CategoriesEntityItemsPreview
                         key={catName}
                         name={catName}

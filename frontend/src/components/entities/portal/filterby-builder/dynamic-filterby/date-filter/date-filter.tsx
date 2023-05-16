@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
+import classNames from "classnames"
 import { AiFillCaretDown } from "react-icons/ai"
 
 import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
@@ -117,7 +118,7 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
                     </select>
 
                     <select
-                        className={'year' + ((!date.year && (date.day || date.month)) ? ' error' : '')}
+                        className={classNames('year', { error: (!date.year && (date.day || date.month)) })}
                         value={date.year}
                         onChange={(ev) => onSelectDate('year', +ev.target.value || undefined)}
                     >

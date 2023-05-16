@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import classNames from "classnames"
 
 import { useSelector } from "react-redux"
 import { RootState } from "../../../store/store"
@@ -83,7 +84,7 @@ export const AppOptionBar = () => {
                                 <Icon onClick={() => onIconClick(title)} />
                             </span>
 
-                            <ul className={'links-list-container' + (selectOption === title ? ' open' : '')}>
+                            <ul className={classNames('links-list-container', { open: (selectOption === title) })}>
                                 {option.childrens.map(({ id, path, text, isRelative, action, restriction }) => {
                                     const shouldOptionRender = getShouldOptionRender(restriction)
                                     const appOptionPreviewProps = { path, text, isRelative, action, onCloseOption }

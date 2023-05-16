@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../store/store"
 import { setActiveBranchesIds } from "../../../../store/action/user-action"
@@ -27,7 +29,7 @@ export const BranchChipPreview = ({ branch }: BranchProp) => {
 
     return (
         <div
-            className={'app-header--branch-chip__preview-container' + (isActiveBranch ? ' active' : ' inactive')}
+            className={classNames('app-header--branch-chip__preview-container', (isActiveBranch ? 'active' : 'inactive'))}
             onClick={onBranchClick}
             title={`סנן ענף (${displayName})`}>
             <img src={require(`../../../../assets/images/branch-symbol/${symbol}`)} alt={displayName} className="symbol" />

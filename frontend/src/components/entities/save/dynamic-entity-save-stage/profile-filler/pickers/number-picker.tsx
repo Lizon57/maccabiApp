@@ -1,4 +1,6 @@
-import {useEffect} from "react"
+import { useEffect } from "react"
+import classNames from "classnames"
+
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../../../store/store"
 import { setSaveEntityItem } from "../../../../../../store/action/save-entity-item-action"
@@ -53,7 +55,7 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
             </span>
 
             <span
-                className={'unknown-number' + ((typeof value === 'undefined') ? ' active' : '')}
+                className={classNames('unknown-number', { active: (typeof value === 'undefined') })}
                 onClick={clearPick}
             >
                 לא ידוע

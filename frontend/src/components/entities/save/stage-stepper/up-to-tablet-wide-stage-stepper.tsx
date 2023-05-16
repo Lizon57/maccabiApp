@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 import { EntitySaveItemStage } from "../../../../types/entity/save/entity-save-item-stage"
 
 import { Dropdown } from "../../../common/dropdown/dropdown"
@@ -23,7 +25,7 @@ export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx,
         <div className="entity-save-cmp--up-to-tablet-wide-stage-stepper__container">
             {!!currStageIdx && <button
                 title={`שלב קודם (${stages[prevStageIdx].title})`}
-                className={"prev" + (stagesStatus[prevStageIdx] ? '' : 'fail')}
+                className={classNames('prev', { fail: !stagesStatus[prevStageIdx] })}
                 onClick={() => changeCurrStageIdx(prevStageIdx)}
             >
                 שלב קודם
@@ -36,12 +38,12 @@ export const UpToTabletWideStageStepper = ({ stages, stagesStatus, currStageIdx,
                 <div className="dropdown-children-container">
                     {stages.map(({ title }, idx) => <div
                         key={title}
-                        className={"stage-preview"
-                            + (currStageIdx === idx ? ' active' : '')
-                            + (stagesStatus[idx] ? ' available' : '')
-                            + ((stagesStatus[idx] && (idx > currStageIdx) ? ' completed' : ''))
-                            + ((!stagesStatus[idx] && (idx < currStageIdx)) ? ' fail' : '')
-                        }
+                        className={classNames('stage-preview', {
+                            active: (currStageIdx === idx),
+                            available: stagesStatus[idx],
+                            completed: (stagesStatus[idx] && (idx > currStageIdx)),
+                            fail: (!stagesStatus[idx] && (idx < currStageIdx))
+                        })}
                         title={
                             (idx === currStageIdx)
                                 ? stages[idx].title

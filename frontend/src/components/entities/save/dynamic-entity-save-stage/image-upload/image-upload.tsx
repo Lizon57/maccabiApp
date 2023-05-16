@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import classNames from "classnames"
 import { AiOutlineCloudUpload } from "react-icons/ai"
 
 import { useSelector } from "react-redux"
@@ -110,9 +111,7 @@ export const ImageUpload = ({ entityName, minImageCount, maxImageCount }: Props)
             {shouldRenderFilesList && <div className="uploaded-files">
                 <MainTitle text="קבצים שעלו" Icon={AiOutlineCloudUpload} />
                 <div
-                    className={"files-list-container"
-                        + (((item.miniImages?.length || 0) + (imagesOnUpload?.length || 0) < 4) ? ' short-list' : '')
-                    }
+                    className={classNames('files-list-container', { 'short-list': ((item.miniImages?.length || 0) + (imagesOnUpload?.length || 0) < 4) })}
                 >
                     {imagesOnUpload?.map(file => <ImageOnUploadPreview
                         key={file.name}
