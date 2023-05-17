@@ -1,7 +1,7 @@
 const initialState: AppLayoutReducer = {
     appFooterClientHeight: 0,
     appScreenZIndex: 0,
-    pageDataCmpType: 'social-network-preview',
+    pageDataCmpType: 'join-us',
     pageType: null
 }
 

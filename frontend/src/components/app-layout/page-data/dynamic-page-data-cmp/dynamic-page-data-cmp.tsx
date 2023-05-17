@@ -1,11 +1,11 @@
-import { EntityItemTOC } from "./EntityItemToc"
-import { SocialNetworkPreview } from "./social-network-preview"
+import { EntityItemTOC } from "./entity-item-toc"
+import { JoinUs } from "./join-us"
 
 
 export const DynamicPageDataCmp = ({ type }: Props) => {
     switch (type) {
-        case 'social-network-preview':
-            return <SocialNetworkPreview />
+        case 'join-us':
+            return <JoinUs />
 
         case 'entity-item-toc':
             return <EntityItemTOC />

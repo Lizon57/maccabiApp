@@ -15,7 +15,7 @@ export const CategoryLinkPreview = ({ child }: Props) => {
                     return (<Link
                         key={id}
                         to={path}
-                        className={classNames('link-container' + { disabled: isDisabled })}
+                        className={classNames('link-container', { disabled: isDisabled })}
                         title={'עמוד ' + title}
                     >
                         {img && <img src={require(`../../../../../assets/images/navbar/${img}`)} alt={title} />}

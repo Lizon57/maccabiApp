@@ -47,7 +47,7 @@ const EntityPortal = ({ entity }: Props) => {
 
     const { searchParams } = new URL(window.location.href)
 
-    usePageDataCmp('social-network-preview')
+    usePageDataCmp('join-us')
     usePageType('entity-item-portal')
 
     const toggleIsFilterSectionOpen = () => setIsFilterSectionOpen(!isFilterSectionOpen)

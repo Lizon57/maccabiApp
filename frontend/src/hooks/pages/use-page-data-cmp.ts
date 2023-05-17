@@ -7,7 +7,7 @@ export const usePageDataCmp = (type: string) => {
         setPageDataCmpType(type)
 
         return () => {
-            setPageDataCmpType('social-network-preview')
+            setPageDataCmpType('join-us')
         }
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 }
