@@ -33,7 +33,7 @@ export const SearchInput = ({ placeholder, title, initialValue = '', searchCallb
                 <SearchIcon />
             </span>
 
-            <span className={classNames('search-icon', { active: search.length })}>
+            <span className={classNames('search-icon', { active: !search.length })}>
                 <ClearIcon />
             </span>
         </div>
