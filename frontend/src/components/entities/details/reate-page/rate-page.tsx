@@ -20,7 +20,7 @@ export const RatePage = () => {
         <div className="entity-details--rate-page__container">
             {user?._id
                 ? <Dropdown
-                    controllerText={isRatedBefore ? item.itemInfo.rate.avg : 'היה הראשון לדרג!'}
+                    controllerText={isRatedBefore ? item.itemInfo.rate.avg : 'דרג עכשיו!'}
                     controllerIcon={isRatedBefore ? AiFillStar : undefined}
                     title={`דרג עמוד`}
                     children={<Rater />}

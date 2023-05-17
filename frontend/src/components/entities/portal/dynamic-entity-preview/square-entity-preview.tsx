@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import classNames from "classnames"
 
 import { getFormattedNumber } from "../../../../services/util/get-formatted-number"
 import { getRelativePastTime } from "../../../../services/util/get-relative-past-time"
@@ -40,7 +41,7 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
                 <ImageSlider images={item.miniImages || []} fallbackImgUrl={fallbackImgUrl} />
 
                 <span
-                    className={"like-icon" + (isLike ? ' active' : '')}
+                    className={classNames('like-icon', { active: isLike })}
                     title={isLike ? 'הסר מרשימת המועדפים' : 'הוסף לרשימת המועדפים'}
                     onClick={toggleIsLike}>
                     {isLike ? <FillHeartIcon /> : <OutlineHeartIcon />}

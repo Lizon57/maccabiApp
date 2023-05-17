@@ -35,7 +35,7 @@ export const AppFooter = () => {
         <footer className="app-layout--app-footer" ref={elAppFooter}>
             <div className="content">
                 <div className="internal-links-container">
-                    <Link to="#" title="מי את מכביפדיה?">אודות</Link>
+                    <Link to="#" title="מי אנחנו?">מי אנחנו</Link>
                     <Link to="#" title="הצטרפות לצוות? יש בידך פריט? עזרו לנו לגדול!">עזרו לנו</Link>
                     <Link to="#" title="מצאתי טעות באתר">דווח על טעות</Link>
                 </div>

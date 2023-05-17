@@ -14,6 +14,9 @@ div.entity-details--categories-entity-list__container {
 
     h3 {
       margin: 0 0 $space-block-xxSmall-rem;
+      border-inline-start: 3px solid $clr-blue-regular;
+      border-top-right-radius: $border-radius-regular-em;
+      padding-inline-start: $space-inline-xSmall-rem;
 
       &:not(:first-of-type) {
         margin-block-start: $space-block-xSmall-rem;
@@ -26,6 +29,7 @@ div.entity-details--categories-entity-list__container {
 
       li {
         margin-block-end: $space-block-xxSmall-rem;
+        font-size: $font-size-small-rem;
 
         a {
           color: $clr-black-regular;

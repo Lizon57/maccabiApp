@@ -61,7 +61,7 @@ li.app-header--category-link__preview-container {
     color: $clr-yellow-regular;
 
     div.drop-down-container {
-      padding-block: $space-block-xxSmall-rem;
+      padding-block: $space-block-xxxSmall-rem;
       max-height: 100vmax;
       box-shadow: 0 0 5px 1px $clr-white-darkest;
     }
@@ -87,15 +87,6 @@ li.app-header--category-link__preview-container {
     overflow: hidden;
 
     transition: $transition-regular;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: -1rem;
-
-      width: 100%;
-      height: 1rem;
-    }
 
     a.link-container {
       display: grid;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDebouncedCallback } from "use-debounce"
 import classNames from "classnames"
-import { AiFillCaretDown } from "react-icons/ai"
+import { GoChevronDown } from "react-icons/go"
 
 import { EntityFilterOption } from "../../../../../../models/interfaces/entities/entity-filter-option"
 
@@ -135,7 +135,7 @@ export const DateFilter = ({ filter, debouncedSetIsLoading }: Props) => {
                 <div className="additional-content-container">
                     <div className="indicator">אינדיקציה</div>
                     <div className="type-toggler">
-                        <Dropdown controllerText={TYPE_NAMES[type]} controllerIcon={AiFillCaretDown} title="שיטת סינון">
+                        <Dropdown controllerText={TYPE_NAMES[type]} controllerIcon={GoChevronDown} title="שיטת סינון">
                             <div className="options-container">
                                 {TYPE_NAMES.map((typeName, idx) => <div
                                     key={typeName}
