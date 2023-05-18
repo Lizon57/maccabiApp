@@ -171,7 +171,7 @@ const _buildCriteria = (filterBy: LibraryFilterby = {}) => {
     const criteria: { [key: string]: any } = {}
 
     if (filterBy.pageName) criteria['entityInfo.name.display'] = {
-        $regex: filterBy.pageName, $options: 'ig'
+        $regex: filterBy.pageName, $options: 'i'
     }
 
     if (filterBy.includeBranches) criteria['relatedInfo.branchIds'] = { $in: filterBy.includeBranches.split(',') }
@@ -187,7 +187,7 @@ const _buildCriteria = (filterBy: LibraryFilterby = {}) => {
                 criteria['entityInfo.item.writers'] = { $regex: `${writerList}$`, $options: 'i' }
                 break
             case 2:
-                criteria['entityInfo.item.writers'] = { $regex: writerList, $options: 'ig' }
+                criteria['entityInfo.item.writers'] = { $regex: writerList, $options: 'i' }
                 break
         }
     }
@@ -203,7 +203,7 @@ const _buildCriteria = (filterBy: LibraryFilterby = {}) => {
                 criteria['entityInfo.item.publishers'] = { $regex: `${publisherList}$`, $options: 'i' }
                 break
             case 2:
-                criteria['entityInfo.item.publishers'] = { $regex: publisherList, $options: 'ig' }
+                criteria['entityInfo.item.publishers'] = { $regex: publisherList, $options: 'i' }
                 break
         }
     }

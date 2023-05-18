@@ -174,7 +174,7 @@ const _buildCriteria = (filterBy: SignatureFilterby = {}) => {
     }
 
     if (filterBy.belongToProfileName) criteria['relatedInfo.miniProfile.displayName'] = {
-        $regex: filterBy.belongToProfileName, $options: 'ig'
+        $regex: filterBy.belongToProfileName, $options: 'i'
     }
 
     if (!filterBy.isArchived) criteria.isArchived = { $ne: true }

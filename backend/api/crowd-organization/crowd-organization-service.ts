@@ -165,7 +165,7 @@ const _buildCriteria = (filterBy: CrowdOrganizationFilterby = {}) => {
     const criteria: { [key: string]: any } = {}
 
     if (filterBy.pageName) criteria['entityInfo.name.display'] = {
-        $regex: filterBy.pageName, $options: 'ig'
+        $regex: filterBy.pageName, $options: 'i'
     }
 
     if (filterBy.includeBranches) criteria['relatedInfo.branchIds'] = { $in: filterBy.includeBranches.split(',') }
