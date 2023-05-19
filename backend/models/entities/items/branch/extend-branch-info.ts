@@ -9,13 +9,17 @@ export type ExtendBranchInfo = {
     entityInfo: {
         item: {
             isActive?: boolean
-            activityDurations: ActivityDuration[]
+            activityDurations?: ActivityDuration[]
+            proximallyActivityDurations?: {
+                start?: string | number
+                end?: string | number
+            }
         }
     }
 
     itemInfo: {
         view: number
-        rate: EntityItemRate,
+        rate: EntityItemRate
         history: {
             totalEditCount: number
             lastEditDate: Date

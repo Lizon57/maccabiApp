@@ -4,7 +4,7 @@ import { AbstractBranch } from "../models/app/abstract-branch"
 export const ABSTRACT_BRANCHES_MAP: { [key: string]: AbstractBranch } = {
     football: {
         relatedInfo: {
-            extendBranchId: '',
+            extendBranchId: '6467f12006a31ca1d4a809f7',
 
             mainTeamId: '',
             miniTeams: [
@@ -25,7 +25,7 @@ export const ABSTRACT_BRANCHES_MAP: { [key: string]: AbstractBranch } = {
 
     basketball: {
         relatedInfo: {
-            extendBranchId: '',
+            extendBranchId: '6467f15406a31ca1d4a84402',
 
             mainTeamId: '',
             miniTeams: [
@@ -46,7 +46,7 @@ export const ABSTRACT_BRANCHES_MAP: { [key: string]: AbstractBranch } = {
 
     volleyball: {
         relatedInfo: {
-            extendBranchId: '',
+            extendBranchId: '6467f18906a31ca1d4a88005',
 
             mainTeamId: '',
             miniTeams: [
@@ -67,7 +67,7 @@ export const ABSTRACT_BRANCHES_MAP: { [key: string]: AbstractBranch } = {
 
     handball: {
         relatedInfo: {
-            extendBranchId: '',
+            extendBranchId: '6467f26506a31ca1d4a979ca',
 
             mainTeamId: '',
             miniTeams: [
