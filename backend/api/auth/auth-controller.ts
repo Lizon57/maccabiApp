@@ -6,7 +6,7 @@ import { loggerService } from "../../services/logger-service"
 import { makeId } from "../../services/util/make-id"
 import { User } from '../../models/user/user'
 import { GoogleAuthResponse } from "../../models/user/google-auth-response"
-import { BRANCHES } from "../../data/branches"
+// import { BRANCHES } from "../../data/branches"
 
 // const COOKIE_MAX_AGE = 1000
 const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 21
@@ -82,7 +82,7 @@ const googleSignupLogin = async (req: any, res: any) => {
             newUser.client.name.first = decodedIdToken.given_name || ''
             newUser.client.name.last = decodedIdToken.family_name || ''
             newUser.client.name.display = `${decodedIdToken.given_name || ''} ${decodedIdToken.family_name || ''}`
-            newUser.browseableBranchesIds = BRANCHES.map(branch => branch.id)
+            // newUser.browseableBranchesIds = []
             newUser.isGoogleUser = true
             const addedUser = await authService.signup(newUser) as User
             existUser = { ...addedUser }

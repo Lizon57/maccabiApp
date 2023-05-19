@@ -3,31 +3,13 @@ import { EntityItemRate } from "../misc/entity-item-rate"
 import { ActivityDuration } from "../../../common/activity-duration"
 
 
-export type Team = {
+export type ExtendBranchInfo = {
     _id: ObjectId | string
 
-    relatedInfo?: {
-        miniBranch: {
-            id: string
-            displayName: string
-            icon: string
-        }[]
-    }
-
     entityInfo: {
-        name: {
-            display: string
-            full?: string
-        }
-
         item: {
             isActive?: boolean
             activityDurations: ActivityDuration[]
-
-            age?: {
-                minimum?: number
-                maximum?: number
-            }
         }
     }
 
