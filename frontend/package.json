@@ -4,17 +4,12 @@
   "private": true,
   "dependencies": {
     "@react-oauth/google": "^0.8.0",
-    "@storybook/addon-a11y": "^7.0.12",
-    "@storybook/addon-controls": "^7.0.12",
-    "@storybook/addon-storysource": "^7.0.12",
-    "@storybook/addon-viewport": "^7.0.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/axios": "^0.14.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.56",
-    "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/react-redux": "^7.1.24",
     "@types/react-router-dom": "^5.3.3",
@@ -25,6 +20,7 @@
     "dompurify": "^3.0.1",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
+    "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
     "react-file-drop": "^3.1.6",
     "react-helmet": "^6.1.0",
@@ -46,9 +42,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006 -s public",
-    "build-storybook": "storybook build -s public"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -79,21 +73,11 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^7.0.12",
-    "@storybook/addon-essentials": "^7.0.12",
-    "@storybook/addon-interactions": "^7.0.12",
-    "@storybook/addon-links": "^7.0.12",
-    "@storybook/addon-mdx-gfm": "^7.0.12",
-    "@storybook/node-logger": "^7.0.12",
-    "@storybook/preset-create-react-app": "^7.0.12",
-    "@storybook/react": "^7.0.12",
-    "@storybook/react-webpack5": "^7.0.12",
-    "@storybook/testing-library": "^0.1.0",
     "@types/dompurify": "^3.0.1",
+    "@types/react": "^18.2.8",
     "@types/react-helmet": "^6.1.6",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
-    "storybook": "^7.0.12",
     "webpack": "^5.83.1"
   }
 }

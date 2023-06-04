@@ -6,7 +6,7 @@ export interface AbstractBranch {
         miniTeams: {
             id: string
             displayName: string
-            icon: string
+            symbol: string
         }[]
     }
 

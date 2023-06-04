@@ -17,6 +17,7 @@ import { AppScreen } from "./components/app-layout/app-screen/app-screen"
 import { RenderByDeviceWidth } from "./components/common/render-by/render-by-device-width"
 import { SeoImplement } from "./components/common/seo-implement/seo-implement"
 import { Loader } from "./components/common/loader/loader"
+import { HomePage } from "./pages/homepage"
 
 
 export const App = () => {
@@ -41,6 +42,7 @@ export const App = () => {
                                         key={id}
                                         path={path}
                                         element={<Element />} />)}
+                                    <Route path="/" element={<HomePage />} />
                                 </Routes>
                             </Suspense>
                             {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

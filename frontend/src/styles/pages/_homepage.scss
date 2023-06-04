@@ -1,0 +1,43 @@
+main.homepage__container {
+    section.category-numbers {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: $space-inline-regular-rem;
+
+        div.preview-container {
+            position: relative;
+
+            font-family: $typography-emphasis;
+            font-size: $font-size-xLarge-rem;
+            font-weight: 500;
+            padding: $space-block-xxSmall-rem 0;
+            width: 100%;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                border-radius: $border-radius-regular-rem;
+                background-color: $clr-blue-regular;
+                width: 20%;
+                height: 5px;
+            }
+
+            div.count-container {
+                display: flex;
+                align-items: center;
+
+                span.plus {
+                    display: flex;
+                    align-items: center;
+                }
+
+                span.count {
+                    font-size: $font-size-xxxLarge-rem;
+                    color: $clr-blue-regular;
+                }
+            }
+        }
+    }
+}
