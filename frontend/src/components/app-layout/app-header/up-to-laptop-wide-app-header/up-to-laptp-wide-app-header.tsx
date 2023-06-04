@@ -31,6 +31,12 @@ export const UpToLaptopWideAppHeader = () => {
 
     useOnClickOutside(elMenu, () => toggleMenu(false))
 
+    const closeMenu = () => {
+        setCurrentCategoryOpen('')
+        setIsNavOpen(false)
+        setAppScreenZIndex(0)
+    }
+
 
     const sideMenuProps = { isNavOpen, currentCategoryOpen, setCurrentCategoryOpen }
 
@@ -39,7 +45,7 @@ export const UpToLaptopWideAppHeader = () => {
             <div className="content">
                 <div className="navigator-container">
                     <span className="icon-wrapper" onClick={() => toggleMenu(!isNavOpen)}><FaBars /></span>
-                    <Link to="./">
+                    <Link to="./" onClick={closeMenu}>
                         <img src={wideLogo} alt="עמוד ראשי" title="עמוד ראשי" className="brand-logo" />
                     </Link>
                 </div>
@@ -51,8 +57,7 @@ export const UpToLaptopWideAppHeader = () => {
                 </div>
             </div>
 
-            <SideMenu {...sideMenuProps} onCloseMenu={toggleMenu}
-            />
+            <SideMenu {...sideMenuProps} onCloseMenu={closeMenu} />
         </header>
     )
 }
