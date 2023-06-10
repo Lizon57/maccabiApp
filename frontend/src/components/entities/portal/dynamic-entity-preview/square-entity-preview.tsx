@@ -1,9 +1,15 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import classNames from "classnames"
+
+import { useSelector } from "react-redux"
+import { RootState } from "../../../../store/store"
+import { insertAppMessage } from "../../../../store/action/app-state-action"
+import { setLikedPageMap } from "../../../../store/action/user-action"
 
 import { getFormattedNumber } from "../../../../services/util/get-formatted-number"
 import { getRelativePastTime } from "../../../../services/util/get-relative-past-time"
+import { entityItemService } from "../../../../services/entities/entity-item-service"
 
 import { EntityItem } from "../../../../models/types/entities/item/entity-item"
 
@@ -11,6 +17,7 @@ import { ICON_TYPE_MAP } from "../../../../constans/icon-type-map"
 
 import { DisplayBranchesIconByIds } from "../../../common/branch-icon/display-branches-icon-by-ids"
 import { ImageSlider } from "../image-slider/image-slider"
+
 
 const GET_LITERAL_EDIT_AMOUNT = (amount: number) => {
     if (amount === 1) return 'פעם אחת'
@@ -20,11 +27,34 @@ const GET_LITERAL_EDIT_AMOUNT = (amount: number) => {
 
 
 export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
-    const [isLike, setIsLike] = useState(false)
+    const { user } = useSelector((state: RootState) => state.userStateModule)
+    const { entity } = useSelector((state: RootState) => state.displayEntityModule)
+    const location = useLocation()
+    const entityName = location.pathname.slice(1)
 
-    const toggleIsLike = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    const getIsLikedItem = () => {
+        const likedPages = user.likedPageMap[entityName]
+
+        if (!likedPages.length) return false
+        const itemInLikedPages = likedPages.find((page: string) => page === item._id)
+        if (itemInLikedPages) return true
+        return false
+    }
+    const [isLike, setIsLike] = useState((user._id && getIsLikedItem()) || false)
+
+    const toggleIsLike = async (ev: React.MouseEvent<HTMLButtonElement>) => {
         ev.preventDefault()
+
+        insertAppMessage({ text: isLike ? `הסרת הדף "${item?.entityInfo.name.display}" מרשימת המועדפים` : `הוספת הדף "${item?.entityInfo.name.display}" לרשימת המועדפים`, title: 'פעולה הצליחה', type: 'success' })
+        const messageText = isLike ? `הסרת הדף "${item?.entityInfo.name.display}" מרשימת המועדפים נכשלה` : `הוספת הדף "${item?.entityInfo.name.display}" לרשימת המועדפים נכשלה`
+        setLikedPageMap(entityName, !isLike, item._id)
         setIsLike(!isLike)
+        try {
+            await entityItemService.setEntityItemLikeState(entity.name, item._id, !isLike)
+        } catch (err) {
+            insertAppMessage({ text: messageText, title: 'פעולה נכשלה', type: 'fail' })
+            setLikedPageMap(entityName, isLike, item._id)
+        }
     }
 
 
@@ -40,12 +70,14 @@ export const SquareEntityPreview = ({ item, fallbackImgUrl }: Props) => {
             <div className="image-container">
                 <ImageSlider images={item.miniImages || []} fallbackImgUrl={fallbackImgUrl} />
 
-                <span
-                    className={classNames('like-icon', { active: isLike })}
-                    title={isLike ? 'הסר מרשימת המועדפים' : 'הוסף לרשימת המועדפים'}
-                    onClick={toggleIsLike}>
-                    {isLike ? <FillHeartIcon /> : <OutlineHeartIcon />}
-                </span>
+                {user._id &&
+                    <button
+                        className={classNames('like-state', { active: isLike })}
+                        title={isLike ? 'הסר מרשימת המועדפים' : 'הוסף לרשימת המועדפים'}
+                        onClick={toggleIsLike}>
+                        {isLike ? <FillHeartIcon /> : <OutlineHeartIcon />}
+                    </button>
+                }
 
                 {totalImageCount > 1 && <span className="image-counter" title={`${totalImageCount} תמונות תצוגה`}>{totalImageCount}</span>}
             </div>

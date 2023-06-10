@@ -19,3 +19,18 @@ export const logout = () => {
 export const setActiveBranchesIds = (browseableBranchesIds: string[]) => {
     store.dispatch({ type: 'setActiveBranchesIds', browseableBranchesIds })
 }
+
+
+export const setLikedPageMap = (entityName: string, shouldAdd: boolean, itemId: string) => {
+    let user = store.getState().userStateModule.user
+    user = structuredClone(user)
+    let entityLikedPages = user.likedPageMap[entityName]
+
+    
+    if (shouldAdd) entityLikedPages.push(itemId)
+    else {
+        user.likedPageMap[entityName] = entityLikedPages.filter((item: string) => item !== itemId)
+    }
+
+    store.dispatch({ type: 'setUser', user })
+}

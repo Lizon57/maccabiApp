@@ -16,6 +16,7 @@ export interface User {
     },
 
     browseableBranchesIds: string[]
+    likedPageMap?: { [key: string]: string[] }
     permisionGroup?: string
     isGoogleUser?: boolean
 }

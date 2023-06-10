@@ -12,7 +12,7 @@ a.dynamic-entity-preview--square-entity-preview__container {
 
   @include viewport-wide-start-from-exclusive($viewport-large) {
     &:hover {
-      span.like-icon,
+      button.like-state,
       span.image-counter,
       ul.slick-dots,
       div.item-additional-info {
@@ -37,10 +37,11 @@ a.dynamic-entity-preview--square-entity-preview__container {
     position: relative;
     height: 8rem;
 
-    span {
+    span.image-counter {
       position: absolute;
       top: $space-block-xxxSmall-rem;
       z-index: 5;
+      left: $space-inline-xxxSmall-rem;
 
       display: flex;
       align-items: center;
@@ -52,24 +53,35 @@ a.dynamic-entity-preview--square-entity-preview__container {
       padding: 3px;
       transition: $transition-regular;
 
-      &.like-icon {
-        right: $space-inline-xxxSmall-rem;
+      @include viewport-wide-start-from-exclusive($viewport-large) {
+        transform: translateY(-150%);
+      }
+    }
 
-        @include viewport-wide-start-from-exclusive($viewport-large) {
-          transform: translateY(-150%);
-        }
+    button.like-state {
+      position: absolute;
+      top: $space-block-xxxSmall-rem;
+      right: $space-inline-xxxSmall-rem;
+      z-index: 5;
+      left: $space-inline-xxxSmall-rem;
 
-        &.active {
-          color: $clr-yellow-regular;
-        }
+      display: flex;
+      align-items: center;
+
+      cursor: pointer;
+      border: 1px solid $clr-blue-darkest;
+      border-radius: $border-radius-regular-rem;
+      background-color: $clr-white-darker;
+      font-size: $font-size-xSmall-rem;
+      padding: 3px;
+      transition: $transition-regular;
+
+      @include viewport-wide-start-from-exclusive($viewport-large) {
+        transform: translateY(-150%);
       }
 
-      &.image-counter {
-        left: $space-inline-xxxSmall-rem;
-
-        @include viewport-wide-start-from-exclusive($viewport-large) {
-          transform: translateY(-150%);
-        }
+      &.active {
+        color: $clr-yellow-regular;
       }
     }
   }

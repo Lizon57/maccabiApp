@@ -59,6 +59,7 @@ const validateToken = (loginToken: string) => {
     return null
 }
 
+
 export const authService = {
     signup,
     login,

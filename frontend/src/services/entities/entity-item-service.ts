@@ -71,6 +71,16 @@ const setEntityItemRate = async (entityName: string, id: string, rate: number) =
     }
 }
 
+const setEntityItemLikeState = async (entityName: string, id: string, isLike: boolean) => {
+    try {
+        const likeStatePayload = { id, entityName, isLike }
+        return await httpService.put('entity-item-info-update/like', { likeStatePayload })
+    }
+    catch (err) {
+        throw err
+    }
+}
+
 
 const _handleEntityItemView = async (entityName: string, id: string) => {
     let viewList = localStorageService.readFromStorage(STORAGE_KEY) as EntityItemViewDetails[]
@@ -99,5 +109,6 @@ export const entityItemService = {
     remove,
     save,
     getMiniProfilesByPharse,
-    setEntityItemRate
+    setEntityItemRate,
+    setEntityItemLikeState
 }

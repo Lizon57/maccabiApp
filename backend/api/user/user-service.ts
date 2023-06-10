@@ -42,7 +42,9 @@ const update = async (user: User) => {
             credential: {
                 email: user.credential.email,
                 password: user.credential.password
-            }
+            },
+
+            likedPageMap: user.likedPageMap
         }
 
         const collection = await databaseService.getCollection(DB_NAME)

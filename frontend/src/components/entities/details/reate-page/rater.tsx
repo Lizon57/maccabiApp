@@ -32,8 +32,7 @@ export const Rater = () => {
             insertAppMessage({ text: `דירוג הדף "${item?.entityInfo.name.display}" בוצע בהצלחה`, title: 'דירוג הצליח', type: 'success' })
         } catch (err) {
             insertAppMessage({ text: `דירוג הדף "${item?.entityInfo.name.display}" נכשל`, title: 'דירוג נכשל', type: 'fail' })
-        } finally {
-        }
+        } 
     }
 
 

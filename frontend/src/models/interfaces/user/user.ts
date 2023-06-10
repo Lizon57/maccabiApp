@@ -16,7 +16,9 @@ export interface User extends LocalUser {
     }
 
     browseableBranchesIds: string[],
-    
+
+    likedPageMap?: { [key: string]: string[] }
+
     permisionGroup?: string
 }
 

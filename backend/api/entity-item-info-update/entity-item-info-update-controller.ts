@@ -1,5 +1,7 @@
 import { entityItemInfoUpdateService } from "./entity-item-info-update-service"
 import { loggerService } from "../../services/logger-service"
+import { asyncLocalStorage } from "../../services/als-service"
+import { userService } from "../user/user-service"
 
 import { EntityItemViewUpdateAction } from "../../models/entities/items/misc/entity-item-view-update-action"
 import { RatePayload } from "../../models/entities/items/misc/rate-payload"
@@ -29,7 +31,40 @@ const updateRateState = async (req: any, res: any) => {
 }
 
 
-export const entityItemInfoUpdateConreoller = {
+const updateLikeState = async (req: any, res: any) => {
+    loggerService.debug('Updating entity item like state')
+
+    try {
+        const { loggedinUser } = asyncLocalStorage.getStore() as any
+        const user = await userService.getById(loggedinUser._id)
+
+        if (!user?.likedPageMap) user.likedPageMap = {
+            [req.body.likeStatePayload.entityName]: []
+        }
+
+        let likedPagesByEntityName = user.likedPageMap[req.body.likeStatePayload.entityName]
+        const entityId = req.body.likeStatePayload.id
+
+        if (!likedPagesByEntityName?.length) likedPagesByEntityName = [entityId]
+        else {
+            const idx = likedPagesByEntityName.findIndex(id => id === entityId)
+            if (idx === -1) likedPagesByEntityName.push(entityId)
+            else likedPagesByEntityName.splice(idx, 1)
+        }
+
+        if (!likedPagesByEntityName.length) delete user.likedPageMap[req.body.likeStatePayload.entityName]
+        else user.likedPageMap[req.body.likeStatePayload.entityName] = likedPagesByEntityName
+
+        await userService.update(user)
+        res.send()
+    } catch {
+        res.status(500).send({ err: 'Failed to update entity item like' })
+    }
+}
+
+
+export const entityItemInfoUpdateController = {
     updateViewState,
-    updateRateState
+    updateRateState,
+    updateLikeState
 }

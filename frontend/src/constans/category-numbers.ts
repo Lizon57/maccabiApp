@@ -1,9 +1,3 @@
-import { BiCollection } from "react-icons/bi"
-import { BsNewspaper } from "react-icons/bs"
-import { MdOutlineArticle } from "react-icons/md"
-import { SiRiotgames } from "react-icons/si"
-
-
 export const CATEGORY_NUMBERS = [
     {
         title: 'מאמרים',
