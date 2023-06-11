@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import classNames from "classnames"
 
 import { useSelector } from "react-redux"
@@ -16,10 +15,6 @@ export const NumberPicker = ({ pickerInfo }: Props) => {
     const min = option?.min || 0
     const max = option?.max || 1000000
     const value = getValueByDynamicKey(optionKey, item)
-
-    useEffect(() => {
-        console.log(item)
-    }, [item])
 
     const setValue = (value: number | undefined) => {
         const editedItem = structuredClone(item)
